@@ -1,0 +1,19 @@
+1. Vytvořte dokument: papír A4, velikost písma 11pt, oboustraný tisk, typ článek (article), jazyk čeština.
+
+2. Vytvořte titulní stranu, jako název využíjte první nadpis, jako autora uveďte sebe a použíjte dnešní datum.
+
+2. Žlutě označený text na první straně upravte do podoby číslovaného seznamu.
+
+3. Žlutě označený text na druhé straně upravte do podoby odrážek.
+
+4. Do textu vložte přiložené obrázky s povoleným umístětím na zvolené místo a na horní nebo dolní okraj.
+
+5. K obrázkům vložte popisky.
+
+6. Vytvořte seznam literatury dle ISO-690.
+
+7. Do textu vložte křížové odkazy.
+
+8. Do dokumentu doplňte metadata.
+
+9. Zkontrolujte typografická pravidla.

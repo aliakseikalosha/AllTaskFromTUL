@@ -1,0 +1,133 @@
+.TH "kalosha.geomdedicnost.Trojuhelnik" 3 "út 12. kvě 2020" "Cvičení" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kalosha.geomdedicnost.Trojuhelnik
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dědí z bázové třídy \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "Veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "double \fBgetPlocha\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetObvod\fP ()"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SS "Statické veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "static \fBTrojuhelnik\fP \fBgetInstance\fP (double \fBa\fP, double \fBb\fP, double \fBc\fP)"
+.br
+.in -1c
+.SS "Privátní metody"
+
+.in +1c
+.ti -1c
+.RI "\fBTrojuhelnik\fP (double \fBa\fP, double \fBb\fP, double \fBc\fP)"
+.br
+.in -1c
+.SS "Privátní atributy"
+
+.in +1c
+.ti -1c
+.RI "double \fBa\fP"
+.br
+.ti -1c
+.RI "double \fBb\fP"
+.br
+.ti -1c
+.RI "double \fBc\fP"
+.br
+.ti -1c
+.RI "double \fBs\fP"
+.br
+.in -1c
+.SH "Dokumentace konstruktoru a destruktoru"
+.PP 
+.SS "kalosha\&.geomdedicnost\&.Trojuhelnik\&.Trojuhelnik (double a, double b, double c)\fC [private]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP pulka strany trojuhelnika 
+.br
+\fIb\fP pulka stany trojuhelnika 
+.br
+\fIc\fP pulka stany trojuhelnika 
+.RE
+.PP
+
+.SH "Dokumentace k metodám"
+.PP 
+.SS "static \fBTrojuhelnik\fP kalosha\&.geomdedicnost\&.Trojuhelnik\&.getInstance (double a, double b, double c)\fC [static]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP pulka stany trojuhelnika 
+.br
+\fIb\fP pulka stany trojuhelnika 
+.br
+\fIc\fP pulka stany trojuhelnika 
+.RE
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati null kdyz a,b nebo c < 0 nebo soucet dvoj je min nez delka treti stany 
+.RE
+.PP
+
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.getObvod ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati obvod figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.getPlocha ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati plochu figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "String kalosha\&.geomdedicnost\&.Trojuhelnik\&.toString ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati popis figury ve tvare 'Trojuhelnik{a = x1, b = x2, c = x 5, Obvod = x3 ; Plocha = x4}' 
+.RE
+.PP
+
+.SH "Dokumentace k datovým členům"
+.PP 
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.a\fC [private]\fP"
+delka stany trojuhelnika 
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.b\fC [private]\fP"
+delka stany trojuhelnika 
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.c\fC [private]\fP"
+delka stany trojuhelnika 
+.SS "double kalosha\&.geomdedicnost\&.Trojuhelnik\&.s\fC [private]\fP"
+pulka obvoda trojuhelnika 
+
+.SH "Autor"
+.PP 
+Generováno automaticky programem Doxygen ze zdrojových textů projektu Cvičení\&.

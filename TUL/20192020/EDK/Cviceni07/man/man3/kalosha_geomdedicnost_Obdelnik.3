@@ -1,0 +1,119 @@
+.TH "kalosha.geomdedicnost.Obdelnik" 3 "út 12. kvě 2020" "Cvičení" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kalosha.geomdedicnost.Obdelnik
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dědí z bázové třídy \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "Veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "double \fBgetPlocha\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetObvod\fP ()"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SS "Statické veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "static \fBObdelnik\fP \fBgetInstance\fP (double \fBa\fP, double \fBb\fP)"
+.br
+.in -1c
+.SS "Privátní metody"
+
+.in +1c
+.ti -1c
+.RI "\fBObdelnik\fP (double \fBa\fP, double \fBb\fP)"
+.br
+.in -1c
+.SS "Privátní atributy"
+
+.in +1c
+.ti -1c
+.RI "double \fBa\fP"
+.br
+.ti -1c
+.RI "double \fBb\fP"
+.br
+.in -1c
+.SH "Dokumentace konstruktoru a destruktoru"
+.PP 
+.SS "kalosha\&.geomdedicnost\&.Obdelnik\&.Obdelnik (double a, double b)\fC [private]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP delka stany obdelnika 
+.br
+\fIb\fP delka stany obdelnika 
+.RE
+.PP
+
+.SH "Dokumentace k metodám"
+.PP 
+.SS "static \fBObdelnik\fP kalosha\&.geomdedicnost\&.Obdelnik\&.getInstance (double a, double b)\fC [static]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP delka stany obdelnika 
+.br
+\fIb\fP delka stany obdelnika 
+.RE
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati null kdyz jedna ze stran bude mensi nez 0 
+.RE
+.PP
+
+.SS "double kalosha\&.geomdedicnost\&.Obdelnik\&.getObvod ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati obvod figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "double kalosha\&.geomdedicnost\&.Obdelnik\&.getPlocha ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati plochu figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "String kalosha\&.geomdedicnost\&.Obdelnik\&.toString ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati popis figury ve tvare 'Obdelnik{ a = x1, b = x2,Obvod = x3 ; Plocha = x4}' 
+.RE
+.PP
+
+.SH "Dokumentace k datovým členům"
+.PP 
+.SS "double kalosha\&.geomdedicnost\&.Obdelnik\&.a\fC [private]\fP"
+delka stany obdelnika 
+.SS "double kalosha\&.geomdedicnost\&.Obdelnik\&.b\fC [private]\fP"
+delka stany obdelnika 
+
+.SH "Autor"
+.PP 
+Generováno automaticky programem Doxygen ze zdrojových textů projektu Cvičení\&.

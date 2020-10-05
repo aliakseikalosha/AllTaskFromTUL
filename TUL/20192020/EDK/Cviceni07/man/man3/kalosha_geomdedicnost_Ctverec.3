@@ -1,0 +1,120 @@
+.TH "kalosha.geomdedicnost.Ctverec" 3 "út 12. kvě 2020" "Cvičení" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kalosha.geomdedicnost.Ctverec
+.SH SYNOPSIS
+.br
+.PP
+.PP
+Dědí z bázové třídy \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "Veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "double \fBgetPlocha\fP ()"
+.br
+.ti -1c
+.RI "double \fBgetObvod\fP ()"
+.br
+.ti -1c
+.RI "String \fBtoString\fP ()"
+.br
+.in -1c
+.SS "Statické veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "static \fBCtverec\fP \fBgetInstance\fP (double \fBa\fP)"
+.br
+.in -1c
+.SS "Privátní metody"
+
+.in +1c
+.ti -1c
+.RI "\fBCtverec\fP (double \fBa\fP)"
+.br
+.in -1c
+.SS "Privátní atributy"
+
+.in +1c
+.ti -1c
+.RI "double \fBa\fP"
+.br
+.in -1c
+.SH "Detailní popis"
+.PP 
+Trida ktera popisuje \fBCtverec\fP 
+.PP
+\fBAutor\fP
+.RS 4
+Aliaksei Kalosha 
+.RE
+.PP
+
+.SH "Dokumentace konstruktoru a destruktoru"
+.PP 
+.SS "kalosha\&.geomdedicnost\&.Ctverec\&.Ctverec (double a)\fC [private]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP delka stany 
+.RE
+.PP
+
+.SH "Dokumentace k metodám"
+.PP 
+.SS "static \fBCtverec\fP kalosha\&.geomdedicnost\&.Ctverec\&.getInstance (double a)\fC [static]\fP"
+
+.PP
+\fBParametry\fP
+.RS 4
+\fIa\fP delka stany 
+.RE
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrani null kdyz delka je mensi 0 
+.RE
+.PP
+
+.SS "double kalosha\&.geomdedicnost\&.Ctverec\&.getObvod ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati obvod figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "double kalosha\&.geomdedicnost\&.Ctverec\&.getPlocha ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati plochu figury 
+.RE
+.PP
+
+.PP
+Reimplementuje stejnojmenný prvek z \fBkalosha\&.geomdedicnost\&.GeomObj\fP\&.
+.SS "String kalosha\&.geomdedicnost\&.Ctverec\&.toString ()"
+
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+vrati String popis figury ve tvare 'Ctverec{ a = x, Obvod = y ; Plocha = z}' 
+.RE
+.PP
+
+.SH "Dokumentace k datovým členům"
+.PP 
+.SS "double kalosha\&.geomdedicnost\&.Ctverec\&.a\fC [private]\fP"
+delka strana ctvrce 
+
+.SH "Autor"
+.PP 
+Generováno automaticky programem Doxygen ze zdrojových textů projektu Cvičení\&.

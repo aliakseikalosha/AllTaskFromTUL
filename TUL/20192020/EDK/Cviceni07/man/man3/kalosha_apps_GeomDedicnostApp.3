@@ -1,0 +1,102 @@
+.TH "kalosha.apps.GeomDedicnostApp" 3 "út 12. kvě 2020" "Cvičení" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+kalosha.apps.GeomDedicnostApp
+.SH SYNOPSIS
+.br
+.PP
+.SS "Statické veřejné metody"
+
+.in +1c
+.ti -1c
+.RI "static void \fBmain\fP (String[] args)"
+.br
+.in -1c
+.SS "Statické privátní metody"
+
+.in +1c
+.ti -1c
+.RI "static void \fBvypisHlavniMenuProgramu\fP ()"
+.br
+.ti -1c
+.RI "static int \fBnacistVolbu\fP ()"
+.br
+.ti -1c
+.RI "static void \fBpridatdalsiObjekt\fP ()"
+.br
+.ti -1c
+.RI "static void \fBvypsatObjekty\fP ()"
+.br
+.ti -1c
+.RI "static void \fBmaximalniPlocha\fP ()"
+.br
+.ti -1c
+.RI "static void \fBmaximalniObvod\fP ()"
+.br
+.ti -1c
+.RI "static void \fBcelkovaPlocha\fP ()"
+.br
+.in -1c
+.SS "Statické privátní atributy"
+
+.in +1c
+.ti -1c
+.RI "static final Scanner \fBsc\fP = new Scanner(System\&.in)"
+.br
+.ti -1c
+.RI "static List< \fBGeomObj\fP > \fBgeomObjekty\fP"
+.br
+.in -1c
+.SH "Detailní popis"
+.PP 
+Hlavni trida programu 
+.PP
+\fBAutor\fP
+.RS 4
+Aliaksei Kalosha 
+.RE
+.PP
+
+.SH "Dokumentace k metodám"
+.PP 
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.celkovaPlocha ()\fC [static]\fP, \fC [private]\fP"
+Metoda ktera vypise celkovou plochou 
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.main (String[] args)\fC [static]\fP"
+Vtupni bod programmu 
+.PP
+\fBParametry\fP
+.RS 4
+\fIargs\fP the command line arguments 
+.RE
+.PP
+
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.maximalniObvod ()\fC [static]\fP, \fC [private]\fP"
+Metoda ktera vypise Objekt s maksimalnim obvodem 
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.maximalniPlocha ()\fC [static]\fP, \fC [private]\fP"
+Metoda ktera vypise Objekt s maksimalni plochou 
+.SS "static int kalosha\&.apps\&.GeomDedicnostApp\&.nacistVolbu ()\fC [static]\fP, \fC [private]\fP"
+Nacita volbu uzivatele s testovego vstupu 
+.PP
+\fBNávratová hodnota\fP
+.RS 4
+volba, -1 kdyz uzivatel zada spatnou volbu 
+.RE
+.PP
+
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.pridatdalsiObjekt ()\fC [static]\fP, \fC [private]\fP"
+Metod ktera prida dalsi objekt 
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.vypisHlavniMenuProgramu ()\fC [static]\fP, \fC [private]\fP"
+Metoda ktera ypisue hlavni menu programu 
+.SS "static void kalosha\&.apps\&.GeomDedicnostApp\&.vypsatObjekty ()\fC [static]\fP, \fC [private]\fP"
+Metoda ktera vypise ulozeny objeky na standartni vystup 
+.SH "Dokumentace k datovým členům"
+.PP 
+.SS "List<\fBGeomObj\fP> kalosha\&.apps\&.GeomDedicnostApp\&.geomObjekty\fC [static]\fP, \fC [private]\fP"
+List kde program uklada GeomObj 
+.SS "final Scanner kalosha\&.apps\&.GeomDedicnostApp\&.sc = new Scanner(System\&.in)\fC [static]\fP, \fC [private]\fP"
+Je pouzity na nacitani dat se standarnigo vstupu 
+
+.SH "Autor"
+.PP 
+Generováno automaticky programem Doxygen ze zdrojových textů projektu Cvičení\&.

@@ -1,0 +1,141 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage[nottoc]{tocbibind}
+\usepackage{amsmath}
+
+\title{Cvičení vzorce a tabulky}
+\author{Aliaksei Kalosha}
+\date{\today}
+
+
+\begin{document}
+
+\maketitle
+
+\section{Vzorce}
+
+Vzorec v textu $c^2 = a^2 + b^2$ a taky $c = \sqrt{a^2+b^2}$
+Jednoduché vzorce se zlomky:
+\begin{equation}
+    \sigma = \frac{N}{S} = E \cdot \varepsilon
+\end{equation}
+
+\begin{equation}
+    \delta_{R} = \frac{\Delta R}{R} = \frac{\Delta l}{l} - \frac{\Delta S}{S} + \frac{\Delta \varrho}{\varrho}
+\end{equation}
+Vzorec s indexem:
+\begin{equation}
+    \frac{\Delta \varrho}{\varrho} = \Pi_{e}E\frac{\Delta l}{l}
+\end{equation}
+Více řádkové vzorce, použtí polí:
+\begin{equation}
+    \begin{gathered}
+        \cos{\alpha} = \frac{l}{\Delta l+l}\\
+        \downarrow\\
+        \Delta l =\frac{l}{\cos{\alpha} - l}
+    \end{gathered}
+\end{equation}
+Vzorec se závorkami:
+\begin{equation}
+    F = 2 \cdot \sin{ \left( \arccos{ \left( \frac{1}{\varepsilon + 1} \right) }\right)}  \cdot \sigma(\varepsilon) \cdot S
+\end{equation}
+Matice:
+\begin{equation}
+    \begin{bmatrix}
+    1 & 0 & 0\\
+    0 & 1 & 0\\
+    0 & 0 & 1
+    \end{bmatrix}
+\end{equation}
+Rovnice s maticovými výpočty:
+\begin{equation}
+    \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 1 & 0\\
+        0 & 0 & 1
+    \end{bmatrix}
+    \cdot
+    \begin{bmatrix}
+        1 \\
+        0 \\
+        0 
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        1\\
+        0\\
+        0 
+    \end{bmatrix}
+\end{equation}
+\newpage
+\section{Tabulky}
+Nejdříve jednoduchá tabulka:
+\begin{table}[h]
+\caption{Jednoduchá tabulka}
+    \begin{tabular}{l|r|l}
+        Stanoviště & Kanál & Jednotka\\
+        \hline
+        \textsc{Praha Information East} & 136.17 & MHz\\
+        \textsc{Praha Information West} & 126.1  & MHz\\
+        \hline
+        \textsc{Eastern Atlantic} & 11396  & kHz     
+    \end{tabular}
+\label{tab:1}
+\end{table}
+
+Odkaz na tabulku \ref{tab:1}
+\begin{table}[h]
+    \caption{Desetiná místa tabulka}
+    \begin{tabular}{l|S|l}
+        Stanoviště & Kanál & Jednotka\\
+        \hline
+        \textsc{Praha Information East}  & 136.17 & MHz\\
+        \textsc{Praha Information West}  & 126.1  & MHz\\
+        \hline
+        \textsc{Eastern Atlantic} & 11396  & kHz
+    \end{tabular}
+    \label{tab:2}
+\end{table}
+
+Odkaz na tabulku \ref{tab:2}
+\begin{table}[h]
+\centering
+\caption{Desetiná místa tabulka}
+    \begin{tabular}{l|S|l}
+        \multicolumn{1}{c|}{Stanoviště} & \multicolumn{1}{c|}{Kanál} & \multicolumn{1}{c}{Jednotka}\\
+        \hline
+        \textsc{Praha Information East} & 136.17 & MHz\\
+        \textsc{Praha Information West} & 126.1  & MHz\\
+        \hline
+        \textsc{Eastern Atlantic} & 11396  & kHz
+    \end{tabular}
+\label{tab:3}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Vědecká anotace spávně a špatně}
+    \begin{tabular}{l S c S}
+        \multicolumn{3}{c}{Hmotnost} & \multicolumn{1}{l}{Hmotnost/\begin{math}10^3\end{math} \si{\kilo\gram}} \\
+        \hline
+        1 & 4.56 & $\times ~10^3$~\si{\kilo\gram} & 4.56\\
+        2 &2.40 &$\times ~10^3$~\si{\kilo\gram} &2.40\\
+        3 &1.345 &$\times ~10^4$~\si{\kilo\gram} &13.45\\
+        4 &4.5 &$\times~10^2$~\si{\kilo\gram} &0.45\\
+    \end{tabular}
+\label{tab:4}
+\end{table}
+\begin{table}[h]
+\centering
+\caption{Tolerance Délka}
+    \begin{tabular}{l c}
+        \hline
+        1 & $(4.56\pm 0.02) \times 10^3 \si{\milli\metre}$
+    \end{tabular}
+\label{tab:5}
+\end{table}
+
+\end{document}
