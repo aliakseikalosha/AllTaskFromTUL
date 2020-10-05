@@ -1,0 +1,169 @@
+
+ ssh aliaksei.kalosha@a0324.nti.tul.cz
+aliaksei.kalosha@a0324.nti.tul.cz's password: 
+-bash: warning: setlocale: LC_CTYPE: cannot change locale (UTF-8): No such file or directory
+
+[aliaksei.kalosha@a0324 ~]$ who
+aliaksei.kalosha pts/0        Apr 16 14:04 (vpn040.tul.cz)
+
+[aliaksei.kalosha@a0324 ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: p2p1: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc mq state UP group default qlen 1000
+    link/ether b4:96:91:26:21:9e brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.174/24 brd 192.168.1.255 scope global noprefixroute dynamic p2p1
+       valid_lft 42687sec preferred_lft 42687sec
+    inet6 fdce:8582:4d45::496/128 scope global noprefixroute 
+       valid_lft forever preferred_lft forever
+    inet6 fdce:8582:4d45:0:c625:3c76:a7a1:50f6/64 scope global noprefixroute 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::8060:e8f:5a82:9f9a/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s31f6: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 54:bf:64:62:ce:0b brd ff:ff:ff:ff:ff:ff
+    inet 147.230.78.96/21 brd 147.230.79.255 scope global noprefixroute dynamic enp0s31f6
+       valid_lft 37787sec preferred_lft 37787sec
+    inet6 fe80::7ffe:8963:bc14:f9ce/64 scope link tentative noprefixroute dadfailed 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::6671:3582:2c7e:c8ac/64 scope link tentative noprefixroute dadfailed 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::53df:8fde:4335:467/64 scope link tentative noprefixroute dadfailed 
+       valid_lft forever preferred_lft forever
+4: wlp2s0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc mq state DOWN group default qlen 1000
+    link/ether 52:d9:5c:71:db:c9 brd ff:ff:ff:ff:ff:ff
+5: docker0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default 
+    link/ether 02:42:81:15:3d:2e brd ff:ff:ff:ff:ff:ff
+    inet 172.17.0.1/16 scope global docker0
+       valid_lft forever preferred_lft forever
+6: virbr0: <NO-CARRIER,BROADCAST,MULTICAST,UP> mtu 1500 qdisc noqueue state DOWN group default qlen 1000
+    link/ether 52:54:00:b8:63:ee brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.1/24 brd 192.168.122.255 scope global virbr0
+       valid_lft forever preferred_lft forever
+7: virbr0-nic: <BROADCAST,MULTICAST> mtu 1500 qdisc pfifo_fast master virbr0 state DOWN group default qlen 1000
+    link/ether 52:54:00:b8:63:ee brd ff:ff:ff:ff:ff:ff
+11: vboxnet0: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 0a:00:27:00:00:00 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.1/24 brd 192.168.56.255 scope global vboxnet0
+       valid_lft forever preferred_lft forever
+    inet6 fe80::800:27ff:fe00:0/64 scope link 
+       valid_lft forever preferred_lft forever
+
+[aliaksei.kalosha@a0324 ~]$ curl ifcongig.me
+curl: (6) Could not resolve host: ifcongig.me; Name or service not known
+
+[aliaksei.kalosha@a0324 ~]$ curl ifconfig.me
+147.230.78.96
+
+[aliaksei.kalosha@a0324 ~]$ nslookup 147.230.78.96
+96.78.230.147.in-addr.arpa  name = a0324.nti.tul.cz.
+
+Authoritative answers can be found from:
+
+aliaksei.kalosha@a0324 ~]$ arp
+Address                  HWtype  HWaddress           Flags Mask            Iface
+a0307.nti.tul.cz         ether   54:bf:64:62:ce:4b   C                     enp0s31f6
+a0300.nti.tul.cz         ether   54:bf:64:62:cb:51   C                     enp0s31f6
+a0321.nti.tul.cz         ether   54:bf:64:62:ca:3b   C                     enp0s31f6
+a0315.nti.tul.cz         ether   54:bf:64:62:ca:cf   C                     enp0s31f6
+a0308.nti.tul.cz         ether   54:bf:64:62:ce:5c   C                     enp0s31f6
+gateway                  ether   b8:69:f4:39:b1:c8   C                     p2p1
+a0322.nti.tul.cz         ether   54:bf:64:62:b8:08   C                     enp0s31f6
+a0323.nti.tul.cz         ether   54:bf:64:62:cb:79   C                     enp0s31f6
+a0301.nti.tul.cz         ether   54:bf:64:62:cb:07   C                     enp0s31f6
+a325.nti.tul.cz          ether   00:23:ae:a5:30:c3   C                     enp0s31f6
+share.nti.tul.cz         ether   10:98:36:a2:75:fb   C                     enp0s31f6
+a0309.nti.tul.cz         ether   54:bf:64:63:fb:ba   C                     enp0s31f6
+a0302.nti.tul.cz         ether   54:bf:64:62:cd:a4   C                     enp0s31f6
+a0316.nti.tul.cz         ether   54:bf:64:62:ce:95   C                     enp0s31f6
+a0310.nti.tul.cz         ether   54:bf:64:62:ce:9e   C                     enp0s31f6
+a0303.nti.tul.cz         ether   54:bf:64:62:cd:ca   C                     enp0s31f6
+a0317.nti.tul.cz         ether   54:bf:64:62:cc:5d   C                     enp0s31f6
+a0311.nti.tul.cz         ether   54:bf:64:62:ce:14   C                     enp0s31f6
+a0304.nti.tul.cz         ether   54:bf:64:62:ce:c1   C                     enp0s31f6
+a0318.nti.tul.cz         ether   54:bf:64:62:cb:a1   C                     enp0s31f6
+192.168.56.101           ether   08:00:27:09:95:06   C                     vboxnet0
+a0312.nti.tul.cz         ether   54:bf:64:62:cc:57   C                     enp0s31f6
+a0305.nti.tul.cz         ether   54:bf:64:62:ca:49   C                     enp0s31f6
+a0319.nti.tul.cz         ether   54:bf:64:62:ca:60   C                     enp0s31f6
+router-b.tul.cz          ether   d0:c7:89:a9:d2:80   C                     enp0s31f6
+192.168.56.100           ether   08:00:27:05:d7:2a   C                     vboxnet0
+a0313.nti.tul.cz         ether   54:bf:64:62:cb:5e   C                     enp0s31f6
+a0306.nti.tul.cz         ether   54:bf:64:62:ca:ea   C                     enp0s31f6
+a0320.nti.tul.cz         ether   54:bf:64:62:cb:7b   C                     enp0s31f6
+a0314.nti.tul.cz         ether   54:bf:64:62:ca:eb   C                     enp0s31f6
+
+virtualni pocitac
+
+[aliaksei.kalosha@a0324 ~]$ ssh student@192.168.56.100
+The authenticity of host '192.168.56.100 (192.168.56.100)' can't be established.
+ECDSA key fingerprint is SHA256:MJXKI78UA5IxesiGwvlMLnugXhNjINICwsO3kuVWkXs.
+ECDSA key fingerprint is MD5:ea:6d:cb:b4:2c:a7:5a:42:3f:f1:da:fa:9c:a5:a1:69.
+Are you sure you want to continue connecting (yes/no)? yes
+Warning: Permanently added '192.168.56.100' (ECDSA) to the list of known hosts.
+student@192.168.56.100's password: 
+Last login: Wed Apr  8 04:25:35 2020 from 192.168.56.1
+[student@sandbox ~]$ ip addr
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:c8:b8:60 brd ff:ff:ff:ff:ff:ff
+    inet 10.0.2.15/24 brd 10.0.2.255 scope global noprefixroute dynamic enp0s3
+       valid_lft 50781sec preferred_lft 50781sec
+    inet6 fe80::2ec2:63ec:f804:fafa/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:23:73:09 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.1.156/24 brd 192.168.1.255 scope global noprefixroute dynamic enp0s8
+       valid_lft 31996sec preferred_lft 31996sec
+    inet6 fdce:8582:4d45::fe3/128 scope global noprefixroute 
+       valid_lft forever preferred_lft forever
+    inet6 fdce:8582:4d45:0:a11c:6761:b55e:460a/64 scope global noprefixroute 
+       valid_lft forever preferred_lft forever
+    inet6 fe80::98d1:6d24:199f:5a9/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc pfifo_fast state UP group default qlen 1000
+    link/ether 08:00:27:05:d7:2a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.56.100/24 brd 192.168.56.255 scope global noprefixroute dynamic enp0s9
+       valid_lft 1157sec preferred_lft 1157sec
+    inet6 fe80::611b:960a:259a:f2a6/64 scope link noprefixroute 
+       valid_lft forever preferred_lft forever
+[student@sandbox ~]$ 
+
+
+student@sandbox ~]$ curl ifconfig.me
+147.230.78.96[student@sandbox ~]$ 
+
+[student@sandbox ~]$ nslookup 147.230.78.96
+96.78.230.147.in-addr.arpa  name = a0324.nti.tul.cz.
+
+[student@sandbox ~]$ ip route
+default via 10.0.2.2 dev enp0s3 proto dhcp metric 100 
+default via 192.168.1.1 dev enp0s8 proto dhcp metric 101 
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100 
+192.168.1.0/24 dev enp0s8 proto kernel scope link src 192.168.1.156 metric 101 
+192.168.56.0/24 dev enp0s9 proto kernel scope link src 192.168.56.100 metric 102 
+
+[student@sandbox ~]$ sudo ip route add default via 192.168.1.1 dev enp0s8 proto dhcp metric 99  
+[student@sandbox ~]$ ip route 
+default via 192.168.1.1 dev enp0s8 proto dhcp metric 99 
+default via 10.0.2.2 dev enp0s3 proto dhcp metric 100 
+default via 192.168.1.1 dev enp0s8 proto dhcp metric 101 
+10.0.2.0/24 dev enp0s3 proto kernel scope link src 10.0.2.15 metric 100 
+192.168.1.0/24 dev enp0s8 proto kernel scope link src 192.168.1.156 metric 101 
+192.168.56.0/24 dev enp0s9 proto kernel scope link src 192.168.56.100 metric 102 
+
+Redirecting to https://ifconfig.me/[student@sandbox ~]$ curl ifconfig.me
+147.230.78.156[student@sandbox ~]$
+
+147.230.78.156[student@sandbox ~]$ nslookup 147.230.78.156
+156.78.230.147.in-addr.arpa name = a03r05.nti.tul.cz.
+
+Authoritative answers can be found from:
