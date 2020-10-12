@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\TUL\\2020\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\TestADLConsoleApp.csproj",
+      "projectUniqueName": "D:\\Project\\AllTaskFromTUL\\TUL\\20202021\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\TestADLConsoleApp.csproj",
       "projectName": "TestADLConsoleApp",
-      "projectPath": "D:\\Project\\TUL\\2020\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\TestADLConsoleApp.csproj",
+      "projectPath": "D:\\Project\\AllTaskFromTUL\\TUL\\20202021\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\TestADLConsoleApp.csproj",
       "packagesPath": "C:\\Users\\kanyk\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\TUL\\2020\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\obj\\",
+      "outputPath": "D:\\Project\\AllTaskFromTUL\\TUL\\20202021\\ALD\\TestADLConsoleApp\\TestADLConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\kanyk\\AppData\\Roaming\\NuGet\\NuGet.Config",
