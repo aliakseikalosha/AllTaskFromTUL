@@ -1,4 +1,4 @@
-clc;clear global; close all;
+clc;clear all; close all;
 
 
 fileID = fopen('TestFilesList.txt','r');
@@ -14,7 +14,6 @@ for i = 1:numFiles
     fileIsJ = fileNameisJ(fileNames(i));
     [x,Fs] = audioread(fileNames(i));
     de=10/1000*Fs;
-    x = x(1:Fs);
     x = x./max(x);
     en = [];
     for k = 1:de:Fs-de
@@ -37,8 +36,8 @@ for i = 1:numFiles
     fprintf(fileID,"%s\t%s\n",fileNames(i),symbol);
 end
 
-fprintf("success rate : %3.3f%%\n", success/size(fileNames,1)*100);
-fprintf(fileID,"success rate : %3.3f%%\n", success/size(fileNames,1)*100);
+fprintf("success rate : %3.3f%%\n", success/numFiles*100);
+fprintf(fileID,"success rate : %3.3f%%\n", success/numFiles*100);
 fclose(fileID);
 
 function result = fileNameisJ(name)
