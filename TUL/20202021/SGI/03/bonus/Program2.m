@@ -19,7 +19,7 @@ z = 2;
 success = 0;
 
 for i = 1:numFiles
-    fileIsJ = contains(fileNames(i),'J');%'.*J[0-9]*\.wav');
+    fileIsJ = fileNameisJ(fileNames(i));
     [x,Fs] = audioread(fileNames(i));
     de=10/1000*Fs;
     x = x(1:Fs);
@@ -57,6 +57,13 @@ for i = 1:numFiles
 end
 
 fprintf("success rate : %d%%\n", success/size(fileNames,1)*100);
+
+function result = fileNameisJ(name)
+    result = false;
+    if max(size(regexp(name,'.*J[0-9]*\.wav'))) > 0
+        result = true;
+    end
+end
 
 function  guess = isJ(energy)
     guess = false;

@@ -11,7 +11,7 @@ success = 0;
 
 fileID = fopen('Protokol_Kalosha.txt','w+');
 for i = 1:numFiles
-    fileIsJ = contains(fileNames(i),'J');
+    fileIsJ = fileNameisJ(fileNames(i));
     [x,Fs] = audioread(fileNames(i));
     de=10/1000*Fs;
     x = x(1:Fs);
@@ -23,6 +23,7 @@ for i = 1:numFiles
     
     en = removeNoise(en);
     guessIsJ = isJ(en); 
+    
     if guessIsJ == fileIsJ
         success = success+1;
     end
@@ -32,11 +33,20 @@ for i = 1:numFiles
         symbol = 'J';
     end
    
+    fprintf("%s\t%s\n",fileNames(i),symbol);
     fprintf(fileID,"%s\t%s\n",fileNames(i),symbol);
 end
 
+fprintf("success rate : %3.3f%%\n", success/size(fileNames,1)*100);
 fprintf(fileID,"success rate : %3.3f%%\n", success/size(fileNames,1)*100);
 fclose(fileID);
+
+function result = fileNameisJ(name)
+    result = false;
+    if max(size(regexp(name,'.*J[0-9]*\.wav'))) > 0
+        result = true;
+    end
+end
 
 function  guess = isJ(energy)
     guess = false;
