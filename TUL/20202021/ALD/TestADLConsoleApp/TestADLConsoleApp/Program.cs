@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace TestADLConsoleApp
 {
@@ -6,22 +7,101 @@ namespace TestADLConsoleApp
     {
         static void Main(string[] args)
         {
-            int n = int.Parse(Console.ReadLine());
-            string s = "";
-            for (int i = 1; i <= n; i++)
+            var numbers = Console.ReadLine().Split(" ").Select(c => int.Parse(c)).ToList();
+            var tree = new Tree();
+            for (int i = 0; i < numbers.Count; i++)
             {
-                s += $"{i}:";
-                for (int j = 1; j <= i; j++)
-                {
-                    if (i % j == 0)
-                    {
-                        s += $" {j},";
-                    }
-                }
-                s = s.Substring(0, s.Length - 1) + "\n";
+                tree.Add(numbers[i]);
             }
-            Console.WriteLine(s);
+            Console.WriteLine("preorder");
+            tree.Preorder(tree.Root);
+            Console.WriteLine("inorder");
+            tree.Inorder(tree.Root);
+            Console.WriteLine("postorder");
+            tree.Postorder(tree.Root);
         }
     }
+
+    public class Node
+    {
+        public int Value { get; private set; }
+        public Node Left;
+        public Node Right;
+
+        public Node(int v)
+        {
+            Value = v;
+        }
+
+        private void Add(ref Node node, int v)
+        {
+            if(node == null)
+            {
+                node = new Node(v);
+            }
+            else
+            {
+                node.Add(v);
+            }
+        }
+
+        public void Add(int v)
+        {
+            if (Value > v)
+            {
+                Add(ref Left, v);
+            }
+            else
+            {
+                Add(ref Right, v);
+            }
+        }
+
+
+        public override string ToString()
+        {
+            return $"Node : {Value} <Left {Left?.ToString()}> <Right{Right?.ToString()}>";
+        }
+    }
+
+    public class Tree
+    {
+        public Node Root { get; private set; }
+
+        public void Add(int v)
+        {
+            if (Root == null)
+            {
+                Root = new Node(v);
+            }
+            else
+            {
+                Root.Add(v);
+            }
+        }
+        public void Preorder(Node n)
+        {
+            if (n == null) return;
+            Console.WriteLine(n.Value);
+            Preorder(n.Left);
+            Preorder(n.Right);
+        }
+
+        public void Inorder(Node n)
+        {
+            if (n == null) return;
+            Inorder(n.Left);
+            Console.WriteLine(n.Value);
+            Inorder(n.Right);
+        }
+
+        public void Postorder(Node n)
+        {
+            if (n == null) return;
+            Postorder(n.Left);
+            Postorder(n.Right);
+            Console.WriteLine(n.Value);
+        }
+    }
+
 }
-//class p{static void Main(){var b=System.Numerics.BigInteger.Pow(100,1000)*2;var e=b/2;for(int i=3333;i-->0;e=(e+b/e)/2);System.Console.Write((""+e).Insert(1,"."));}}

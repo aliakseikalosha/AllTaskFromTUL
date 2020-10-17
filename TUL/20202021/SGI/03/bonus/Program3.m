@@ -36,8 +36,8 @@ for i = 1:numFiles
     fprintf(fileID,"%s\t%s\n",fileNames(i),symbol);
 end
 
-fprintf("success rate : %3.3f%%\n", success/numFiles*100);
-fprintf(fileID,"success rate : %3.3f%%\n", success/numFiles*100);
+fprintf("Success rate : %3.3f%%\n", success/numFiles*100);
+fprintf(fileID,"Success rate : %3.3f%%\n", success/numFiles*100);
 fclose(fileID);
 
 function result = fileNameisJ(name)

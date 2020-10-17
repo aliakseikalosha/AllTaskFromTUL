@@ -26,7 +26,7 @@ for i = 1:numFiles
     end
 end
 
-fprintf("success rate : %d%%\n", success/numFiles*100);
+fprintf("Success rate : %d%%\n", success/numFiles*100);
 
 function result = fileNameisJ(name)
     result = false;
