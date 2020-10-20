@@ -6,7 +6,7 @@
 #include "counter.h"
 
 int getNumber(const char* message, int* a);
-int stop(char yes, char no);
+int stop(char *yes, char *no);
 
 int main() {
 	int a, b, c, op, count_plus = 0, count_minus = 0;
@@ -39,7 +39,7 @@ int main() {
 			log(logBuffer);
 			break;
 		}
-		if (stop(no, yes)) {
+		if (stop(&no, &yes)) {
 			break;
 		}
 	}
@@ -47,16 +47,16 @@ int main() {
 	printf("Statistics:\n+ used %d times\n- used %d times", count_plus, count_minus);
 }
 
-int stop(char yes, char no) {
+int stop(char *yes, char *no) {
 	char input;
 	while (true) {
 		while (getchar() != '\n');
 		printf("\nEnd? (y/n)");
 		scanf("%c", &input);
-		if (input == yes) {
+		if (input == *yes) {
 			return 0;
 		}
-		else if (input == no) {
+		else if (input == *no) {
 			return 1;
 		}
 	}
