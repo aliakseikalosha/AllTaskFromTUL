@@ -39,5 +39,6 @@ int main() {
 	else {
 		printf("Having problems with memory allocation.\n");
 	}
+	getchar();
 	return 0;
 }

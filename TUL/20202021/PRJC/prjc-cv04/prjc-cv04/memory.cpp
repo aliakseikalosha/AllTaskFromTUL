@@ -13,7 +13,7 @@ int alloc(int size, float** destination) {
 void shuffle(float* source, int size) {
 #if REPLACE_BYTES
 	char c;
-	int n = size / 2 * sizeof(float);
+	int n = size / 2 * sizeof(float) / sizeof(char);
 	for (size_t i = 0; i < n; i++)
 	{
 		c = ((char*)source)[i];
@@ -35,15 +35,15 @@ void shuffle(float* source, int size) {
 int test(float* source, float* shuffled, int size) {
 	int n = size / 2;
 #if REPLACE_BYTES
-	n *= sizeof(float);
+	n *= sizeof(float) / sizeof(char);
 #endif // REPLACE_BYTE
 
 	for (size_t i = 0; i < n; i++)
 	{
 #if REPLACE_BYTES
-		if (((char*)source)[i] != ((char*)shuffled)[n + i]) {
+		if (((char*)source)[i] != ((char*)shuffled)[n + i] && size*sizeof(float)/sizeof(char) < n + i) {
 #else
-		if (source[i] != shuffled[n + i]) {
+		if (source[i] != shuffled[n + i] && size < n + i) {
 #endif// REPLACE_BYTE
 			return -1;
 		}
