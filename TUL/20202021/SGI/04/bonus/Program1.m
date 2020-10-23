@@ -4,12 +4,12 @@ textdata = textscan(fileID,'%s');
 fclose(fileID);
 fileNames = string(textdata{:});
 numFiles = size (fileNames, 1);
-n=80;
+n=160;
 m=0;
-nfft=256;
+nfft=128;
 for i = 1:numFiles   
     [x,Fs] = audioread(fileNames(i));
-    subplot(5,2,i)
+    subplot(4,3,i)
     spectrogram(x,n,m,nfft,Fs,'yaxis') 
     title(fileNames(i));
 end
