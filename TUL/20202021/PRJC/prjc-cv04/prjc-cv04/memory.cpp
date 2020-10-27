@@ -14,7 +14,7 @@ void shuffle(float* source, int size) {
 #if REPLACE_BYTES
 	char c;
 	int n = size / 2 * sizeof(float) / sizeof(char);
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		c = ((char*)source)[i];
 		source[i] = source[n + i];
@@ -23,7 +23,7 @@ void shuffle(float* source, int size) {
 #else
 	float f;
 	int n = size / 2;
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 		f = source[i];
 		source[i] = source[n + i];
@@ -38,7 +38,7 @@ int test(float* source, float* shuffled, int size) {
 	n *= sizeof(float) / sizeof(char);
 #endif // REPLACE_BYTE
 
-	for (size_t i = 0; i < n; i++)
+	for (int i = 0; i < n; i++)
 	{
 #if REPLACE_BYTES
 		if (((char*)source)[i] != ((char*)shuffled)[n + i] && size*sizeof(float)/sizeof(char) < n + i) {
