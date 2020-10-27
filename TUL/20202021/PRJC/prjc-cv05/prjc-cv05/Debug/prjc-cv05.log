@@ -1,0 +1,15 @@
+﻿  Main.cpp
+  matrix.cpp
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(12,24): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(31,23): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(33,24): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(44,23): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(57,23): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(59,24): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(68,23): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(70,24): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(82,23): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(84,24): warning C4018: '<': signed/unsigned mismatch
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\prjc-cv05\matrix.cpp(94,23): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  prjc-cv05.vcxproj -> D:\Project\AllTaskFromTUL\TUL\20202021\PRJC\prjc-cv05\Debug\prjc-cv05.exe
