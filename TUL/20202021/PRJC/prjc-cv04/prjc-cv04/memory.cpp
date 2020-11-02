@@ -2,7 +2,7 @@
 #include <malloc.h>
 #include <stdio.h>
 #include <cerrno>
-#define REPLACE_BYTES 0
+#define REPLACE_BYTES 1
 
 int alloc(int size, float** destination) {
 	*destination = (float*)malloc(size * sizeof(float));
@@ -17,8 +17,8 @@ void shuffle(float* source, int size) {
 	for (int i = 0; i < n; i++)
 	{
 		c = ((char*)source)[i];
-		source[i] = source[n + i];
-		source[n + i] = c;
+		((char*)source)[i] = ((char*)source)[n + i];
+		((char*)source)[n + i] = c;
 	}
 #else
 	float f;
