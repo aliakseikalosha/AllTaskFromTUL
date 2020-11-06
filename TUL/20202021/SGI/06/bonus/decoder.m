@@ -32,8 +32,8 @@ for i=1:numFiles
     
     s= s(s~='-');
     name = sprintf("dtmf_%s.wav",char(s));
-    fprintf("%30s\t%30s\t%10s\n", fileNames(i),name,s);
-    fprintf(fileID,"%30s\t%30s\t%10s\n", fileNames(i),name,s);
+    fprintf("%30s\t%10s\n", fileNames(i),s);
+    fprintf(fileID,"%30s\t%10s\n", fileNames(i),s);
     if sameName(fileNames(i), name)
         score= score + 1;
     end

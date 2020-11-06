@@ -1,8 +1,18 @@
-                dtmf_27314.wav	                dtmf_27314.wav	     27314
-           dtmf_1234567890.wav	           dtmf_1234567890.wav	1234567890
-               dtmf_112163.wav	               dtmf_112163.wav	    112163
-              dtmf_2799014.wav	              dtmf_2799014.wav	   2799014
-            dtmf_429056843.wav	            dtmf_429056843.wav	 429056843
-            dtmf_723684599.wav	            dtmf_723684599.wav	 723684599
-            dtmf_987654321.wav	            dtmf_987654321.wav	 987654321
+                 dtmf_1423.wav	      1423
+                 dtmf_2413.wav	      2413
+                dtmf_27314.wav	     27314
+                dtmf_31542.wav	     31542
+                dtmf_52314.wav	     52314
+                dtmf_54132.wav	     54132
+               dtmf_112163.wav	    112163
+               dtmf_621543.wav	    621543
+              dtmf_2799014.wav	   2799014
+              dtmf_4217365.wav	   4217365
+              dtmf_5674213.wav	   5674213
+              dtmf_7524631.wav	   7524631
+            dtmf_429056843.wav	 429056843
+            dtmf_723684599.wav	 723684599
+            dtmf_926387514.wav	 926387514
+            dtmf_987654321.wav	 987654321
+           dtmf_1234567890.wav	1234567890
 100%
