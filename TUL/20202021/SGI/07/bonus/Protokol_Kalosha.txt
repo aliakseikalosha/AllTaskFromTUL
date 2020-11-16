@@ -1,0 +1,2007 @@
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+
+01-Sep-2020
+01-Sep-2020
+den d   - real: 495  pred: 492  abs_error: 3
+den d+2 - real: 541  pred: 579  abs_error: 38
+den d+6 - real: 853  pred: 753  abs_error: 100
+
+02-Sep-2020
+den d   - real: 521  pred: 540  abs_error: 19
+den d+2 - real: 584  pred: 630  abs_error: 46
+den d+6 - real: 945  pred: 811  abs_error: 134
+
+03-Sep-2020
+den d   - real: 541  pred: 553  abs_error: 12
+den d+2 - real: 679  pred: 614  abs_error: 65
+den d+6 - real: 1093  pred: 737  abs_error: 356
+
+04-Sep-2020
+den d   - real: 584  pred: 562  abs_error: 22
+den d+2 - real: 752  pred: 605  abs_error: 147
+den d+6 - real: 1147  pred: 691  abs_error: 456
+
+05-Sep-2020
+den d   - real: 679  pred: 619  abs_error: 60
+den d+2 - real: 853  pred: 693  abs_error: 160
+den d+6 - real: 1214  pred: 842  abs_error: 372
+
+06-Sep-2020
+den d   - real: 752  pred: 756  abs_error: 4
+den d+2 - real: 945  pred: 920  abs_error: 25
+den d+6 - real: 1287  pred: 1248  abs_error: 39
+
+07-Sep-2020
+den d   - real: 853  pred: 832  abs_error: 21
+den d+2 - real: 1093  pred: 989  abs_error: 104
+den d+6 - real: 1426  pred: 1303  abs_error: 123
+
+08-Sep-2020
+den d   - real: 945  pred: 944  abs_error: 1
+den d+2 - real: 1147  pred: 1132  abs_error: 15
+den d+6 - real: 1675  pred: 1508  abs_error: 167
+
+09-Sep-2020
+den d   - real: 1093  pred: 1040  abs_error: 53
+den d+2 - real: 1214  pred: 1228  abs_error: 14
+den d+6 - real: 1770  pred: 1605  abs_error: 165
+
+10-Sep-2020
+den d   - real: 1147  pred: 1222  abs_error: 75
+den d+2 - real: 1287  pred: 1490  abs_error: 203
+den d+6 - real: 1843  pred: 2026  abs_error: 183
+
+11-Sep-2020
+den d   - real: 1214  pred: 1232  abs_error: 18
+den d+2 - real: 1426  pred: 1387  abs_error: 39
+den d+6 - real: 1871  pred: 1697  abs_error: 174
+
+12-Sep-2020
+den d   - real: 1287  pred: 1276  abs_error: 11
+den d+2 - real: 1675  pred: 1404  abs_error: 271
+den d+6 - real: 1935  pred: 1659  abs_error: 276
+
+13-Sep-2020
+den d   - real: 1426  pred: 1358  abs_error: 68
+den d+2 - real: 1770  pred: 1501  abs_error: 269
+den d+6 - real: 2037  pred: 1787  abs_error: 250
+
+14-Sep-2020
+den d   - real: 1675  pred: 1543  abs_error: 132
+den d+2 - real: 1843  pred: 1788  abs_error: 55
+den d+6 - real: 2061  pred: 2278  abs_error: 217
+
+15-Sep-2020
+den d   - real: 1770  pred: 1887  abs_error: 117
+den d+2 - real: 1871  pred: 2330  abs_error: 459
+den d+6 - real: 2030  pred: 3216  abs_error: 1186
+
+16-Sep-2020
+den d   - real: 1843  pred: 1916  abs_error: 73
+den d+2 - real: 1935  pred: 2183  abs_error: 248
+den d+6 - real: 2150  pred: 2717  abs_error: 567
+
+17-Sep-2020
+den d   - real: 1871  pred: 1923  abs_error: 52
+den d+2 - real: 2037  pred: 2080  abs_error: 43
+den d+6 - real: 2141  pred: 2394  abs_error: 253
+
+18-Sep-2020
+den d   - real: 1935  pred: 1913  abs_error: 22
+den d+2 - real: 2061  pred: 1992  abs_error: 69
+den d+6 - real: 2187  pred: 2149  abs_error: 38
+
+19-Sep-2020
+den d   - real: 2037  pred: 1986  abs_error: 51
+den d+2 - real: 2030  pred: 2096  abs_error: 66
+den d+6 - real: 2159  pred: 2316  abs_error: 157
+
+20-Sep-2020
+den d   - real: 2061  pred: 2126  abs_error: 65
+den d+2 - real: 2150  pred: 2311  abs_error: 161
+den d+6 - real: 2099  pred: 2681  abs_error: 582
+
+21-Sep-2020
+den d   - real: 2030  pred: 2111  abs_error: 81
+den d+2 - real: 2141  pred: 2198  abs_error: 57
+den d+6 - real: 2187  pred: 2372  abs_error: 185
+
+22-Sep-2020
+den d   - real: 2150  pred: 2017  abs_error: 133
+den d+2 - real: 2187  pred: 1982  abs_error: 205
+den d+6 - real: 2271  pred: 1913  abs_error: 358
+
+23-Sep-2020
+den d   - real: 2141  pred: 2219  abs_error: 78
+den d+2 - real: 2159  pred: 2384  abs_error: 225
+den d+6 - real: 2392  pred: 2713  abs_error: 321
+
+24-Sep-2020
+den d   - real: 2187  pred: 2175  abs_error: 12
+den d+2 - real: 2099  pred: 2221  abs_error: 122
+den d+6 - real: 2474  pred: 2314  abs_error: 160
+
+25-Sep-2020
+den d   - real: 2159  pred: 2214  abs_error: 55
+den d+2 - real: 2187  pred: 2279  abs_error: 92
+den d+6 - real: 2551  pred: 2408  abs_error: 143
+
+26-Sep-2020
+den d   - real: 2099  pred: 2155  abs_error: 56
+den d+2 - real: 2271  pred: 2136  abs_error: 135
+den d+6 - real: 2813  pred: 2098  abs_error: 715
+
+27-Sep-2020
+den d   - real: 2187  pred: 2049  abs_error: 138
+den d+2 - real: 2392  pred: 1945  abs_error: 447
+den d+6 - real: 3170  pred: 1737  abs_error: 1433
+
+28-Sep-2020
+den d   - real: 2271  pred: 2225  abs_error: 46
+den d+2 - real: 2474  pred: 2327  abs_error: 147
+den d+6 - real: 3514  pred: 2531  abs_error: 983
+
+29-Sep-2020
+den d   - real: 2392  pred: 2356  abs_error: 36
+den d+2 - real: 2551  pred: 2526  abs_error: 25
+den d+6 - real: 3785  pred: 2866  abs_error: 919
+
+30-Sep-2020
+den d   - real: 2474  pred: 2500  abs_error: 26
+den d+2 - real: 2813  pred: 2724  abs_error: 89
+den d+6 - real: 4474  pred: 3171  abs_error: 1303
+
+01-Oct-2020
+den d   - real: 2551  pred: 2568  abs_error: 17
+den d+2 - real: 3170  pred: 2752  abs_error: 418
+den d+6 - real: 4771  pred: 3119  abs_error: 1652
+
+02-Oct-2020
+den d   - real: 2813  pred: 2629  abs_error: 184
+den d+2 - real: 3514  pred: 2786  abs_error: 728
+den d+6 - real: 4952  pred: 3099  abs_error: 1853
+
+03-Oct-2020
+den d   - real: 3170  pred: 3013  abs_error: 157
+den d+2 - real: 3785  pred: 3444  abs_error: 341
+den d+6 - real: 5122  pred: 4307  abs_error: 815
+
+04-Oct-2020
+den d   - real: 3514  pred: 3495  abs_error: 19
+den d+2 - real: 4474  pred: 4161  abs_error: 313
+den d+6 - real: 5674  pred: 5494  abs_error: 180
+
+05-Oct-2020
+den d   - real: 3785  pred: 3862  abs_error: 77
+den d+2 - real: 4771  pred: 4556  abs_error: 215
+den d+6 - real: 6275  pred: 5945  abs_error: 330
+
+06-Oct-2020
+den d   - real: 4474  pred: 4080  abs_error: 394
+den d+2 - real: 4952  pred: 4658  abs_error: 294
+den d+6 - real: 6893  pred: 5815  abs_error: 1078
+
+07-Oct-2020
+den d   - real: 4771  pred: 5023  abs_error: 252
+den d+2 - real: 5122  pred: 6192  abs_error: 1070
+den d+6 - real: 7249  pred: 8530  abs_error: 1281
+
+08-Oct-2020
+den d   - real: 4952  pred: 5198  abs_error: 246
+den d+2 - real: 5674  pred: 5988  abs_error: 314
+den d+6 - real: 7831  pred: 7568  abs_error: 263
+
+09-Oct-2020
+den d   - real: 5122  pred: 5171  abs_error: 49
+den d+2 - real: 6275  pred: 5591  abs_error: 684
+den d+6 - real: 8110  pred: 6431  abs_error: 1679
+
+10-Oct-2020
+den d   - real: 5674  pred: 5295  abs_error: 379
+den d+2 - real: 6893  pred: 5641  abs_error: 1252
+den d+6 - real: 8649  pred: 6332  abs_error: 2317
+
+11-Oct-2020
+den d   - real: 6275  pred: 6098  abs_error: 177
+den d+2 - real: 7249  pred: 7011  abs_error: 238
+den d+6 - real: 9172  pred: 8837  abs_error: 335
+
+12-Oct-2020
+den d   - real: 6893  pred: 6859  abs_error: 34
+den d+2 - real: 7831  pred: 8037  abs_error: 206
+den d+6 - real: 9947  pred: 10392  abs_error: 445
+
+13-Oct-2020
+den d   - real: 7249  pred: 7505  abs_error: 256
+den d+2 - real: 8110  pred: 8732  abs_error: 622
+den d+6 - real: 10580  pred: 11187  abs_error: 607
+
+14-Oct-2020
+den d   - real: 7831  pred: 7692  abs_error: 139
+den d+2 - real: 8649  pred: 8535  abs_error: 114
+den d+6 - real: 11173  pred: 10221  abs_error: 952
+
+15-Oct-2020
+den d   - real: 8110  pred: 8337  abs_error: 227
+den d+2 - real: 9172  pred: 9388  abs_error: 216
+den d+6 - real: 11710  pred: 11490  abs_error: 220
+
+16-Oct-2020
+den d   - real: 8649  pred: 8490  abs_error: 159
+den d+2 - real: 9947  pred: 9199  abs_error: 748
+den d+6 - real: 12030  pred: 10618  abs_error: 1412
+
+17-Oct-2020
+den d   - real: 9172  pred: 9101  abs_error: 71
+den d+2 - real: 10580  pred: 10049  abs_error: 531
+den d+6 - real: 12344  pred: 11945  abs_error: 399
+
+18-Oct-2020
+den d   - real: 9947  pred: 9700  abs_error: 247
+den d+2 - real: 11173  pred: 10754  abs_error: 419
+den d+6 - real: 12869  pred: 12862  abs_error: 7
+
+19-Oct-2020
+den d   - real: 10580  pred: 10638  abs_error: 58
+den d+2 - real: 11710  pred: 12062  abs_error: 352
+den d+6 - real: 12585  pred: 14910  abs_error: 2325
+
+20-Oct-2020
+den d   - real: 11173  pred: 11260  abs_error: 87
+den d+2 - real: 12030  pred: 12597  abs_error: 567
+den d+6 - real: 12427  pred: 15271  abs_error: 2844
+
+21-Oct-2020
+den d   - real: 11710  pred: 11779  abs_error: 69
+den d+2 - real: 12344  pred: 12985  abs_error: 641
+den d+6 - real: 12191  pred: 15397  abs_error: 3206
+
+22-Oct-2020
+den d   - real: 12030  pred: 12265  abs_error: 235
+den d+2 - real: 12869  pred: 13367  abs_error: 498
+den d+6 - real: 12042  pred: 15571  abs_error: 3529
+
+23-Oct-2020
+den d   - real: 12344  pred: 12422  abs_error: 78
+den d+2 - real: 12585  pred: 13170  abs_error: 585
+den d+6 - real: 11935  pred: 14667  abs_error: 2732
+
+24-Oct-2020
+den d   - real: 12869  pred: 12660  abs_error: 209
+den d+2 - real: 12427  pred: 13291  abs_error: 864
+den d+6 - real: 11788  pred: 14553  abs_error: 2765
+
+25-Oct-2020
+den d   - real: 12585  pred: 13323  abs_error: 738
+den d+2 - real: 12191  pred: 14268  abs_error: 2077
+den d+6 - real: 11277  pred: 16157  abs_error: 4880
+
+26-Oct-2020
+den d   - real: 12427  pred: 12570  abs_error: 143
+den d+2 - real: 12042  pred: 12407  abs_error: 365
+den d+6 - real: 11670  pred: 12080  abs_error: 410
+
+27-Oct-2020
+den d   - real: 12191  pred: 12227  abs_error: 36
+den d+2 - real: 11935  pred: 11848  abs_error: 87
+den d+6 - real: 11696  pred: 11090  abs_error: 606
+
+28-Oct-2020
+den d   - real: 12042  pred: 11981  abs_error: 61
+den d+2 - real: 11788  pred: 11548  abs_error: 240
+den d+6 - real: 11402  pred: 10682  abs_error: 720
+
+29-Oct-2020
+den d   - real: 11935  pred: 11864  abs_error: 71
+den d+2 - real: 11277  pred: 11522  abs_error: 245
+den d+6 - real: 10872  pred: 10839  abs_error: 33
+
+30-Oct-2020
+den d   - real: 11788  pred: 11814  abs_error: 26
+den d+2 - real: 11670  pred: 11579  abs_error: 91
+den d+6 - real: 10452  pred: 11109  abs_error: 657
+
+
+Soucet chyb 
+den d: 6435  
+den d+2: 19376   
+den d+6: 52847
+

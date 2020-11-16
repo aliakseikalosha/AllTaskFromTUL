@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
@@ -6,177 +7,88 @@ namespace TestADLConsoleApp
 {
     public class Program
     {
+        private const string end = "---";
+
         public static void Main(string[] args)
         {
-            var grid = new Grid(ReadPos());
             int n = int.Parse(Console.ReadLine());
+            List<Student> students = new List<Student>();
             for (int i = 0; i < n; i++)
             {
-                grid.PlaceMine(ReadPos());
+                students.Add(ReadHuman());
             }
-            n = int.Parse(Console.ReadLine());
-            for (int i = 0; i < n; i++)
+            string sort;
+            while ((sort = Console.ReadLine()) != end)
             {
-                grid.PlaceClick(ReadPos());
-            }
-            Console.WriteLine(grid);
-            grid.ApplyClicks();
-            Console.WriteLine(grid.ToString(true));
-        }
-
-        public static Vec2Int ReadPos()
-        {
-            var numbers = Console.ReadLine().Split(" ").Select(c => int.Parse(c)).ToArray();
-            return new Vec2Int(numbers[0], numbers[1]);
-        }
-    }
-
-    public class Vec2Int
-    {
-        public int x;
-        public int y;
-
-        public Vec2Int(int x, int y)
-        {
-            this.x = x;
-            this.y = y;
-        }
-
-        public static Vec2Int operator -(Vec2Int a) => new Vec2Int(-a.x, -a.y);
-        public static Vec2Int operator +(Vec2Int a, Vec2Int b) => new Vec2Int(a.x + b.x, a.y + b.y);
-        public static Vec2Int operator -(Vec2Int a, Vec2Int b) => a + (-b);
-    }
-
-    public class Grid
-    {
-        private static readonly char mineSymbol = '*';
-        private static readonly char closeSymbol = '?';
-        private static readonly char openSymbol = '.';
-        private static readonly char clickSymbol = 'o';
-
-        private char[,] map;
-        private Vec2Int size;
-        public char this[Vec2Int index]
-        {
-            get
-            {
-                if (IsInside(index))
-                {
-                    return map[index.x, index.y];
-                }
-                return '\0';
-            }
-            private set
-            {
-                if (IsInside(index))
-                {
-                    map[index.x, index.y] = value;
-                }
-            }
-        }
-        public bool IsInside(Vec2Int index) => index.x >= 0 && index.x < size.x && index.y >= 0 && index.y < size.y;
-        public Grid(Vec2Int size)
-        {
-            this.size = size;
-            map = new char[size.x, size.y];
-            for (int i = 0; i < size.x; i++)
-            {
-                for (int j = 0; j < size.y; j++)
-                {
-                    map[i, j] = closeSymbol;
-                }
+                PrintSortedBy(students, sort);
             }
         }
 
-        public void PlaceMine(Vec2Int pos)
+        public static Student ReadHuman()
         {
-            this[pos] = mineSymbol;
+            var data = Console.ReadLine().Split(" ");
+            return new Student(data[0], data[1], data[2], data[3], int.Parse(data[4]), data[5]);
         }
 
-        public void PlaceClick(Vec2Int pos)
-        {
-            this[pos] = clickSymbol;
-        }
-
-        public void ApplyClicks()
-        {
-            for (int i = 0; i < size.x; i++)
-            {
-                for (int j = 0; j < size.y; j++)
-                {
-                    var pos = new Vec2Int(i, j);
-                    if (this[pos] == clickSymbol)
-                    {
-                        Open(pos);
-                    }
-                }
-            }
-        }
-
-        private void Open(Vec2Int pos)
-        {
-            if (IsInside(pos))
-            {
-                if (this[pos] == openSymbol || this[pos] == mineSymbol)
-                {
-                    return;
-                }
-                if (HasMineNeighbor(pos))
-                {
-                    this[pos] = closeSymbol;
-                    return;
-                }
-                this[pos] = openSymbol;
-                for (int i = -1; i <= 1; i++)
-                {
-                    for (int j = -1; j <= 1; j++)
-                    {
-                        Open(pos + new Vec2Int(i, j));
-                    }
-                }
-            }
-        }
-
-        public bool IsMine(Vec2Int pos)
-        {
-            return this[pos] == mineSymbol;
-        }
-
-        public bool HasMineNeighbor(Vec2Int pos)
-        {
-            if (IsInside(pos))
-            {
-                for (int i = -1; i <= 1; i++)
-                {
-                    for (int j = -1; j <= 1; j++)
-                    {
-                        if (IsMine(pos + new Vec2Int(i, j)))
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
-
-        public override string ToString()
+        public static void PrintSortedBy(List<Student> students, string order)
         {
             var sb = new StringBuilder();
-            for (int i = 0; i < size.x; i++)
+            sb.Append($"Trideni dle {order.ToUpper().Replace('-', '_')}\n");
+            var sortKeys = students.Select(c => c.GetValueOf(order)).Distinct().ToList();
+            for (int i = 0; i < sortKeys.Count; i++)
             {
-                for (int j = 0; j < size.y; j++)
+                sb.Append($"-skupina {sortKeys[i]}:\n");
+                var list = students.Where(c => c.GetValueOf(order) == sortKeys[i]).ToList();
+                for (int j = 0; j < list.Count; j++)
                 {
-                    sb.Append(map[i, j] + " ");
+                    sb.Append($"-- {list[j]}\n");
                 }
-                sb.Append('\n');
             }
-            return sb.ToString();
+            Console.Write(sb.ToString());
+        }
+    }
+
+    public class Student
+    {
+        private const string genderKey = "pohlavi";
+        private const string groupKey = "skupina";
+        private const string yearKey = "rok-studia";
+        private const string languageKey = "programovaci-jazyk";
+        public string firstName { get; private set; }
+        public string lastName { get; private set; }
+        public char gender { get; private set; }
+        public int year { get; private set; }
+        public string group { get; private set; }
+        public string language { get; private set; }
+
+        public Student(string firstName, string lastName, string group, string gender, int year, string language)
+        {
+            this.firstName = firstName;
+            this.lastName = lastName.ToUpper();
+            this.gender = gender.ToUpper()[0];
+            this.year = year;
+            this.group = group;
+            this.language = language;
         }
 
-        public string ToString(bool hiden)
+        public string GetValueOf(string order)
         {
-            return hiden ? ToString().Replace(mineSymbol, closeSymbol) : ToString();
+            switch (order)
+            {
+                case genderKey:
+                    return gender.ToString();
+                case groupKey:
+                    return group;
+                case yearKey:
+                    return year.ToString();
+                case languageKey:
+                    return language;
+            }
+            return string.Empty;
+        }
+        public override string ToString()
+        {
+            return $"{lastName} {firstName} ({gender}, {year}. @ {group[0]}{group[1]}): {language}";
         }
     }
 }
