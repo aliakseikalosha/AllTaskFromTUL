@@ -1,0 +1,328 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="bonus08_data" version="1.3.0" audacityversion="2.4.2" sel0="0.0000000000" sel1="0.0000000000" vpos="1120" h="0.0000000000" zoom="86.1328125000" rate="16000.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="652759">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808c8c.au" len="254342" min="-0.310669" max="0.293976" rms="0.018834"/>
+				</waveblock>
+				<waveblock start="254342">
+					<simpleblockfile filename="e0808cf0.au" len="262144" min="-0.404022" max="0.325653" rms="0.019937"/>
+				</waveblock>
+				<waveblock start="516486">
+					<simpleblockfile filename="e0808ad5.au" len="136273" min="-0.282349" max="0.288422" rms="0.022641"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="636970">
+				<waveblock start="0">
+					<simpleblockfile filename="e080840d.au" len="134899" min="-0.457733" max="0.601288" rms="0.029378"/>
+				</waveblock>
+				<waveblock start="134899">
+					<simpleblockfile filename="e0808e55.au" len="262144" min="-0.860565" max="0.806854" rms="0.023444"/>
+				</waveblock>
+				<waveblock start="397043">
+					<simpleblockfile filename="e0808a25.au" len="239927" min="-0.558289" max="0.524384" rms="0.03149"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="635297">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808232.au" len="257128" min="-0.823853" max="0.844116" rms="0.040835"/>
+				</waveblock>
+				<waveblock start="257128">
+					<simpleblockfile filename="e0808f38.au" len="189084" min="-0.852875" max="0.494171" rms="0.024842"/>
+				</waveblock>
+				<waveblock start="446212">
+					<simpleblockfile filename="e0808559.au" len="189085" min="-0.805023" max="0.579498" rms="0.038303"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="680744">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808250.au" len="257128" min="-0.300873" max="0.387543" rms="0.017011"/>
+				</waveblock>
+				<waveblock start="257128">
+					<simpleblockfile filename="e0808b5e.au" len="262144" min="-0.394806" max="0.401306" rms="0.019082"/>
+				</waveblock>
+				<waveblock start="519272">
+					<simpleblockfile filename="e0808747.au" len="161472" min="-0.406647" max="0.471497" rms="0.02677"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="688130">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808d3c.au" len="257314" min="-0.601166" max="0.562775" rms="0.026242"/>
+				</waveblock>
+				<waveblock start="257314">
+					<simpleblockfile filename="e08084dd.au" len="262144" min="-0.752594" max="0.727814" rms="0.026461"/>
+				</waveblock>
+				<waveblock start="519458">
+					<simpleblockfile filename="e08085b5.au" len="168672" min="-0.373383" max="0.418579" rms="0.029647"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="738879">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808603.au" len="256943" min="-0.261597" max="0.24234" rms="0.025819"/>
+				</waveblock>
+				<waveblock start="256943">
+					<simpleblockfile filename="e0808176.au" len="262144" min="-0.296265" max="0.379395" rms="0.024725"/>
+				</waveblock>
+				<waveblock start="519087">
+					<simpleblockfile filename="e08089ec.au" len="219792" min="-0.249298" max="0.259735" rms="0.021331"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="698620">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808ddb.au" len="257314" min="-0.367279" max="0.354218" rms="0.020292"/>
+				</waveblock>
+				<waveblock start="257314">
+					<simpleblockfile filename="e080825b.au" len="262144" min="-0.202606" max="0.263641" rms="0.016111"/>
+				</waveblock>
+				<waveblock start="519458">
+					<simpleblockfile filename="e08089f8.au" len="179162" min="-0.236725" max="0.260986" rms="0.015579"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="710396">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808baf.au" len="257500" min="-0.228394" max="0.200745" rms="0.016496"/>
+				</waveblock>
+				<waveblock start="257500">
+					<simpleblockfile filename="e0808fd0.au" len="262144" min="-0.195313" max="0.199982" rms="0.016647"/>
+				</waveblock>
+				<waveblock start="519644">
+					<simpleblockfile filename="e0808e05.au" len="190752" min="-0.240265" max="0.23938" rms="0.014086"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="707011">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808580.au" len="131257" min="-0.398071" max="0.416504" rms="0.02927"/>
+				</waveblock>
+				<waveblock start="131257">
+					<simpleblockfile filename="e0808d08.au" len="131258" min="-0.341187" max="0.230316" rms="0.016032"/>
+				</waveblock>
+				<waveblock start="262515">
+					<simpleblockfile filename="e08081e7.au" len="262144" min="-0.199066" max="0.240265" rms="0.018231"/>
+				</waveblock>
+				<waveblock start="524659">
+					<simpleblockfile filename="e080891a.au" len="182352" min="-0.197327" max="0.247589" rms="0.019614"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="697165">
+				<waveblock start="0">
+					<simpleblockfile filename="e08081d7.au" len="258429" min="-0.308197" max="0.255066" rms="0.02034"/>
+				</waveblock>
+				<waveblock start="258429">
+					<simpleblockfile filename="e0808024.au" len="262144" min="-0.204163" max="0.228943" rms="0.017272"/>
+				</waveblock>
+				<waveblock start="520573">
+					<simpleblockfile filename="e0808fd3.au" len="176592" min="-0.327393" max="0.256073" rms="0.016516"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="709831">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808ae2.au" len="258615" min="-0.472565" max="0.573639" rms="0.028938"/>
+				</waveblock>
+				<waveblock start="258615">
+					<simpleblockfile filename="e08082a8.au" len="262144" min="-0.301178" max="0.439636" rms="0.023377"/>
+				</waveblock>
+				<waveblock start="520759">
+					<simpleblockfile filename="e0808ea7.au" len="189072" min="-0.244537" max="0.264648" rms="0.020856"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="695702">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808696.au" len="257686" min="-0.329254" max="0.419861" rms="0.025797"/>
+				</waveblock>
+				<waveblock start="257686">
+					<simpleblockfile filename="e0808736.au" len="262144" min="-0.329285" max="0.469452" rms="0.025362"/>
+				</waveblock>
+				<waveblock start="519830">
+					<simpleblockfile filename="e0808a2c.au" len="175872" min="-0.285278" max="0.33429" rms="0.022824"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="699271">
+				<waveblock start="0">
+					<simpleblockfile filename="e080882e.au" len="258615" min="-0.427765" max="0.438934" rms="0.028898"/>
+				</waveblock>
+				<waveblock start="258615">
+					<simpleblockfile filename="e08080e9.au" len="262144" min="-0.406189" max="0.642273" rms="0.03013"/>
+				</waveblock>
+				<waveblock start="520759">
+					<simpleblockfile filename="e0808767.au" len="178512" min="-0.309326" max="0.337036" rms="0.021504"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="696368">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808b71.au" len="257872" min="-0.350769" max="0.475464" rms="0.029788"/>
+				</waveblock>
+				<waveblock start="257872">
+					<simpleblockfile filename="e0808c88.au" len="262144" min="-0.379974" max="0.556183" rms="0.026202"/>
+				</waveblock>
+				<waveblock start="520016">
+					<simpleblockfile filename="e0808f24.au" len="176352" min="-0.258453" max="0.285828" rms="0.020068"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="695996">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808f13.au" len="257500" min="-0.393768" max="0.486298" rms="0.02883"/>
+				</waveblock>
+				<waveblock start="257500">
+					<simpleblockfile filename="e0808851.au" len="262144" min="-0.347504" max="0.569305" rms="0.025678"/>
+				</waveblock>
+				<waveblock start="519644">
+					<simpleblockfile filename="e08089e7.au" len="176352" min="-0.356537" max="0.331787" rms="0.02124"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="685598">
+				<waveblock start="0">
+					<simpleblockfile filename="e08087b6.au" len="256942" min="-0.252411" max="0.215454" rms="0.013149"/>
+				</waveblock>
+				<waveblock start="256942">
+					<simpleblockfile filename="e0808904.au" len="262144" min="-0.240479" max="0.356506" rms="0.015723"/>
+				</waveblock>
+				<waveblock start="519086">
+					<simpleblockfile filename="e0808c34.au" len="166512" min="-0.289215" max="0.295746" rms="0.016643"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="738010">
+				<waveblock start="0">
+					<simpleblockfile filename="e08085ed.au" len="232794" min="-0.423126" max="0.373962" rms="0.021833"/>
+				</waveblock>
+				<waveblock start="232794">
+					<simpleblockfile filename="e0808d2a.au" len="262144" min="-0.456665" max="0.384766" rms="0.017782"/>
+				</waveblock>
+				<waveblock start="494938">
+					<simpleblockfile filename="e0808c3b.au" len="243072" min="-0.47876" max="0.435852" rms="0.019945"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="151" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="702396">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808fc5.au" len="235580" min="-0.369354" max="0.426025" rms="0.021029"/>
+				</waveblock>
+				<waveblock start="235580">
+					<simpleblockfile filename="e080895c.au" len="262144" min="-0.310089" max="0.440643" rms="0.018292"/>
+				</waveblock>
+				<waveblock start="497724">
+					<simpleblockfile filename="e08088f2.au" len="204672" min="-0.351196" max="0.391083" rms="0.020356"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="1" solo="0" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="698898">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808297.au" len="231122" min="-0.376709" max="0.269165" rms="0.018033"/>
+				</waveblock>
+				<waveblock start="231122">
+					<simpleblockfile filename="e08082c9.au" len="262144" min="-0.252289" max="0.259888" rms="0.016399"/>
+				</waveblock>
+				<waveblock start="493266">
+					<simpleblockfile filename="e0808464.au" len="205632" min="-0.259277" max="0.318665" rms="0.020419"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="Zvuková stopa" isSelected="1" height="150" minimized="0" channel="2" linked="0" mute="0" solo="1" rate="16000" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="612407">
+				<waveblock start="0">
+					<simpleblockfile filename="e0808467.au" len="255271" min="-0.236176" max="0.285828" rms="0.016628"/>
+				</waveblock>
+				<waveblock start="255271">
+					<simpleblockfile filename="e0808bf2.au" len="262144" min="-0.204987" max="0.243958" rms="0.015227"/>
+				</waveblock>
+				<waveblock start="517415">
+					<simpleblockfile filename="e0808f9b.au" len="94992" min="-0.120575" max="0.180237" rms="0.012403"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
