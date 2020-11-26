@@ -43,5 +43,5 @@ public:
 	void print();
 	void addChar(Char* c);
 private:
-	list<Char> chars;
+	list<Char*> chars;
 };

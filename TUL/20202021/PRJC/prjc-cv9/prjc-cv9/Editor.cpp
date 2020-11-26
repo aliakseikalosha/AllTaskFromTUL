@@ -39,15 +39,15 @@ Char::~Char()
 }
 
 void Editor::print() {
-	list<Char>::iterator i;
+	list<Char*>::iterator i;
 	for (i = chars.begin(); i != chars.end(); i++) {
-		i->print();
+		(*i)->print();
 	}
 }
 
 void Editor::addChar(Char* c)
 {
-	chars.push_back(*c);
+	chars.push_back(c);
 }
 
 Editor::Editor()
