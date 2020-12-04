@@ -1,6 +1,6 @@
 clear all;clc;close all
-for personNumber = 1:2
-    for fileNumber = 1:5
+for personNumber = 3:3
+    for fileNumber = 5:5
         [x,Fs] = audioread(sprintf('Osoba%d/cv08_0%d.wav',personNumber,fileNumber));
         de=25/1000*Fs;
         e = energy(x,de);
@@ -17,7 +17,7 @@ for personNumber = 1:2
                 xline(ix+1*Fs/de);
                 audiowrite(sprintf("Osoba%d/c%d_pjjjj_s0%d.wav",personNumber,mod(foundNumbers,10),fileNumber),number,Fs);
                 ix = ix+1*Fs/de;
-                %pause
+                pause
             end
         end
     end
