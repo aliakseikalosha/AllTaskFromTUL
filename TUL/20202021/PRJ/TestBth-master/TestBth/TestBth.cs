@@ -8,11 +8,12 @@ namespace TestBth
     {
         public App()
         {
-            MainPage = new MyPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()

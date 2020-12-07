@@ -6,16 +6,22 @@ using Xamarin.Forms;
 
 namespace TestBth
 {
-    public class MyPage : ContentPage
+    public class MainPage : ContentPage
     {
         private Picker pickerBluetoothDevices = null;
         private Entry entrySleepTime = null;
         private Button connect = null;
         private Button disconnect = null;
-        private MyPageViewModel viewModel = null;
-        public MyPage()
+        private MainPageViewModel viewModel = null;
+        ListView devicesList = null;
+        public MainPage()
         {
-            viewModel = new MyPageViewModel();
+            viewModel = new MainPageViewModel();
+            InitUI();
+        }
+
+        private void InitUI()
+        {
             this.BindingContext = viewModel;
 
             pickerBluetoothDevices = new Picker() { Title = "Select a bth device" };
@@ -23,36 +29,40 @@ namespace TestBth
             pickerBluetoothDevices.SelectedIndexChanged += OnSelectedBluetoothDevice;
 
             entrySleepTime = new Entry() { Keyboard = Keyboard.Numeric, Placeholder = "Sleep time" };
-            entrySleepTime.SetBinding(Entry.TextProperty, "SleepTime");
+            entrySleepTime.Text = viewModel.SleepTime;
+            entrySleepTime.TextChanged += ChangeSleepTime;
 
             connect = new Button() { Text = "Connect" };
             connect.Clicked += ConnectToSelected;
             connect.IsEnabled = false;
 
             disconnect = new Button() { Text = "Disconnect" };
-            disconnect.SetBinding(Button.CommandProperty, "DisconnectCommand");
-            disconnect.SetBinding(VisualElement.IsEnabledProperty, "IsDisconnectEnabled");
+            disconnect.Clicked += DiconnectFromDevice;
 
             StackLayout slButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect } };
 
-            ListView lv = new ListView();
-            lv.SetBinding(ListView.ItemsSourceProperty, "ListOfBarcodes");
-            lv.ItemTemplate = new DataTemplate(typeof(TextCell));
-            lv.ItemTemplate.SetBinding(TextCell.TextProperty, ".");
+            int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
 
-            int topPadding = 0;
-            if (Device.RuntimePlatform == Device.iOS)
-            {
-                topPadding = 20;
-            }
-
-            StackLayout sl = new StackLayout { Children = { pickerBluetoothDevices, entrySleepTime, slButtons, lv }, Padding = new Thickness(0, topPadding, 0, 0) };
+            StackLayout sl = new StackLayout { Children = { pickerBluetoothDevices, entrySleepTime, slButtons }, Padding = new Thickness(0, topPadding, 0, 0) };
             Content = sl;
+        }
+
+        private void ChangeSleepTime(object sender, TextChangedEventArgs e)
+        {
+            viewModel.SleepTime = entrySleepTime.Text;
+        }
+
+        private void DiconnectFromDevice(object sender, EventArgs e)
+        {
+            viewModel.Disconnect();
+            connect.IsEnabled = true;
+            disconnect.IsEnabled = false;
         }
 
         private void ConnectToSelected(object sender, EventArgs e)
         {
             viewModel.Connect();
+            connect.IsEnabled = false;
             disconnect.IsEnabled = true;
         }
 
@@ -68,7 +78,7 @@ namespace TestBth
             {
                 // At startup, I load all paired devices
                 var bth = DependencyService.Get<IBth>();
-                ((MyPageViewModel)BindingContext).ListOfDevices = bth.PairedDevices();
+                ((MainPageViewModel)BindingContext).ListOfDevices = bth.PairedDevices();
             }
             catch (Exception e)
             {
