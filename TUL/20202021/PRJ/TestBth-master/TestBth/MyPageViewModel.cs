@@ -8,111 +8,127 @@ using System.ComponentModel;
 
 namespace TestBth
 {
-//	[ImplementPropertyChanged]
-	public class MyPageViewModel : INotifyPropertyChanged
-	{
+    public class MyPageViewModel : INotifyPropertyChanged
+    {
 
-		public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
-		public ObservableCollection<string> ListOfBarcodes { get; set; } = new ObservableCollection<string>();
-		public string SelectedBthDevice { get; set; } = "";
-		bool _isConnected { get; set; } = false;
-		int _sleepTime { get; set; } = 250;
+        public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<string> ListOfBarcodes { get; set; } = new ObservableCollection<string>();
 
-		public String SleepTime
-		{
-			get { return _sleepTime.ToString(); }
-			set {
-				try
-				{
-					_sleepTime = int.Parse(value);
-				}
-				catch { }
-				}
-		}
+        public string SelectedBthDevice = string.Empty;
+        bool _isConnected  = false;
+        int _sleepTime = 250;
 
-		private bool _isSelectedBthDevice { get {
-				if (string.IsNullOrEmpty(SelectedBthDevice)) return false; return true;
-			} 
-		}
+        public string SleepTime
+        {
+            get { return _sleepTime.ToString(); }
+            set
+            {
+                int.TryParse(value, out _sleepTime);
+            }
+        }
 
-		public bool IsConnectEnabled { get {
-				if (_isSelectedBthDevice == false)
-					return false;
-				return !_isConnected;
-			} 
-		}
-		
-		public bool IsDisconnectEnabled { 
-			get {
-				if (_isSelectedBthDevice == false)
-					return false;
-				return _isConnected;
-			}
-		}
+        private bool _isSelectedBthDevice
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(SelectedBthDevice))
+                {
+                    return false;
+                }
 
-		public bool IsPickerEnabled { 
-			get {
-				return !_isConnected;
-			}
-		}
+                return true;
+            }
+        }
 
-		public MyPageViewModel()
-		{
+        public bool IsConnectEnabled
+        {
+            get
+            {
+                if (_isSelectedBthDevice == false)
+                {
+                    return false;
+                }
 
-			MessagingCenter.Subscribe<App>(this, "Sleep",(obj) => 
-			{
-				// When the app "sleep", I close the connection with bluetooth
-				if(_isConnected)
-					DependencyService.Get<IBth>().Cancel();
+                return !_isConnected;
+            }
+        }
 
-			});
+        public bool IsDisconnectEnabled
+        {
+            get
+            {
+                if (_isSelectedBthDevice == false)
+                {
+                    return false;
+                }
 
-			MessagingCenter.Subscribe<App>(this, "Resume", (obj) =>
-			 {
+                return _isConnected;
+            }
+        }
 
-				// When the app "resume" I try to restart the connection with bluetooth
-				if(_isConnected)
-					 DependencyService.Get<IBth>().Start(SelectedBthDevice, _sleepTime, true);
+        public bool IsPickerEnabled
+        {
+            get
+            {
+                return !_isConnected;
+            }
+        }
 
-			});
+        public MyPageViewModel()
+        {
 
+            MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
+             {
+                // When the app "sleep", I close the connection with bluetooth
+                if (_isConnected)
+                 {
+                     DependencyService.Get<IBth>().Cancel();
+                 }
+             });
 
-			this.ConnectCommand = new Command(() => {
-			
-				// Try to connect to a bth device
-				DependencyService.Get<IBth>().Start(SelectedBthDevice, _sleepTime, true);
-				_isConnected = true;
+            MessagingCenter.Subscribe<App>(this, "Resume", (obj) =>
+             {
 
-				// Receive data from bth device
-				MessagingCenter.Subscribe<App, string> (this, "Barcode", (sender, arg) => {
+                 // When the app "resume" I try to restart the connection with bluetooth
+                 if (_isConnected)
+                 {
+                     DependencyService.Get<IBth>().Start(SelectedBthDevice, _sleepTime, true);
+                 }
+             });
 
-					// Add the barcode to a list (first position)
-					ListOfBarcodes.Insert(0, arg);
-				});
-			});
+            try
+            {
+                // At startup, I load all paired devices
+                ListOfDevices = DependencyService.Get<IBth>().PairedDevices();
+            }
+            catch (Exception ex)
+            {
+                //Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
+            }
+        }
 
-			this.DisconnectCommand = new Command(() => { 
+        public void Connect()
+        {
+            // Try to connect to a bth device
+            DependencyService.Get<IBth>().Start(SelectedBthDevice, _sleepTime, true);
+            _isConnected = true;
 
-				// Disconnect from bth device
-				DependencyService.Get<IBth>().Cancel();
-				MessagingCenter.Unsubscribe<App, string>(this, "Barcode");
-				_isConnected = false;
-			});
+            // Receive data from bth device
+            MessagingCenter.Subscribe<App, string>(this, "Barcode", (sender, arg) =>
+            {
 
+                // Add the barcode to a list (first position)
+                ListOfBarcodes.Insert(0, arg);
+            });
+        }
 
-			try
-			{
-				// At startup, I load all paired devices
-				ListOfDevices = DependencyService.Get<IBth>().PairedDevices();
-			}
-			catch (Exception ex)
-			{
-				//Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
-			}
-		}
-
-		public ICommand ConnectCommand { get; protected set;}
-		public ICommand DisconnectCommand { get; protected set;}
+        public void Disconnect()
+        {
+            // Disconnect from bth device
+            DependencyService.Get<IBth>().Cancel();
+            MessagingCenter.Unsubscribe<App, string>(this, "Barcode");
+            _isConnected = false;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
     }
