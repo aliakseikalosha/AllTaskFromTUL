@@ -1,5 +1,5 @@
 clear all;clc;close all
-for personNumber = 1:2
+for personNumber = 3:3
     for fileNumber = 1:5
         for number = 1:10
             [x,Fs] = audioread(join([sprintf("Osoba%d/c%d_pjjjj_s0%d",personNumber,number-1,fileNumber),".wav"],''));

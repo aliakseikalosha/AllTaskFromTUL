@@ -15,8 +15,7 @@ for personNumber = 3:3
                 number = x(ix*de-1*Fs:ix*de+1*Fs-1);
                 xline(ix-1*Fs/de);
                 xline(ix+1*Fs/de);
-                %sound(number, Fs);
-                audiowrite(sprintf("Osoba%d/c%d_pjjjj_s0%d.wav",personNumber,mod(foundNumbers,10),fileNumber),number,Fs);
+                audiowrite(sprintf("Osoba%d/c%d_p0000_s0%d.wav",personNumber,mod(foundNumbers,10),fileNumber),number,Fs);
                 ix = ix+1*Fs/de;
                 pause
             end
