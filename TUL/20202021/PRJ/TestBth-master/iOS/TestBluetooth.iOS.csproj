@@ -143,9 +143,9 @@
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TestBth\TestBth.csproj">
+    <ProjectReference Include="..\TestBth\TestBluetooth.csproj">
       <Project>{56DD5976-CB11-492B-BB0F-37ECBB2B87D2}</Project>
-      <Name>TestBth</Name>
+      <Name>TestBluetooth</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

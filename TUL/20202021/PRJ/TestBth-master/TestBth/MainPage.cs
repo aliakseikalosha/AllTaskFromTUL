@@ -1,10 +1,11 @@
 ﻿using Android.Util;
 using Java.IO;
 using System;
-
+using System.Collections.Generic;
+using System.Linq;
 using Xamarin.Forms;
 
-namespace TestBth
+namespace TestBluetooth
 {
     public class MainPage : ContentPage
     {
@@ -13,7 +14,7 @@ namespace TestBth
         private Button connect = null;
         private Button disconnect = null;
         private MainPageViewModel viewModel = null;
-        ListView devicesList = null;
+        ScrollView messagesView = null;
         public MainPage()
         {
             viewModel = new MainPageViewModel();
@@ -24,7 +25,7 @@ namespace TestBth
         {
             this.BindingContext = viewModel;
 
-            pickerBluetoothDevices = new Picker() { Title = "Select a bth device" };
+            pickerBluetoothDevices = new Picker() { Title = "Select a bluetooth device" };
             pickerBluetoothDevices.SetBinding(Picker.ItemsSourceProperty, "ListOfDevices");
             pickerBluetoothDevices.SelectedIndexChanged += OnSelectedBluetoothDevice;
 
@@ -42,10 +43,22 @@ namespace TestBth
             StackLayout slButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect } };
 
             int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
+            var underlineLabel = new Label { Text = "This is underlined text.", TextDecorations = TextDecorations.None, TextColor = Color.Green, BackgroundColor = Color.Black };
+            
 
             StackLayout sl = new StackLayout { Children = { pickerBluetoothDevices, entrySleepTime, slButtons }, Padding = new Thickness(0, topPadding, 0, 0) };
             Content = sl;
         }
+
+        private ScrollView MessagesScroll(List<BluetoothMessage> all)
+        {
+            var sv = new ScrollView();
+            for (int i = 0; i < all.OrderBy(c=>c.); i++)
+            {
+
+            }
+            return sv;
+        } 
 
         private void ChangeSleepTime(object sender, TextChangedEventArgs e)
         {
@@ -76,8 +89,7 @@ namespace TestBth
         {
             try
             {
-                // At startup, I load all paired devices
-                var bth = DependencyService.Get<IBth>();
+                var bth = DependencyService.Get<IBluetoothReader>();
                 ((MainPageViewModel)BindingContext).ListOfDevices = bth.PairedDevices();
             }
             catch (Exception e)

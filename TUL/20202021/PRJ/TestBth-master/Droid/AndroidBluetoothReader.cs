@@ -7,24 +7,31 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using TestBth.Droid;
+using TestBluetooth.Droid;
 using Xamarin.Forms;
 using System.Diagnostics;
+using System.Collections.Generic;
 
-[assembly: Dependency(typeof(Bth))]
-namespace TestBth.Droid
+[assembly: Dependency(typeof(AndroidBluetoothReader))]
+namespace TestBluetooth.Droid
 {
 
-    public class Bth : IBth
+    public class AndroidBluetoothReader : IBluetoothReader
     {
 
-        private CancellationTokenSource _ct { get; set; }
+        private CancellationTokenSource cancelToken { get; set; }
 
-        private bool canContinue => !_ct.IsCancellationRequested;
+        private bool canContinue => !cancelToken.IsCancellationRequested;
+
+        public List<BluetoothMessage> Sended { get; private set; } = new List<BluetoothMessage>();
+
+        public List<BluetoothMessage> Recived { get; private set; } = new List<BluetoothMessage>();
+
+        private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();;
 
         const int RequestResolveError = 1000;
 
-        public Bth()
+        public AndroidBluetoothReader()
         {
         }
 
@@ -46,7 +53,7 @@ namespace TestBth.Droid
             BluetoothSocket BthSocket = null;
 
             //Thread.Sleep(1000);
-            _ct = new CancellationTokenSource();
+            cancelToken = new CancellationTokenSource();
             while (canContinue)
             {
                 try
@@ -101,7 +108,7 @@ namespace TestBth.Droid
                                     if (buffer.Ready())
                                     {
                                         char[] chr = new char[100];
-                                        string barcode = string.Empty;
+                                        string messageText = string.Empty;
                                         if (readAsCharArray)
                                         {
 
@@ -114,19 +121,19 @@ namespace TestBth.Droid
                                                     break;
                                                 }
 
-                                                barcode += c;
+                                                messageText += c;
                                             }
 
                                         }
                                         else
                                         {
-                                            barcode = await buffer.ReadLineAsync();
+                                            messageText = await buffer.ReadLineAsync();
                                         }
 
-                                        if (barcode.Length > 0)
+                                        if (messageText.Length > 0)
                                         {
-                                            Debug.WriteLine("Letto: " + barcode);
-                                            MessagingCenter.Send<App, string>((App)Application.Current, "Barcode", barcode);
+                                            Debug.WriteLine("Letto: " + messageText);
+                                            Recived.Add(new BluetoothMessage(DateTime.Now, messageText));
                                         }
                                         else
                                         {
@@ -136,11 +143,21 @@ namespace TestBth.Droid
                                     else
                                     {
                                         Debug.WriteLine("No data to read");
-                                        using (var ost = BthSocket.OutputStream)
+                                        if (toSend.Count > 0)
                                         {
-                                            var _ost = (ost as OutputStreamInvoker).BaseOutputStream;
-                                            var message = $"Hello form Android application!\n{DateTime.Now}\n".ToCharArray().Select(c=>(byte)c).ToArray();
-                                            _ost.Write(message, 0, message.Length);
+                                            var message = toSend.Peek();
+                                            using (var output = BthSocket.OutputStream)
+                                            {
+                                                var baseOutput = (output as OutputStreamInvoker).BaseOutputStream;
+                                                var dataToSend = message.Message.ToCharArray().Select(c => (byte)c).ToArray();
+                                                baseOutput.Write(dataToSend, 0, dataToSend.Length);
+                                                Sended.Add(toSend.Dequeue());
+                                                Debug.WriteLine($"Send {message}");
+                                            }
+                                        }
+                                        else
+                                        {
+                                            Debug.WriteLine("No data to send");
                                         }
                                     }
 
@@ -190,10 +207,10 @@ namespace TestBth.Droid
         /// <returns><c>true</c> if this instance cancel ; otherwise, <c>false</c>.</returns>
         public void Cancel()
         {
-            if (_ct != null)
+            if (cancelToken != null)
             {
                 Debug.WriteLine("Send a cancel to task!");
-                _ct.Cancel();
+                cancelToken.Cancel();
             }
         }
 
@@ -210,8 +227,12 @@ namespace TestBth.Droid
             return devices;
         }
 
+        public void Send(BluetoothMessage message)
+        {
+            toSend.Enqueue(message);
+        }
+
 
         #endregion
     }
 }
-

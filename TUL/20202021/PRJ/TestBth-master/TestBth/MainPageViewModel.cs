@@ -2,14 +2,15 @@
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.ComponentModel;
+using System.Collections.Generic;
 
-namespace TestBth
+namespace TestBluetooth
 {
     public class MainPageViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
-        public ObservableCollection<string> ListOfBarcodes { get; set; } = new ObservableCollection<string>();
+        List<BluetoothMessage> allMessages = new List<BluetoothMessage>();
 
         public string SelectedBthDevice = string.Empty;
         bool isConnected  = false;
@@ -38,7 +39,7 @@ namespace TestBth
                 // When the app "sleep", I close the connection with bluetooth
                 if (isConnected)
                  {
-                     DependencyService.Get<IBth>().Cancel();
+                     DependencyService.Get<IBluetoothReader>().Cancel();
                  }
              });
 
@@ -48,14 +49,14 @@ namespace TestBth
                  // When the app "resume" I try to restart the connection with bluetooth
                  if (isConnected)
                  {
-                     DependencyService.Get<IBth>().Start(SelectedBthDevice, sleepTime, true);
+                     DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
                  }
              });
 
             try
             {
                 // At startup, I load all paired devices
-                ListOfDevices = DependencyService.Get<IBth>().PairedDevices();
+                ListOfDevices = DependencyService.Get<IBluetoothReader>().PairedDevices();
             }
             catch (Exception ex)
             {
@@ -66,14 +67,14 @@ namespace TestBth
         public void Connect()
         {
             // Try to connect to a bth device
-            DependencyService.Get<IBth>().Start(SelectedBthDevice, sleepTime, true);
+            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
             isConnected = true;
         }
 
         public void Disconnect()
         {
             // Disconnect from bth device
-            DependencyService.Get<IBth>().Cancel();
+            DependencyService.Get<IBluetoothReader>().Cancel();
             isConnected = false;
         }
     }

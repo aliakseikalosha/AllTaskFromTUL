@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace TestBth
+namespace TestBluetooth
 {
     public class App : Application
     {
