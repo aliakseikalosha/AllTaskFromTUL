@@ -2,14 +2,14 @@
 using System.Threading.Tasks;
 using System.Threading;
 using System.Collections.ObjectModel;
-using TestBth.iOS;
+using TestBluetooth.iOS;
 using ExternalAccessory;
 using System.Linq;
 
 [assembly: Xamarin.Forms.Dependency(typeof(Bth))]
-namespace TestBth.iOS
+namespace TestBluetooth.iOS
 {
-    public class Bth : IBth
+    public class Bth : IBluetoothReader
     {
 
 

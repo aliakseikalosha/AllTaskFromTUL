@@ -5,7 +5,7 @@ using System.Linq;
 using Foundation;
 using UIKit;
 
-namespace TestBth.iOS
+namespace TestBluetooth.iOS
 {
     public class Application
     {

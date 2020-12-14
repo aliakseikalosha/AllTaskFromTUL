@@ -5,7 +5,7 @@ using Android.Content.PM;
 using Android.OS;
 
 
-namespace TestBth.Droid
+namespace TestBluetooth.Droid
 {
     [Activity(Label = "TestBth.Droid", Icon = "@drawable/icon", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity
