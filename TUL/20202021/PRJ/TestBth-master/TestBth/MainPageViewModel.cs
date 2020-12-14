@@ -10,7 +10,6 @@ namespace TestBluetooth
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
-        List<BluetoothMessage> allMessages = new List<BluetoothMessage>();
 
         public string SelectedBthDevice = string.Empty;
         bool isConnected  = false;

@@ -14,10 +14,17 @@ namespace TestBluetooth
         private Button connect = null;
         private Button disconnect = null;
         private MainPageViewModel viewModel = null;
-        ScrollView messagesView = null;
-        public MainPage()
+        private Entry messageText = null;
+
+
+        private Button send = null;
+        private ScrollView messageScroll = null;
+        private StackLayout messageStack = null;
+        private IBluetoothReader bluetooth = null;
+        public MainPage(MainPageViewModel model)
         {
-            viewModel = new MainPageViewModel();
+            viewModel = model;
+            bluetooth = DependencyService.Get<IBluetoothReader>();
             InitUI();
         }
 
@@ -35,30 +42,56 @@ namespace TestBluetooth
 
             connect = new Button() { Text = "Connect" };
             connect.Clicked += ConnectToSelected;
-            connect.IsEnabled = false;
+            connect.IsEnabled = !viewModel.IsConnectEnabled;
 
             disconnect = new Button() { Text = "Disconnect" };
             disconnect.Clicked += DiconnectFromDevice;
 
-            StackLayout slButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect } };
 
+            messageText = new Entry { Placeholder = "Message To Send" };
+            send = new Button { Text = "Send" };
+            send.Clicked += SendMessage;
+
+            messageStack = new StackLayout();
+            UpdateMessage();
+
+            messageScroll = new ScrollView { Content = messageStack, IsVisible = true };
             int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
-            var underlineLabel = new Label { Text = "This is underlined text.", TextDecorations = TextDecorations.None, TextColor = Color.Green, BackgroundColor = Color.Black };
-            
-
-            StackLayout sl = new StackLayout { Children = { pickerBluetoothDevices, entrySleepTime, slButtons }, Padding = new Thickness(0, topPadding, 0, 0) };
+            StackLayout slButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect } };
+            StackLayout sendStack = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { messageText, send } };
+            StackLayout sl = new StackLayout { Children = { pickerBluetoothDevices, entrySleepTime, slButtons, sendStack, messageScroll }, Padding = new Thickness(0, topPadding, 0, 0) };
             Content = sl;
         }
 
-        private ScrollView MessagesScroll(List<BluetoothMessage> all)
+        public void UpdateMessage()
         {
-            var sv = new ScrollView();
-            for (int i = 0; i < all.OrderBy(c=>c.); i++)
+            var sorted = bluetooth.All.OrderBy(c => c.Date.Ticks).ToArray();
+            messageStack.Children.Clear();
+            for (int i = 0; i < sorted.Length; i++)
             {
-
+                var m = sorted[i];
+                messageStack.Children.Add(new Label
+                {
+                    Text = $" {m.State}:{m.Message}",
+                    TextDecorations = TextDecorations.None,
+                    TextColor = m.State == MessageState.Recived ? Color.Black : Color.DarkGray,
+                    BackgroundColor = Color.White,
+                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                    VerticalOptions = LayoutOptions.Fill,
+                    HorizontalOptions = LayoutOptions.Fill,
+                });
             }
-            return sv;
-        } 
+            if (messageScroll != null)
+            {
+                messageScroll.ForceLayout();
+            }
+        }
+
+        private void SendMessage(object sender, EventArgs e)
+        {
+            var bluetooth = DependencyService.Get<IBluetoothReader>();
+            bluetooth.Send(new BluetoothMessage(DateTime.Now, messageText.Text + "\n", MessageState.Sended));
+        }
 
         private void ChangeSleepTime(object sender, TextChangedEventArgs e)
         {
@@ -89,8 +122,8 @@ namespace TestBluetooth
         {
             try
             {
-                var bth = DependencyService.Get<IBluetoothReader>();
-                ((MainPageViewModel)BindingContext).ListOfDevices = bth.PairedDevices();
+                var bluetooth = DependencyService.Get<IBluetoothReader>();
+                ((MainPageViewModel)BindingContext).ListOfDevices = bluetooth.PairedDevices();
             }
             catch (Exception e)
             {

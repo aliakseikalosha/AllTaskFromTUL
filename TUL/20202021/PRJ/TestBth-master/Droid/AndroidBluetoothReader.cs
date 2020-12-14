@@ -18,16 +18,18 @@ namespace TestBluetooth.Droid
 
     public class AndroidBluetoothReader : IBluetoothReader
     {
-
+        public Action OnMessageUpdated { get; set; }
         private CancellationTokenSource cancelToken { get; set; }
 
         private bool canContinue => !cancelToken.IsCancellationRequested;
 
-        public List<BluetoothMessage> Sended { get; private set; } = new List<BluetoothMessage>();
+        public List<BluetoothMessage> Sended => All.Where(c => c.State == MessageState.Sended).ToList();
 
-        public List<BluetoothMessage> Recived { get; private set; } = new List<BluetoothMessage>();
+        public List<BluetoothMessage> Recived => All.Where(c => c.State == MessageState.Recived).ToList();
 
-        private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();;
+        public List<BluetoothMessage> All { get; private set; } = new List<BluetoothMessage>();
+
+        private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();
 
         const int RequestResolveError = 1000;
 
@@ -133,7 +135,7 @@ namespace TestBluetooth.Droid
                                         if (messageText.Length > 0)
                                         {
                                             Debug.WriteLine("Letto: " + messageText);
-                                            Recived.Add(new BluetoothMessage(DateTime.Now, messageText));
+                                            AddMessage(new BluetoothMessage(DateTime.Now, messageText,MessageState.Recived));
                                         }
                                         else
                                         {
@@ -151,7 +153,7 @@ namespace TestBluetooth.Droid
                                                 var baseOutput = (output as OutputStreamInvoker).BaseOutputStream;
                                                 var dataToSend = message.Message.ToCharArray().Select(c => (byte)c).ToArray();
                                                 baseOutput.Write(dataToSend, 0, dataToSend.Length);
-                                                Sended.Add(toSend.Dequeue());
+                                                AddMessage(toSend.Dequeue());
                                                 Debug.WriteLine($"Send {message}");
                                             }
                                         }
@@ -199,6 +201,12 @@ namespace TestBluetooth.Droid
             }
 
             Debug.WriteLine("Exit the external loop");
+        }
+
+        private void AddMessage(BluetoothMessage message)
+        {
+            All.Add(message);
+            OnMessageUpdated?.Invoke();
         }
 
         /// <summary>

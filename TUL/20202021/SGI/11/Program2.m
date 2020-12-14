@@ -8,30 +8,23 @@ pocet_pokusu=0;
 pocet_spravnych= 0;
 test_data = test_nez_data;
 test_trida = test_nez_trida;
-
 tic;
+DP = [1 1 1; 1 1 1; 1 1 1];
+HP = [-1 -1 -1; -1 20 -1; -1 -1 -1];
 start_time = toc;
-disp(['Pripravuji obrazky'])
+%profile on 
 for j = 1:M
-    fprintf("%d/%d\n",j,M)
-    v = tren_data(j,:,:);      
-    tren_data(j,:,:) = preproc(v);
+    tren_data(j,:,:) = preproc(tren_data(j,:,:),HP,DP);
 end
+x = zeros(1,32,32);
 for  i = 1:N                     % cyklus pro test. obrázky, N max.1000
-    fprintf("%d/%d",i,N)
-    toc
-    x = test_data(i,:,:);        % načti test. obrázek
-    x = preproc(x);
-    x_trida= test_trida(i);      % jeho třída
+    x(1,:,:) = preproc(test_data(i,:,:),HP,DP);
     for j = 1:M                   % cyklus pro tren. vzory, M max.9000        
-        v = tren_data(j,:,:);      % načti tren. obrázek
-        v_trida= tren_trida(j);    % jeho třída 
-        tridy_vzoru(j) = v_trida;   % ulož číslo třídy do pole tridy_vzoru
-        dist(j)=sum(sqrt((x-v).^2),'all'); % urči vzdálenost a ulož do pole dist
+        dist(j)=sum((x-tren_data(j,:,:)).^2,'all'); % urči vzdálenost a ulož do pole dist
     end
     [min_dist, index] = min(dist); % nejmenší vzdálenost a její index
-    nejblizsi_trida = tridy_vzoru(index); % třída nejbližšího vzoru
-    if x_trida== nejblizsi_trida% je shoda?
+    nejblizsi_trida = tren_trida(index); % třída nejbližšího vzoru
+    if test_trida(i) == nejblizsi_trida% je shoda?
         pocet_spravnych= pocet_spravnych + 1;  % pokud ano, započítej
     end
     pocet_pokusu=  pocet_pokusu + 1;         % započítej pokus
@@ -40,38 +33,29 @@ end_time = toc;
 uspesnost = pocet_spravnych/pocet_pokusu* 100;% urči úspěšnost
 disp(['Úspěšnost: ', num2str(uspesnost), '%']);
 disp(['Čas: ',num2str(end_time-start_time) ]);
+%profile viewer
 
-function y = preproc(x)
+function y = preproc(x,h,d)
     ye = evenSpread(x);
-    y = filter2d(ye,[1 1 1; 1 1 1; 1 1 1]);
-    y = filter2d(y,[-1 -1 -1; -1 20 -1; -1 -1 -1]);
-    y = boostContrast(y,ye);
-end
-function y = boostContrast(x,org)
-    y=x;
-    bl = min(y(:)) + 80;
-    for i=1:size(x,1)
-        for j=1:size(x,2)
-            if(y(i,j) < bl)
-                y(i,j) = org(i,j);
-            end
-        end
-    end
+    y = filter2d(ye,h);
+    y = filter2d(y,d);
+    y = double(y)./max(y,[],'all');
 end
 
 function y = evenSpread(x)
-    d = 1./max(x(:)).*255;
-    y =x.*d;
+    y = x./max(x,[],'all').*255;
 end
 
 function dp = filter2d(x,f)
     dp = x;
-    for n=1:size(x,2)
-        for m=1:size(x,3)
-            part = x(1,max(1,n-1):min(n+1,end),max(1,m-1):min(end,m+1));
+    for n=1:32
+        nmax = max(1,n-1);
+        nmin = min(n+1,32);
+        for m=1:32
+            part = x(1,nmax:nmin,max(1,m-1):min(32,m+1));
             partf = f(1:size(part,1),1:size(part,2));
             part = part.*partf;
-            dp(1,n,m) = sum(part(:))./sum(partf(:));
+            dp(1,n,m) = sum(part,'all')/sum(partf,'all');
         end
     end
 end

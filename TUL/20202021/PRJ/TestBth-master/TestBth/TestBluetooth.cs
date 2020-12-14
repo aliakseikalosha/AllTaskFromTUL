@@ -6,9 +6,18 @@ namespace TestBluetooth
 {
     public class App : Application
     {
+        private MainPageViewModel model = null;
         public App()
         {
-            MainPage = new MainPage();
+            model = new MainPageViewModel();
+            MainPage = new MainPage(model);
+            DependencyService.Get<IBluetoothReader>().OnMessageUpdated += UpdateMessages;
+        }
+
+        private void UpdateMessages()
+        {
+           ((MainPage)MainPage).UpdateMessage();// = new MainPage(model);
+            MainPage.ForceLayout();
         }
 
         protected override void OnStart()
