@@ -1,0 +1,1 @@
+$(AntDependencies)=;$(ApplicationId)=applicationId = "";$(ConfigurationType)=application;$(AarDependencies)=;$(AarDependenciesSettings)=;$(ApplicationName)=BluetoothAdroidCpp;$(AndroidAppLibName)=BluetoothAdroidCpp;$(AndroidBuildToolsVersion)=25.0.3;$(AndroidAPILevelNumber)=25;$(androidapilevel)=android-25;$(projectname)=BluetoothAdroidCpp.Packaging;
