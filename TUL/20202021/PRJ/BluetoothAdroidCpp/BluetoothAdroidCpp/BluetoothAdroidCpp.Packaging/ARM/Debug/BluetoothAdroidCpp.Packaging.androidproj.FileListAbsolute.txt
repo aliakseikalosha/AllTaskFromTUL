@@ -1,0 +1,7 @@
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\BluetoothAdroidCpp.Packaging.androidprojAssemblyReference.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\BluetoothAdroidCpp.apk.recipe
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\BluetoothAdroidCpp.apk.recipe.merged
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\Package\AndroidManifest.xml
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\FileStringReplace.incremental
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\BluetoothAdroidCpp.apk
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.Packaging\ARM\Debug\BluetoothAdroidCpp.lastsuccessfuldeploy

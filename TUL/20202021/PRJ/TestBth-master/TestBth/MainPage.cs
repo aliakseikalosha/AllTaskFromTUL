@@ -65,26 +65,25 @@ namespace TestBluetooth
 
         public void UpdateMessage()
         {
-            var sorted = bluetooth.All.OrderBy(c => c.Date.Ticks).ToArray();
-            messageStack.Children.Clear();
-            for (int i = 0; i < sorted.Length; i++)
+            Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
-                var m = sorted[i];
-                messageStack.Children.Add(new Label
+                var sorted = bluetooth.All.OrderBy(c => c.Date.Ticks).ToArray();
+                messageStack.Children.Clear();
+                for (int i = 0; i < sorted.Length; i++)
                 {
-                    Text = $" {m.State}:{m.Message}",
-                    TextDecorations = TextDecorations.None,
-                    TextColor = m.State == MessageState.Recived ? Color.Black : Color.DarkGray,
-                    BackgroundColor = Color.White,
-                    FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                    VerticalOptions = LayoutOptions.Fill,
-                    HorizontalOptions = LayoutOptions.Fill,
-                });
-            }
-            if (messageScroll != null)
-            {
-                messageScroll.ForceLayout();
-            }
+                    var m = sorted[i];
+                    messageStack.Children.Add(new Label
+                    {
+                        Text = $" {m.State}:{m.Message}",
+                        TextDecorations = TextDecorations.None,
+                        TextColor = m.State == MessageState.Recived ? Color.Black : Color.DarkGray,
+                        BackgroundColor = Color.White,
+                        FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
+                        VerticalOptions = LayoutOptions.Fill,
+                        HorizontalOptions = LayoutOptions.Fill,
+                    });
+                }
+            });
         }
 
         private void SendMessage(object sender, EventArgs e)

@@ -1,0 +1,1 @@
+D:\Project\AllTaskFromTUL\TUL\20202021\PRJ\BluetoothAdroidCpp\BluetoothAdroidCpp\BluetoothAdroidCpp.NativeActivity\ARM\Debug\libBluetoothAdroidCpp.so
