@@ -63,12 +63,12 @@ namespace TestADLConsoleApp
             Console.WriteLine();
             Print("I love", FindMatch(text, new Regex(@"\b[i]\s\b[love]\w+", RegexOptions.IgnoreCase)));
             Console.WriteLine();
-            Print("Sentences", sentences);
+            Print("Sentences", FindMatch(text, new Regex(@"\b((?!=|\.).)+(.)\b."))); ;
         }
 
         private static List<string> FindMatch(string text, Regex regex)
         {
-            return regex.Matches(text).Select(c => c.Value).ToList();
+            return regex.Matches(text).Select(c => c.Value.Trim()).ToList();
         }
 
         private static void Print(string name, List<string> data)
@@ -81,3 +81,14 @@ namespace TestADLConsoleApp
         }
     }
 }
+/*
+  	Powder cupcake I love. Souffle sesame snaps cupcake chocolate cake lemon drops tootsie roll. Chocolate cake jelly-o jelly beans chocolate bar bear claw I love lollipop lemon drops dragee. Dessert jelly-o tart cake marzipan.
+	
+	Chocolate bar brownie pudding tiramisu. Cookie lemon drops chocolate bar pie I love jelly beans gummies cotton candy gummi bears. Lollipop candy canes candy canes I love topping liquorice sugar plum tart.
+	
+	Candy canes I love wafer chocolate cake topping dessert Bear claw toffee. Caramels muffin souffle sugar plum I love. Marshmallow muffin muffin candy canes candy donut bear claw.
+	
+	Candy canes pudding chocolate bar cupcake. Bear claw cheesecake chocolate cake bear claw gingerbread. Oat cake halvah pie pie. Chupa chups macaroon cotton candy icing sweet roll I love.
+	
+	Jelly chocolate bar dessert. I LOVE bear claw Jelly jelly-o icing. Chocolate bar wafer pudding macaroon tart Jelly-o lemon drops brownie. Jelly beans cookie cookie.
+ */

@@ -1,11 +1,20 @@
 clear all;
 close all;
-clc
-
+%clc
+loadingSI = 1;
+if loadingSI==1
+    disp('SI')
+    load spoken_test_nez;
+    test_data = test_nez_data;
+    test_trida = test_nez_trida;
+else
+    disp('SD')
+    load spoken_test;
+end
 load spoken_test_nez;
 % N...počet testovacích obrázků = 1000
 % y_test...indexy tříd testovacích dat, rozměr: 1000x1 = Nx1
-y_test = test_nez_trida;
+y_test = test_trida;
 %MATLAB indexuje od čisla 1 =>
 %Pokud spočítáme skóre pro číslovky od 0 do 9, budou tato skóre v poli, kde
 %skóre pro číslovku 0 bude na pozici 1 a skóre pro číslovku 9 na pozici 10.
@@ -23,7 +32,6 @@ load spoken_tren;
     % Dále jsou v rámci předzpracování testovací data převedena z matice
     % Nx32x32 do matice Nx(32*32+1)
 %X_test = data_preprocessing(test_data,tren_data);
-test_data = test_nez_data;
 X_test = data_preprocessing_fast(test_data,tren_data);
 
 % načtení matic vah

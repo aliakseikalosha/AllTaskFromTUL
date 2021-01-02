@@ -1,11 +1,20 @@
 clear all;
 close all;
-clc
-
-load digits_test_nez;
+%clc
+loadingInd = 0;
+centerdI = 0;
+if loadingInd==1
+    disp('Nez')
+    load digits_test_nez;
+    test_data = test_nez_data;
+    test_trida = test_nez_trida;
+else
+    disp('Zav')
+    load digits_test;
+end
 % N...poèet testovacích obrázkù = 1000
 % y_test...indexy tøíd testovacích dat, rozmìr: 1000x1 = Nx1
-y_test = test_nez_trida;
+y_test = test_trida;
 %MATLAB indexuje od èisla 1 =>
 %Pokud spoèítáme skóre pro èíslovky od 0 do 9, budou tato skóre v poli, kde
 %skóre pro èíslovku 0 bude na pozici 1 a skóre pro èíslovku 9 na pozici 10.
@@ -23,22 +32,25 @@ load digits_tren;
     % Dále jsou v rámci pøedzpracování testovací data pøevedena z matice
     % Nx32x32 do matice Nx(32*32+1)
 %X_test = data_preprocessing(test_data,tren_data);
-test_data = test_nez_data;
-for i = 1:size(test_data,1)
-    x = test_data(i,:,:);
-    x = squeeze(x(1,:,:));
-    test_data(i,:,:) = centerImage(x);
-end
-for i = 1:size(tren_data,1)
-    x = tren_data(i,:,:);
-    x = squeeze(x(1,:,:));
-    tren_data(i,:,:) = centerImage(x);
+if centerdI == 1
+    for i = 1:size(test_data,1)
+        test_data(i,:,:) = getCenteredImage(squeeze(test_data(i,:,:)));
+    end
+    for i = 1:size(tren_data,1)
+        tren_data(i,:,:) = getCenteredImage(squeeze(tren_data(i,:,:)));
+    end
 end
 X_test = data_preprocessing_fast(test_data,tren_data);
 
 % naètení matic vah
-%load Image_DNN_128_128_10.mat;
-load Image_centered_DNN_128_128_10.mat;
+if centerdI == 1
+    disp('centred')
+    load Image_centered_DNN_128_128_10.mat;
+else
+    disp(' non - centred')
+    load Image_DNN_128_128_10.mat;
+end
+
 
 % W1 je matice vah první vrstvy, která má 128 neuronù
     %rozmìry jsou 1025x128
@@ -103,53 +115,41 @@ accuracy = mean(double(predicts == y_test')) * 100;
 fprintf('Pøesnost maticovì: %f\n', accuracy);
 toc
 
-
-
-function y = centerImage(im)
+function y = getCenteredImage(x)
     
-    im_fil = filter(im, ([1 1 1;1 1 1;1 1 1]));    
+    filtred = filter2d(x, [1 1 1;1 0 1;1 1 1]);    
     
-    [N,edges] = histcounts(im_fil,255/15);
-    [max_hist, max_hist_i] = max(N);
-    k = 255 / edges(max_hist_i);
-    y = zeros(size(im));
-    for i = 1 : size(im_fil,1)
-        for j = 1 : size(im_fil,2)
-            y(i , j) = im_fil(i , j) * k;
-        end
-    end
+    [N,edges] = histcounts(filtred,16);
+    [m, index] = max(N);
+    y = filtred.*255 / edges(index);
     
     pic_center = round([size(y,1)/2, size(y,2)/2]);
     
-    cent = getCentroid(y);
+    weight_center = getWeightCenter(y);
     
-%     if size(cent) ~= [1 2]
-%         disp('Chyba')
-%     end
-    
-    y = circshift(y, [(pic_center(2) - cent(2)) (pic_center(1) - cent(1))]);
+    y = circshift(y, [(pic_center(2) - weight_center(2)) (pic_center(1) - weight_center(1))]);
 end
 
-function cent = getCentroid(x)
-    [N,edges] = histcounts(x,255/15);
-    [max_hist, max_hist_i] = max(N);
-%     tricet funguje asi dobre
-    bloby = bwareafilt(x < edges(max_hist_i), [30, inf]);
+function center = getWeightCenter(x)
+    [N,edges] = histcounts(x,16);
+    [m, index] = max(N);
     
-    stats = regionprops(bloby, 'Centroid');
-    cent = cat(1,stats.Centroid);
+    bw2 = bwareafilt(x < edges(index), [30 inf]);
     
-    cent = round(cent);
+    stats = regionprops(bw2, 'Centroid');
+    center = round(cat(1,stats.Centroid));
 end
 
-function y = filter(x,h)
-    y = x;
-    for m = 1:size(x,1)
-        for n = 1:size(x,2)
-            x_cube = x(max(1,m-1):min(m+1,end), max(1,n-1):min(end,n+1));
-            h_cube = h(1:size(x_cube,1), 1:size(x_cube,2));
-            x_cube = x_cube.*h_cube;
-            y(m,n) = sum(x_cube(:))./sum(h_cube(:));
+function dp = filter2d(x,f)
+    dp = x;
+    for n=1:size(x,1)
+        nmax = max(1,n-1);
+        nmin = min(n+1,32);
+        for m=1:size(x,2)
+            part = x(nmax:nmin,max(1,m-1):min(32,m+1));
+            partf = f(1:size(part,1),1:size(part,2));
+            part = part.*partf;
+            dp(n,m) = sum(part,'all')/sum(partf,'all');
         end
     end
 end
