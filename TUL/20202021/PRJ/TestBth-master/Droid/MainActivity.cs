@@ -1,5 +1,4 @@
-﻿
-using Android.App;
+﻿using Android.App;
 using Android.Bluetooth;
 using Android.Content.PM;
 using Android.OS;
@@ -22,9 +21,9 @@ namespace TestBluetooth.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            OxyPlot.Xamarin.Forms.Platform.Android.PlotViewRenderer.Init();
 
             LoadApplication(new App());
         }
     }
 }
-
