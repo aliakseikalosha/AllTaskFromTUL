@@ -47,7 +47,7 @@ namespace TestBth.MainScreen
                 HorizontalOptions = LayoutOptions.Center,
                 CornerRadius = 5,
                 Padding = 8,
-                Content = new Label { Text = text }
+                Content = new Label { Text = text,HorizontalTextAlignment = TextAlignment.Center }
             };
         }
     }
