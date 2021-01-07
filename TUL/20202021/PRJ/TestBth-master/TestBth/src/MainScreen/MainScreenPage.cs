@@ -24,16 +24,29 @@ namespace TestBth.MainScreen
             var totalRideDistance = SmallBlock($"Total Ride:\n{model.TotalRideDistance:.0}km");
 
             var currentCharge = SmallBlock($"Battery charge : {Math.Round(model.CurrentBatteryCharge * 100)}%");
-            var chargeEstimate = SmallBlock(model.FullyChargedTime > DateTime.Now ? $"Battery will be charged in : {(DateTime.Now - model.FullyChargedTime):hh:mm}" : "Battery is fully charged.");
+            var chargeEstimate = SmallBlock(model.FullyChargedTime > DateTime.Now ? $"Battery will be charged in :\n {(model.FullyChargedTime - DateTime.Now)}" : "Battery is fully charged.");
 
 
             int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
-            StackLayout avrgData = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { avrgSpeed, avrgRideDistance, totalRideDistance } };
-            StackLayout chargeData = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { currentCharge, chargeEstimate } };
+            StackLayout avrgData = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Margin = new Thickness(10, 10),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Children = { avrgSpeed, avrgRideDistance, totalRideDistance }
+            };
+            StackLayout chargeData = new StackLayout()
+            {
+                Orientation = StackOrientation.Horizontal,
+                Margin = new Thickness(10, 10),
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Children = { currentCharge, chargeEstimate }
+            };
             StackLayout sl = new StackLayout
             {
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                Margin = new Thickness(10, 10),
                 Children = { avrgData, chargeData },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };

@@ -22,21 +22,7 @@ namespace TestBth.Statistics
         protected override void InitUI()
         {
             var lable = new Label { Text = "Statistics" };
-            var grafs = new StackLayout
-            {
-                Children = { GetPlotFor(model.BatteryCharge, "Battery Charge"), GetPlotFor(model.RideDistance, "Distance per Day") },
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
-            };
-            var scroll = new ScrollView { Content = grafs, IsVisible = true };
-            int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
-            StackLayout sl = new StackLayout
-            {
-                VerticalOptions = LayoutOptions.StartAndExpand,
-                Children = { lable, GetPlotFor(model.BatteryCharge, "Battery Charge"), GetPlotFor(model.RideDistance, "Distance per Day") },
-                Padding = new Thickness(0, topPadding, 0, 0)
-            };
-            Content = new StackLayout { Children = { GetPlotFor(model.BatteryCharge, "Battery Charge"), GetPlotFor(model.RideDistance, "Distance per Day"), BottomButtonUI(typeof(StatisticsPage)) } };
+            Content = new StackLayout { Children = { lable, GetPlotFor(model.BatteryCharge, "Battery Charge"), GetPlotFor(model.RideDistance, "Distance per Day"), BottomButtonUI(typeof(StatisticsPage)) } };
         }
 
         private PlotView GetPlotFor(List<DataPoint> points, string title)
