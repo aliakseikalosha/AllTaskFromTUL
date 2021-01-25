@@ -1,6 +1,4 @@
-﻿using OxyPlot;
-using OxyPlot.Xamarin.Forms;
-using System;
+﻿using System;
 using TestBth.MainScreen;
 using TestBth.Statistics;
 using Xamarin.Forms;
