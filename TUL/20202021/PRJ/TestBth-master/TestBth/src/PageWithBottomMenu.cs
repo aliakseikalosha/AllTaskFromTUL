@@ -25,7 +25,7 @@ namespace TestBth.MainScreen
             {
                 OnChagePageCliked.Invoke(typeof(StatisticsPage));
             };
-            test.Clicked += (obj,eventData) =>
+            test.Clicked += (obj, eventData) =>
             {
                 OnChagePageCliked.Invoke(typeof(BluetoothComunicationPage));
             };
@@ -45,9 +45,16 @@ namespace TestBth.MainScreen
                 BorderColor = Color.DarkGray,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.Center,
-                CornerRadius = 5,
-                Padding = 8,
-                Content = new Label { Text = text,HorizontalTextAlignment = TextAlignment.Center }
+                CornerRadius = 100,
+               // BackgroundColor = Color.LightBlue,
+                Padding = 1,
+                HasShadow = true,
+                //Content = new Frame
+                //{
+                //   // BackgroundColor = Color.White,
+                //    CornerRadius = 16,
+                    Content = new Label { Text = text, HorizontalTextAlignment = TextAlignment.Center }
+                //}
             };
         }
     }
