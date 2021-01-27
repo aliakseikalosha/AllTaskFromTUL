@@ -1,0 +1,3 @@
+/Users/aliakseikalosha/Documents/git/work/AllTaskFromTUL/TUL/20202021/PRJC/prjc-cpp-exam/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/aliakseikalosha/Documents/git/work/AllTaskFromTUL/TUL/20202021/PRJC/prjc-cpp-exam/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/aliakseikalosha/Documents/git/work/AllTaskFromTUL/TUL/20202021/PRJC/prjc-cpp-exam/cmake-build-debug/CMakeFiles/prjc_cpp_exam.dir

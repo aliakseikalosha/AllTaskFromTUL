@@ -1,6 +1,4 @@
-﻿using Android.Util;
-using Java.IO;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using TestBth.MainScreen;
@@ -133,8 +131,7 @@ namespace TestBluetooth
             }
             catch (Exception e)
             {
-                string tag = "DEBUG";
-                Log.Warn(tag, $" Try to refresh list of devices and get {e.Message}");
+
             }
 
             return true;

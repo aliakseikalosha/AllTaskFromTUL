@@ -1,0 +1,12 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/aliakseikalosha/Documents/git/work/AllTaskFromTUL/TUL/20202021/PRJC/prjc-cpp-exam/main.cpp
+iostream
+-
+

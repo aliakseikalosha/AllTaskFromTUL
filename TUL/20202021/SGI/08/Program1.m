@@ -5,7 +5,7 @@ for personNumber = 3:3
         de=25/1000*Fs;
         e = energy(x,de);
         ix = 0;
-        foundNumbers = 0;
+        foundNumbers = 0; 
         plot(e)
         title(sprintf("person %d session %d", personNumber, fileNumber))
         while(foundNumbers<10)
