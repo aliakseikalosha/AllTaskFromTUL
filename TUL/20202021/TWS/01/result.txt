@@ -1,0 +1,12 @@
+Links to pages
+http://stuwrk.nti.tul.cz/~aliaksei.kalosha/01/index.html
+http://stuwrk.nti.tul.cz/~aliaksei.kalosha/01/jak_prezit_pocitac.html
+http://stuwrk.nti.tul.cz/~aliaksei.kalosha/01/jak_prezit_praci.html
+http://stuwrk.nti.tul.cz/~aliaksei.kalosha/01/jak_prezit_ruce.html
+http://stuwrk.nti.tul.cz/~aliaksei.kalosha/01/jak_prezit_oci.html
+Links validation
+https://validator.w3.org/nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F~aliaksei.kalosha%2F01%2Findex.html
+https://validator.w3.org/nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2F01%2Fjak_prezit_praci.html
+https://validator.w3.org/nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2F01%2Fjak_prezit_pocitac.html
+https://validator.w3.org/nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2F01%2Fjak_prezit_ruce.html
+https://validator.w3.org/nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2F01%2Fjak_prezit_oci.html
