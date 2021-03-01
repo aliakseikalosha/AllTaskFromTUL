@@ -6,89 +6,153 @@ using System.Threading;
 
 namespace TestADLConsoleApp
 {
-    class Program
-    {
-        class Reader
+	using System;
+	using System.Collections.Generic;
+
+	class MainClass
+	{
+		public static void Main(string[] args)
+		{
+
+			List<IItem> inventory = new List<IItem>();
+
+			Sword sword = new Sword("Long Sword", 12, 5);
+			Axe axe = new Axe("Battle Axe", 20, 10);
+			Shield shield = new Shield("Wooden Shield", 5, 2);
+			Potion healthPotion = new Potion("Health", 1);
+
+			sword.Attack();
+
+			// line break
+			Console.WriteLine();
+
+			axe.Attack();
+
+			// line break
+			Console.WriteLine();
+
+			shield.Block();
+
+			// line break
+			Console.WriteLine();
+
+			healthPotion.UsePotion();
+
+			// add items to the inventory
+			inventory.Add(sword);
+
+
+			Console.ReadLine();
+		}
+	}
+
+	// Interface
+	public interface IItem
+	{
+		string Name { get; set; }
+		int SellValue { get; set; }
+
+		void AddItem();
+	}
+
+	// Abctract Class
+	public abstract class Weapon: IItem
+	{
+		public int Damage { get; set; }
+		public int SellValue { get; set; }
+        public string Name { get; set; }
+
+        public void AddItem()
         {
-            private static Thread inputThread;
-            private static AutoResetEvent getInput, gotInput;
-            private static string input;
-
-            static Reader()
-            {
-                getInput = new AutoResetEvent(false);
-                gotInput = new AutoResetEvent(false);
-                inputThread = new Thread(reader);
-                inputThread.IsBackground = true;
-                inputThread.Start();
-            }
-
-            private static void reader()
-            {
-                while (true)
-                {
-                    getInput.WaitOne();
-                    input = Console.ReadLine();
-                    gotInput.Set();
-                }
-            }
-
-            // omit the parameter to read a line without a timeout
-            public static string ReadLine(int timeOutMillisecs = Timeout.Infinite)
-            {
-                getInput.Set();
-                bool success = gotInput.WaitOne(timeOutMillisecs);
-                if (success)
-                {
-                    return input;
-                }
-                else
-                {
-                    return null;
-                   // throw new TimeoutException("User did not provide input within the timelimit.");
-                }
-            }
-        }
-        static void Main(string[] args)
-        {
-            var text = Console.ReadLine();
-            for (int i = 0; i < 20; i++)
-            {
-                text += Reader.ReadLine(50);
-            }
-            
-            var sentences = text.Trim().Split('.').Where(c => c.Length > 1).Select(c => c.Trim() + '.').ToList();
-
-            Print("Uppercases", FindMatch(text, new Regex(@"\b[A-Z]\w*")));
-            Console.WriteLine();
-            Print("I love", FindMatch(text, new Regex(@"\b[i]\s\b[love]\w+", RegexOptions.IgnoreCase)));
-            Console.WriteLine();
-            Print("Sentences", FindMatch(text, new Regex(@"\b((?!=|\.).)+(.)\b."))); ;
-        }
-
-        private static List<string> FindMatch(string text, Regex regex)
-        {
-            return regex.Matches(text).Select(c => c.Value.Trim()).ToList();
+            throw new NotImplementedException();
         }
 
-        private static void Print(string name, List<string> data)
+        public void Attack()
+		{
+			Console.WriteLine($"You have attacked with the { Name } and did { Damage } amount of damage.");
+		}
+	}
+
+	// Items
+	public class Sword : Weapon
+	{
+		public Sword(string name, int damage, int sellValue)
+		{
+			Name = name;
+			Damage = damage;
+			SellValue = sellValue;
+		}
+
+		public void AddItem(List<IItem> inventory, IItem item)
+		{
+			inventory.Add(item);
+			Console.WriteLine($"A { Name } was added to your inventory.");
+		}
+	}
+
+	public class Axe : Weapon
+	{
+		public Axe(string name, int damage, int sellValue)
+		{
+			Name = name;
+			Damage = damage;
+			SellValue = sellValue;
+		}
+
+		public void AddItem(List<IItem> inventory, IItem item)
+		{
+			inventory.Add(item);
+		}
+	}
+
+	public class Shield : IItem
+	{
+		public int Defence { get; set; }
+		public int SellValue { get; set; }
+        public string Name { get; set; }
+
+        public Shield(string name, int defence, int sellValue)
+		{
+			Name = name;
+			Defence = defence;
+			SellValue = sellValue;
+		}
+
+		public void Block()
+		{
+			Console.WriteLine($"Your { Name } blocked { Defence } damage.");
+		}
+
+		public void AddItem(List<IItem> inventory, IItem item)
+		{
+			inventory.Add(item);
+		}
+
+        public void AddItem()
         {
-            Console.WriteLine($"{name} {data.Count}x:");
-            for (int i = 0; i < data.Count; i++)
-            {
-                Console.WriteLine($"  {i + 1}) \'{data[i]}\'");
-            }
+            throw new NotImplementedException();
         }
     }
+
+	public class Potion : IItem
+	{
+		public string Name { get; set; }
+		public int SellValue { get; set; }
+
+		public Potion(string name, int sellValue)
+		{
+			Name = name;
+			SellValue = sellValue;
+		}
+
+		public void UsePotion()
+		{
+			Console.WriteLine($"You have used a { Name } potion.");
+		}
+
+		public void AddItem()
+		{
+
+		}
+	}
 }
-/*
-  	Powder cupcake I love. Souffle sesame snaps cupcake chocolate cake lemon drops tootsie roll. Chocolate cake jelly-o jelly beans chocolate bar bear claw I love lollipop lemon drops dragee. Dessert jelly-o tart cake marzipan.
-	
-	Chocolate bar brownie pudding tiramisu. Cookie lemon drops chocolate bar pie I love jelly beans gummies cotton candy gummi bears. Lollipop candy canes candy canes I love topping liquorice sugar plum tart.
-	
-	Candy canes I love wafer chocolate cake topping dessert Bear claw toffee. Caramels muffin souffle sugar plum I love. Marshmallow muffin muffin candy canes candy donut bear claw.
-	
-	Candy canes pudding chocolate bar cupcake. Bear claw cheesecake chocolate cake bear claw gingerbread. Oat cake halvah pie pie. Chupa chups macaroon cotton candy icing sweet roll I love.
-	
-	Jelly chocolate bar dessert. I LOVE bear claw Jelly jelly-o icing. Chocolate bar wafer pudding macaroon tart Jelly-o lemon drops brownie. Jelly beans cookie cookie.
- */
