@@ -1,0 +1,1 @@
+pravd=logncdf(4,2,3)-logncdf(2,2,3)
