@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+}
+html, body {
+  height: 100%;
+  max-width: 1024px;
+  margin: auto;
+}
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px; 
+}
+.page-wrap:after {
+  content: "";
+  display: block;
+}
+.site-footer, .page-wrap:after {
+  height: 142px; 
+}
+.site-footer {
+  background: white;
+}
+
+#zahlavi h1,address{
+	display: inline;
+	height: 60px;
+	background-color: #D0D0D0;
+	color: black;
+	display: block;
+	padding: 0% 1% 0% 1%;
+}
+#zahlavi h1 {
+	font-size: 200%;
+	font-weight: bold;
+	text-align: left;
+	float: left;
+	width: 88%;
+}
+#zahlavi address {
+	width: 8%;
+	float: right;
+	text-align: right;
+	/*display: inline-block;
+	clear: none;*/
+}
+#novinky div h2 {
+	color: #D3D3D3;
+}
+#zapati{
+	background-color: grey;
+}
+#obsah{
+	margin-left: 200px;
+	clear: right;
+	font-size: 125%;
+}
+#obsah h1{
+	padding: 1% 0%;
+}
+#obsah>p {
+	padding: 0% 0% 1% 0%;
+}
+#menu{
+	left: 5px;
+	top: 5px;
+	width: 180px;
+	padding: 5px;
+	float: left;
+	clear: both;
+}
+.submenu{
+	display: block;
+	background-color: #D0D0D0;
+}
+#novinky{
+	float: right;
+	width: 200px;
+	display: block;
+	border: 1px solid black;
+	font-size: 75%;
+	text-align: center;
+	text-decoration: none;
+	margin: 0.5em
+}
+*.clr{
+	clear: both;
+}
+#obsah{
+	float: none;
+}
