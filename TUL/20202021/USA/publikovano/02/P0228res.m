@@ -1,3 +1,6 @@
+clear all
+clc
+
 %Bayesova vìta
 %prvni støelec 0.3* 1/3
 %druhý støelec 0.5* 1/3

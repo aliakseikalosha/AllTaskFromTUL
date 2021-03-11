@@ -1,3 +1,6 @@
+clear all
+clc
+
 % vzorec pro výpoèet
 %(M nad m)*(N-M nad n-m)/(N nad n)
 

@@ -1,4 +1,4 @@
-vstup=importdata('S0104.xlsx')
+vstup=importdata('P0323.xlsx')
 %výsledky ve formì struktury, vstupy jsou uloženy jako data a dále v listu1
 x=vstup.data.List1(:,1);
 

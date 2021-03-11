@@ -1,3 +1,6 @@
+clear all
+clc
+
 znamka=[1,2,3,4,5];
 student=[4,16,25,10,80-4-16-25-10];
 %tvorba sloupcových grafù

@@ -1,3 +1,6 @@
+clear all
+clc
+
 OK=0.6;
 KO=0.4;
 %OKOK - OK výrobek, OK kontrola

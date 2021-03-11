@@ -1,3 +1,6 @@
+clear all
+clc
+
 vstup=importdata('P0308.xlsx')
 %výsledky ve formì struktury, vstupy jsou uloženy jako data a dále v listu1
 x=vstup.data.List1(1,:);

@@ -1,21 +1,34 @@
-x=sym('x');
+clear all
+clc
+
+syms x;
 F=(x^3)/8;
+%kontrola limit na okrajích intervalu
+limit(F,0);
+limit(F,2);
+
+%hustota pravděpodobnosti
 f=diff(F)
 
-strhod=int(x*f,0,2)
-rozptyl=int((x-strhod)^2*f,0,2)
+%střední hodnota a rozptyl
+strhod=int(x.*f,0,2)
+rozptyl=int((x-strhod).^2.*f,0,2)
 
-x=0;
-x00=(x^3)/8;
-x=0.5;
-x05=(x^3)/8;
+%a)
+x=0.0;
+F00=(x^3)/8;
 x=1;
-x10=(x^3)/8;
-x=1.5;
-x15=(x^3)/8;
-x=2;
-x20=(x^3)/8;
+F10=(x^3)/8;
+Pa=F10-F00
 
-a=x10-x00
-b=x15-x05
-c=(x10-x00)+(x20-x15)
+%b)
+x=0.5;
+F05=(x^3)/8;
+x=1.5;
+F15=(x^3)/8;
+Pb=F15-F05
+
+%c
+x=2;
+F20=(x^3)/8;
+Pc=(F10-F00)+(F20-F15)

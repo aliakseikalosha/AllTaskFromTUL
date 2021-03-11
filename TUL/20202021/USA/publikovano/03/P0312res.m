@@ -1,3 +1,6 @@
+clear all
+clc
+
 %otevøe data uložená v souboru
 data=importdata('P0312.mat');
 x=data(:,1);
@@ -20,6 +23,7 @@ title('distribuèní funkce vektoru x+y');
 xlabel('data');
 ylabel('distribuèní funkce');
 
+%.* pøedstavuje skalární násobení. Jinak je maticové
 z=x.*y;
 zsetr=sort(z);
 subplot(2,2,3)
@@ -34,5 +38,5 @@ zsetr=log10(zsetr);
 subplot(2,2,4)
 plot(zsetr,a)
 title('distribuèní funkce vektoru x/y, vodorovná osa v log souøadnicích');
-xlabel('data');
+xlabel('logaritmus z dat');
 ylabel('distribuèní funkce');

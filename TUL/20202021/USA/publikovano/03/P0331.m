@@ -1,4 +1,7 @@
-savefile='S0112.mat';
+clear all
+clc
+
+savefile='P0331.mat';
 %normální rozdìlení støední hodnota 1000, rozptyl 16000
 x=normrnd(1000,100,200,1);
 save(savefile,'x');

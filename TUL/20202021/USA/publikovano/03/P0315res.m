@@ -1,9 +1,10 @@
-x=sym('x');
-a=sym('a');
-b=sym('b');
+clear all
+clc
+
+syms x a b
 
 f=1/(b-a);
-strhod=int(x*f,a,b)
+strhod=int(x.*f,a,b)
 rozptyl=int((x-strhod).^2.*f,a,b)
 smerodch=sqrt(rozptyl)
 

@@ -1,3 +1,6 @@
+clear all
+clc
+
 %plocha ètverce
 S1=3*3;
 %plocha kružnice

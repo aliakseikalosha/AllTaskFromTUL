@@ -1,3 +1,6 @@
+clear all
+clc
+
 PA=0.3;
 PB=0.2;
 %jaká je pravdìpodobnost, že vyhraje bìžec B za podmínky že nevyhraje bìžec

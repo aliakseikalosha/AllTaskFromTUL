@@ -6,12 +6,19 @@
 %perlivých              M=6
 %vybráno perlivých      m=volitelné
 
+%a)
+%první souèin je ze šestice perlivých chceme vybrat trojici
+%druhý souèin je ze ètyø neperlivých chceme vybrat právì 0
+%jmenovatel z deseti celkem chceme vybrat trojici
 a=nchoosek(6,3)*nchoosek(10-6,3-3)/nchoosek(10,3)
-b=nchoosek(6,2)*nchoosek(10-6,3-2)/nchoosek(10,3)
 
-d=0;
+%b)
+b=nchoosek(6,1)*nchoosek(10-6,3-1)/nchoosek(10,3)
+
+%d)
+d=0
 for i=0:3
-    d=d+nchoosek(6,i)*nchoosek(10-6,3-i)/nchoosek(10,3);
+    d(i+1)=nchoosek(6,i)*nchoosek(10-6,3-i)/nchoosek(10,3);
 end
 d
     

@@ -1,0 +1,12 @@
+clear all
+clc
+
+P1=0.8;
+P2=0.1;
+P3=0.1;
+
+P1OK=0.8;
+P2OK=0.6;
+P3OK=0.3;
+
+P=P1*P1OK+P2*P2OK+P3*P3OK
