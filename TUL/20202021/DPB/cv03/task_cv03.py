@@ -21,7 +21,7 @@ def load_persons(path):
 
 def text_analysis(path):
     f = open(path, "r")
-    words = f.read().split()
+    words = f.read().replace("\n", " ").split()
     f.close()
     symbols_count = {}
     words_count = {}
@@ -30,7 +30,7 @@ def text_analysis(path):
         return dict(sorted(dic.items(), key=lambda item: item[1], reverse=reverse))
 
     for word in words:
-        clean_word = "".join([c for c in word if c.isalpha()])
+        clean_word = "".join([c for c in list(word.lower()) if c.isalpha()])
         for char in clean_word:
             if char not in symbols_count:
                 symbols_count[char] = 0
@@ -49,7 +49,7 @@ def get_words(n, m, corpus):
     for data in corpus.items():
         if n > 0 and len(data[0]) >= m:
             n -= 1
-            words.append(data[0])
+            words.append(data)
         elif n == 0:
             break
     return words
