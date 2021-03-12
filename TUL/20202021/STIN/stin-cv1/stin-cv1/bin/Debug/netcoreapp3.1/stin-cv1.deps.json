@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "stin-cv1/1.0.0": {
+        "runtime": {
+          "stin-cv1.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "stin-cv1/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

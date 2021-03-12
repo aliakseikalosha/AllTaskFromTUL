@@ -1,0 +1,13 @@
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.exe
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.deps.json
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.runtimeconfig.json
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.runtimeconfig.dev.json
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\bin\Debug\netcoreapp3.1\stin-cv1.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.csprojAssemblyReference.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.AssemblyInfoInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.AssemblyInfo.cs
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.csproj.CoreCompileInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\STIN\stin-cv1\stin-cv1\obj\Debug\netcoreapp3.1\stin-cv1.genruntimeconfig.cache
