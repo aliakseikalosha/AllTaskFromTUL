@@ -1,0 +1,15 @@
+﻿"Symbol";"Value";"Unit";
+"TraceParts.PartNumber";"10-05022013-114070";"";
+"TraceParts.ClassPath";"RS_COMPONENTS:/F_RS_COMPONENTS/PSSS_435563/PSS_435835/PSF_435861/10-05022013-114070";"";
+"TIMESTAMP";"25/10/2013 09:34";"";
+"TraceParts.InstanceId";"10-05022013-1140704JUF08LHP5UX1E7RZ9HAO0FPC";"";
+"REFERENCE";"RE7008/18+GASKET";"";
+"DESIGN";"ABS,unscreened,grey,case,220x145x80";"";
+"SUPPLIER";"CamdenBoss";"";
+"RS_STOCK_NUMBER";"4986908";"";
+"TraceParts.PartLanguage";"en";"";
+"TraceParts.PartStatus";"Published";"";
+"REVISION";"A";"";
+"TRACEPARTS";"TRACEPARTS";"";
+"TraceParts.PartTitle";"ABS,unscreened,grey,case,220x145x80";"";
+"TraceParts.PartVersion";"1.0.5";"";

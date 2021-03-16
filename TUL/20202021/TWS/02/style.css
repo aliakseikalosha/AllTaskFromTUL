@@ -48,26 +48,48 @@ html, body {
 	color: #D3D3D3;
 }
 #zapati{
-	background-color: grey;
+	background-color: #D0D0D0;
 }
 #obsah{
 	margin-left: 200px;
 	clear: right;
-	font-size: 125%;
 }
 #obsah h1{
-	padding: 1% 0%;
+	font-size: 200%;
+	padding: 2% 0%;
 }
 #obsah>p {
+	font-size: 125%;
 	padding: 0% 0% 1% 0%;
 }
 #menu{
-	left: 5px;
+	left: 0px;
 	top: 5px;
 	width: 180px;
-	padding: 5px;
+	padding: 8px 0px;
 	float: left;
 	clear: both;
+}
+a { 
+	text-decoration: none;
+  	font-weight: bold;
+  	font-size: 120%;
+ }
+#menu  ul {
+  list-style-type: none;
+  text-decoration: none;
+  margin: 0;
+  padding: 0;
+}
+#menu  li {
+  padding: -20px 0px 8px 0px;
+  margin-bottom: 8px;
+  margin-left: 0px;
+  background-color: #D0D0D0;
+  color: #ffffff;
+}
+#menu li:hover {
+  background-color: #C9C9C9;
 }
 .submenu{
 	display: block;
