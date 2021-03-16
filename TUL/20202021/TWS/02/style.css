@@ -25,7 +25,7 @@ html, body {
 #zahlavi h1,address{
 	display: inline;
 	height: 60px;
-	background-color: #D0D0D0;
+	background-color: #F0F0F0;
 	color: black;
 	display: block;
 	padding: 0% 1% 0% 1%;
@@ -41,15 +41,14 @@ html, body {
 	width: 8%;
 	float: right;
 	text-align: right;
-	/*display: inline-block;
-	clear: none;*/
 }
 #novinky div h2 {
 	color: #D3D3D3;
 }
 #zapati{
-	background-color: #D0D0D0;
+	background-color: #F0F0F0;
 }
+/*obsah*/
 #obsah{
 	margin-left: 200px;
 	clear: right;
@@ -62,6 +61,24 @@ html, body {
 	font-size: 125%;
 	padding: 0% 0% 1% 0%;
 }
+#obsah{
+	float: none;
+}
+#novinky{
+	float: right;
+	width: 200px;
+	display: block;
+	border: 1px solid black;
+	font-size: 75%;
+	text-align: left;
+	text-decoration: none;
+	margin: 0.5em;
+	padding: 0.5em;
+}
+*.clr{
+	clear: both;
+}
+/*menu*/
 #menu{
 	left: 0px;
 	top: 5px;
@@ -70,44 +87,34 @@ html, body {
 	float: left;
 	clear: both;
 }
-a { 
-	text-decoration: none;
-  	font-weight: bold;
-  	font-size: 120%;
- }
-#menu  ul {
-  list-style-type: none;
-  text-decoration: none;
-  margin: 0;
-  padding: 0;
+
+#menu ul {
+	list-style: none;
+	margin: 0; 
+	padding: 0;
 }
-#menu  li {
-  padding: -20px 0px 8px 0px;
-  margin-bottom: 8px;
-  margin-left: 0px;
-  background-color: #D0D0D0;
-  color: #ffffff;
+#menu li {
+  	position: relative;
+	padding: 1px 0px;  
+}
+#menu li a {
+	display: block;
+	background: #D0D0D0;
+	text-decoration: none;
+	font-weight: bold;
 }
 #menu li:hover {
   background-color: #C9C9C9;
 }
-.submenu{
-	display: block;
-	background-color: #D0D0D0;
+
+#menu li ul {
+  	display: none;
+	position: absolute;
+	top: 0;
+	left: 180px;
+	width: 180px;
 }
-#novinky{
-	float: right;
-	width: 200px;
-	display: block;
-	border: 1px solid black;
-	font-size: 75%;
-	text-align: center;
-	text-decoration: none;
-	margin: 0.5em
-}
-*.clr{
-	clear: both;
-}
-#obsah{
-	float: none;
+
+#menu li:hover ul {
+  display: block;
 }
