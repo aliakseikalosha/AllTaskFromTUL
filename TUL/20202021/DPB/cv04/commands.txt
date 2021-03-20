@@ -1,0 +1,31 @@
+db.restaurants.find()
+db.restaurants.find({},{'name':1,'_id':0}).sort({'name':1})
+db.restaurants.find({},{'name':1,'_id':0}).sort({'name':1}).limit(10)
+db.restaurants.find({},{'name':1,'_id':0}).sort({'name':1}).skip(10).limit(10)
+db.restaurants.find({"borough":"Bronx"})
+db.restaurants.find({"name":"Bronx"})
+db.restaurants.find({name:/^M/},{'name':1,'_id':0})
+db.restaurants.find({"grades.score":{$gte:80}})
+db.restaurants.find({ grades:{ $elemMatch:{ score:{$gte:80,$lte:90} } } })
+
+
+db.restaurants.insertOne(
+{
+  "address" : {
+    "building" : "11",
+    "coord" : [
+      -74.0163792,
+      40.7167672
+    ],
+    "street" : "Hudson River",
+    "zipcode" : "10282"
+  },
+  "borough" : "Manhattan",
+  "cuisine" : "American ",
+  "grades" : [ ],
+  "name" : "Generic Cafe",
+  "restaurant_id" : "99756344"
+})
+db.restaurants.find(ObjectId("605642199acf88b67ac86033"))
+db.restaurants.updateOne(ObjectId("605642199acf88b67ac86033"),{$set:{name:"Something New"}})
+db.restaurants.updateOne({"_id":ObjectId("605642199acf88b67ac86033")},{$set:{name:"Something New"}})
