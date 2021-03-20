@@ -1,5 +1,3 @@
-x=[30,70,120,180,230,290,320,360,430,510];
-E=expfit(x)
-W=wblfit(x)
-probplot('exponential',x)
-%wblplot(x)
+savefile='P0521a.mat';
+x=exprnd(250,100,1);
+save(savefile,'x');

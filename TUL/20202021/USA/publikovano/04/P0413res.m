@@ -1,3 +1,6 @@
+clear all
+clc
+
 %pravdìpodobnost nepadnutí 6 je 5/6
 %pravdìpodobnost padnutí 6 je 1/6
 %geometrické rozdìlení
