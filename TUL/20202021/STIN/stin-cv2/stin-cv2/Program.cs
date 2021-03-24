@@ -8,7 +8,12 @@ namespace stin_cv2
     {
         private static readonly string collumsData = "typ;vyrobce;cena;vaha;sirka;vyska;hloubka";
         private static readonly string data = "mycka;Samsung;9800;35;60;120;48\nlednice;Gorenje;12000;65;55;200;50\nmikrovlnna trouba;Elektorlux;2200;10;40;35;40\nsvetlo;Lumen;1250;2;30;15;10";
-
+        /// <summary>
+        /// Create order from data
+        /// </summary>
+        /// <param name="name">of a order</param>
+        /// <param name="itemsCounts">pair of index in data, and tax ammount</param>
+        /// <returns></returns>
         private static Order CreateOrder(string name, Dictionary<int, int> itemsCounts)
         {
             var cols = collumsData.Split(';');
@@ -21,7 +26,11 @@ namespace stin_cv2
             }
             return new Order(name, list);
         }
-
+        /// <summary>
+        /// Calculate final taxetion of a item
+        /// </summary>
+        /// <param name="item">to calulate from</param>
+        /// <returns></returns>
         private static double CalculateTax(Item item)
         {
             double tax = item.Tax * 5;
@@ -42,7 +51,10 @@ namespace stin_cv2
             }
             return tax;
         }
-
+        /// <summary>
+        /// Print order to console 
+        /// </summary>
+        /// <param name="order"> will be printed</param>
         private static void PrintOrder(Order order)
         {
             Console.WriteLine($" {order.Name}");

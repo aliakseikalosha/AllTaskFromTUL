@@ -4,18 +4,31 @@ namespace stin_cv2
 {
     public static class DataHelper
     {
-        public static int IndexOf<T>(this T[] collums, T collumName) where T : IComparable
+        /// <summary>
+        /// Return -1 if element not found in array or index of this element
+        /// </summary>
+        /// <typeparam name="T">type of elements in array</typeparam>
+        /// <param name="array">array of elements</param>
+        /// <param name="element">to search for</param>
+        /// <returns></returns>
+        public static int IndexOf<T>(this T[] array, T element) where T : IComparable
         {
-            for (int i = 0; i < collums.Length; i++)
+            for (int i = 0; i < array.Length; i++)
             {
-                if (collums[i].Equals(collumName))
+                if (array[i].Equals(element))
                 {
                     return i;
                 }
             }
             return -1;
         }
-
+        /// <summary>
+        /// Convert raw data of Item
+        /// </summary>
+        /// <param name="text">string with Item description</param>
+        /// <param name="colums">array of collum names in same order they are in text</param>
+        /// <param name="tax">Ammount of tax for this Item</param>
+        /// <returns></returns>
         public static Item ParseItem(string text, string[] colums, int tax)
         {
             var data = text.Split(';');

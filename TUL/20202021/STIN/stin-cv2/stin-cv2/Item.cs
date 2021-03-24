@@ -13,7 +13,9 @@ namespace stin_cv2
         public string Type { get; private set; }
 
         public int Tax { get; private set; }
-
+        /// <summary>
+        /// Biggest dimentions of an Item
+        /// </summary>
         public int MaxDimention => Math.Max(Math.Max(Width, Height), Deep);
 
         public Item(int width, int height, int weight, int deep, int price, string producedBy, string type, int tax)

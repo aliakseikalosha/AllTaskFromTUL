@@ -1,5 +1,8 @@
 ﻿namespace stin_cv2
 {
+    /// <summary>
+    /// Strings used in Item pars from raw data
+    /// </summary>
     public static class CategoryName
     {
         public readonly static string Weight = "vaha";
