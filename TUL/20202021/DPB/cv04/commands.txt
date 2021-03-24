@@ -27,5 +27,5 @@ db.restaurants.insertOne(
   "restaurant_id" : "99756344"
 })
 db.restaurants.find(ObjectId("605642199acf88b67ac86033"))
-db.restaurants.updateOne(ObjectId("605642199acf88b67ac86033"),{$set:{name:"Something New"}})
 db.restaurants.updateOne({"_id":ObjectId("605642199acf88b67ac86033")},{$set:{name:"Something New"}})
+db.restaurants.deleteOne({"_id":ObjectId("605642199acf88b67ac86033")})

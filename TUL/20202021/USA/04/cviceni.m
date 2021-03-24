@@ -1,0 +1,32 @@
+clc;clear all
+%405
+binopdf(2,5,0.5)
+binopdf(4,5,0.5)
+binopdf(5,5,0.5)
+binopdf(5,5,0.5)+binopdf(4,5,0.5)
+1-binocdf(3.5,5,0.5)
+binopdf(2,1000,1/13983816)
+%405b
+%a
+binopdf(3,5,.8)
+%b
+1-binocdf(2.5,5,0.8)
+%407
+binopdf(7,7,0.49)
+%408a
+binopdf(4,7,8/32) * 4/32
+%409
+hygepdf(2,32,4,3)
+binopdf(2,3,4/32)
+%412
+hygepdf(8,32,16,10)
+binopdf(8,10,16/32)
+%413
+geopdf(4,1/10)
+geocdf(3,1/10)
+%415a
+nbinpdf(7,3,0.35)
+1-nbincdf(6,3,0.35)
+%415b
+binopdf(8,10,0.5)
+mnpdf([2,3,2,1,2],[4/32,4/32,4/32,4/32,16/32])
