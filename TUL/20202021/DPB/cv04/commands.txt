@@ -8,7 +8,6 @@ db.restaurants.find({name:/^M/},{'name':1,'_id':0})
 db.restaurants.find({"grades.score":{$gte:80}})
 db.restaurants.find({ grades:{ $elemMatch:{ score:{$gte:80,$lte:90} } } })
 
-
 db.restaurants.insertOne(
 {
   "address" : {
