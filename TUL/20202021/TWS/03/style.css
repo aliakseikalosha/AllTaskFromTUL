@@ -1,0 +1,16 @@
+
+#prvni tr:nth-child(even){
+	background-color: #DDD;
+}
+#druha tr th,#druha tr td:nth-child(1){
+	background-color: #CCC;
+}
+#treti .lichy{
+	background-color: #FFF;
+}
+#treti .sudy{
+	background-color: #DDD;
+}
+#ctvrta tr td {
+	text-align:center;
+}
