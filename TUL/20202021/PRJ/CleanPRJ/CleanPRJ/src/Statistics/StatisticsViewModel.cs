@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microcharts;
+using SkiaSharp;
 
 namespace CleanPRJ.Statistics
 {
@@ -22,8 +23,18 @@ namespace CleanPRJ.Statistics
             for (int i = 0; i < n; i++)
             {
                 charge = Math.Max(0, Math.Min(100, charge + rnd.Next(-4, +1)));
-                BatteryCharge.Add(new ChartEntry(charge));
-                RideDistance.Add(new ChartEntry((float)rnd.NextDouble() * 100));
+                BatteryCharge.Add(new ChartEntry(charge)
+                {
+                    Label = "UWP",
+                    ValueLabel = "112",
+                    Color = SKColor.Parse("#2c3e50")
+                });
+                RideDistance.Add(new ChartEntry((float)rnd.NextDouble() * 100)
+                {
+                    Label = "UWP",
+                    ValueLabel = "112",
+                    Color = SKColor.Parse("#ccdd50")
+                });
             }
         }
     }
