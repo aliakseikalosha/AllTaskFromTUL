@@ -1,12 +1,25 @@
 <!DOCTYPE HTML>
 <html>
   <head>
-  <meta http-equiv="content-type" content="text/html; charset=windows-1250">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <title></title>
   <link rel="stylesheet" href="style.css" media="screen" type="text/css" />
   
   </head>
   	<body>
-  		
+  		<form>
+			<fieldset>
+				<legend>Údaje:</legend>
+				<label for="name">Jměno:</label>
+				<br>
+				<input type="text" id="name" name="name" placeholder="Jměno" required>
+				<br>
+				<label for="password">Heslo:</label>
+				<br>
+				<input type="password" id="password" name="password" placeholder="Heslo" minlength="8" required>
+				<br><br>
+				<input type="submit" value="Submit">
+			</fieldset>
+		</form> 
 	</body>
 </html>

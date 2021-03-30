@@ -1,4 +1,4 @@
-
+/*úloha 1*/
 #prvni tr:nth-child(even){
 	background-color: #DDD;
 }
@@ -13,4 +13,31 @@
 }
 #ctvrta tr td {
 	text-align:center;
+}
+/*úloha 2*/
+#seznam-nec ul li {
+  	list-style-type: '<';
+  	padding-inline-start: 1ch;
+}
+#seznam-nec ul > ul li{
+  	list-style-type: '>';
+  	padding-inline-start: 1ch;
+}
+#seznam-cis ol { 
+	counter-reset: item;
+}
+#seznam-cis li{ 
+	display: block;
+}
+#seznam-cis ol li:before { 
+	content: counters(item, ".") ". ";
+ 	counter-increment: item;
+}
+#seznam-cis ol>ol li:before { 
+	content: counters(item, ".") " ";
+ 	counter-increment: item;
+}
+/*úloha 3*/
+fieldset{
+	max-width: 150px;
 }
