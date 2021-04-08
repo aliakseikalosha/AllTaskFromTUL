@@ -1,0 +1,35 @@
+GET _search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+PUT /person
+
+POST /person/_doc/100
+{
+  "firstName":"Aliaksei",
+  "lastName":"Kalosha"
+}
+
+GET /person/_doc/100
+
+POST /person/_update/100
+{
+  "doc":{
+    "firstName":"Ljoša",
+    "lastName":"Kaloša"
+  }
+}
+
+GET /person/_search
+{
+  "query": {
+    "match_all": {}
+  }
+}
+
+DELETE /person/_doc/100
+
+DELETE /person
