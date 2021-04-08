@@ -1,25 +1,26 @@
 * {
   margin: 0;
 }
-html, body {
-  height: 100%;
+body {
   max-width: 1024px;
-  margin: auto;
+  margin: 0 auto;
 }
-.page-wrap {
-  min-height: 100%;
-  /* equal to footer height */
-  margin-bottom: -142px; 
+#obal{
+	position: relative;
+	min-height: 100%;
+	margin-bottom: -1em;
 }
-.page-wrap:after {
-  content: "";
-  display: block;
+#obal:after{
+	content: "";
+	display: block;
 }
-.site-footer, .page-wrap:after {
-  height: 142px; 
-}
-.site-footer {
-  background: white;
+#zapati{
+	float: left;
+	position: sticky;
+	bottom: -1px;
+	background-color: #F0F0F0;
+	height: 19px;
+	width: 100%;
 }
 
 #zahlavi h1,address{
@@ -45,13 +46,17 @@ html, body {
 #novinky div h2 {
 	color: #D3D3D3;
 }
-#zapati{
-	background-color: #F0F0F0;
-}
 /*obsah*/
 #obsah{
 	margin-left: 200px;
 	clear: right;
+	float: right;
+	padding-bottom: 1em;
+	position: relative;
+}
+#obsah:after{
+	content: "";
+	display: block;
 }
 #obsah h1{
 	font-size: 200%;

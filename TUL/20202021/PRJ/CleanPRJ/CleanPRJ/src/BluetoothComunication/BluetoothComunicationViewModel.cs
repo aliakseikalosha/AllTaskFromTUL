@@ -38,7 +38,7 @@ namespace CleanPRJ
                 // When the app "sleep", I close the connection with bluetooth
                 if (isConnected)
                  {
-                     DependencyService.Get<IBluetoothReader>().Cancel();
+                     Disconnect();
                  }
              });
 

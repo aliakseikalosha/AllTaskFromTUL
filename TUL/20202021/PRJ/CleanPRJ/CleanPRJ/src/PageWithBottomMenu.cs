@@ -1,6 +1,6 @@
 ﻿using System;
-using CleanPRJ;
-using CleanPRJ.Statistics;
+using CleanPRJ.src;
+using CleanPRJ.src.UI;
 using Xamarin.Forms;
 
 namespace CleanPRJ.MainScreen
@@ -10,32 +10,43 @@ namespace CleanPRJ.MainScreen
     {
         //todo use enum?
         public Action<Type> OnChagePageCliked;
+
         protected abstract void InitUI();
 
         protected StackLayout BottomButtonUI(Type currentScreen)
         {
-            var main = new Button { Text = "MainMenu", IsEnabled = currentScreen != typeof(MainScreenPage), };
-            var statistic = new Button { Text = "Statistics", IsEnabled = currentScreen != typeof(StatisticsPage) };
-            var test = new Button { Text = "CleanPRJ", IsEnabled = currentScreen != typeof(BluetoothComunicationPage) };
-            main.Clicked += (obj, eventData) =>
+            var buttonStackLayout = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { } };
+            foreach (var data in WindowData.ButtonsData)
             {
-                OnChagePageCliked.Invoke(typeof(MainScreenPage));
-            };
-            statistic.Clicked += (obj, eventData) =>
-            {
-                OnChagePageCliked.Invoke(typeof(StatisticsPage));
-            };
-            test.Clicked += (obj, eventData) =>
-            {
-                OnChagePageCliked.Invoke(typeof(BluetoothComunicationPage));
-            };
+                if (data.windowType != currentScreen)
+                {
+                    buttonStackLayout.Children.Add(AddButton(data, currentScreen));
+                }
+            }
             return new StackLayout
             {
                 VerticalOptions = LayoutOptions.EndAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Children = { new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { main, statistic, test } }
+                Children = {
+                    buttonStackLayout
                 }
             };
+        }
+
+        private Button AddButton(ButtonData data, Type currentScreen)
+        {
+            var button = new Button
+            {
+                Text = data.label,
+                IsEnabled = currentScreen != data.windowType,
+                BackgroundColor = WindowData.Current.BackgroundButton,
+                TextColor = WindowData.Current.BackgroundButtonText,
+            };
+            button.Clicked += (obj, eventData) =>
+            {
+                OnChagePageCliked.Invoke(data.windowType);
+            };
+            return button;
         }
 
         protected Frame SmallBlock(string text)
@@ -49,12 +60,12 @@ namespace CleanPRJ.MainScreen
                 BackgroundColor = Color.LightBlue,
                 Padding = 1,
                 HasShadow = true,
-                //Content = new Frame
-                //{
-                //   // BackgroundColor = Color.White,
-                //    CornerRadius = 16,
-                Content = new Label { Text = text, HorizontalTextAlignment = TextAlignment.Center, TextColor = Color.Blue }
-                //}
+                Content = new Label
+                {
+                    Text = text,
+                    HorizontalTextAlignment = TextAlignment.Center,
+                    TextColor = WindowData.Current.BackgroundText
+                }
             };
         }
     }

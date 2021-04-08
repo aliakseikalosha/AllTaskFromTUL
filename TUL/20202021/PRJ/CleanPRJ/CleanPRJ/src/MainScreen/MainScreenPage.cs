@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CleanPRJ.src.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -50,8 +51,7 @@ namespace CleanPRJ.MainScreen
                 Children = { avrgData, chargeData },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };
-            Content = new StackLayout { Children = { sl, BottomButtonUI(typeof(MainScreenPage)) } };
+            Content = new StackLayout { Children = { sl, BottomButtonUI(typeof(MainScreenPage)) }, BackgroundColor = WindowData.Current.Background };
         }
-
     }
 }

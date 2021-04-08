@@ -10,7 +10,7 @@ namespace CleanPRJ
         public BluetoothMessage(DateTime date, string message, MessageState state)
         {
             Date = date;
-            Message = message;
+            Message = message + "\0";
             State = state;
         }
 
