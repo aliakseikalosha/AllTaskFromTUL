@@ -54,12 +54,12 @@ void parseCommand(const uint8_t *data, int length) {
 void parsePhoneCommand(const char *cmd) {
   char data[12];
   memcpy(data, &cmd[2], sizeof(char) * 12);
-  if (isdigit(data[0])) {
-    ui.showCall(data);
-  } else if (data[0] == 'e') {
+  if (data[0] == 'e') {
     ui.hideCall();
   } else if (data[0] == 'm') {
     ui.missCall();
+  } else {
+    ui.showCall(data);
   }
 }
 
