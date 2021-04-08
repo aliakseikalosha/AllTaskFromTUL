@@ -30,13 +30,10 @@ namespace CleanPRJ.Droid
 
         private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();
 
-        const int RequestResolveError = 1000;
-
         public AndroidBluetoothReader()
         {
         }
 
-        #region IBth implementation
 
         /// <summary>
         /// Start the "reading" loop 
@@ -51,7 +48,7 @@ namespace CleanPRJ.Droid
         {
             BluetoothDevice device = null;
             BluetoothAdapter adapter = BluetoothAdapter.DefaultAdapter;
-            BluetoothSocket BthSocket = null;
+            BluetoothSocket socket = null;
 
             //Thread.Sleep(1000);
             cancelToken = new CancellationTokenSource();
@@ -87,21 +84,21 @@ namespace CleanPRJ.Droid
                         UUID uuid = UUID.FromString("00001101-0000-1000-8000-00805f9b34fb");
                         if ((int)Android.OS.Build.VERSION.SdkInt >= 10) // Gingerbread 2.3.3 2.3.4
                         {
-                            BthSocket = device.CreateInsecureRfcommSocketToServiceRecord(uuid);
+                            socket = device.CreateInsecureRfcommSocketToServiceRecord(uuid);
                         }
                         else
                         {
-                            BthSocket = device.CreateRfcommSocketToServiceRecord(uuid);
+                            socket = device.CreateRfcommSocketToServiceRecord(uuid);
                         }
 
-                        if (BthSocket != null)
+                        if (socket != null)
                         {
-                            await BthSocket.ConnectAsync();
+                            await socket.ConnectAsync();
 
-                            if (BthSocket.IsConnected)
+                            if (socket.IsConnected)
                             {
                                 Debug.WriteLine("Connected!");
-                                var mReader = new InputStreamReader(BthSocket.InputStream);
+                                var mReader = new InputStreamReader(socket.InputStream);
                                 var buffer = new BufferedReader(mReader);
 
                                 while (canContinue)
@@ -134,37 +131,44 @@ namespace CleanPRJ.Droid
                                         if (messageText.Length > 0)
                                         {
                                             Debug.WriteLine("Letto: " + messageText);
-                                            AddMessage(new BluetoothMessage(DateTime.Now, messageText,MessageState.Recived));
+                                            AddMessage(new BluetoothMessage(DateTime.Now, messageText, MessageState.Recived));
                                         }
                                         else
                                         {
-                                            Debug.WriteLine("No data");
+                                            //Debug.WriteLine("No data");
                                         }
                                     }
                                     else
                                     {
-                                        Debug.WriteLine("No data to read");
+                                        //Debug.WriteLine("No data to read");
                                         if (toSend.Count > 0)
                                         {
                                             var message = toSend.Peek();
-                                            using (var output = BthSocket.OutputStream)
+                                            var dataToSend = message.Message.ToCharArray().Select(c => (byte)c).ToArray();
+                                            //using (var output = socket.OutputStream)
+                                            //{
+                                            //    var baseOutput = (output as OutputStreamInvoker).BaseOutputStream;
+                                            //    baseOutput.Write(dataToSend, 0, dataToSend.Length);
+                                            //    AddMessage(toSend.Dequeue());
+                                            //    Thread.Sleep(sleepTime);
+                                            //    Debug.WriteLine($"Send {message}");
+                                            //}
+                                            if (socket.OutputStream.CanWrite)
                                             {
-                                                var baseOutput = (output as OutputStreamInvoker).BaseOutputStream;
-                                                var dataToSend = message.Message.ToCharArray().Select(c => (byte)c).ToArray();
-                                                baseOutput.Write(dataToSend, 0, dataToSend.Length);
+                                                await socket.OutputStream.WriteAsync(dataToSend, 0, dataToSend.Length);
                                                 AddMessage(toSend.Dequeue());
-                                                Debug.WriteLine($"Send {message}");
+                                                Thread.Sleep(sleepTime);
+                                                Debug.WriteLine($"Send total of {dataToSend.Length} bytes in message {message} ");
                                             }
                                         }
                                         else
                                         {
-                                            Debug.WriteLine("No data to send");
+                                            //Debug.WriteLine("No data to send");
                                         }
                                     }
 
                                     // A little stop to the uneverending thread...
-                                    Thread.Sleep(sleepTime);
-                                    if (!BthSocket.IsConnected)
+                                    if (!socket.IsConnected)
                                     {
                                         throw new Exception("BthSocket.IsConnected = false, Throw exception");
                                     }
@@ -176,7 +180,7 @@ namespace CleanPRJ.Droid
                         }
                         else
                         {
-                            Debug.WriteLine("BthSocket = null");
+                            //Debug.WriteLine("BthSocket = null");
                         }
                     }
 
@@ -189,9 +193,9 @@ namespace CleanPRJ.Droid
 
                 finally
                 {
-                    if (BthSocket != null)
+                    if (socket != null)
                     {
-                        BthSocket.Close();
+                        socket.Close();
                     }
 
                     device = null;
@@ -223,8 +227,8 @@ namespace CleanPRJ.Droid
 
         public ObservableCollection<string> PairedDevices()
         {
-            BluetoothAdapter adapter = BluetoothAdapter.DefaultAdapter;
-            ObservableCollection<string> devices = new ObservableCollection<string>();
+            var adapter = BluetoothAdapter.DefaultAdapter;
+            var devices = new ObservableCollection<string>();
 
             foreach (var bd in adapter.BondedDevices)
             {
@@ -239,7 +243,5 @@ namespace CleanPRJ.Droid
             toSend.Enqueue(message);
         }
 
-
-        #endregion
     }
 }
