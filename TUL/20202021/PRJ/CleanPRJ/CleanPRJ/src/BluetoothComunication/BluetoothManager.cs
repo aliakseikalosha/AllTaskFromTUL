@@ -31,7 +31,7 @@ namespace CleanPRJ.src.BluetoothComunication
             {
                 if (isConnected)
                 {
-                    Disconnect();
+                //    Disconnect();
                 }
             });
 
@@ -39,7 +39,7 @@ namespace CleanPRJ.src.BluetoothComunication
             {
                 if (isConnected)
                 {
-                    bluetooth.Start(SelectedDevice, sleepTime, true);
+                //    bluetooth.Start(SelectedDevice, sleepTime, true);
                 }
             });
 

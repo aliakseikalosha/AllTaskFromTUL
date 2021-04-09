@@ -10,7 +10,7 @@ namespace CleanPRJ.src.PhoneCall
     {
         public void StartCallPhoneNumber(string number)
         {
-            BluetoothManager.I.Send($"T:{(number.Length > 0 ? number.Substring(1) : "999999999999")}\0\0");
+            BluetoothManager.I.Send($"T:{(number.Length > 0 ? number.Substring(1) : "999999999999")}\0");
         }
 
         public void EndCallPhoneNumber()
