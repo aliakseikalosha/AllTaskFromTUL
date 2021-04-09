@@ -36,7 +36,7 @@ void parseCommand(const uint8_t *data, int length) {
   }
   pc.printf("\nlength %d\n", length);
   if (length != BUFFER_READ_SIZE) {
-    return;
+    // return;
   }
   char type = data[0];
   switch (type) {
@@ -52,14 +52,12 @@ void parseCommand(const uint8_t *data, int length) {
 }
 
 void parsePhoneCommand(const char *cmd) {
-  char data[12];
-  memcpy(data, &cmd[2], sizeof(char) * 12);
-  if (data[0] == 'e') {
+  if (cmd[2] == 'e') {
     ui.hideCall();
-  } else if (data[0] == 'm') {
+  } else if (cmd[2] == 'm') {
     ui.missCall();
   } else {
-    ui.showCall(data);
+    ui.showCall((char *)&cmd[2]);
   }
 }
 
@@ -75,7 +73,11 @@ int main() {
   int counter = 0;
   while (1) {
     dataTransfer.update();
-    ui.update(motoState);
+    if (counter > 20000) {
+      ui.update(motoState);
+      counter = 0;
+    }
+    counter++;
     /*
     // battery test
     if (motoState.batteryCharge > 0) {

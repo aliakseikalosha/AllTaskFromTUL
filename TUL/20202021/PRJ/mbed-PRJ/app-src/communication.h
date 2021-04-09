@@ -63,7 +63,7 @@ void SerialCom::update() {
   static long count = 0;
   static int recived = 0;
   if (transfer->readable()) { // todo remove after use of attach
-    transfer->read((uint8_t *)readBuffer, sizeof(readBuffer),
+    transfer->read((uint8_t *)readBuffer, (BUFFER_READ_SIZE - 1) * sizeof(char),
                    &readDataBluetooth);
   }
   if (newData) {
@@ -75,13 +75,17 @@ void SerialCom::update() {
   __enable_irq(); // enable interrupt
   send((uint8_t *)data, sizeof(uint8_t) * recived);
   */
-
-    recived = BUFFER_READ_SIZE;
-    memcpy(data, readBuffer, recived);
-    send((uint8_t *)data, sizeof(uint8_t) * recived);
     if (onRecivedCommand != nullptr) {
-      onRecivedCommand((uint8_t *)data, recived);
+      onRecivedCommand((uint8_t *)readBuffer, BUFFER_READ_SIZE);
     }
+    /*
+        recived = BUFFER_READ_SIZE;
+        memcpy(data, readBuffer, recived);
+        send((uint8_t *)data, sizeof(uint8_t) * recived);
+        if (onRecivedCommand != nullptr) {
+          onRecivedCommand((uint8_t *)data, recived);
+        }
+    */
     newData = false;
   }
   /*//Test sent to show that is still alive
