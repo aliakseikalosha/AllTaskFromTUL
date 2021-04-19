@@ -30,19 +30,7 @@ protected:
   static void readDataBluetooth(int indx = 0);
 };
 
-void SerialCom::readDataBluetooth(int indx) {
-  newData = true;
-  /*
-  while (transfer->readable()) {
-    readBuffer[bufferIndex++] = transfer->getc();
-    if (bufferIndex == BUFFER_READ_SIZE) {
-      bufferIndex = 0; // OVERFLOW
-    }
-    readBuffer[bufferIndex] = '\0';
-  }
-  newData = true;
-  */
-}
+void SerialCom::readDataBluetooth(int indx) { newData = true; }
 
 void SerialCom::init() {
   transfer->baud(BAUD_SPEED);
@@ -78,27 +66,6 @@ void SerialCom::update() {
     if (onRecivedCommand != nullptr) {
       onRecivedCommand((uint8_t *)readBuffer, BUFFER_READ_SIZE);
     }
-    /*
-        recived = BUFFER_READ_SIZE;
-        memcpy(data, readBuffer, recived);
-        send((uint8_t *)data, sizeof(uint8_t) * recived);
-        if (onRecivedCommand != nullptr) {
-          onRecivedCommand((uint8_t *)data, recived);
-        }
-    */
     newData = false;
   }
-  /*//Test sent to show that is still alive
-    if (count > 1000000) {
-    //debugTransfer->putc('N');
-    //debugTransfer->putc('\n');
-    //transfer->putc('w');
-    //transfer->putc('\n');
-    //transfer->putc('\0');
-    transfer->write((uint8_t*)"haha",sizeof(char)*4,nullptr);
-    debugTransfer->write((uint8_t*)"haha",sizeof(char)*4,nullptr);
-    count = 0;
-  }
-  count++;
-  */
 }
