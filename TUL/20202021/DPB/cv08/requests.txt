@@ -1,0 +1,98 @@
+GET _cat/indices
+#1
+GET /products/_search
+{
+  "query": {
+    "term": {
+      "name": {
+        "value": "coffee"
+      }
+    }
+  }
+}
+#2
+GET /products/_search
+{
+  "query": {
+    "fuzzy": {
+      "name": {
+      "value": "coffee",
+      "fuzziness": 1
+      }
+    }
+  }
+}
+#My už začiname dostavat slova,jako "Toffee", které nepotrebujem a při dalším zvyšení fuzziness mužem se dostat na uplně špatné vysledky. 
+
+#3
+GET /products/_search
+{
+  "query": {
+    "match_phrase": {
+          "tags": "Coffee"
+    }
+  }
+}
+# Ano, první dotaz nenajde Lid Coffeecup 12oz D9542b protože "coffeecup" != "coffee"
+#4
+GET /products/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"match_phrase": {
+          "tags": "Coffee"
+        }},
+        {"range": {
+          "in_stock": {
+            "lte": 10
+          }
+        }
+        }
+      ]
+    }
+  }
+}
+#5
+GET /products/_search
+{
+  "query": {
+    "bool": {
+      "must": [
+        {"term": {
+          "name": {
+            "value": "coffee"
+          }
+        }}
+      ],
+      "must_not": [
+        {"term": {
+          "name": {
+            "value": "cup"
+          }
+        }}
+      ]
+    }
+  }
+}
+#6
+GET /recipes/_search
+{
+  "query":{
+    "bool": {
+      "should": [
+        {"term": {"title": "fusilli"}},
+        {"term": {"description": "fusilli"}},
+        {"term": {"ingredients.name": "fusilli"}},
+        {"term": {"steps": "fusilli"}}
+      ]
+    }
+  }
+}
+
+#7
+GET /products/_search?q=co*
+{
+"_source": "name", 
+"size": 5
+}

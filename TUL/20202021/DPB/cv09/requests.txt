@@ -1,0 +1,174 @@
+#map
+#1
+PUT /orders-new
+{
+  "mappings": {
+    "properties": {
+      "order_date":{
+        "type": "date"
+      },
+      "status":{
+        "type":"keyword"
+      },
+      "client":{
+        "type": "object",
+        "properties": {
+          "id":{
+            "type":"integer"
+          }
+        }
+      },
+      "goods":{
+        "type": "nested",
+        "properties": {
+          "product_id":{
+            "type":"text"
+          },
+          "amount": {
+            "type":"double"
+          },
+          "quantity":{
+            "type":"short"
+          }
+        }
+      }
+    }
+  }
+}
+#2
+PUT /orders-new/_doc/1
+{
+  "order_date":"2020-01-01",
+  "status":"shiping",
+  "client":{"id":11},
+  "goods":[
+    {
+      "id":"NHop1XgBnLnQJyNgeBJs",
+      "amount":1.1,
+      "quantity":9
+    }, 
+    {
+      "id":"Jnop1XgBnLnQJyNgeA1o",
+      "amount":1,
+      "quantity":2
+    },
+    {
+      "id":"9Hop1XgBnLnQJyNgeA1p",
+      "amount":10,
+      "quantity":7
+    }
+  ]
+}
+#agregace
+#1
+GET /products/_search
+{
+  "size": 0,
+  "aggs": {
+    "max_price": {
+      "max": {
+        "field": "price"
+      }
+    },
+    "min_price": {
+      "min": {
+        "field": "price"
+      }
+    },
+    "avg_price": {
+      "avg": {
+        "field": "price"
+      }
+    }
+  }
+}
+#2
+GET /products/_search
+{
+  "size": 0,
+  "aggs": {
+    "sold_stat": {
+      "stats": {
+        "field": "sold"
+      }
+    }
+  }
+}
+GET /products/_search
+{
+  "sort": [
+    {
+      "sold": {
+        "order": "desc"
+      }
+    }
+  ],
+  "size": 1
+}
+#3
+GET /products/_search
+{
+  "size": 0, 
+  "aggs": {
+    "tags_terms": {
+      "terms": {
+        "field": "tags",
+        "missing": "NONE"
+      }
+    }
+  }
+}
+#4
+GET /products/_search
+{
+  "size": 0, 
+  "aggs": {
+    "tags_terms": {
+      "terms": {
+        "field": "tags",
+        "missing": "NONE"
+      },
+      "aggs": {
+        "tag_stats": {
+          "stats": {
+            "field": "price"
+          }
+        }
+      }
+    }
+  }
+}
+#5
+GET /products/_search
+{
+  "size": 0, 
+  "aggs": {
+    "tags_terms": {
+      "filters": {
+        "filters": {
+          "Coffee":{ "match" : { "tags" : "Coffee"   }},
+          "Cake":{ "match" : { "tags" : "Cake"   }}
+        }
+      },
+      "aggs": {
+        "tag_stats": {
+          "stats": {
+            "field": "price"
+          }
+        }
+      }
+    }
+  }
+}
+#analyzer
+#1
+POST _analyze
+{
+  "analyzer": "standard",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone. and(2)///[me]"
+}
+POST _analyze
+{
+  "analyzer": "keyword",
+  "text": "The 2 QUICK Brown-Foxes jumped over the lazy dog's bone.  and(2)///[me]"
+}
