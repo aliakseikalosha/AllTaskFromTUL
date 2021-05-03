@@ -6,13 +6,12 @@ using Xamarin.Forms;
 
 namespace CleanPRJ
 {
-    public class BluetoothComunicationPage : PageWithBottomMenu
+    public class BluetoothComunicationPage : ApplicationPage<BluetoothComunicationViewModel>
     {
         private Picker pickerBluetoothDevices = null;
         private Entry entrySleepTime = null;
         private Button connect = null;
         private Button disconnect = null;
-        private BluetoothComunicationViewModel viewModel = null;
         private Entry messageText = null;
 
 
@@ -22,7 +21,7 @@ namespace CleanPRJ
         private IBluetoothReader bluetooth = null;
         public BluetoothComunicationPage(BluetoothComunicationViewModel model)
         {
-            viewModel = model;
+            this.model = model;
             bluetooth = DependencyService.Get<IBluetoothReader>();
             InitUI();
         }
@@ -30,19 +29,19 @@ namespace CleanPRJ
 
         protected override void InitUI()
         {
-            this.BindingContext = viewModel;
+            this.BindingContext = model;
 
             pickerBluetoothDevices = new Picker() { Title = "Select a bluetooth device" };
             pickerBluetoothDevices.SetBinding(Picker.ItemsSourceProperty, "ListOfDevices");
             pickerBluetoothDevices.SelectedIndexChanged += OnSelectedBluetoothDevice;
 
             entrySleepTime = new Entry() { Keyboard = Keyboard.Numeric, Placeholder = "Sleep time" };
-            entrySleepTime.Text = viewModel.SleepTime;
+            entrySleepTime.Text = model.SleepTime;
             entrySleepTime.TextChanged += ChangeSleepTime;
 
             connect = new Button() { Text = "Connect" };
             connect.Clicked += ConnectToSelected;
-            connect.IsEnabled = !viewModel.IsConnectEnabled;
+            connect.IsEnabled = !model.IsConnectEnabled;
 
             disconnect = new Button() { Text = "Disconnect" };
             disconnect.Clicked += DiconnectFromDevice;
@@ -65,7 +64,7 @@ namespace CleanPRJ
                 Children = { pickerBluetoothDevices, entrySleepTime, slButtons, sendStack, messageScroll },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };
-            Content = new StackLayout { Children = { sl, BottomButtonUI(typeof(BluetoothComunicationPage)) } };
+            Content = new StackLayout { Children = { TopLine("Debug Bluetooth"), sl } };
         }
 
         public void UpdateMessage()
@@ -99,27 +98,27 @@ namespace CleanPRJ
 
         private void ChangeSleepTime(object sender, TextChangedEventArgs e)
         {
-            viewModel.SleepTime = entrySleepTime.Text;
+            model.SleepTime = entrySleepTime.Text;
         }
 
         private void DiconnectFromDevice(object sender, EventArgs e)
         {
-            viewModel.Disconnect();
+            model.Disconnect();
             connect.IsEnabled = true;
             disconnect.IsEnabled = false;
         }
 
         private void ConnectToSelected(object sender, EventArgs e)
         {
-            viewModel.Connect();
+            model.Connect();
             connect.IsEnabled = false;
             disconnect.IsEnabled = true;
         }
 
         private void OnSelectedBluetoothDevice(object sender, EventArgs e)
         {
-            viewModel.SelectedBthDevice = (string)((Picker)sender).SelectedItem;
-            connect.IsEnabled = viewModel.IsConnectEnabled;
+            model.SelectedBthDevice = (string)((Picker)sender).SelectedItem;
+            connect.IsEnabled = model.IsConnectEnabled;
         }
 
         protected override bool OnBackButtonPressed()

@@ -2,46 +2,74 @@
 using CleanPRJ.MainScreen;
 using Xamarin.Forms;
 using Microcharts;
-using Microcharts.Forms;
 using CleanPRJ.src.UI;
 
 namespace CleanPRJ.Statistics
 {
-    public class StatisticsPage : PageWithBottomMenu
+    public abstract class StatisticsPage : ApplicationPage<StatisticsViewModel>
     {
-        private StatisticsViewModel model;
-        public StatisticsPage(StatisticsViewModel model)
-        {
-            this.model = model;
-            InitUI();
-        }
-
+        public StatisticsPage(StatisticsViewModel model) : base(model) { }
         protected override void InitUI()
         {
-            var lable = new Label { Text = "Statistics", BackgroundColor = WindowData.Current.Background, TextColor = WindowData.Current.BackgroundText };
+            var battery = GetChartFor<LineChart>(model.BatteryCharge);
+            var distance = GetChartFor<BarChart>(model.RideDistance);
             Content = new StackLayout
             {
                 Children = {
-                    lable,
-                    GetPlotFor(model.BatteryCharge, "Battery Charge"),
-                    GetPlotFor(model.RideDistance, "Distance per Day"),
-                    BottomButtonUI(typeof(StatisticsPage))
+                    Top(),
+                    Chart(),
+                    Desctiption()
                 },
-                BackgroundColor = WindowData.Current.Background,
+                BackgroundColor = WindowData.Current.Background.Background,
             };
         }
+        protected abstract StackLayout Top();
+        protected abstract StackLayout Chart();
+        protected abstract StackLayout Desctiption();
+    }
 
-        private ChartView GetPlotFor(List<ChartEntry> points, string title)
+    public class StaticticsBattery : StatisticsPage
+    {
+        public StaticticsBattery(StatisticsViewModel model) : base(model) { }
+
+        protected override StackLayout Chart()
         {
-            foreach (var point in points)
-            {
-                point.ValueLabel = title;
-            }
-            var chart = new LineChart { Entries = points };
-            return new ChartView
-            {
-                Chart = chart,
-            };
+            var chart = GetViewFor(GetChartFor<LineChart>(model.BatteryCharge), WindowData.ScreenSize.X, WindowData.ScreenSize.X * 3);
+            var scroll = new ScrollView { Content = chart, Orientation = ScrollOrientation.Horizontal };
+            scroll.ScrollToAsync(1000, 0, false);
+            return new StackLayout { Children = { scroll } };
+        }
+
+        protected override StackLayout Desctiption()
+        {
+            return new StackLayout { Children = { } };
+        }
+
+        protected override StackLayout Top()
+        {
+            return TopLine("Battery");
+        }
+    }
+    public class StaticticsDistance : StatisticsPage
+    {
+        public StaticticsDistance(StatisticsViewModel model) : base(model) { }
+
+        protected override StackLayout Chart()
+        {
+            var chart = GetViewFor(GetChartFor<BarChart>(model.RideDistance), WindowData.ScreenSize.X, WindowData.ScreenSize.X * 3);
+            var scroll = new ScrollView { Content = chart, Orientation = ScrollOrientation.Horizontal };
+            scroll.ScrollToAsync(1000, 0, false);
+            return new StackLayout { Children = { scroll } };
+        }
+
+        protected override StackLayout Desctiption()
+        {
+            return new StackLayout { Children = { } };
+        }
+
+        protected override StackLayout Top()
+        {
+            return TopLine("Distance");
         }
     }
 }

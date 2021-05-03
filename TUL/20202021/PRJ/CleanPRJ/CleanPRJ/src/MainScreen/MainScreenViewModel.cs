@@ -1,16 +1,17 @@
-﻿using System;
+﻿using CleanPRJ.src.Data;
+using CleanPRJ.src.UI;
+using Microcharts;
+using SkiaSharp;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CleanPRJ.MainScreen
 {
-    public class MainScreenViewModel
+    public class MainScreenViewModel : IViewModel
     {
-        
-        public float AvrgSpeed { get; protected set; }
-        public float AvrgRideDistance { get; protected set; }
-        public float TotalRideDistance { get; protected set; }
-
-        public float CurrentBatteryCharge { get; protected set; }
-        public DateTime FullyChargedTime { get; private set; }
+        public List<ChartEntry> BatteryCharge { get; internal set; } = new List<ChartEntry>();
+        public List<ChartEntry> RideDistance { get; internal set; } = new List<ChartEntry>();
 
         public MainScreenViewModel()
         {
@@ -19,13 +20,8 @@ namespace CleanPRJ.MainScreen
 
         private void UpdateData()
         {
-            //test data
-            var rnd = new Random();
-            AvrgSpeed = (float)rnd.NextDouble() * 95 + 5;
-            AvrgRideDistance = (float)rnd.NextDouble() * 18 + 2;
-            TotalRideDistance = (float)rnd.NextDouble() * 1000 + AvrgRideDistance;
-            CurrentBatteryCharge = ((float)rnd.NextDouble() * 95 + 5)/100;
-            FullyChargedTime = DateTime.Today.AddHours(rnd.Next(1, 24));
+            BatteryCharge = DataHelper.MockupBateryData.ChargeLevel.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:t}", ValueLabel = $"{c.Data}", Color = SKColor.Parse("#00F000") });
+            RideDistance = DataHelper.MockupTravelData.Distance.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:MM:dd}", ValueLabel = $"{c.Data}", Color = SKColor.Parse(WindowData.Current.ChartColorCode.Random()) });
         }
     }
 }

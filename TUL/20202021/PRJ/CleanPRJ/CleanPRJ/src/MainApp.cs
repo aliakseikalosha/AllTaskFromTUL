@@ -1,19 +1,40 @@
 ﻿using System;
+using System.Linq;
 using CleanPRJ.MainScreen;
 using CleanPRJ.Statistics;
 using Xamarin.Forms;
 
 namespace CleanPRJ
 {
+    public interface IViewModel { }
+    public interface IScreenData
+    {
+        Type ScreenType { get; }
+        ApplicationPage Page { get; }
+    }
+    public class ScreenData<T1> : IScreenData where T1 : IViewModel, new()
+    {
+        public Type ScreenType { get; }
+
+        public ApplicationPage Page { get; }
+
+        public T1 Model;
+        public ScreenData(Func<T1, ApplicationPage> construct, Type screenType)
+        {
+            ScreenType = screenType;
+            Model = new T1();
+            Page = construct(Model);
+        }
+    }
     public class App : Application
     {
-        //add Better Storage Type  for screens
-        private BluetoothComunicationPage bluetoothComunication = null;
-        private BluetoothComunicationViewModel model = null;
-        private MainScreenPage mainScreen = null;
-        private MainScreenViewModel mainScreenModel = null;
-        private StatisticsPage statistics = null;
-        private StatisticsViewModel statisticsModel = null;
+        private IScreenData[] screenDatas = new IScreenData[] {
+            new ScreenData<MainScreenViewModel>((m) => new MainScreenPage(m), typeof(MainScreenPage)),
+            new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
+            new ScreenData<StatisticsViewModel>((m) => new StaticticsBattery(m), typeof(StaticticsBattery)),
+            new ScreenData<StatisticsViewModel>((m) => new StaticticsDistance(m), typeof(StaticticsDistance)),
+            new ScreenData<SettingsVievModel>((m) => new Settings(m), typeof(Settings)),
+        };
         public App()
         {
             InitUI();
@@ -22,38 +43,26 @@ namespace CleanPRJ
 
         private void InitUI()
         {
-            mainScreenModel = new MainScreenViewModel();
-            mainScreen = new MainScreenPage(mainScreenModel);
-            model = new BluetoothComunicationViewModel();
-            bluetoothComunication = new BluetoothComunicationPage(model);
-            statisticsModel = new StatisticsViewModel();
-            statistics = new StatisticsPage(statisticsModel);
-            SubscribeTo(statistics);
-            SubscribeTo(mainScreen);
-            SubscribeTo(bluetoothComunication);
-            MainPage = mainScreen;
+            foreach (var data in screenDatas)
+            {
+                SubscribeTo(data.Page);
+            }
+            ChangePageTo(typeof(MainScreenPage));
         }
 
-        private void SubscribeTo(PageWithBottomMenu page)
+        private ApplicationPage GetPage(Type pageType)
         {
-            page.OnChagePageCliked += OnPageChanged;
+            return screenDatas.First(c => c.ScreenType == pageType).Page;
         }
 
-        private void OnPageChanged(Type pageType)
+        private void SubscribeTo(ApplicationPage page)
         {
-            //todo conver to switch when we will use Enum 
-            if (pageType == typeof(MainScreenPage))
-            {
-                MainPage = mainScreen;
-            }
-            else if (pageType == typeof(StatisticsPage))
-            {
-                MainPage = statistics;
-            }
-            else if (pageType == typeof(BluetoothComunicationPage))
-            {
-                MainPage = bluetoothComunication;
-            }
+            page.OnChangePageCliked += ChangePageTo;
+        }
+
+        private void ChangePageTo(Type pageType)
+        {
+            MainPage = GetPage(pageType);
         }
 
         private void UpdateMessages()
@@ -72,12 +81,12 @@ namespace CleanPRJ
 
         protected override void OnSleep()
         {
-            MessagingCenter.Send<App>(this, "Sleep"); // When app sleep, send a message so I can "Cancel" the connection
+            // MessagingCenter.Send<App>(this, "Sleep");
         }
 
         protected override void OnResume()
         {
-            MessagingCenter.Send<App>(this, "Resume"); // When app resume, send a message so I can "Resume" the connection
+            // MessagingCenter.Send<App>(this, "Resume"); 
         }
     }
 }

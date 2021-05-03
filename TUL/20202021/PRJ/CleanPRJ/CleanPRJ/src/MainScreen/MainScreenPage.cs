@@ -1,57 +1,34 @@
 ﻿using CleanPRJ.src.UI;
+using Microcharts;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CleanPRJ.MainScreen
 {
-    public class MainScreenPage : PageWithBottomMenu
+    public class MainScreenPage : ApplicationPage<MainScreenViewModel>
     {
-        private MainScreenViewModel model;
-
-        public MainScreenPage(MainScreenViewModel model)
-        {
-            this.model = model;
-            InitUI();
-        }
-
+        public MainScreenPage(MainScreenViewModel model) : base(model) { }
         protected override void InitUI()
         {
-            var avrgSpeed = SmallBlock($"Average Speed:\n{model.AvrgSpeed:.00} km/h");
-            var avrgRideDistance = SmallBlock($"Average Ride:\n{model.AvrgSpeed:.00}km");
-            var totalRideDistance = SmallBlock($"Total Ride:\n{model.TotalRideDistance:.0}km");
-
-            var currentCharge = SmallBlock($"Battery charge : {Math.Round(model.CurrentBatteryCharge * 100)}%");
-            var chargeEstimate = SmallBlock(model.FullyChargedTime > DateTime.Now ? $"Battery will be charged in :\n {(model.FullyChargedTime - DateTime.Now)}" : "Battery is fully charged.");
-
-
-            int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
-            StackLayout avrgData = new StackLayout()
+            var battery = MediumWidget("Battery", GetViewFor(GetChartFor<LineChart>(model.BatteryCharge)), () => OnChangePageCliked?.Invoke(typeof(Statistics.StaticticsBattery)));
+            var distace = MediumWidget("Distance", GetViewFor(GetChartFor<BarChart>(model.RideDistance)), () => OnChangePageCliked?.Invoke(typeof(Statistics.StaticticsDistance)));
+            StackLayout widgets = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal,
-                Margin = new Thickness(10, 10),
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Children = { avrgSpeed, avrgRideDistance, totalRideDistance }
+                MinimumWidthRequest = 1000,
+                Children = { battery, distace }
             };
-            StackLayout chargeData = new StackLayout()
+
+            ScrollView scrollView = new ScrollView
             {
-                Orientation = StackOrientation.Horizontal,
-                Margin = new Thickness(10, 10),
+                Content = widgets,
+                VerticalScrollBarVisibility = ScrollBarVisibility.Never,
+                BackgroundColor = WindowData.Current.Background.Background,
+                VerticalOptions = LayoutOptions.StartAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Children = { currentCharge, chargeEstimate }
+                Padding = new Thickness(0, 10),
+                Margin = new Thickness(0, 0),
             };
-            StackLayout sl = new StackLayout
-            {
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand,
-                Margin = new Thickness(10, 10),
-                Children = { avrgData, chargeData },
-                Padding = new Thickness(0, topPadding, 0, 0)
-            };
-            Content = new StackLayout { Children = { sl, BottomButtonUI(typeof(MainScreenPage)) }, BackgroundColor = WindowData.Current.Background };
+            Content = new StackLayout { Children = { TopLine("Main Menu", false, true), scrollView }, BackgroundColor = WindowData.Current.Background.Background };
         }
     }
 }
