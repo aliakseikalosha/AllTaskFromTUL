@@ -9,10 +9,8 @@ namespace CleanPRJ.Statistics
     public abstract class StatisticsPage : ApplicationPage<StatisticsViewModel>
     {
         public StatisticsPage(StatisticsViewModel model) : base(model) { }
-        protected override void InitUI()
+        public override void InitUI()
         {
-            var battery = GetChartFor<LineChart>(model.BatteryCharge);
-            var distance = GetChartFor<BarChart>(model.RideDistance);
             Content = new StackLayout
             {
                 Children = {
@@ -36,7 +34,6 @@ namespace CleanPRJ.Statistics
         {
             var chart = GetViewFor(GetChartFor<LineChart>(model.BatteryCharge), WindowData.ScreenSize.X, WindowData.ScreenSize.X * 3);
             var scroll = new ScrollView { Content = chart, Orientation = ScrollOrientation.Horizontal };
-            scroll.ScrollToAsync(1000, 0, false);
             return new StackLayout { Children = { scroll } };
         }
 
@@ -58,7 +55,6 @@ namespace CleanPRJ.Statistics
         {
             var chart = GetViewFor(GetChartFor<BarChart>(model.RideDistance), WindowData.ScreenSize.X, WindowData.ScreenSize.X * 3);
             var scroll = new ScrollView { Content = chart, Orientation = ScrollOrientation.Horizontal };
-            scroll.ScrollToAsync(1000, 0, false);
             return new StackLayout { Children = { scroll } };
         }
 

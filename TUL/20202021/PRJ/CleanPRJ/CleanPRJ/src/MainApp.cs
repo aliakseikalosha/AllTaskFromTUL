@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CleanPRJ.MainScreen;
+using CleanPRJ.Settings;
 using CleanPRJ.Statistics;
 using Xamarin.Forms;
 
@@ -28,15 +29,17 @@ namespace CleanPRJ
     }
     public class App : Application
     {
+        public static App I { get; private set; }
         private IScreenData[] screenDatas = new IScreenData[] {
             new ScreenData<MainScreenViewModel>((m) => new MainScreenPage(m), typeof(MainScreenPage)),
             new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
             new ScreenData<StatisticsViewModel>((m) => new StaticticsBattery(m), typeof(StaticticsBattery)),
             new ScreenData<StatisticsViewModel>((m) => new StaticticsDistance(m), typeof(StaticticsDistance)),
-            new ScreenData<SettingsVievModel>((m) => new Settings(m), typeof(Settings)),
+            new ScreenData<SettingsVievModel>((m) => new SettingsPage(m), typeof(SettingsPage)),
         };
         public App()
         {
+            I = this;
             InitUI();
             DependencyService.Get<IBluetoothReader>().OnMessageUpdated += UpdateMessages;
         }
@@ -60,9 +63,11 @@ namespace CleanPRJ
             page.OnChangePageCliked += ChangePageTo;
         }
 
-        private void ChangePageTo(Type pageType)
+        public void ChangePageTo(Type pageType)
         {
-            MainPage = GetPage(pageType);
+            var page = GetPage(pageType);
+            page.InitUI();
+            MainPage = page;
         }
 
         private void UpdateMessages()

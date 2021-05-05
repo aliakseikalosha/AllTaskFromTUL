@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using CleanPRJ.src.Data;
 using CleanPRJ.src.UI;
 using Microcharts;

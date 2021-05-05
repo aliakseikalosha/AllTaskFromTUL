@@ -5,10 +5,9 @@ using CleanPRJ.src.UI;
 using Microcharts;
 using Microcharts.Forms;
 using Xamarin.Forms;
-using Xamarin.Essentials;
 using CleanPRJ.src.Icons;
 using System.Reflection;
-using CleanPRJ.Statistics;
+using CleanPRJ.Settings;
 
 namespace CleanPRJ.MainScreen
 {
@@ -18,7 +17,6 @@ namespace CleanPRJ.MainScreen
         public ApplicationPage(T model) : base()
         {
             this.model = model;
-            InitUI();
         }
 
         protected ApplicationPage() { }
@@ -28,27 +26,15 @@ namespace CleanPRJ.MainScreen
     {
         public Action<Type> OnChangePageCliked;
 
-        protected abstract void InitUI();
-
-        private Button AddButton(ButtonData data, Type currentScreen)
+        public ApplicationPage()
         {
-            var button = new Button
-            {
-                Text = data.label,
-                IsEnabled = currentScreen != data.windowType,
-                BackgroundColor = WindowData.Current.Button.Background,
-                TextColor = WindowData.Current.Button.Text,
-            };
-            button.Clicked += (obj, eventData) =>
-            {
-                OnChangePageCliked.Invoke(data.windowType);
-            };
-            return button;
+            WindowData.OnThemeChanged += InitUI;
         }
 
+        public abstract void InitUI();
         public Frame MediumWidget(string lable, View content, Action onTapped = null)
         {
-            content.WidthRequest = WindowData.ScreenSize.X * 0.9;
+            content.WidthRequest = WindowData.ScreenSize.X;
             content.HeightRequest = WindowData.ScreenSize.X * 0.9 / 2;
             content.VerticalOptions = LayoutOptions.Center;
             var frame = new Frame
@@ -56,7 +42,7 @@ namespace CleanPRJ.MainScreen
                 BorderColor = WindowData.Current.Wiget.Border,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.Center,
-                CornerRadius = 20,
+                CornerRadius = 30,
                 BackgroundColor = WindowData.Current.Wiget.Background,
 
                 Padding = 1,
@@ -79,24 +65,35 @@ namespace CleanPRJ.MainScreen
             frame.GestureRecognizers.Add(guestRecognizer);
             return frame;
         }
-
         protected ChartView GetViewFor(Chart chart, double height = -1.0, double width = -1.0)
         {
             return new ChartView
             {
                 WidthRequest = width,
                 HeightRequest = height,
+                BackgroundColor = WindowData.Current.Wiget.Background,
                 Chart = chart,
             };
         }
-
+        protected T GetChartFor<T>(List<ChartEntry> points, TimeSpan animationTime) where T : PointChart, new()
+        {
+            return new T
+            {
+                Entries = points,
+                LabelOrientation = Orientation.Horizontal,
+                ValueLabelOrientation = Orientation.Horizontal,
+                AnimationDuration = animationTime,
+                LabelColor = SkiaSharp.SKColor.Parse(WindowData.Current.Chart.Text.ToHex()),
+                BackgroundColor = SkiaSharp.SKColor.Parse(WindowData.Current.Chart.Background.ToHex()),
+            };
+        }
         protected T GetChartFor<T>(List<ChartEntry> points) where T : PointChart, new()
         {
-            return new T { Entries = points, LabelOrientation = Orientation.Horizontal, ValueLabelOrientation = Orientation.Horizontal };
+            return GetChartFor<T>(points, new TimeSpan(0, 0, 2));
         }
         protected StackLayout TopLine(string labelText, bool addBack = true, bool addSettings = false)
         {
-            var iconWidth = WidthRequest = WindowData.ScreenSize.X * 0.1 ;
+            var iconWidth = WidthRequest = WindowData.ScreenSize.X * 0.1;
             var label = new Label
             {
                 Text = labelText,
@@ -104,16 +101,17 @@ namespace CleanPRJ.MainScreen
                 VerticalTextAlignment = TextAlignment.Center,
                 TextColor = WindowData.Current.Button.Text,
                 FontSize = 24,
-                WidthRequest = WindowData.ScreenSize.X * 0.8,
+                WidthRequest = WindowData.ScreenSize.X,
             };
             var backButton = ClickableImage(Images.BackArrow, () => OnChangePageCliked?.Invoke(typeof(MainScreenPage)), 46, iconWidth);
-            var settingButton = ClickableImage(Images.Settings, () => OnChangePageCliked?.Invoke(typeof(Settings)), 46, iconWidth);
+            var settingButton = ClickableImage(Images.Settings, () => OnChangePageCliked?.Invoke(typeof(SettingsPage)), 46, iconWidth);
             var fakeButton = ClickableImage(Images.Empty, () => { });
             var sl = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
                 BackgroundColor = WindowData.Current.TopLine.Background,
                 HeightRequest = 46,
+                WidthRequest = iconWidth
             };
             sl.Children.Add(addBack ? backButton : fakeButton);
             sl.Children.Add(label);

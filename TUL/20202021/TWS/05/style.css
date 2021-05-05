@@ -1,0 +1,77 @@
+/*Pos fix*/
+nav {
+ 	float: left;
+ 	position: sticky;
+ 	width: 300px;
+ 	margin-left: -20px;
+}
+div{
+	margin-left: 270px;
+}
+body{
+  width: 80%;
+  height: 100%;
+  margin: 0px auto;
+}
+/*visual stuff*/
+html{
+	background-color: #333;
+}
+body {
+  border-style: solid;
+  border-color: darkred;
+  background-color: white;
+}
+div.end{
+  clear: both;
+}
+h2, h1 {
+	border-bottom: 1px solid darkred;
+	background-image:  url("bg1.gif");
+  	background-position-y: -5px;
+}
+nav ul li { 
+	list-style: none;
+  /* background: url("bg4.gif") repeat-y -5px 50%; */
+}
+nav ul li ul{ 
+    padding: 0 10px;
+    list-style-type: none;
+}
+nav ul li ul li {
+    list-style: none;
+    background-image: url("bg4.gif");
+    background-repeat: repeat-y;
+    background-position: -20px;
+    margin: 2px 0px;
+}
+a{
+    display:block;
+	color: darkred;
+}
+a:hover {
+  color: red;
+}
+nav ul li p{
+ 	margin: 1px 10px;
+    background-image: url("bg4.gif");
+}
+
+
+/* style.css | file:///D:/Project/AllTaskFromTUL/TUL/20202021/TWS/04/style.css */
+
+nav ul li {
+}
+
+nav ul li ul li {
+  /* margin: 2px 0px; */
+  /* background-position: -20px 50%; */
+  /* margin: 2px 0px; */
+  background-position: -20px;
+  padding: 0px 10px;
+}
+
+nav ul li a {
+  /* background-image: url(")"); */
+  padding: 0px 10px;
+}

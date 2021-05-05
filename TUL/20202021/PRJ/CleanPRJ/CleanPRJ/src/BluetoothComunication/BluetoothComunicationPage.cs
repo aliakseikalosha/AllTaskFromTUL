@@ -27,7 +27,7 @@ namespace CleanPRJ
         }
 
 
-        protected override void InitUI()
+        public override void InitUI()
         {
             this.BindingContext = model;
 
