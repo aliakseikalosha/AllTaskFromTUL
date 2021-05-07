@@ -11,7 +11,8 @@ namespace CleanPRJ.src.UI
         public static readonly ThemeData Light = new ThemeData
         {
             Button = new ThemedObject { Background = Color.FromHex("#DDD") },
-            TopLine = new ThemedObject { Background = Color.FromHex("#1876d3") },
+            TopLine = new ThemedObject { Background = Color.FromHex("#1876d3"), Text = Color.White },
+            ChartColorCode = new string[] { "#ffcb91", "#ffefa1", "#94ebcd", "#6ddccf" },
         };
         public static readonly ThemeData Dark = new ThemeData
         {
@@ -21,8 +22,9 @@ namespace CleanPRJ.src.UI
             Wiget = new ThemedObject { Background = Color.Black, Border = Color.LightGray, Text = Color.White },
             Chart = new ThemedObject { Background = Color.Black, Border = Color.LightGray, Text = Color.White },
             TopLine = new ThemedObject { Background = Color.FromHex("#1876d3"), Border = Color.LightGray, Text = Color.White },
+            ChartColorCode = new string[] { "#35477d", "#03506f", "#a3ddcb", "#ffe3de", },
         };
-
+        private static ThemeData[] themes = { Light, Dark };
         private static DisplayInfo displayInfo = DeviceDisplay.MainDisplayInfo;
         public static Vector2 ScreenSize => new Vector2(displayInfo.Width / 4, displayInfo.Height / 4);
 
@@ -48,6 +50,19 @@ namespace CleanPRJ.src.UI
             public ThemedObject Chart = new ThemedObject();
             public ThemedObject TopLine = new ThemedObject();
             public string[] ChartColorCode = new string[] { "#2c3e50", "#77d065", "#b455b6", "#3498db" };
+        }
+
+        public static bool TrySetTheme(string selectedTheme)
+        {
+            foreach (var theme in themes)
+            {
+                if (theme.Name == selectedTheme)
+                {
+                    Current = theme;
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

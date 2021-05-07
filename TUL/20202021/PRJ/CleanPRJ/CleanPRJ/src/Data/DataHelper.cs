@@ -1,4 +1,5 @@
 ﻿using Microcharts;
+using SkiaSharp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -43,6 +44,15 @@ namespace CleanPRJ.src.Data
         public static List<ChartEntry> ConverToChartEntry<T>(this List<T> datas, Func<T, ChartEntry> convert)
         {
             return datas.Select(c => convert(c)).ToList();
+        }
+        public static List<ChartEntry> ConverToChartEntry<T>(this List<T> datas, Func<T, ChartEntry> convert, string[] colorsCode)
+        {
+            var data = datas.Select(c => convert(c)).ToList();
+            for (int i = 0; i < data.Count; i++)
+            {
+                data[i].Color = SKColor.Parse(colorsCode[i % colorsCode.Length]);
+            }
+            return data;
         }
 
         public static T Random<T>(this List<T> data)

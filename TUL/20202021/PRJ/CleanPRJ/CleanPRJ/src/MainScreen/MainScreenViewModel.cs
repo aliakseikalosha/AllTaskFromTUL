@@ -2,7 +2,6 @@
 using CleanPRJ.src.UI;
 using Microcharts;
 using SkiaSharp;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -15,13 +14,13 @@ namespace CleanPRJ.MainScreen
 
         public MainScreenViewModel()
         {
-            UpdateData();
+            Init();
         }
 
-        private void UpdateData()
+        public void Init()
         {
             BatteryCharge = DataHelper.MockupBateryData.ChargeLevel.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:t}", ValueLabel = $"{c.Data}", Color = SKColor.Parse("#00F000") });
-            RideDistance = DataHelper.MockupTravelData.Distance.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:dd:M}", ValueLabel = $"{c.Data}", Color = SKColor.Parse(WindowData.Current.ChartColorCode.Random()) });
+            RideDistance = DataHelper.MockupTravelData.Distance.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:dd:M}", ValueLabel = $"{c.Data}"}, WindowData.Current.ChartColorCode);
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using CleanPRJ.src;
 using CleanPRJ.src.UI;
 using Microcharts;
 using Microcharts.Forms;
@@ -30,26 +29,29 @@ namespace CleanPRJ.MainScreen
         {
             WindowData.OnThemeChanged += InitUI;
         }
+        protected override bool OnBackButtonPressed()
+        {
+            OnChangePageCliked?.Invoke(typeof(MainScreenPage));
+            return true;
+        }
 
         public abstract void InitUI();
-        public Frame MediumWidget(string lable, View content, Action onTapped = null)
+        public ContentView MediumWidget(string lable, View content, Action onTapped = null)
         {
-            content.WidthRequest = WindowData.ScreenSize.X;
             content.HeightRequest = WindowData.ScreenSize.X * 0.9 / 2;
-            content.VerticalOptions = LayoutOptions.Center;
+
             var frame = new Frame
             {
-                BorderColor = WindowData.Current.Wiget.Border,
-                VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.Center,
-                CornerRadius = 30,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
                 BackgroundColor = WindowData.Current.Wiget.Background,
 
                 Padding = 1,
-                HasShadow = true,
+
                 Content = new StackLayout()
                 {
                     BackgroundColor = WindowData.Current.Wiget.Background,
+                    WidthRequest = WindowData.ScreenSize.X,
                     Children = {
                             content,
                             new Label {
@@ -99,7 +101,7 @@ namespace CleanPRJ.MainScreen
                 Text = labelText,
                 HorizontalTextAlignment = TextAlignment.Center,
                 VerticalTextAlignment = TextAlignment.Center,
-                TextColor = WindowData.Current.Button.Text,
+                TextColor = WindowData.Current.TopLine.Text,
                 FontSize = 24,
                 WidthRequest = WindowData.ScreenSize.X,
             };

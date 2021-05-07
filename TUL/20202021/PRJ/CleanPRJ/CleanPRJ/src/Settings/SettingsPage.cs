@@ -10,6 +10,7 @@ namespace CleanPRJ.Settings
         public SettingsPage(SettingsVievModel model) : base(model) { }
         public override void InitUI()
         {
+            model.Init();
             BackgroundColor = WindowData.Current.Background.Background;
             Content = new StackLayout
             {

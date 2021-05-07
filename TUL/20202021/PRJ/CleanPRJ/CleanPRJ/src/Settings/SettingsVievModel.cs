@@ -13,43 +13,32 @@ namespace CleanPRJ.Settings
             public Action OnClicked;
         }
 
-        public SettingsData[] AllSettings = {
-            new SettingsData {
-                Label =  "Theme",
-                CurrentState =  () => WindowData.Current.Name,
-                OnClicked = WindowData.ChangeTheme
-            }, new SettingsData{
-                Label =  "Send Calls",
-                CurrentState =  () => AppSettings.I.SendCalls?"On":"Off",
-                OnClicked = ()=> AppSettings.I.SendCalls = !AppSettings.I.SendCalls,
-            }, new SettingsData{
-                Label =  "Open Debug Menu",
-                CurrentState =  () => "",
-                OnClicked = ()=> App.I.ChangePageTo(typeof(BluetoothComunicationPage)),
-            } , new SettingsData{
-                Label =  "App verion",
-                CurrentState =  () => AppSettings.I.Version,
-                OnClicked = ()=>{ },
-            } };
-    }
+        public SettingsData[] AllSettings;
 
-    public class AppSettings
-    {
-        private static AppSettings inst = null;
-        public static AppSettings I { get { if (inst == null) { inst = new AppSettings(); } return inst; } }
-
-        public string SelectedTheme = WindowData.Light.Name;
-        public bool SendCalls = true;
-        public string Version => "0.1";
-
-        private static void Save()
+        public void Init()
         {
-
-        } 
-
-        private static void Load()
-        {
-
+            AllSettings = new SettingsData[]{
+                new SettingsData
+                {
+                    Label = "Theme",
+                    CurrentState = () => WindowData.Current.Name,
+                    OnClicked = AppSettings.I.ToggleTheme,
+                }, new SettingsData
+                {
+                    Label = "Send Calls",
+                    CurrentState = () => AppSettings.I.SendCalls ? "On" : "Off",
+                    OnClicked = AppSettings.I.ToggleSendCalls,
+                }, new SettingsData
+                {
+                    Label = "Open Debug Menu",
+                    CurrentState = () => "",
+                    OnClicked = () => App.I.ChangePageTo(typeof(BluetoothComunicationPage)),
+                } , new SettingsData
+                {
+                    Label = "App verion",
+                    CurrentState = () => AppSettings.I.Version,
+                    OnClicked = () => { },
+                } };
         }
     }
 }

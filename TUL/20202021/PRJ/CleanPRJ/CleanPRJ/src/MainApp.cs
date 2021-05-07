@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace CleanPRJ
 {
-    public interface IViewModel { }
+    public interface IViewModel { void Init(); }
     public interface IScreenData
     {
         Type ScreenType { get; }
@@ -40,6 +40,7 @@ namespace CleanPRJ
         public App()
         {
             I = this;
+            AppSettings.I.Apply();
             InitUI();
             DependencyService.Get<IBluetoothReader>().OnMessageUpdated += UpdateMessages;
         }

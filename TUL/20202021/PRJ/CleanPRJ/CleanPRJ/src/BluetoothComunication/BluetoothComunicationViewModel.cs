@@ -61,6 +61,7 @@ namespace CleanPRJ
                 Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
             }
         }
+        public void Init() { }
 
         public void Connect()
         {

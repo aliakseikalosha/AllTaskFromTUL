@@ -2,6 +2,7 @@
 
 namespace CleanPRJ
 {
+    [Serializable]
     public class TimedSampledData<T>
     {
         public T Data;

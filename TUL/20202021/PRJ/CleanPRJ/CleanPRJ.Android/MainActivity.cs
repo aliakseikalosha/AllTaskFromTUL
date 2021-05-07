@@ -21,8 +21,9 @@ namespace CleanPRJ.Droid
             LoadApplication(new App());
             var permissions = new string[] { Manifest.Permission.ReadPhoneState, Manifest.Permission.ReadCallLog };
             ActivityCompat.RequestPermissions(this, permissions, 123);
+            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
         }
-        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
