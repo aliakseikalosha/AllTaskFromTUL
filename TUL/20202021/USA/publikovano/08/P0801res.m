@@ -1,27 +1,20 @@
-prumer=3118;
-n=25;
-sd=357;
-sigma=300;
+clear all
+clc
 
-%výpoèet se provádí ze základního vzorce T=s*s*(n-1)/(sigma*sigma)
-test=sd*sd/(sigma*sigma)*(n-1)
+%otevøe data uložená v souboru
+x=importdata('P0801.mat');
+rozptyl=var(x)
 
-%porovnání výsledkù
-test_dolni=chi2inv(0.025,n-1);
-test_horni=chi2inv(0.975,n-1);
- 
-if test<test_horni
-    if test>test_dolni
-        'H0'
-    end
-else
-    'H1'
-end
+%H0: rozptyl je menší nebo roven 2.25
+%H1: rozptyl je vìtší než 2.25
+[h,p,ci,stats]=vartest(x,2.25,0.05,'right')
 
-p_value=chi2cdf(test,n-1);
-if p_value>0.5
-    p_value=1-p_value;
-end
-p_value
-test_dolni
-test_horni
+%h=0            nezámítáme hypotézu H0, že rozptyl je menší nebo roven 2.25
+%p=0.3798       pvalue je rovno 0.3798
+%ci=1.8750 Inf  interval spolehlivosti je mezi 1.875 a nekoneènem
+%stats:
+    % chisqstat: 102.6872   testovací statistika vypoètená podle vzorce je
+    %                       rovna 102.6872
+    % df: 99    poèet stupòù volnosti je 99 (máme 100 namìøených dat)         
+
+

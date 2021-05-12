@@ -1,0 +1,24 @@
+#1
+CREATE KEYSPACE cass01
+    WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+#2
+USE cass01:
+#3
+CREATE TABLE activity (
+    id int,
+    datetime timestamp,
+    PRIMARY KEY (id, datetime)
+) WITH CLUSTERING ORDER BY (datetime DESC);
+#4
+ALTER TABLE activity ADD event text;
+describe activity
+#5
+INSERT INTO activity (id,datetime,event) VALUES (1,'2021-04-03','cviceni');
+#6
+INSERT INTO activity (id,datetime,event) VALUES (2,toTimeStamp(toDate(now())),'cviceni 2
+#7
+SELECT * FROM activity;
+#8
+TRUNCATE activity;
+DROP TABLE activity;
+DROP KEYSPACE;

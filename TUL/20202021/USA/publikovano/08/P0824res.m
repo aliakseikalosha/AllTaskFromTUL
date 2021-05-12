@@ -1,9 +1,13 @@
+clear all
+clc
+%data
 nMesto=1240;
 nVesnice=741;
 
 anoMesto=325;
 anoVesnice=287;
 
+%poměry
 pM=anoMesto/nMesto
 pV=anoVesnice/nVesnice
 
@@ -14,3 +18,7 @@ if (T<norminv(0.025,0,1)||T>norminv(0.975,0,1))
 else
     'H0'
 end
+
+%výpočet pvalue
+pom=normcdf(T,0,1);
+pval=2*min(pom,1-pom)

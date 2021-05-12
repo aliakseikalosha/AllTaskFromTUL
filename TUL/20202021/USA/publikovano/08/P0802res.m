@@ -1,24 +1,13 @@
-prumer=3118;
-n=25;
-sd=357;
+clear all
+clc
 
-%pøípad ad a)
-sigma=300;
-%vıpoèet se provádí ze základního vzorce T=s*s*(n-1)/(sigma*sigma)
-test=sd*sd/(sigma*sigma)*(n-1)
-atest=chi2inv(0.975,n-1)
-if (test<atest)
-    'H0'
-else
-    'H1'
-end
+x=[2.22, 3.54, 2.37, 1.66, 4.74, 4.82, 3.21, 5.44, 3.23, 4.79, 4.85, 4.05, 3.48, 3.89, 4.90, 5.37]
+rozptyl=var(x)
 
-%porovnání vısledkù ad b)
-sigma=400;
-test=sd*sd/(sigma*sigma)*(n-1)
-btest=chi2inv(0.025,n-1)
-if (test>btest)
-    'H0'
-else
-    'H1'
-end
+%H0: rozptyl je menÅ¡Ã­ nebo roven 0.6
+[h,p,ci,stats]=vartest(x,0.6,0.05,'right')
+
+%H0: rozptyl je menÅ¡Ã­ nebo roven 0.8086; 1; 6. Porovnejte pvalue u vÃ½sledkÅ¯
+[h,p,ci,stats]=vartest(x,0.8086,0.05,'right')
+[h,p,ci,stats]=vartest(x,1,0.05,'right')
+[h,p,ci,stats]=vartest(x,6,0.05,'right')
