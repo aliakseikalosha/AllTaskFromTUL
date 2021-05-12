@@ -11,10 +11,8 @@ namespace CleanPRJ.Droid
             switch (state)
             {
                 case CallState.Idle:
-                    PhoneCallManager.I.EndCallPhoneNumber();
-                    break;
                 case CallState.Offhook:
-                    PhoneCallManager.I.MissCallPhoneNumber();
+                    PhoneCallManager.I.EndCallPhoneNumber();
                     break;
                 case CallState.Ringing:
                     PhoneCallManager.I.StartCallPhoneNumber(incomingNumber);

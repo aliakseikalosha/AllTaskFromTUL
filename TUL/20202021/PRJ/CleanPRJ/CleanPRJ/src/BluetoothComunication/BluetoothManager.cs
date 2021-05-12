@@ -1,14 +1,24 @@
 ﻿using CleanPRJ.src.Tool;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 
 namespace CleanPRJ.src.BluetoothComunication
 {
+    public static class BluetoothCommand
+    {
+        public static void SendCall(string number)
+        {
+            BluetoothManager.I.Send($"T:{number.PadLeft(12)}\0");
+        }
+
+        public static void EndCall()
+        {
+            BluetoothManager.I.Send($"T:end          \0");
+        }
+    }
+
     public class BluetoothManager : Singleton<BluetoothManager>
     {
         public readonly static string TargetBluetoothDevice = "HC-05";

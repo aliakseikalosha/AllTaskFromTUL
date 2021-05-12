@@ -11,9 +11,26 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="backArrow.png" />
+    <None Remove="src\Icons\arrow_back.png" />
+    <None Remove="src\Icons\empty.png" />
+    <None Remove="src\Icons\settings.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="src\Icons\arrow_back.png" />
+    <EmbeddedResource Include="src\Icons\empty.png" />
+    <EmbeddedResource Include="src\Icons\settings.png" />
+    <EmbeddedResource Include="src\Statistics\backArrow.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="Sharpnado.Shadows" Version="1.2.0" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
   </ItemGroup>
 </Project>

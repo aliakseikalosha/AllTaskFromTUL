@@ -2,17 +2,16 @@
 using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using System.ComponentModel;
-using System.Collections.Generic;
 
 namespace CleanPRJ
 {
-    public class BluetoothComunicationViewModel : INotifyPropertyChanged
+    public class BluetoothComunicationViewModel : INotifyPropertyChanged, IViewModel
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
 
         public string SelectedBthDevice = string.Empty;
-        bool isConnected  = false;
+        bool isConnected = false;
         int sleepTime = 250;
 
 
@@ -35,8 +34,8 @@ namespace CleanPRJ
 
             MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
              {
-                // When the app "sleep", I close the connection with bluetooth
-                if (isConnected)
+                 // When the app "sleep", I close the connection with bluetooth
+                 if (isConnected)
                  {
                      Disconnect();
                  }
@@ -62,6 +61,7 @@ namespace CleanPRJ
                 Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
             }
         }
+        public void Init() { }
 
         public void Connect()
         {

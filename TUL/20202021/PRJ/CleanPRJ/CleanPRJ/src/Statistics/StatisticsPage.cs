@@ -1,47 +1,32 @@
-﻿using System.Collections.Generic;
-using CleanPRJ.MainScreen;
+﻿using CleanPRJ.MainScreen;
 using Xamarin.Forms;
-using Microcharts;
-using Microcharts.Forms;
 using CleanPRJ.src.UI;
 
 namespace CleanPRJ.Statistics
 {
-    public class StatisticsPage : PageWithBottomMenu
+    public abstract class StatisticsPage : ApplicationPage<StatisticsViewModel>
     {
-        private StatisticsViewModel model;
-        public StatisticsPage(StatisticsViewModel model)
+        public StatisticsPage(StatisticsViewModel model) : base(model) { }
+        public override void InitUI()
         {
-            this.model = model;
-            InitUI();
-        }
-
-        protected override void InitUI()
-        {
-            var lable = new Label { Text = "Statistics", BackgroundColor = WindowData.Current.Background, TextColor = WindowData.Current.BackgroundText };
+            model.Init();
             Content = new StackLayout
             {
                 Children = {
-                    lable,
-                    GetPlotFor(model.BatteryCharge, "Battery Charge"),
-                    GetPlotFor(model.RideDistance, "Distance per Day"),
-                    BottomButtonUI(typeof(StatisticsPage))
+                    Top(),
+                    Chart(),
+                    Desctiption()
                 },
-                BackgroundColor = WindowData.Current.Background,
+                BackgroundColor = WindowData.Current.Background.Background,
             };
         }
+        protected abstract StackLayout Top();
+        protected abstract StackLayout Chart();
+        protected abstract StackLayout Desctiption();
 
-        private ChartView GetPlotFor(List<ChartEntry> points, string title)
+        protected Label DescriptionLabel(string text)
         {
-            foreach (var point in points)
-            {
-                point.ValueLabel = title;
-            }
-            var chart = new LineChart { Entries = points };
-            return new ChartView
-            {
-                Chart = chart,
-            };
+            return new Label { Text = text, TextColor = WindowData.Current.Background.Text, FontSize = 16 };
         }
     }
 }
