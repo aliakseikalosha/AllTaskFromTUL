@@ -1,5 +1,4 @@
 ﻿using Android.Bluetooth;
-using Android.Runtime;
 using Java.IO;
 using Java.Util;
 using System;
@@ -10,6 +9,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using System.Diagnostics;
 using System.Collections.Generic;
+using CleanPRJ.src.BluetoothComunication;
 
 [assembly: Dependency(typeof(CleanPRJ.Droid.AndroidBluetoothReader))]
 namespace CleanPRJ.Droid
@@ -17,7 +17,7 @@ namespace CleanPRJ.Droid
 
     public class AndroidBluetoothReader : IBluetoothReader
     {
-        public Action OnMessageUpdated { get; set; }
+        public Action<BluetoothMessage> OnMessageUpdated { get; set; }
         private CancellationTokenSource cancelToken { get; set; }
 
         private bool canContinue => !cancelToken.IsCancellationRequested;
@@ -30,15 +30,8 @@ namespace CleanPRJ.Droid
 
         private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();
 
-        public AndroidBluetoothReader()
-        {
-        }
+        public AndroidBluetoothReader() { }
 
-
-        /// <summary>
-        /// Start the "reading" loop 
-        /// </summary>
-        /// <param name="name">Name of the paired bluetooth device (also a part of the name)</param>
         public void Start(string name, int sleepTime = 200, bool readAsCharArray = false)
         {
             Task.Run(() => Loop(name, sleepTime, readAsCharArray));
@@ -50,7 +43,6 @@ namespace CleanPRJ.Droid
             BluetoothAdapter adapter = BluetoothAdapter.DefaultAdapter;
             BluetoothSocket socket = null;
 
-            //Thread.Sleep(1000);
             cancelToken = new CancellationTokenSource();
             while (canContinue)
             {
@@ -82,14 +74,8 @@ namespace CleanPRJ.Droid
                     else
                     {
                         UUID uuid = UUID.FromString("00001101-0000-1000-8000-00805f9b34fb");
-                        if ((int)Android.OS.Build.VERSION.SdkInt >= 10) // Gingerbread 2.3.3 2.3.4
-                        {
-                            socket = device.CreateInsecureRfcommSocketToServiceRecord(uuid);
-                        }
-                        else
-                        {
-                            socket = device.CreateRfcommSocketToServiceRecord(uuid);
-                        }
+
+                        socket = device.CreateRfcommSocketToServiceRecord(uuid);
 
                         if (socket != null)
                         {
@@ -107,52 +93,24 @@ namespace CleanPRJ.Droid
                                     {
                                         char[] chr = new char[100];
                                         string messageText = string.Empty;
-                                        if (readAsCharArray)
+                                        await buffer.ReadAsync(chr);
+                                        foreach (char c in chr)
                                         {
-
-                                            await buffer.ReadAsync(chr);
-                                            foreach (char c in chr)
-                                            {
-
-                                                if (c == '\0')
-                                                {
-                                                    break;
-                                                }
-
-                                                messageText += c;
-                                            }
-
-                                        }
-                                        else
-                                        {
-                                            messageText = await buffer.ReadLineAsync();
+                                            messageText = CombineMessage(messageText, c);
                                         }
 
-                                        if (messageText.Length > 0)
+                                        if (CompliteMessage(messageText))
                                         {
                                             Debug.WriteLine("Letto: " + messageText);
                                             AddMessage(new BluetoothMessage(DateTime.Now, messageText, MessageState.Recived));
                                         }
-                                        else
-                                        {
-                                            //Debug.WriteLine("No data");
-                                        }
                                     }
                                     else
                                     {
-                                        //Debug.WriteLine("No data to read");
                                         if (toSend.Count > 0)
                                         {
                                             var message = toSend.Peek();
                                             var dataToSend = message.Message.ToCharArray().Select(c => (byte)c).ToArray();
-                                            //using (var output = socket.OutputStream)
-                                            //{
-                                            //    var baseOutput = (output as OutputStreamInvoker).BaseOutputStream;
-                                            //    baseOutput.Write(dataToSend, 0, dataToSend.Length);
-                                            //    AddMessage(toSend.Dequeue());
-                                            //    Thread.Sleep(sleepTime);
-                                            //    Debug.WriteLine($"Send {message}");
-                                            //}
                                             if (socket.OutputStream.CanWrite)
                                             {
                                                 await socket.OutputStream.WriteAsync(dataToSend, 0, dataToSend.Length);
@@ -161,26 +119,14 @@ namespace CleanPRJ.Droid
                                                 Debug.WriteLine($"Send total of {dataToSend.Length} bytes in message {message} ");
                                             }
                                         }
-                                        else
-                                        {
-                                            //Debug.WriteLine("No data to send");
-                                        }
                                     }
-
-                                    // A little stop to the uneverending thread...
                                     if (!socket.IsConnected)
                                     {
                                         throw new Exception("BthSocket.IsConnected = false, Throw exception");
                                     }
                                 }
-
                                 Debug.WriteLine("Exit the inner loop");
-
                             }
-                        }
-                        else
-                        {
-                            //Debug.WriteLine("BthSocket = null");
                         }
                     }
 
@@ -206,16 +152,30 @@ namespace CleanPRJ.Droid
             Debug.WriteLine("Exit the external loop");
         }
 
+        private string CombineMessage(string message, char next)
+        {
+            if (BluetoothCommand.CommandType.Contains(next))
+            {
+                return next.ToString();
+            }
+            if (char.IsLetterOrDigit(next) || next == BluetoothCommand.Separator || BluetoothCommand.AllowedNotAlfanumericSymbols.Contains(next))
+            {
+                return message + next;
+            }
+            return message;
+        }
+
+        private bool CompliteMessage(string message)
+        {
+            return message.Length > 3 && message[1] == BluetoothCommand.Separator && message[^1] == BluetoothCommand.Separator;
+        }
+
         private void AddMessage(BluetoothMessage message)
         {
             All.Add(message);
-            OnMessageUpdated?.Invoke();
+            OnMessageUpdated?.Invoke(message);
         }
 
-        /// <summary>
-        /// Cancel the Reading loop
-        /// </summary>
-        /// <returns><c>true</c> if this instance cancel ; otherwise, <c>false</c>.</returns>
         public void Cancel()
         {
             if (cancelToken != null)

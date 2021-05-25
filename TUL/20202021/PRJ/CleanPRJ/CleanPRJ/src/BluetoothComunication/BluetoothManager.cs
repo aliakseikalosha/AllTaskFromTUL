@@ -1,27 +1,16 @@
 ﻿using CleanPRJ.src.Tool;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using Xamarin.Forms;
 
 namespace CleanPRJ.src.BluetoothComunication
 {
-    public static class BluetoothCommand
-    {
-        public static void SendCall(string number)
-        {
-            BluetoothManager.I.Send($"T:{number.PadLeft(12)}\0");
-        }
-
-        public static void EndCall()
-        {
-            BluetoothManager.I.Send($"T:end          \0");
-        }
-    }
-
     public class BluetoothManager : Singleton<BluetoothManager>
     {
         public readonly static string TargetBluetoothDevice = "HC-05";
+        private ReadOnlyDictionary<char, Action<BluetoothMessage>> commandMap;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
 
         public string SelectedDevice = string.Empty;
@@ -36,12 +25,28 @@ namespace CleanPRJ.src.BluetoothComunication
 
         public BluetoothManager()
         {
+            FillCommandMap();
+            InitBluetooth();
+            ConnectTargetDevice();
+        }
+
+        private void FillCommandMap()
+        {
+            commandMap = new ReadOnlyDictionary<char, Action<BluetoothMessage>>(new Dictionary<char, Action<BluetoothMessage>> {
+                { 'B', BluetoothCommand.BatteryCommand },
+                { 'D', BluetoothCommand.DistanceCommand },
+            });
+        }
+
+        private void InitBluetooth()
+        {
             bluetooth = DependencyService.Get<IBluetoothReader>();
+            bluetooth.OnMessageUpdated += NewMessage;
             MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
             {
                 if (isConnected)
                 {
-                //    Disconnect();
+                    //    Disconnect();
                 }
             });
 
@@ -49,10 +54,13 @@ namespace CleanPRJ.src.BluetoothComunication
             {
                 if (isConnected)
                 {
-                //    bluetooth.Start(SelectedDevice, sleepTime, true);
+                    //    bluetooth.Start(SelectedDevice, sleepTime, true);
                 }
             });
+        }
 
+        private void ConnectTargetDevice()
+        {
             try
             {
                 ListOfDevices = bluetooth.PairedDevices();
@@ -67,7 +75,19 @@ namespace CleanPRJ.src.BluetoothComunication
             {
                 Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
             }
+        }
 
+        private void NewMessage(BluetoothMessage message)
+        {
+            if (message.State != MessageState.Recived)
+            {
+                return;
+            }
+            var type = message.Type;
+            if (commandMap.Keys.Contains(type))
+            {
+                commandMap[type]?.Invoke(message);
+            }
         }
 
         public void Connect()

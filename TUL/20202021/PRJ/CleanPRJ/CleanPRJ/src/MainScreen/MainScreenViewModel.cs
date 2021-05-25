@@ -19,8 +19,8 @@ namespace CleanPRJ.MainScreen
 
         public void Init()
         {
-            BatteryCharge = DataHelper.MockupBateryData.ChargeLevel.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:t}", ValueLabel = $"{c.Data}", Color = SKColor.Parse("#00F000") });
-            RideDistance = DataHelper.MockupTravelData.Distance.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:dd:M}", ValueLabel = $"{c.Data}"}, WindowData.Current.ChartColorCode);
+            BatteryCharge = DataHelper.Battery.ChargeLevel.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:t}", ValueLabel = $"{c.Data}", Color = SKColor.Parse("#00F000") });
+            RideDistance = DataHelper.Travel.Distance.Last(5).ConverToChartEntry(c => new ChartEntry(c.Data) { Label = $"{c.DateUTC:dd:M}", ValueLabel = $"{c.Data}"}, WindowData.Current.ChartColorCode);
         }
     }
 }

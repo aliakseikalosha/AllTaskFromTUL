@@ -9,7 +9,7 @@ namespace CleanPRJ.src.Data
     public static class DataHelper
     {
         private static Random rnd = new Random();
-        public static BatteryData MockupBateryData
+        private static BatteryData MockupBateryData
         {
             get
             {
@@ -27,7 +27,7 @@ namespace CleanPRJ.src.Data
             }
         }
 
-        public static TravelData MockupTravelData
+        private static TravelData MockupTravelData
         {
             get
             {
@@ -39,6 +39,34 @@ namespace CleanPRJ.src.Data
                 }
                 return data;
             }
+
+        }
+
+        public static BatteryData Battery { get; private set; } = MockupBateryData;
+        public static TravelData Travel { get; private set; } = MockupTravelData;
+
+        public static void AddBatteryCharge(DateTime date, int percent)
+        {
+            Battery.ChargeLevel.Add(new TimedSampledData<float>(percent, date.ToUniversalTime()));
+            Save();
+        }
+
+        public static void AddDistanceTraveled(DateTime date, float distance)
+        {
+            Travel.Distance.Add(new TimedSampledData<float>(distance, date.ToUniversalTime()));
+            Save();
+        }
+
+        private static void Save()
+        {
+            //todo add to json or send to server
+        }
+
+        public static void Load()
+        {
+            //load from server or from json
+            Battery = MockupBateryData;
+            Travel = MockupTravelData;
         }
 
         public static List<ChartEntry> ConverToChartEntry<T>(this List<T> datas, Func<T, ChartEntry> convert)

@@ -1,6 +1,5 @@
 ﻿using CleanPRJ.MainScreen;
 using CleanPRJ.src.UI;
-using System;
 using Xamarin.Forms;
 
 namespace CleanPRJ.Settings

@@ -1,0 +1,16 @@
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.exe
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.deps.json
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.runtimeconfig.json
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.runtimeconfig.dev.json
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\ref\TestADLConsoleApp.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\bin\Debug\net5.0\TestADLConsoleApp.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.csprojAssemblyReference.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.AssemblyInfoInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.AssemblyInfo.cs
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.csproj.CoreCompileInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\ref\TestADLConsoleApp.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\ALD\TestADLConsoleApp\TestADLConsoleApp\obj\Debug\net5.0\TestADLConsoleApp.genruntimeconfig.cache

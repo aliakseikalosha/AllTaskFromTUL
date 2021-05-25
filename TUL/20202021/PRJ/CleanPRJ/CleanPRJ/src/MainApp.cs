@@ -2,6 +2,7 @@
 using System.Linq;
 using CleanPRJ.MainScreen;
 using CleanPRJ.Settings;
+using CleanPRJ.src.Data;
 using CleanPRJ.Statistics;
 using Xamarin.Forms;
 
@@ -39,7 +40,13 @@ namespace CleanPRJ
         };
         public App()
         {
+            Init();
+        }
+
+        private void Init()
+        {
             I = this;
+            DataHelper.Load();
             AppSettings.I.Apply();
             InitUI();
             DependencyService.Get<IBluetoothReader>().OnMessageUpdated += UpdateMessages;
@@ -71,7 +78,7 @@ namespace CleanPRJ
             MainPage = page;
         }
 
-        private void UpdateMessages()
+        private void UpdateMessages(BluetoothMessage message)
         {
             if (MainPage is BluetoothComunicationPage)
             {

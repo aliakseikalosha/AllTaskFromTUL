@@ -6,7 +6,7 @@ namespace CleanPRJ
 {
     public interface IBluetoothReader
     {
-        Action OnMessageUpdated { get; set; }
+        Action<BluetoothMessage> OnMessageUpdated { get; set; }
         List<BluetoothMessage> Sended { get; }
         List<BluetoothMessage> Recived { get; }
         List<BluetoothMessage> All { get; }

@@ -1,0 +1,17 @@
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.exe
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.deps.json
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.runtimeconfig.json
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.runtimeconfig.dev.json
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\ref\VAPW04.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\bin\Debug\net5.0-windows\VAPW04.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.Form1.resources
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.csproj.GenerateResource.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.AssemblyInfoInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.AssemblyInfo.cs
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.csproj.CoreCompileInputs.cache
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\ref\VAPW04.dll
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.pdb
+D:\Project\AllTaskFromTUL\TUL\20202021\VAPW\VAPW\VAPW04\obj\Debug\net5.0-windows\VAPW04.genruntimeconfig.cache
