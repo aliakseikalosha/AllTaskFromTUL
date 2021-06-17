@@ -111,7 +111,7 @@ header label {
 	article img {
 		position: relative;
 		top: -20px;
-		width: 100%;
+		width: calc(100% - 10px);
 	}
 }
 

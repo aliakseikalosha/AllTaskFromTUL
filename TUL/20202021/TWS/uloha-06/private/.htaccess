@@ -1,0 +1,4 @@
+AuthName "user name aaa password 123456"
+AuthUserFile /home/a/aliaksie.kalosha/public_html/uloha-06/private/.htpasswd
+AuthType Basic 
+Require valid-user

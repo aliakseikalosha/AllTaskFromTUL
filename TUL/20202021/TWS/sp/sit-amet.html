@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="la">
+<head>
+<meta charset="utf-8">
+<title>Ipsum @ Lorem ipsum</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<header class="nav">
+    <h1 id="logo">LOGO</h1>
+        <input type='checkbox' id='toggle'/>
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick>&nbsp;</label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Lorem</a></li>
+                    <li><a href="ipsum.html">Ipsum</a></li>
+                    <li><a href="sit-amet.html">Sit&nbsp;amet</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="links.html">Links</a></li>
+                </ul>
+            </nav>
+</header>
+<article>
+    <header>
+        <h2>Form</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et est tincidunt, lacinia metus consectetur, tristique nibh. Vivamus vitae hendrerit arcu. Integer gravida lacus ut mi fringilla, non condimentum elit ullamcorper. Nunc id egestas nibh. Nulla in libero eleifend, malesuada dolor a, rutrum nisi. Mauris fringilla elit massa, a sodales leo consectetur eget. Quisque id sem adipiscing, sodales lacus id, venenatis nisi. Fusce scelerisque scelerisque arcu nec auctor. Curabitur id leo metus. Phasellus ut vehicula ipsum. Nulla consequat porttitor erat, sit amet mattis libero.</p>
+    </header>
+    <form>
+     <fieldset>
+      <legend>Personalia:</legend>
+      <br>
+      <p>Fill all red field</p>
+      <label for="fname">Name (a-z,A-Z): </label>
+      <input type="text" id="fname" name="fname" required pattern="[a-zA-Z]+">
+      <br>
+      <br>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required pattern="[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*">
+      <br>
+      <br>
+
+      <label for="age">Age: </label>
+      <output class="age-output" for="age"></output>
+      <input type="range" name="age" id="age" min="0" max="125" step="1" value="0">
+      <br>
+      <br>
+
+      <label for="color">Favorite color: </label>
+      <input type="color" name="color" id="color">
+      <br>
+      <br>
+      <input type="submit" value="Submit" onclick="return submitResult();">
+     </fieldset>
+    </form>
+</article>
+<footer>
+    <a href="https://validator.nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2Fsp%2Fsit-amet.html&schema=http%3A%2F%2Fs.validator.nu%2Fhtml5.rnc+http%3A%2F%2Fs.validator.nu%2Fhtml5%2Fassertions.sch+http%3A%2F%2Fc.validator.nu%2Fall%2F&laxtype=yes">Valiadtion</a>
+</footer>
+<script type="text/javascript">
+    const age = document.querySelector('#age');
+    const output = document.querySelector('.age-output');
+    const email  = document.querySelector('#email');
+    const fname  = document.querySelector('#fname');
+    var validAge = false;
+    updateAge();
+
+    age.addEventListener('input', updateAge);
+    function updateAge() {
+        var n = parseInt(age.value);
+        output.textContent = n + " year" + (n === 1?"":"s");
+        validAge = n>13?true:false;
+    }
+
+    function checkValid(element){
+        return !element.validity.patternMismatch && !element.validity.valueMissing;
+    }
+
+    function submitResult(){
+        if(checkValid(email) && checkValid(fname)){
+            if(validAge){
+                alert("All data is OK");
+                return true;
+            }else{
+                alert("You should be older than 12 years");
+                return false;
+            }
+        }
+        alert("Enter all data");
+        return false;
+    }
+</script>
+</body>
+</html>

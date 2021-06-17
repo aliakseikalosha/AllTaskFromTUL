@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="la">
+<head>
+<meta charset="utf-8">
+<title>Ipsum @ Lorem ipsum</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+<header class="nav">
+    <h1 id="logo">LOGO</h1>
+        <input type='checkbox' id='toggle'/>
+        <label for="toggle" class="toggle" data-open="Main Menu" data-close="Close Menu" onclick>&nbsp;</label>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Lorem</a></li>
+                    <li><a href="ipsum.html">Ipsum</a></li>
+                    <li><a href="sit-amet.html">Sit&nbsp;amet</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="links.html">Links</a></li>
+                </ul>
+            </nav>
+</header>
+<article id="gallery">
+    <header>
+        <h2>
+            Images
+        </h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et est tincidunt, lacinia metus consectetur, tristique nibh. Vivamus vitae hendrerit arcu.</p>
+    </header>
+    <div>
+        <img src="img/gallery001.jpg" alt="JPG 25 kB" />
+        <img src="img/gallery002.jpg" alt="JPG 63 kB" />
+        <img src="img/gallery003.jpg" alt="JPG 40 kB" />
+        <img src="img/gallery004.jpg" alt="JPG 35 kB" />
+        <img src="img/gallery005.jpg" alt="JPG 34 kB" />
+        <img src="img/gallery006.jpg" alt="JPG 46 kB" />
+    </div>
+    <h2>
+        Video and Audio
+    </h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et est tincidunt, lacinia metus consectetur, tristique nibh. Vivamus vitae hendrerit arcu.</p>
+    <div id="videoPlayer">
+        <video id="video" loop="" title="Video by Tom Fisk from Pexels.">
+            <source src="media/video.mp4" type="video/mp4">
+        </video>
+        <audio id="audio" src="media/audio.mp3" controls="" preload="auto" class="LineDAudioTag" title="After the End by Rafael Krux.">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+</article>
+<footer>
+    <a href="https://validator.nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2Fsp%2Fgallery.html&schema=http%3A%2F%2Fs.validator.nu%2Fhtml5.rnc+http%3A%2F%2Fs.validator.nu%2Fhtml5%2Fassertions.sch+http%3A%2F%2Fc.validator.nu%2Fall%2F&laxtype=yes">Valiadtion</a>
+</footer>
+<script type="text/javascript">
+    const video  =  document.querySelector('#video');
+    const audio  =  document.querySelector('#audio');
+    video.addEventListener("play", ()=>audio.play());
+    video.addEventListener("pause", ()=>audio.pause());
+    video.addEventListener("stop", ()=>audio.stop());
+
+    audio.addEventListener("play", ()=>video.play());
+    audio.addEventListener("pause", ()=>video.pause());
+    audio.addEventListener("stop", ()=>video.stop());
+</script>
+</body>
+</html>

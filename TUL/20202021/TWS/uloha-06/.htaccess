@@ -1,0 +1,7 @@
+ErrorDocument 401 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/uloha-06/error/401.html
+ErrorDocument 403 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/uloha-06/error/403.html
+ErrorDocument 404 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/uloha-06/error/404.html
+
+Redirect /~aliaksei.kalosha/uloha-06/start.html http://stuwrk.nti.tul.cz/~aliaksei.kalosha/uloha-06/nova-stranka.html
+
+Options -Indexes

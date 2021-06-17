@@ -1,0 +1,12 @@
+ErrorDocument 401 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/401.html
+ErrorDocument 403 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/403.html
+ErrorDocument 404 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/404.html
+
+Redirect /~aliaksei.kalosha/sp/dolor.html http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/ipsum.html
+
+Options -Indexes
+
+#commented for validation.nu
+#Order Deny,Allow
+#Deny from all
+#Allow from 147.230
