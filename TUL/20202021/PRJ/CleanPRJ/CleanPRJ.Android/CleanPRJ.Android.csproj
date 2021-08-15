@@ -76,6 +76,7 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessFileImplement .cs" />
     <Compile Include="AndroidBluetoothReader.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PhoneCallDetector.cs" />
