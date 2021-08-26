@@ -34,10 +34,10 @@ namespace CleanPRJ.Droid
 
         public void Start(string name, int sleepTime = 200, bool readAsCharArray = false)
         {
-            Task.Run(() => Loop(name, sleepTime, readAsCharArray));
+            Task.Run(() => Loop(name, sleepTime));
         }
 
-        private async Task Loop(string name, int sleepTime, bool readAsCharArray)
+        private async Task Loop(string name, int sleepTime)
         {
             BluetoothDevice device = null;
             BluetoothAdapter adapter = BluetoothAdapter.DefaultAdapter;
