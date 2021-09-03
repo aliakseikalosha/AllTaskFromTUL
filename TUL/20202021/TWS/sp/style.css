@@ -1,3 +1,17 @@
+:root{
+/*top*/
+	--top-line:#3399ff;
+	--top-line-text:white;
+/*page*/
+	--text-background:white;
+	--text-color:black;
+/*links*/
+	--link-visited: #001166;
+	--link-hover: #3300ff;
+	--link-active: #33ff33;
+}
+
+
 body {
     max-width: 720px;
     margin: 0 auto;
@@ -9,7 +23,7 @@ article{
 }
 
 header.nav {
-    background-color: #3399ff;
+    background-color: var(--top-line);
     position: fixed;
 	width: 110%;
 	left: 0px;
@@ -17,7 +31,7 @@ header.nav {
 }
 
 #logo {
-    color: white;
+    color: var(--top-line-text);
 }
 
 header.nav nav {
@@ -26,10 +40,10 @@ header.nav nav {
 }
 
 footer {
-	background-color: #3399ff;
+	background-color: var(--top-line);
 	width: 100%;
 	padding: 10px 10px;
-	color: white;
+	color: var(--top-line-text);
 	position: fixed;
 	bottom: 0px;
 	left: 0px;
@@ -38,7 +52,7 @@ footer {
 header.nav nav ul {
 	display: none;
 	padding-left: 0px;
-    background-color: #3399ff;
+    background-color: var(--top-line);
 }
 
 header.nav nav ul li {
@@ -50,7 +64,7 @@ header.nav nav ul li {
 header.nav nav ul a {
 	text-decoration: none;
 	display: inline-block;
-    color: white;
+    color: var(--top-line-text);
 }
 
 header.nav nav ul a:hover {
@@ -89,19 +103,19 @@ header.nav label {
 }
 /*LINKS*/
 a.cLink:link {
-  color: #3399ff;
+  color: var(--top-line);
 }
 
 a.cLink:visited {
-  color: #001166;
+  color: var(--link-visited);
 }
 
 a.cLink:hover {
-  color: #3300ff;
+  color: var(--link-hover);
 }
 
 a.cLink:active {
-  color: #33ff33;
+  color:var(--link-active);
 } 
 /*NUMBERED LIST*/
 #list-num ol { 
@@ -223,7 +237,7 @@ a.cvut::before{
 		float: right;
 		position: relative;
 		width: 100%;
-		background-color: #3399ff;
+		background-color: var(--top-line);
 		top: -35px;
 	  	z-index: 2;
     }
@@ -235,7 +249,7 @@ a.cvut::before{
 
 	header.nav nav ul li a{
 		padding: 10px 0px;
-		border-top: 1px solid white;
+		border-top: 1px solid var(--top-line-text);
 		/*! border-top-color: white; */
 		width: 100%;
 		/*! text-align: center; */
