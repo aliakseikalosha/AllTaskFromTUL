@@ -19,7 +19,15 @@ namespace CleanPRJ.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-            var permissions = new string[] { Manifest.Permission.ReadExternalStorage, Manifest.Permission.WriteExternalStorage };
+            var permissions = new string[] {
+                Manifest.Permission.ReadExternalStorage,
+                Manifest.Permission.WriteExternalStorage,
+                Manifest.Permission.AccessFineLocation,
+                Manifest.Permission.AccessCoarseLocation,
+                Manifest.Permission.BluetoothAdmin,
+                Manifest.Permission.BluetoothPrivileged,
+                Manifest.Permission.Bluetooth,
+            };
             ActivityCompat.RequestPermissions(this, permissions, 123);
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
         }

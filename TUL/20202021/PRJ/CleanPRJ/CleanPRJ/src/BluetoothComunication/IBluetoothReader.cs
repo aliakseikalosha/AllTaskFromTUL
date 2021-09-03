@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading.Tasks;
 
 namespace CleanPRJ
 {
@@ -13,6 +14,6 @@ namespace CleanPRJ
         void Send(BluetoothMessage message);
         void Start(string name, int sleepTime, bool readAsCharArray);
         void Cancel();
-        ObservableCollection<string> PairedDevices();
+        Task<ObservableCollection<string>> PairedDevices();
     }
 }

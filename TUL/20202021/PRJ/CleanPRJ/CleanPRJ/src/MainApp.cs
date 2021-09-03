@@ -34,7 +34,7 @@ namespace CleanPRJ
         public static App I { get; private set; }
         private IScreenData[] screenDatas = new IScreenData[] {
             //new ScreenData<MainScreenViewModel>((m) => new MainScreenPage(m), typeof(MainScreenPage)),
-            new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
+            //new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
             new ScreenData<DataProviderViewModel>((m) => new DataProviderPage(m), typeof(DataProviderPage)),
             //new ScreenData<StatisticsViewModel>((m) => new StaticticsBattery(m), typeof(StaticticsBattery)),
             //new ScreenData<StatisticsViewModel>((m) => new StaticticsDistance(m), typeof(StaticticsDistance)),

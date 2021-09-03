@@ -54,7 +54,7 @@ namespace CleanPRJ
             try
             {
                 // At startup, I load all paired devices
-                ListOfDevices = DependencyService.Get<IBluetoothReader>().PairedDevices();
+                //ListOfDevices = DependencyService.Get<IBluetoothReader>().PairedDevices();
             }
             catch (Exception ex)
             {

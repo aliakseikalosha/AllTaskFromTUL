@@ -15,6 +15,9 @@
     <None Remove="src\Icons\arrow_back.png" />
     <None Remove="src\Icons\empty.png" />
     <None Remove="src\Icons\settings.png" />
+    <None Remove="Plugin.BluetoothLE" />
+    <None Remove="Plugin.BLE" />
+    <None Remove="Plugin.Permissions" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,5 +35,7 @@
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Plugin.BLE" Version="2.1.2" />
+    <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
   </ItemGroup>
 </Project>

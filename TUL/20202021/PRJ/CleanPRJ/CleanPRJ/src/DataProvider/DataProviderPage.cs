@@ -1,4 +1,5 @@
 ﻿using CleanPRJ.MainScreen;
+using CleanPRJ.src.BluetoothComunication;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -233,17 +234,10 @@ namespace CleanPRJ.DataProvider
             fileAccess.CreateFile(fileName);
         }
 
-        internal void Refresh()
+        internal async void Refresh()
         {
-            try
-            {
-                // At startup, I load all paired devices
-                ListOfDevices = DependencyService.Get<IBluetoothReader>().PairedDevices();
-            }
-            catch (Exception ex)
-            {
-                Application.Current.MainPage.DisplayAlert("Attention", ex.Message, "Ok");
-            }
+            await BluetoothManager.I.RefreshAsync();
+            ListOfDevices = BluetoothManager.I.ListOfDevices;
         }
         private Task task = null;
 
@@ -261,8 +255,37 @@ namespace CleanPRJ.DataProvider
             var fileAccess = DependencyService.Get<IAccessFileService>();
             while (!token.IsCancellationRequested)
             {
-                fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O}");
+                BMSBluetoothCommand.SendGetBaseInfo();
+                await Task.Delay(100);
+                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, 1);
+                if (BMSBluetoothCommand.currentBaseInfo == null)
+                {
+                    continue;
+                }
+                BMSBluetoothCommand.SendGetCellDataCommand();
+                await Task.Delay(100);
+                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, 1);
+                if (BMSBluetoothCommand.currentCellsData == null)
+                {
+                    continue;
+                }
+                fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo},{BMSBluetoothCommand.currentCellsData}");
                 await Task.Delay(500);
+            }
+        }
+
+        private async Task WaitWhile(Func<bool> condition, float maxWaitTime)
+        {
+            maxWaitTime *= 1000;
+            int waitFrame = 16;
+            while (condition())
+            {
+                await Task.Delay(waitFrame);
+                maxWaitTime -= waitFrame;
+                if (maxWaitTime<0)
+                {
+                    break;
+                }
             }
         }
 
