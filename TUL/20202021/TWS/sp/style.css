@@ -9,13 +9,25 @@
 	--link-visited: #001166;
 	--link-hover: #3300ff;
 	--link-active: #33ff33;
+/*table*/
+	--table-accent: #2B81EE;
+	--table-white: white;
+	--table-text: #1111dd;
+	--table-under: black;
+/*article*/
+	--article-strong:darkred;
+	--article-abbr:darkorange;
+/*form*/
+	--form-invalid:red;
+	--form-valid:black;
 }
-
 
 body {
     max-width: 720px;
     margin: 0 auto;
     font-family: "open sans", sans-serif;
+	background-color: var(--text-background);
+	color: var(--text-color);
 }
 
 article{
@@ -86,6 +98,15 @@ article img {
 	margin: 4px;
 }
 
+.img-grow {
+	transition: width 0.5s, height 0.9s;
+	transition-timing-function: ease;
+
+	transition-delay: 1s;
+}
+
+
+
 header.nav label {
 	display: block;
   float: right;
@@ -101,6 +122,7 @@ header.nav label {
 	background-image: url(img/24px.svg);
 	left: -50px;
 }
+
 /*LINKS*/
 a.cLink:link {
   color: var(--top-line);
@@ -135,20 +157,20 @@ a.cLink:active {
 /*TABLES*/
 table {
     margin: 2em 0.5em;
-	background-color: #2B81EE;
+	background-color: var(--table-accent);
     width: 90%;
 }
 table thead td{
-	background-color: #2B81EE;
-	color: white;
+	background-color: var(--table-accent);
+	color: var(--table-white);
 }
 table tbody.under td{
-	background-color: white;
-	color: black;
+	background-color: var(--table-white);
+	color: var(--table-under);
 }
 table td{
-	background-color: white;
-	color: #1111dd;
+	background-color: var(--table-white);
+	color: var(--table-text);
 	text-align: center;
 }
 /*TEXT*/
@@ -157,27 +179,29 @@ article em {
 }
 article strong {
 	font-size: 150%;
-	color: darkred;
+	color: var(--article-strong);
 }
 article abbr{
 	font-size: 110%;
-	color: darkorange;
+	color: var(--article-abbr);
 }
 /*FORM*/
 form input{
 	display: block;
 	float: right;
+	color:var(--text-color);
+	background-color: var(--text-background);
 }
 form input:invalid {
-  border: 2px dashed red;
+  border: 2px dashed var(--form-invalid);
 }
 
 form input:invalid:required {
-  border: 2px solid red;
+  border: 2px solid var(--form-invalid);
 }
 
 form input:valid {
-  border: 2px solid black;
+  border: 2px solid var(--form-valid);
 }
 
 form br{
@@ -338,6 +362,10 @@ a.cvut::before{
 
 	article img {
 		width:30%;
+	}
+
+	.img-grow:hover{
+		width: 65%;
 	}
 }
 @media print {

@@ -5,6 +5,7 @@
 <title>Lorem @ Lorem ipsum</title>
 <link rel="stylesheet" type="text/css" href="style.css">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="./theme.js"></script> 
 
 </head>
 
@@ -21,6 +22,7 @@
                 <li><a href="sit-amet.html">Sit&nbsp;amet</a></li>
                 <li><a href="gallery.html">Gallery</a></li>
                 <li><a href="links.html">Links</a></li>
+                <li><a onclick="toggleMode()" id='themeToggle'>Light</a></li>
             </ul>
         </nav>
 </header>
@@ -57,22 +59,23 @@
         
     <h3 id="fusce">Fusce</h3>
     	<p>Fusce viverra sapien in magna molestie porttitor. Donec in diam at risus congue adipiscing vel nec nunc. Morbi blandit erat convallis, convallis lacus quis, tincidunt mi. Duis vitae mattis lectus. Maecenas pellentesque nisl a cursus posuere. Donec blandit ipsum sagittis, sagittis lectus non, facilisis ante. Nunc pulvinar turpis sodales velit sodales, vitae venenatis augue consequat. In porttitor placerat magna sed tempor. Donec vitae dictum libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet nisl ut erat pellentesque tincidunt. Donec ut mi eget neque aliquet venenatis. Etiam sit amet nulla viverra, pharetra lectus quis, mattis arcu. Fusce in ante justo. Nunc vehicula vitae elit sed fringilla. Nulla et lectus vitae elit dapibus molestie eget sit amet libero.</p>
-        <img src="img/gallery001.jpg" alt="JPG 25 kB" />
+        <img class="img-grow" src="img/gallery001.jpg" alt="JPG 25 kB" />
 
     <h3 id="morbi">Morbi</h3>
     	<p>Morbi elit diam, sollicitudin non neque eget, accumsan commodo ipsum. Ut venenatis nunc non ligula eleifend egestas. Suspendisse eu mi quis ante porttitor faucibus. Proin neque augue, pretium vitae iaculis eu, fermentum eu eros. Cras vitae quam bibendum, gravida augue eget, tincidunt libero. Integer tincidunt dolor enim, quis mollis neque rutrum eu. Donec id sagittis enim. Curabitur eget rutrum est, ac bibendum urna. Nulla vitae mattis neque. In et mauris egestas, gravida ligula et, egestas enim. Sed ante erat, pellentesque quis bibendum eu, porttitor nec erat.</p>
     	
         <p>Nullam eget magna eget leo fringilla ullamcorper. Quisque interdum eu risus ut iaculis. Sed varius imperdiet sapien ac rutrum. Ut ut gravida dolor. Duis nec felis porttitor, mollis sapien vitae, interdum velit. Sed semper blandit enim, vitae feugiat eros molestie at. In facilisis urna libero, et pretium diam auctor auctor. Duis vulputate facilisis ipsum in aliquet. Integer porta sapien sapien. Donec nulla mauris, vehicula ut nunc ac, porta condimentum augue. Curabitur eget turpis lorem.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque et est tincidunt, lacinia metus consectetur, tristique nibh. Vivamus vitae hendrerit arcu. Integer gravida lacus ut mi fringilla, non condimentum elit ullamcorper. Nunc id egestas nibh. Nulla in libero eleifend, malesuada dolor a, rutrum nisi. Mauris fringilla elit massa, a sodales leo consectetur eget. Quisque id sem adipiscing, sodales lacus id, venenatis nisi. Fusce scelerisque scelerisque arcu nec auctor. Curabitur id leo metus. Phasellus ut vehicula ipsum. Nulla consequat porttitor erat, sit amet mattis libero.</p>
-        <img src="img/gallery002.jpg" alt="JPG 63 kB" />
-        <img src="img/gallery003.jpg" alt="JPG 40 kB" />
+        <img class="img-grow" src="img/gallery002.jpg" alt="JPG 63 kB" />
+        <img class="img-grow" src="img/gallery003.jpg" alt="JPG 40 kB" />
     	<p>Fusce viverra sapien in magna molestie porttitor. Donec in diam at risus congue adipiscing vel nec nunc. Morbi blandit erat convallis, convallis lacus quis, tincidunt mi. Duis vitae mattis lectus. Maecenas pellentesque nisl a cursus posuere. Donec blandit ipsum sagittis, sagittis lectus non, facilisis ante. Nunc pulvinar turpis sodales velit sodales, vitae venenatis augue consequat. In porttitor placerat magna sed tempor. Donec vitae dictum libero. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sit amet nisl ut erat pellentesque tincidunt. Donec ut mi eget neque aliquet venenatis. Etiam sit amet nulla viverra, pharetra lectus quis, mattis arcu. Fusce in ante justo. Nunc vehicula vitae elit sed fringilla. Nulla et lectus vitae elit dapibus molestie eget sit amet libero.</p>
     	<p>Morbi elit diam, sollicitudin non neque eget, accumsan commodo ipsum. Ut venenatis nunc non ligula eleifend egestas. Suspendisse eu mi quis ante porttitor faucibus. Proin neque augue, pretium vitae iaculis eu, fermentum eu eros. Cras vitae quam bibendum, gravida augue eget, tincidunt libero. Integer tincidunt dolor enim, quis mollis neque rutrum eu. Donec id sagittis enim. Curabitur eget rutrum est, ac bibendum urna. Nulla vitae mattis neque. In et mauris egestas, gravida ligula et, egestas enim. Sed ante erat, pellentesque quis bibendum eu, porttitor nec erat.</p>
     	
     <h2 id="nullam">Nullam</h2>
-        <p>Nullam eget magna eget leo fringilla ullamcorper. Quisque interdum eu risus ut iaculis. Sed varius imperdiet sapien ac rutrum. Ut ut gravida dolor. Duis nec felis porttitor, mollis sapien vitae, interdum velit. Sed semper blandit enim, vitae feugiat eros molestie at. In facilisis urna libero, et pretium diam auctor auctor. Duis vulputate facilisis ipsum in aliquet. Integer porta sapien sapien. Donec nulla mauris, vehicula ut nunc ac, porta condimentum augue. Curabitur eget turpis lorem.</p>
-        <img src="img/gallery004.jpg" alt="JPG 35 kB" />
-    
+        <p>Nullam eget magna eget leo fringilla ullamcorper. Quisque interdum eu risus ut iaculis.</p>
+        <img class="img-grow" src="img/gallery004.jpg" alt="JPG 35 kB" />
+        <p> Sed varius imperdiet sapien ac rutrum. Ut ut gravida dolor. Duis nec felis porttitor, mollis sapien vitae, interdum velit. Sed semper blandit enim, vitae feugiat eros molestie at. In facilisis urna libero, et pretium diam auctor auctor. Duis vulputate facilisis ipsum in aliquet. Integer porta sapien sapien. Donec nulla mauris, vehicula ut nunc ac, porta condimentum augue. Curabitur eget turpis lorem.</p>
+       
 </article>
 <footer>
    <a href="https://validator.nu/?doc=http%3A%2F%2Fstuwrk.nti.tul.cz%2F%7Ealiaksei.kalosha%2Fsp%2F&schema=http%3A%2F%2Fs.validator.nu%2Fhtml5.rnc+http%3A%2F%2Fs.validator.nu%2Fhtml5%2Fassertions.sch+http%3A%2F%2Fc.validator.nu%2Fall%2F&laxtype=yes">Valiadtion</a>
