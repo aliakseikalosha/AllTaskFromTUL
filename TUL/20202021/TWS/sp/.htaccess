@@ -1,6 +1,7 @@
 ErrorDocument 401 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/401.html
 ErrorDocument 403 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/403.html
-ErrorDocument 404 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/404.html
+#ErrorDocument 404 http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/error/404.html
+ErrorDocument 404 "Oops! We can't find that pesky file. Sorry."
 
 Redirect /~aliaksei.kalosha/sp/dolor.html http://stuwrk.nti.tul.cz/~aliaksei.kalosha/sp/ipsum.html
 
