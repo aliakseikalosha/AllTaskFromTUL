@@ -44,6 +44,22 @@ header.nav {
 
 #logo {
     color: var(--top-line-text);
+	animation: colorPulse 3s ease-in-out 1s infinite alternate;
+}
+/*Logo animation*/
+@keyframes colorPulse {
+	from { color :var(--top-line-text)}
+	to {color:var(--top-line)}
+}
+/*header*/
+@keyframes hideHeader {
+	from {top: 0px;}
+	to {top: -55px;}
+}
+/*footer*/
+@keyframes hideFooter {
+	from {bottom: 0px;}
+	to{bottom: -29px;}
 }
 
 header.nav nav {
@@ -366,6 +382,23 @@ a.cvut::before{
 
 	.img-grow:hover{
 		width: 65%;
+	}
+
+	header.nav
+	{
+		animation: hideHeader 0.5s ease 5s 1 forwards;
+	}
+
+	header.nav:hover{
+		animation: hideHeader 0.5s ease 5s 1 reverse forwards;
+	}
+
+	footer{
+		animation: hideFooter 0.5s ease 5s 1 forwards;
+	}
+
+	footer:hover{
+		animation: hideFooter 0.5s ease 0.5s 1 reverse forwards;
 	}
 }
 @media print {
