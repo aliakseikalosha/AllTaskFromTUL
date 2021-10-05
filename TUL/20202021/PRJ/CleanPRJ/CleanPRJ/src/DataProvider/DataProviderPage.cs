@@ -1,14 +1,9 @@
 ﻿using CleanPRJ.MainScreen;
-using CleanPRJ.src.BluetoothComunication;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CleanPRJ.DataProvider
@@ -18,10 +13,9 @@ namespace CleanPRJ.DataProvider
         private IBluetoothReader bluetooth;
         private Picker pickerBluetoothDevices;
         private Entry entrySleepTime;
-        private Entry messageText;
-        private Button send;
-        private StackLayout messageStack;
-        private ScrollView messageScroll;
+        private StackLayout infoStack;
+        private Label CellInfo;
+        private Label BaseInfo;
         private Button connect;
         private Button disconnect;
         private Button start;
@@ -33,6 +27,7 @@ namespace CleanPRJ.DataProvider
             InitUI();
             model.OnStartGatheringData += () => { start.IsEnabled = false; stop.IsEnabled = true; };
             model.OnStopGatheringData += () => { start.IsEnabled = true; stop.IsEnabled = false; };
+            model.OnDataUpdated += UpdateMessage;
         }
 
         public override void InitUI()
@@ -63,23 +58,27 @@ namespace CleanPRJ.DataProvider
 
             var refresh = new Button() { Text = "Refresh" };
             refresh.Clicked += RefreshDeviceList;
-
-            messageText = new Entry { Placeholder = "Message To Send" };
-            send = new Button { Text = "Send" };
-            send.Clicked += SendMessage;
-
-            messageStack = new StackLayout();
+            CellInfo = new Label();
+            BaseInfo = new Label();
+            infoStack = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children = { CellInfo, BaseInfo }
+            };
+            var scrollView = new ScrollView
+            {
+                Content = infoStack
+            };
+            
             UpdateMessage();
 
-            messageScroll = new ScrollView { Content = messageStack, IsVisible = true };
             int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
             StackLayout connectionButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect, refresh } };
             StackLayout sessionButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { start, stop } };
-            StackLayout sendStack = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { messageText, send } };
             StackLayout sl = new StackLayout
             {
                 VerticalOptions = LayoutOptions.StartAndExpand,
-                Children = { pickerBluetoothDevices, entrySleepTime, connectionButtons, sessionButtons, sendStack, messageScroll },
+                Children = { pickerBluetoothDevices, entrySleepTime, connectionButtons, sessionButtons, scrollView },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };
             Content = new StackLayout { Children = { TopLine("Data Grabber", false), sl } };
@@ -105,29 +104,10 @@ namespace CleanPRJ.DataProvider
         {
             Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
-                var sorted = bluetooth.All.OrderBy(c => c.Date.Ticks).ToArray();
-                messageStack.Children.Clear();
-                for (int i = 0; i < sorted.Length; i++)
-                {
-                    var m = sorted[i];
-                    messageStack.Children.Add(new Label
-                    {
-                        Text = $" {m.State}:{m.Message}",
-                        TextDecorations = TextDecorations.None,
-                        TextColor = m.State == MessageState.Recived ? Color.Black : Color.DarkGray,
-                        BackgroundColor = Color.White,
-                        FontSize = Device.GetNamedSize(NamedSize.Medium, typeof(Label)),
-                        VerticalOptions = LayoutOptions.Fill,
-                        HorizontalOptions = LayoutOptions.Fill,
-                    });
-                }
+                CellInfo.Text = $"Cell Info \n{model.CurrentCellInfo?.HumanData}";
+                BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
+                Console.WriteLine($"Update DataProviderPage:{DateTime.Now}");
             });
-        }
-
-        private void SendMessage(object sender, EventArgs e)
-        {
-            var bluetooth = DependencyService.Get<IBluetoothReader>();
-            bluetooth.Send(new BluetoothMessage(DateTime.Now, messageText.Text + "\n", MessageState.Sended));
         }
 
         private void ChangeSleepTime(object sender, TextChangedEventArgs e)
@@ -153,152 +133,6 @@ namespace CleanPRJ.DataProvider
         {
             model.SelectedBthDevice = (string)((Picker)sender).SelectedItem;
             connect.IsEnabled = model.IsConnectEnabled;
-        }
-    }
-
-    public class DataProviderViewModel : IViewModel
-    {
-        public Action OnStartGatheringData;
-        public Action OnStopGatheringData;
-        private readonly string fileName;
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
-
-        public string SelectedBthDevice = string.Empty;
-        bool isConnected = false;
-        int sleepTime = 250;
-
-        public string SleepTime
-        {
-            get { return sleepTime.ToString(); }
-            set
-            {
-                int.TryParse(value, out sleepTime);
-            }
-        }
-
-        private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedBthDevice);
-        public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
-        public bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
-        public bool IsPickerEnabled => !isConnected;
-
-
-        public DataProviderViewModel()
-        {
-            fileName = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}_data.csv";
-            Init();
-            MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
-            {
-                // When the app "sleep", I close the connection with bluetooth
-                //if (isConnected)
-                //{
-                //    Disconnect();
-                //}
-            });
-
-            MessagingCenter.Subscribe<App>(this, "Resume", (obj) =>
-            {
-
-                // When the app "resume" I try to restart the connection with bluetooth
-                //if (isConnected)
-                //{
-                //    DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
-                //}
-            });
-
-            Refresh();
-        }
-
-        public void Init()
-        {
-        }
-
-        public void Connect()
-        {
-            // Try to connect to a bth device
-            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
-            isConnected = true;
-        }
-
-        public void Disconnect()
-        {
-            // Disconnect from bth device
-            DependencyService.Get<IBluetoothReader>().Cancel();
-            isConnected = false;
-        }
-
-        internal void CreateFile()
-        {
-            var fileAccess = DependencyService.Get<IAccessFileService>();
-            fileAccess.CreateFile(fileName);
-        }
-
-        internal async void Refresh()
-        {
-            await BluetoothManager.I.RefreshAsync();
-            ListOfDevices = BluetoothManager.I.ListOfDevices;
-        }
-        private Task task = null;
-
-        private CancellationTokenSource source = new CancellationTokenSource();
-        private CancellationToken token;
-        internal void StartGatheringData(int waitMS)
-        {
-            OnStartGatheringData?.Invoke();
-            token = source.Token;
-            task = DataGathering(waitMS);
-        }
-
-        private async Task DataGathering(int waitMS)
-        {
-            var fileAccess = DependencyService.Get<IAccessFileService>();
-            while (!token.IsCancellationRequested)
-            {
-                BMSBluetoothCommand.SendGetBaseInfo();
-                await Task.Delay(100);
-                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, 1);
-                if (BMSBluetoothCommand.currentBaseInfo == null)
-                {
-                    continue;
-                }
-                BMSBluetoothCommand.SendGetCellDataCommand();
-                await Task.Delay(100);
-                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, 1);
-                if (BMSBluetoothCommand.currentCellsData == null)
-                {
-                    continue;
-                }
-                fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo},{BMSBluetoothCommand.currentCellsData}");
-                await Task.Delay(500);
-            }
-        }
-
-        private async Task WaitWhile(Func<bool> condition, float maxWaitTime)
-        {
-            maxWaitTime *= 1000;
-            int waitFrame = 16;
-            while (condition())
-            {
-                await Task.Delay(waitFrame);
-                maxWaitTime -= waitFrame;
-                if (maxWaitTime<0)
-                {
-                    break;
-                }
-            }
-        }
-
-        internal async void StopGatheringData()
-        {
-            if (!task.IsCanceled)
-            {
-                source.Cancel();
-            }
-            await Task.Delay(1000);
-            source.Dispose();
-            source = new CancellationTokenSource();
-            OnStopGatheringData?.Invoke();
         }
     }
     public interface IAccessFileService

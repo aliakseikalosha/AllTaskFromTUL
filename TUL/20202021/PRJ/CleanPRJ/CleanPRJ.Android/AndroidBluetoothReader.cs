@@ -138,7 +138,7 @@ namespace CleanPRJ.Droid
                                 Debug.WriteLine("Start reading");
                                 while(!CompliteMessage(answer))
                                 {
-                                    await recive.StartUpdatesAsync();
+                                    await Task.Delay(20);
                                 }
                                 AddMessage(answer);
                             }

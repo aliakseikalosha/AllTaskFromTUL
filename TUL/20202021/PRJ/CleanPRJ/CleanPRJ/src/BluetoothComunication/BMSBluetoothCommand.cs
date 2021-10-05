@@ -14,19 +14,19 @@ namespace CleanPRJ.src.BluetoothComunication
 
         public static CellsStateData currentCellsData { get; private set; } = null;
         public static BaseInfoStateData currentBaseInfo { get; private set; } = null;
-        
+
 
         public static void SendGetCellDataCommand()
         {
-            BluetoothManager.I.Send(new List<byte>() { 0xDD, 0xA5, 0x03, 0x00, 0xFF, 0xFD, 0x77 });//DD A5 03 00 FF FD 77
+            BluetoothManager.I.Send(new List<byte>() { 0xDD, 0xA5, cellDataCode, 0x00, 0xFF, 0xFC, 0x77 });//DD A5 03 00 FF FD 77
             //SendCommand(true, cellDataCode, 0, emptyData);
-            currentCellsData = null; 
+            currentCellsData = null;
         }
 
         public static void SendGetBaseInfo()
         {
 
-            BluetoothManager.I.Send(new List<byte>() { 0xDD, 0xA5, 0x04, 0x00, 0xFF, 0xFC, 0x77 });
+            BluetoothManager.I.Send(new List<byte>() { 0xDD, 0xA5, baseInfoCode, 0x00, 0xFF, 0xFD, 0x77 });
             //SendCommand(true, baseInfoCode, 0, emptyData);
             currentBaseInfo = null;
         }
@@ -75,18 +75,19 @@ namespace CleanPRJ.src.BluetoothComunication
             {
                 return default;
             }
-            var data = recived.Range(4, recived.Length - 4);
+            var data = recived.Range(4, recived.Length);
             var partState = new T();
             partState.FillData(data);
+            partState.FillSourceData(recived);
             return partState;
         }
 
         public static T[] Range<T>(this T[] data, int from, int to)
         {
-            if (to - from > 0 && from >= 0 && to < data.Length)
+            if (to - from > 0 && from >= 0 && to <= data.Length)
             {
                 var range = new T[to - from];
-                for (int i = from; i <= to; i++)
+                for (int i = from; i < to; i++)
                 {
                     range[i - from] = data[i];
                 }
@@ -101,11 +102,15 @@ public interface IBMSStateData
 {
     string Data { get; }
     void FillData(byte[] data);
+    void FillSourceData(byte[] data);
 }
 
 public abstract class StateData : IBMSStateData
 {
     public string Data { get; protected set; } = "";
+    public string SourceData { get; protected set; } = "";
+    public string HumanData { get; protected set; } = "";
+
 
     public abstract void FillData(byte[] data);
 
@@ -116,40 +121,81 @@ public abstract class StateData : IBMSStateData
 
     public override string ToString()
     {
-        return Data;
+        return $"{SourceData},{Data}";
+    }
+
+    public void FillSourceData(byte[] data)
+    {
+        SourceData = "";
+        for (int i = 0; i < data.Length; i++)
+        {
+            SourceData += data[i] + (i == data.Length - 1 ? "" : ",");
+        }
+    }
+
+    protected void AddData(string message, string data)
+    {
+        Data += (string.IsNullOrEmpty(Data) ? "" : ",") + data;
+        HumanData += $"{message}:{data}\n";
     }
 }
 
 public class CellsStateData : StateData
 {
+    public float[] Voltage = null;
     public override void FillData(byte[] data)
     {
-        ushort count = Convert(data[0], data[1]);
-        Data = Convert(data[2], data[3]).ToString();
-        for (int i = 4; i < (count) * 2; i += 2)
+        int count = BaseInfoStateData.NumberOfCell;
+        if (count < 0)
         {
-            Data += $",{Convert(data[i], data[i + 1])}";
+            return;
+        }
+        Voltage = new float[count];
+        for (int i = 4; i < count; i++)
+        {
+            Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
+            Data += Voltage[i] + (i == count - 1 ? "" : ",");
+            AddData($"{nameof(Voltage)}{i - 4}", Voltage[i].ToString());
         }
     }
 }
 
 public class BaseInfoStateData : StateData
 {
+    public static int NumberOfCell = -1;
+
+    public float FullVoltage { get; protected set; }
+    public float Current { get; protected set; }
+    public uint ResidualCapacity { get; protected set; }
+    public uint NominalCapacity { get; protected set; }
+    public int Cycles { get; protected set; }
+    public int SoC { get; protected set; }
+    public int NumberOfTemperature { get; protected set; }
+    public int[] Temperatures { get; protected set; }
+
+
     public override void FillData(byte[] data)
     {
+        FullVoltage = Convert(data[0], data[1]) / 100f;
+        Current = Convert(data[2], data[3]) / 100f;
+        ResidualCapacity = Convert(data[4], data[5]);
+        NominalCapacity = Convert(data[6], data[7]);
+        Cycles = Convert(data[8], data[9]);
+        SoC = (int)data[19];
+        NumberOfCell = (int)data[21];
+        NumberOfTemperature = (int)data[22];
+        Temperatures = new int[NumberOfTemperature];
         Data = "";
-        int count = 8;
-        int offset = 0;
-        int i = 0;
-        for (; i < (count) * 2; i += 2)
+        AddData(nameof(FullVoltage), FullVoltage.ToString());
+        AddData(nameof(Current), Current.ToString());
+        AddData(nameof(ResidualCapacity), ResidualCapacity.ToString());
+        AddData(nameof(NominalCapacity), NominalCapacity.ToString());
+        AddData(nameof(SoC), SoC.ToString());
+        AddData(nameof(NumberOfTemperature), NumberOfTemperature.ToString());
+        for (int i = 0; i < NumberOfTemperature; i++)
         {
-            Data += $"{Convert(data[i], data[i + 1])},";
+            Temperatures[i] = (Convert(data[23 + i * 2], data[23 + i * 2 + 1]) - 2731) / 10;
+            AddData($"{nameof(Temperatures)}{i}", Temperatures[i].ToString());
         }
-        count = i + 5;
-        for (; i < count; i++)
-        {
-            Data += $"{data[i + offset]},";
-        }
-        Data += $"{Convert(data[i], data[i + 1])}";
     }
 }
