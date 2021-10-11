@@ -9,7 +9,7 @@ using Android.Content;
 
 namespace CleanPRJ.Droid
 {
-    [Activity(Label = "eMotobike", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
+    [Activity(Label = "DataGrabber", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
@@ -19,7 +19,15 @@ namespace CleanPRJ.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
-            var permissions = new string[] { Manifest.Permission.ReadPhoneState, Manifest.Permission.ReadCallLog };
+            var permissions = new string[] {
+                Manifest.Permission.ReadExternalStorage,
+                Manifest.Permission.WriteExternalStorage,
+                Manifest.Permission.AccessFineLocation,
+                Manifest.Permission.AccessCoarseLocation,
+                Manifest.Permission.BluetoothAdmin,
+                Manifest.Permission.BluetoothPrivileged,
+                Manifest.Permission.Bluetooth,
+            };
             ActivityCompat.RequestPermissions(this, permissions, 123);
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
         }
@@ -31,8 +39,8 @@ namespace CleanPRJ.Droid
 
             if (requestCode == 123 && grantResults.Length > 0 && grantResults[0] == Permission.Granted)
             {
-                Intent serviceStart = new Intent(this, typeof(PhoneCallService));
-                this.StartService(serviceStart);
+               // Intent serviceStart = new Intent(this, typeof(PhoneCallService));
+               // this.StartService(serviceStart);
             }
         }
     }

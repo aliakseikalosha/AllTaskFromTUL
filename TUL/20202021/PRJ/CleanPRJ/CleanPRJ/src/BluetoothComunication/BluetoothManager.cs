@@ -1,15 +1,18 @@
 ﻿using CleanPRJ.src.Tool;
+using Plugin.BLE;
+using Plugin.BLE.Abstractions.Contracts;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CleanPRJ.src.BluetoothComunication
 {
     public class BluetoothManager : Singleton<BluetoothManager>
     {
-        public readonly static string TargetBluetoothDevice = "HC-05";
+        public readonly static string TargetBluetoothDevice = "xiaoxiang BMS";
         private ReadOnlyDictionary<char, Action<BluetoothMessage>> commandMap;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
 
@@ -18,6 +21,9 @@ namespace CleanPRJ.src.BluetoothComunication
         private int sleepTime = 250;
 
         private IBluetoothReader bluetooth = null;
+        private IBluetoothLE ble;
+        private IAdapter adapter;
+
         private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedDevice);
         public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
         public bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
@@ -26,19 +32,21 @@ namespace CleanPRJ.src.BluetoothComunication
         public BluetoothManager()
         {
             FillCommandMap();
-            InitBluetooth();
+            InitBluetoothAsync();
             ConnectTargetDevice();
         }
 
         private void FillCommandMap()
         {
             commandMap = new ReadOnlyDictionary<char, Action<BluetoothMessage>>(new Dictionary<char, Action<BluetoothMessage>> {
-                { 'B', BluetoothCommand.BatteryCommand },
-                { 'D', BluetoothCommand.DistanceCommand },
+                //{ 'B', BluetoothCommand.BatteryCommand },
+                //{ 'D', BluetoothCommand.DistanceCommand },
+                { (char)BMSBluetoothCommand.cellDataCode, BMSBluetoothCommand.GetResponceCellData},
+                { (char)BMSBluetoothCommand.baseInfoCode, BMSBluetoothCommand.GetResponceBaseInfo},
             });
         }
 
-        private void InitBluetooth()
+        private void InitBluetoothAsync()
         {
             bluetooth = DependencyService.Get<IBluetoothReader>();
             bluetooth.OnMessageUpdated += NewMessage;
@@ -59,15 +67,15 @@ namespace CleanPRJ.src.BluetoothComunication
             });
         }
 
-        private void ConnectTargetDevice()
+        private async Task ConnectTargetDevice()
         {
             try
             {
-                ListOfDevices = bluetooth.PairedDevices();
+                ListOfDevices = await bluetooth.PairedDevices();
                 if (ListOfDevices.Any(c => c.Contains(TargetBluetoothDevice)))
                 {
                     SelectedDevice = ListOfDevices.First(c => c.Contains(TargetBluetoothDevice));
-                    Connect();
+                   // Connect();
                 }
 
             }
@@ -89,6 +97,17 @@ namespace CleanPRJ.src.BluetoothComunication
                 commandMap[type]?.Invoke(message);
             }
         }
+        public void Refresh()
+        {
+            var task = bluetooth.PairedDevices();
+            task.RunSynchronously();
+            ListOfDevices = task.Result;
+        }
+
+        public async Task RefreshAsync()
+        {
+            ListOfDevices = await bluetooth.PairedDevices();
+        }
 
         public void Connect()
         {
@@ -104,8 +123,25 @@ namespace CleanPRJ.src.BluetoothComunication
 
         public void Send(string command)
         {
-            bluetooth.Send(new BluetoothMessage(DateTime.Now, command, MessageState.Sended));
-            Console.WriteLine(command);
+            Send(new BluetoothMessage(DateTime.Now, command, MessageState.Sended));
+        }
+
+
+        internal void Send(List<byte> fullCommand)
+        {
+            Send(fullCommand.ToArray());
+        }
+
+        private void Send(byte[] command)
+        {
+            Send(new BluetoothMessage(command, MessageState.Sended));
+        }
+
+
+        private void Send(BluetoothMessage mesage)
+        {
+            bluetooth.Send(mesage);
+            Console.WriteLine(mesage.Message);
         }
     }
 }

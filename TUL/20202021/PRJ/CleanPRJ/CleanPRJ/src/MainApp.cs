@@ -3,6 +3,7 @@ using System.Linq;
 using CleanPRJ.MainScreen;
 using CleanPRJ.Settings;
 using CleanPRJ.src.Data;
+using CleanPRJ.DataProvider;
 using CleanPRJ.Statistics;
 using Xamarin.Forms;
 
@@ -32,11 +33,12 @@ namespace CleanPRJ
     {
         public static App I { get; private set; }
         private IScreenData[] screenDatas = new IScreenData[] {
-            new ScreenData<MainScreenViewModel>((m) => new MainScreenPage(m), typeof(MainScreenPage)),
-            new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
-            new ScreenData<StatisticsViewModel>((m) => new StaticticsBattery(m), typeof(StaticticsBattery)),
-            new ScreenData<StatisticsViewModel>((m) => new StaticticsDistance(m), typeof(StaticticsDistance)),
-            new ScreenData<SettingsVievModel>((m) => new SettingsPage(m), typeof(SettingsPage)),
+            //new ScreenData<MainScreenViewModel>((m) => new MainScreenPage(m), typeof(MainScreenPage)),
+            //new ScreenData<BluetoothComunicationViewModel>((m) => new BluetoothComunicationPage(m), typeof(BluetoothComunicationPage)),
+            new ScreenData<DataProviderViewModel>((m) => new DataProviderPage(m), typeof(DataProviderPage)),
+            //new ScreenData<StatisticsViewModel>((m) => new StaticticsBattery(m), typeof(StaticticsBattery)),
+            //new ScreenData<StatisticsViewModel>((m) => new StaticticsDistance(m), typeof(StaticticsDistance)),
+            //new ScreenData<SettingsVievModel>((m) => new SettingsPage(m), typeof(SettingsPage)),
         };
         public App()
         {
@@ -58,7 +60,7 @@ namespace CleanPRJ
             {
                 SubscribeTo(data.Page);
             }
-            ChangePageTo(typeof(MainScreenPage));
+            ChangePageTo(typeof(DataProviderPage));
         }
 
         private ApplicationPage GetPage(Type pageType)

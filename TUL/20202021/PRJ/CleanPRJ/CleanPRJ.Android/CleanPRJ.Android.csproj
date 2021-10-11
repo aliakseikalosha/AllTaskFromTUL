@@ -74,8 +74,15 @@
     <PackageReference Include="Xamarin.Forms.PancakeView">
       <Version>2.3.0.759</Version>
     </PackageReference>
+    <PackageReference Include="Plugin.BLE">
+      <Version>2.1.2</Version>
+    </PackageReference>
+    <PackageReference Include="Plugin.Permissions">
+      <Version>6.0.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccessFileImplement .cs" />
     <Compile Include="AndroidBluetoothReader.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="PhoneCallDetector.cs" />

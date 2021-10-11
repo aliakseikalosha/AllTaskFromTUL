@@ -126,7 +126,7 @@ namespace CleanPRJ
             try
             {
                 var bluetooth = DependencyService.Get<IBluetoothReader>();
-                ((BluetoothComunicationViewModel)BindingContext).ListOfDevices = bluetooth.PairedDevices();
+                //((BluetoothComunicationViewModel)BindingContext).ListOfDevices = bluetooth.PairedDevices();
             }
             catch (Exception e)
             {

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8"/>
+	<title>RGB to Grayscale</title>
+</head>
+<body>
+	<h1>Protže jsem měl problem z Cross Reference můsel jsem použít input tag, stači otevřit lena.png</h1>
+	<input type="file" id="myFile">Load image</input>
+<br>
+<canvas id="src" width="512" height="512"></canvas>
+<canvas id="bw" width="512" height="512"></canvas>
+<br>
+<canvas id="rgba" width="1024" height="1024"></canvas>
+<br>
+<canvas id="cmyk" width="1024" height="1024"></canvas>
+
+<script type="text/javascript">
+
+	var srcImg = new Image();
+
+	window.onload = function() {
+
+		/* Load source image */
+		var srcCanvas = document.getElementById("src");
+		var srcContext = srcCanvas.getContext("2d");
+
+		document.getElementById('myFile').onchange = function (evt) {
+			var tgt = evt.target || window.event.srcElement,
+				files = tgt.files;
+
+			// FileReader support
+			if (FileReader && files && files.length) {
+				var fr = new FileReader();
+				fr.onload = () => showImage(fr);
+				fr.readAsDataURL(files[0]);
+			}
+		}
+
+		srcImg.onload = function () {
+			srcContext.drawImage(srcImg, 0, 0);
+
+			var imgHeight = srcImg.height;
+			var imgWidth = srcImg.width;
+
+			var srcImageData = srcContext.getImageData(0, 0, imgWidth, imgHeight);
+			var srcData = srcImageData.data;
+
+			console.log('experiment');
+			drawBW(srcData);
+			drawRGBA(srcData);
+			drawCMYK(srcData);
+		}
+	}
+
+	function drawBW(img) {
+		var imgHeight = srcImg.height;
+		var imgWidth = srcImg.width;
+		var bwContext = document.getElementById("bw").getContext("2d");
+		var bwImg = bwContext.getImageData(0, 0, imgWidth, imgHeight);
+		var data = bwImg.data;
+		for(var y = 0; y < imgHeight; y++) {
+			for(var x = 0; x < imgWidth; x++) {
+
+				var red = img[((imgWidth * y) + x) * 4];
+				var green = img[((imgWidth * y) + x) * 4 + 1];
+				var blue = img[((imgWidth * y) + x) * 4 + 2];
+				var alpha = img[((imgWidth * y) + x) * 4 + 3];
+
+				// Do magic at this place :-)
+				var color = (red * 0.32 +  green * 0.64 + blue * 0.02)/3;
+				data[((imgWidth * y) + x) * 4] = color;
+				data[((imgWidth * y) + x) * 4 + 1] = color;
+				data[((imgWidth * y) + x) * 4 + 2] = color;
+				data[((imgWidth * y) + x) * 4 + 3] = alpha;
+			}
+		}
+		bwContext.putImageData(bwImg, 0, 0);
+	}
+
+	function drawRGBA(img) {
+		var imgHeight = srcImg.height;
+		var imgWidth = srcImg.width;
+		var context = document.getElementById("rgba").getContext("2d");
+		var nImg = context.getImageData(0, 0, imgWidth*2, imgHeight*2);
+		var data = nImg.data;
+		for(var y = 0; y < imgHeight; y++) {
+			for(var x = 0; x < imgWidth; x++) {
+
+				var red = img[((imgWidth * y) + x) * 4];
+				var green = img[((imgWidth * y) + x) * 4 + 1];
+				var blue = img[((imgWidth * y) + x) * 4 + 2];
+				var alpha = img[((imgWidth * y) + x) * 4 + 3];
+
+				//red
+				data[((imgWidth * 2 * y) + x) * 4] = red;
+				data[((imgWidth * 2 * y) + x) * 4 + 1] = 0;
+				data[((imgWidth * 2 * y) + x) * 4 + 2] = 0;
+				data[((imgWidth * 2 * y) + x) * 4 + 3] = 255;
+
+				//green
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4] = 0;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 1] = green;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 2] = 0;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 3] = 255;
+
+				//blue
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4] = 0;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 1] = 0;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 2] = blue;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 3] = 255;
+
+				//alpha
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4] = alpha;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 1] = alpha;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 2] = alpha;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 3] = 255;
+			}
+		}
+		context.putImageData(nImg, 0, 0);
+	}
+
+	function drawCMYK(img) {
+		var imgHeight = srcImg.height;
+		var imgWidth = srcImg.width;
+		var context = document.getElementById("cmyk").getContext("2d");
+		var nImg = context.getImageData(0, 0, imgWidth*2, imgHeight*2);
+		var data = nImg.data;
+		for(var y = 0; y < imgHeight; y++) {
+			for(var x = 0; x < imgWidth; x++) {
+
+				var red = img[((imgWidth * y) + x) * 4];
+				var green = img[((imgWidth * y) + x) * 4 + 1];
+				var blue = img[((imgWidth * y) + x) * 4 + 2];
+				var alpha = img[((imgWidth * y) + x) * 4 + 3];
+				
+				var K = 255 - Math.max(red,green,blue);
+				var cyan  = 255 - red - K;
+				var yellow = 255 -  blue - K;
+				var magenta = 255 - green - K;
+
+				//Cyan
+				data[((imgWidth * 2 * y) + x) * 4] = 0;
+				data[((imgWidth * 2 * y) + x) * 4 + 1] = cyan;
+				data[((imgWidth * 2 * y) + x) * 4 + 2] = cyan;
+				data[((imgWidth * 2 * y) + x) * 4 + 3] = 255;
+
+				//Yellow
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4] = yellow;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 1] = yellow;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 2] = 0;
+				data[((imgWidth * 2 * y) + imgWidth + x) * 4 + 3] = 255;
+
+				//Magenta
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4] = magenta;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 1] = 0;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 2] = magenta;
+				data[((imgWidth * 2 * (y + imgWidth)) + x) * 4 + 3] = 255;
+
+				//blacK
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4] = K;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 1] = K;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 2] = K;
+				data[((imgWidth * 2 * (y + imgWidth)) + imgWidth + x) * 4 + 3] = 255;
+			}
+		}
+		context.putImageData(nImg, 0, 0);
+	}
+
+	function showImage(fileReader) {
+		srcImg.src = fileReader.result;
+	}
+</script>
+
+</body>
+</html>

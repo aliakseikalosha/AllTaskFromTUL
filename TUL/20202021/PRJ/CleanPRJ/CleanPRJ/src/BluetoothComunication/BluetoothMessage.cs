@@ -1,5 +1,6 @@
 ﻿using CleanPRJ.src.BluetoothComunication;
 using System;
+using System.Linq;
 
 namespace CleanPRJ
 {
@@ -8,13 +9,13 @@ namespace CleanPRJ
         public DateTime Date { get; private set; }
         public string Message { get; private set; }
         public MessageState State { get; private set; }
-        public char Type => Message.Length > 0 ? Message[0] : '\0';
+        public char Type => (char)BMSData[1];//Message.Length > 0 ? (char)BMSData[3] : '\0';
         public string Data
         {
             get
             {
                 var data = Message.Split(BluetoothCommand.Separator);
-                if (data.Length < 1)
+                if (data.Length < 2)
                 {
                     return null;
                 }
@@ -22,11 +23,20 @@ namespace CleanPRJ
             }
         }
 
+        public byte[] BMSData { get; set; }
 
         public BluetoothMessage(DateTime date, string message, MessageState state)
         {
             Date = date;
             Message = message;
+            State = state;
+        }
+
+        public BluetoothMessage(byte[] command, MessageState state)
+        {
+            Date = DateTime.Now;
+            BMSData = command;
+            Message = command.Select(c => c.ToString("X")).Aggregate((a, b) => a +" "+ b);
             State = state;
         }
 

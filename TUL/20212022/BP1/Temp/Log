@@ -1,0 +1,1219 @@
+Forwarding debugger port 8809
+Detecting existing process
+> am start -n "com.aliakseikalosha.datagrabber/crc64fc966a0ce03286ab.MainActivity"
+> Starting: Intent { cmp=com.aliakseikalosha.datagrabber/crc64fc966a0ce03286ab.MainActivity }
+
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/CleanPRJ.Android.dll
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/CleanPRJ.dll
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/FormsViewGroup.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Microcharts.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Microcharts.Droid.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Microcharts.Forms.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Newtonsoft.Json.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Plugin.BLE.Abstractions.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Plugin.BLE.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Plugin.Permissions.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Sharpnado.Shadows.Android.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Sharpnado.Shadows.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/SkiaSharp.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/SkiaSharp.Views.Android.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/SkiaSharp.Views.Forms.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/WeakEvent.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Activity.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Annotation.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.AppCompat.AppCompatResources.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.AppCompat.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Arch.Core.Common.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Arch.Core.Runtime.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.AsyncLayoutInflater.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Browser.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.CardView.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Collection.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.CoordinatorLayout.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Core.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.CursorAdapter.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.CustomView.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.DocumentFile.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.DrawerLayout.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Fragment.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Interpolator.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Legacy.Support.Core.UI.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Legacy.Support.Core.Utils.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Legacy.Support.V4.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.Common.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.LiveData.Core.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.LiveData.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.Runtime.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.ViewModel.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Lifecycle.ViewModelSavedState.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Loader.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.LocalBroadcastManager.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Media.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.MultiDex.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Print.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.RecyclerView.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.SavedState.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.SlidingPaneLayout.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.SwipeRefreshLayout.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.Transition.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.VectorDrawable.Animated.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.VectorDrawable.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.VersionedParcelable.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.ViewPager.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.AndroidX.ViewPager2.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Essentials.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Forms.Core.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Forms.PancakeView.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Forms.Platform.Android.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Forms.Platform.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Forms.Xaml.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Google.Android.Material.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Xamarin.Google.Guava.ListenableFuture.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Mono.Android.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Java.Interop.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/System.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/Mono.Security.dll [External]
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/netstandard.dll [External]
+[sha.datagrabbe] Late-enabling -Xcheck:jni
+[sha.datagrabbe] Unknown bits set in runtime_flags: 0x8000
+[Perf] Connecting to perf service.
+[debug-app-helper] Checking if libmonodroid was unpacked to /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64/libmonodroid.so
+[debug-app-helper] Native libs extracted to /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64, assuming application/android:extractNativeLibs == true
+[debug-app-helper] Setting up for DSO lookup in app data directories
+[debug-app-helper] Added filesystem DSO lookup location: /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64
+[debug-app-helper] Using runtime path: /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64
+[debug-app-helper] checking directory: `/data/user/0/com.aliakseikalosha.datagrabber/files/.__override__/lib`
+[debug-app-helper] directory does not exist: `/data/user/0/com.aliakseikalosha.datagrabber/files/.__override__/lib`
+[debug-app-helper] Checking whether Mono runtime exists at: /data/user/0/com.aliakseikalosha.datagrabber/files/.__override__/libmonosgen-2.0.so
+[debug-app-helper] Checking whether Mono runtime exists at: /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64/libmonosgen-2.0.so
+[debug-app-helper] Mono runtime found at: /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/lib/arm64/libmonosgen-2.0.so
+[sha.datagrabbe] Attempt to remove non-JNI local reference, dumping thread
+[monodroid] Creating public update directory: `/data/user/0/com.aliakseikalosha.datagrabber/files/.__override__`
+[sha.datagrabbe] Attempt to remove non-JNI local reference, dumping thread
+[monodroid-debug] Trying to initialize the debugger with options: --debugger-agent=transport=dt_socket,loglevel=0,address=127.0.0.1:8809,server=y,embedding=1
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: AndroidManifest.xml
+[monodroid-assembly]     ZIP: local header offset: 0; data offset: 49; file size: 7156
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_fade_in.xml
+[monodroid-assembly]     ZIP: local header offset: 2056; data offset: 2110; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_fade_out.xml
+[monodroid-assembly]     ZIP: local header offset: 2327; data offset: 2382; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_grow_fade_in_from_bottom.xml
+[monodroid-assembly]     ZIP: local header offset: 2600; data offset: 2671; file size: 852
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_popup_enter.xml
+[monodroid-assembly]     ZIP: local header offset: 3047; data offset: 3105; file size: 508
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_popup_exit.xml
+[monodroid-assembly]     ZIP: local header offset: 3363; data offset: 3420; file size: 508
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_shrink_fade_out_from_bottom.xml
+[monodroid-assembly]     ZIP: local header offset: 3680; data offset: 3754; file size: 852
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_slide_in_bottom.xml
+[monodroid-assembly]     ZIP: local header offset: 4131; data offset: 4193; file size: 396
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_slide_in_top.xml
+[monodroid-assembly]     ZIP: local header offset: 4421; data offset: 4480; file size: 396
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_slide_out_bottom.xml
+[monodroid-assembly]     ZIP: local header offset: 4709; data offset: 4772; file size: 396
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_slide_out_top.xml
+[monodroid-assembly]     ZIP: local header offset: 4999; data offset: 5059; file size: 396
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_tooltip_enter.xml
+[monodroid-assembly]     ZIP: local header offset: 5287; data offset: 5347; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/abc_tooltip_exit.xml
+[monodroid-assembly]     ZIP: local header offset: 5564; data offset: 5623; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_checked_box_inner_merged_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 5840; data offset: 5933; file size: 2124
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_checked_box_outer_merged_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 6575; data offset: 6668; file size: 2780
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_checked_icon_null_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 7409; data offset: 7495; file size: 1196
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/System.Core.dll [External]
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_unchecked_box_inner_merged_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 7891; data offset: 7986; file size: 2360
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_unchecked_check_path_merged_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 8644; data offset: 8740; file size: 2520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_checkbox_to_unchecked_icon_null_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 9471; data offset: 9559; file size: 1196
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_off_mtrl_dot_group_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 9955; data offset: 10039; file size: 1656
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_off_mtrl_ring_outer_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 10470; data offset: 10555; file size: 1656
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_off_mtrl_ring_outer_path_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 10988; data offset: 11078; file size: 1028
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_on_mtrl_dot_group_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 11451; data offset: 11534; file size: 1656
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_on_mtrl_ring_outer_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 11955; data offset: 12039; file size: 1656
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/btn_radio_to_on_mtrl_ring_outer_path_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 12468; data offset: 12557; file size: 1028
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim-v21/design_bottom_sheet_slide_in.xml
+[monodroid-assembly]     ZIP: local header offset: 12937; data offset: 13012; file size: 616
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim-v21/design_bottom_sheet_slide_out.xml
+[monodroid-assembly]     ZIP: local header offset: 13311; data offset: 13387; file size: 616
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/design_snackbar_in.xml
+[monodroid-assembly]     ZIP: local header offset: 13685; data offset: 13746; file size: 312
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/design_snackbar_out.xml
+[monodroid-assembly]     ZIP: local header offset: 13927; data offset: 13989; file size: 312
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/enterfromleft.xml
+[monodroid-assembly]     ZIP: local header offset: 14167; data offset: 14223; file size: 640
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/enterfromright.xml
+[monodroid-assembly]     ZIP: local header offset: 14525; data offset: 14582; file size: 468
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/exittoleft.xml
+[monodroid-assembly]     ZIP: local header offset: 14825; data offset: 14878; file size: 640
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/exittoright.xml
+[monodroid-assembly]     ZIP: local header offset: 15179; data offset: 15233; file size: 468
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_close_enter.xml
+[monodroid-assembly]     ZIP: local header offset: 15476; data offset: 15539; file size: 1076
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_close_exit.xml
+[monodroid-assembly]     ZIP: local header offset: 16002; data offset: 16064; file size: 1120
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_fade_enter.xml
+[monodroid-assembly]     ZIP: local header offset: 16552; data offset: 16614; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_fade_exit.xml
+[monodroid-assembly]     ZIP: local header offset: 16831; data offset: 16892; file size: 388
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim-v21/fragment_fast_out_extra_slow_in.xml
+[monodroid-assembly]     ZIP: local header offset: 17109; data offset: 17187; file size: 364
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_open_enter.xml
+[monodroid-assembly]     ZIP: local header offset: 17405; data offset: 17467; file size: 1076
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/fragment_open_exit.xml
+[monodroid-assembly]     ZIP: local header offset: 17932; data offset: 17993; file size: 1076
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim-v21/mtrl_bottom_sheet_slide_in.xml
+[monodroid-assembly]     ZIP: local header offset: 18459; data offset: 18532; file size: 616
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim-v21/mtrl_bottom_sheet_slide_out.xml
+[monodroid-assembly]     ZIP: local header offset: 18831; data offset: 18905; file size: 616
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/anim/mtrl_card_lowers_interpolator.xml
+[monodroid-assembly]     ZIP: local header offset: 19201; data offset: 19273; file size: 400
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator-v21/design_appbar_state_list_animator.xml
+[monodroid-assembly]     ZIP: local header offset: 19489; data offset: 19573; file size: 1216
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/design_fab_hide_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 20018; data offset: 20092; file size: 796
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/design_fab_show_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 20421; data offset: 20495; file size: 796
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_btn_state_list_anim.xml
+[monodroid-assembly]     ZIP: local header offset: 20821; data offset: 20892; file size: 2664
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_btn_unelevated_state_list_anim.xml
+[monodroid-assembly]     ZIP: local header offset: 21502; data offset: 21584; file size: 120
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_card_state_list_anim.xml
+[monodroid-assembly]     ZIP: local header offset: 21650; data offset: 21722; file size: 1208
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_chip_state_list_anim.xml
+[monodroid-assembly]     ZIP: local header offset: 22207; data offset: 22279; file size: 1072
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_extended_fab_change_size_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 22670; data offset: 22758; file size: 640
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_extended_fab_hide_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 23049; data offset: 23130; file size: 608
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_extended_fab_show_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 23452; data offset: 23533; file size: 820
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_extended_fab_state_list_animator.xml
+[monodroid-assembly]     ZIP: local header offset: 23892; data offset: 23976; file size: 2724
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_fab_hide_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 24588; data offset: 24660; file size: 796
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_fab_show_motion_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 24994; data offset: 25066; file size: 796
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_fab_transformation_sheet_collapse_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 25403; data offset: 25493; file size: 1888
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/animator/mtrl_fab_transformation_sheet_expand_spec.xml
+[monodroid-assembly]     ZIP: local header offset: 26004; data offset: 26092; file size: 1888
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_background_cache_hint_selector_material_dark.xml
+[monodroid-assembly]     ZIP: local header offset: 26600; data offset: 26692; file size: 468
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_background_cache_hint_selector_material_light.xml
+[monodroid-assembly]     ZIP: local header offset: 26923; data offset: 27016; file size: 468
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color-v21/abc_btn_colored_borderless_text_material.xml
+[monodroid-assembly]     ZIP: local header offset: 27247; data offset: 27335; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_btn_colored_text_material.xml
+[monodroid-assembly]     ZIP: local header offset: 27564; data offset: 27637; file size: 604
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_hint_foreground_material_dark.xml
+[monodroid-assembly]     ZIP: local header offset: 27909; data offset: 27986; file size: 564
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_hint_foreground_material_light.xml
+[monodroid-assembly]     ZIP: local header offset: 28246; data offset: 28324; file size: 564
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_primary_text_disable_only_material_dark.xml
+[monodroid-assembly]     ZIP: local header offset: 28584; data offset: 28671; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_primary_text_disable_only_material_light.xml
+[monodroid-assembly]     ZIP: local header offset: 28899; data offset: 28987; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_primary_text_material_dark.xml
+[monodroid-assembly]     ZIP: local header offset: 29215; data offset: 29289; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_primary_text_material_light.xml
+[monodroid-assembly]     ZIP: local header offset: 29519; data offset: 29594; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_search_url_text.xml
+[monodroid-assembly]     ZIP: local header offset: 29824; data offset: 29887; file size: 588
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_secondary_text_material_dark.xml
+[monodroid-assembly]     ZIP: local header offset: 30137; data offset: 30213; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_secondary_text_material_light.xml
+[monodroid-assembly]     ZIP: local header offset: 30443; data offset: 30520; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_btn_checkable.xml
+[monodroid-assembly]     ZIP: local header offset: 30750; data offset: 30816; file size: 728
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_default.xml
+[monodroid-assembly]     ZIP: local header offset: 31122; data offset: 31182; file size: 1224
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_edittext.xml
+[monodroid-assembly]     ZIP: local header offset: 31585; data offset: 31646; file size: 772
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_seek_thumb.xml
+[monodroid-assembly]     ZIP: local header offset: 31961; data offset: 32024; file size: 604
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_spinner.xml
+[monodroid-assembly]     ZIP: local header offset: 32295; data offset: 32355; file size: 772
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/abc_tint_switch_track.xml
+[monodroid-assembly]     ZIP: local header offset: 32669; data offset: 32734; file size: 768
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/checkbox_themeable_attribute_color.xml
+[monodroid-assembly]     ZIP: local header offset: 33044; data offset: 33122; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/design_box_stroke_color.xml
+[monodroid-assembly]     ZIP: local header offset: 33350; data offset: 33417; file size: 712
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/design_error.xml
+[monodroid-assembly]     ZIP: local header offset: 33702; data offset: 33758; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/design_icon_tint.xml
+[monodroid-assembly]     ZIP: local header offset: 33988; data offset: 34048; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_background_disabled.xml
+[monodroid-assembly]     ZIP: local header offset: 34255; data offset: 34330; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_background_emphasis_high_type.xml
+[monodroid-assembly]     ZIP: local header offset: 34534; data offset: 34619; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_background_emphasis_medium.xml
+[monodroid-assembly]     ZIP: local header offset: 34823; data offset: 34905; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_primary_disabled.xml
+[monodroid-assembly]     ZIP: local header offset: 35109; data offset: 35181; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_primary_emphasis_high_type.xml
+[monodroid-assembly]     ZIP: local header offset: 35381; data offset: 35463; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_primary_emphasis_medium.xml
+[monodroid-assembly]     ZIP: local header offset: 35664; data offset: 35743; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_surface_disabled.xml
+[monodroid-assembly]     ZIP: local header offset: 35944; data offset: 36016; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_surface_emphasis_high_type.xml
+[monodroid-assembly]     ZIP: local header offset: 36220; data offset: 36302; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/material_on_surface_emphasis_medium.xml
+[monodroid-assembly]     ZIP: local header offset: 36506; data offset: 36585; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_bottom_nav_colored_item_tint.xml
+[monodroid-assembly]     ZIP: local header offset: 36789; data offset: 36866; file size: 520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_bottom_nav_colored_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 37113; data offset: 37193; file size: 948
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_bottom_nav_item_tint.xml
+[monodroid-assembly]     ZIP: local header offset: 37525; data offset: 37594; file size: 520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_bottom_nav_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 37845; data offset: 37917; file size: 1672
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_bg_color_selector.xml
+[monodroid-assembly]     ZIP: local header offset: 38336; data offset: 38406; file size: 500
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 38654; data offset: 38719; file size: 948
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_stroke_color_selector.xml
+[monodroid-assembly]     ZIP: local header offset: 39038; data offset: 39112; file size: 520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_text_btn_bg_color_selector.xml
+[monodroid-assembly]     ZIP: local header offset: 39364; data offset: 39443; file size: 520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_text_btn_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 39693; data offset: 39767; file size: 948
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_btn_text_color_selector.xml
+[monodroid-assembly]     ZIP: local header offset: 40087; data offset: 40159; file size: 500
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_calendar_item_stroke_color.xml
+[monodroid-assembly]     ZIP: local header offset: 40407; data offset: 40482; file size: 808
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_calendar_selected_range.xml
+[monodroid-assembly]     ZIP: local header offset: 40799; data offset: 40871; file size: 376
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_card_view_foreground.xml
+[monodroid-assembly]     ZIP: local header offset: 41082; data offset: 41151; file size: 788
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_card_view_ripple.xml
+[monodroid-assembly]     ZIP: local header offset: 41462; data offset: 41527; file size: 768
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_chip_background_color.xml
+[monodroid-assembly]     ZIP: local header offset: 41842; data offset: 41912; file size: 848
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_chip_close_icon_tint.xml
+[monodroid-assembly]     ZIP: local header offset: 42228; data offset: 42297; file size: 1092
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_chip_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 42658; data offset: 42724; file size: 948
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_chip_surface_color.xml
+[monodroid-assembly]     ZIP: local header offset: 43044; data offset: 43111; file size: 340
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_chip_text_color.xml
+[monodroid-assembly]     ZIP: local header offset: 43291; data offset: 43355; file size: 520
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_choice_chip_background_color.xml
+[monodroid-assembly]     ZIP: local header offset: 43610; data offset: 43687; file size: 848
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_choice_chip_ripple_color.xml
+[monodroid-assembly]     ZIP: local header offset: 44005; data offset: 44078; file size: 948
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_choice_chip_text_color.xml
+[monodroid-assembly]     ZIP: local header offset: 44401; data offset: 44472; file size: 808
+[monodroid-assembly]     ZIP: local header offset: 44782; data offset: 44836; file size: 464
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_filled_background_color.xml
+[monodroid-assembly]     ZIP: local header offset: 47197; data offset: 47265; file size: 788
+[monodroid-assembly]     ZIP: local header offset: 48979; data offset: 49067; file size: 500
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/mtrl_popupmenu_overlay_color.xml
+[monodroid-assembly]     ZIP: local header offset: 50743; data offset: 50816; file size: 500
+[monodroid-assembly]     ZIP: local header offset: 51690; data offset: 51756; file size: 1672
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/switch_thumb_material_dark.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color/test_mtrl_calendar_day.xml
+[monodroid-assembly]     ZIP: local header offset: 53677; data offset: 53765; file size: 500
+[monodroid-assembly]     ZIP: local header offset: 54326; data offset: 54402; file size: 544
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/color-v23/abc_tint_spinner.xml
+[monodroid-assembly]     ZIP: local header offset: 56787; data offset: 56859; file size: 1176
+[monodroid-assembly]     ZIP: local header offset: 57377; data offset: 57449; file size: 592
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-v21/$avd_show_password__0.xml
+[monodroid-assembly]     ZIP: local header offset: 59090; data offset: 59162; file size: 556
+[monodroid-assembly]     ZIP: local header offset: 60330; data offset: 60404; file size: 816
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/abc_btn_radio_material.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/abc_cab_background_internal_bg.xml
+[monodroid-assembly]     ZIP: local header offset: 63066; data offset: 63147; file size: 716
+[monodroid-assembly]     ZIP: local header offset: 65033; data offset: 65101; file size: 684
+[monodroid-assembly]     ZIP: local header offset: 65880; data offset: 65956; file size: 792
+[monodroid-assembly]     ZIP: local header offset: 66873; data offset: 66952; file size: 828
+[monodroid-assembly]     ZIP: local header offset: 67409; data offset: 67485; file size: 1012
+[monodroid-assembly]     ZIP: local header offset: 67804; data offset: 67881; file size: 1012
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/abc_list_selector_background_transition_holo_light.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/abc_list_selector_holo_light.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/abc_ratingbar_material.xml
+[monodroid-assembly]     ZIP: local header offset: 71057; data offset: 71130; file size: 1100
+[monodroid-assembly]     ZIP: local header offset: 72799; data offset: 72871; file size: 464
+[monodroid-assembly]     ZIP: local header offset: 73407; data offset: 73478; file size: 516
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/btn_checkbox_checked_mtrl.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/btn_checkbox_unchecked_mtrl.xml
+[monodroid-assembly]     ZIP: local header offset: 77826; data offset: 77891; file size: 1728
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/btn_radio_off_to_on_mtrl_animation.xml
+[monodroid-assembly]     ZIP: local header offset: 80100; data offset: 80191; file size: 264
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/design_fab_background.xml
+[monodroid-assembly]     ZIP: local header offset: 82206; data offset: 82271; file size: 716
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_keyboard_arrow_left_black_24dp.xml
+[monodroid-assembly]     ZIP: local header offset: 82656; data offset: 82736; file size: 732
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_keyboard_arrow_right_black_24dp.xml
+[monodroid-assembly]     ZIP: local header offset: 83119; data offset: 83200; file size: 720
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_menu_arrow_down_black_24dp.xml
+[monodroid-assembly]     ZIP: local header offset: 83576; data offset: 83652; file size: 668
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_menu_arrow_up_black_24dp.xml
+[monodroid-assembly]     ZIP: local header offset: 83997; data offset: 84071; file size: 668
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_mtrl_checked_circle.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_mtrl_chip_checked_black.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/ic_mtrl_chip_close_circle.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/mtrl_dropdown_arrow.xml
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable/mtrl_ic_arrow_drop_up.xml
+[monodroid-assembly]     ZIP: local header offset: 105963; data offset: 106052; file size: 194
+[monodroid-assembly]     ZIP: local header offset: 107135; data offset: 107220; file size: 186
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-xhdpi-v4/abc_scrubber_primary_mtrl_alpha.9.png
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-xhdpi-v4/abc_tab_indicator_mtrl_alpha.9.png
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-xhdpi-v4/abc_text_select_handle_left_mtrl_light.png
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-xhdpi-v4/abc_textfield_activated_mtrl_alpha.9.png
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/drawable-xhdpi-v4/design_ic_visibility.png
+[monodroid-assembly]     ZIP: local header offset: 164341; data offset: 164428; file size: 221
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: res/layout/mtrl_alert_dialog.xml
+[monodroid-assembly]     ZIP: local header offset: 264368; data offset: 264436; file size: 956
+[monodroid-assembly]     ZIP: local header offset: 266617; data offset: 266687; file size: 400
+[monodroid-assembly]     ZIP: local header offset: 4145270; data offset: 4145344; file size: 65312
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86_64/libxa-internal-api.so
+[monodroid-assembly]     ZIP: local header offset: 4161160; data offset: 4161231; file size: 57496
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/armeabi-v7a/libmono-btls-shared.so
+[monodroid-assembly]     ZIP: local header offset: 4175323; data offset: 4175400; file size: 1113088
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86/libmono-btls-shared.so
+[monodroid-assembly]     ZIP: local header offset: 4727689; data offset: 4727758; file size: 1459984
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/arm64-v8a/libmono-btls-shared.so
+[monodroid-assembly]     ZIP: local header offset: 5334571; data offset: 5334646; file size: 1613872
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86_64/libmono-btls-shared.so
+[monodroid-assembly]     ZIP: local header offset: 5997838; data offset: 5997910; file size: 1886464
+[monodroid-assembly]     ZIP: local header offset: 6856845; data offset: 6856923; file size: 273184
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86/libmono-profiler-log.so
+[monodroid-assembly]     ZIP: local header offset: 7136042; data offset: 7136115; file size: 302472
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/armeabi-v7a/libmonosgen-2.0.so
+[monodroid-assembly]     ZIP: local header offset: 7240943; data offset: 7241016; file size: 4456716
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86/libmonosgen-2.0.so
+[monodroid-assembly]     ZIP: local header offset: 9016289; data offset: 9016354; file size: 4212604
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/arm64-v8a/libmonosgen-2.0.so
+[monodroid-assembly]     ZIP: local header offset: 10687146; data offset: 10687217; file size: 4050176
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86_64/libmonosgen-2.0.so
+[monodroid-assembly]     ZIP: local header offset: 12287437; data offset: 12287505; file size: 4673408
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86/libSkiaSharp.so
+[monodroid-assembly]     ZIP: local header offset: 14151456; data offset: 14151518; file size: 8356600
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86_64/libSkiaSharp.so
+[monodroid-assembly]     ZIP: local header offset: 17687580; data offset: 17687645; file size: 8945264
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/armeabi-v7a/libSkiaSharp.so
+[monodroid-assembly]     ZIP: local header offset: 21415520; data offset: 21415590; file size: 5313264
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/arm64-v8a/libSkiaSharp.so
+[monodroid-assembly]     ZIP: local header offset: 28416359; data offset: 28416426; file size: 836552
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/armeabi-v7a/libxamarin-debug-app-helper.so
+[monodroid-assembly]     ZIP: local header offset: 28782360; data offset: 28782445; file size: 31120
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86/libxamarin-debug-app-helper.so
+[monodroid-assembly]     ZIP: local header offset: 28794405; data offset: 28794482; file size: 32088
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/arm64-v8a/libxamarin-debug-app-helper.so
+[monodroid-assembly]     ZIP: local header offset: 28806789; data offset: 28806872; file size: 37296
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: lib/x86_64/libxamarin-debug-app-helper.so
+[monodroid-assembly]     ZIP: local header offset: 28819542; data offset: 28819622; file size: 36368
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.savedstate_savedstate.version
+[monodroid-assembly]     ZIP: local header offset: 28832400; data offset: 28832488; file size: 14
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.customview_customview.version
+[monodroid-assembly]     ZIP: local header offset: 28832502; data offset: 28832588; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.legacy_legacy-support-v4.version
+[monodroid-assembly]     ZIP: local header offset: 28832594; data offset: 28832684; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.loader_loader.version
+[monodroid-assembly]     ZIP: local header offset: 28832690; data offset: 28832768; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.activity_activity.version
+[monodroid-assembly]     ZIP: local header offset: 28832774; data offset: 28832856; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.lifecycle_lifecycle-runtime.version
+[monodroid-assembly]     ZIP: local header offset: 28832862; data offset: 28832956; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.fragment_fragment.version
+[monodroid-assembly]     ZIP: local header offset: 28832962; data offset: 28833044; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.versionedparcelable_versionedparcelable.version
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.viewpager_viewpager.version
+[monodroid-assembly]     ZIP: local header offset: 28833638; data offset: 28833744; file size: 6
+[monodroid-assembly]     ZIP: local header offset: 28834638; data offset: 28834736; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.slidingpanelayout_slidingpanelayout.version
+[monodroid-assembly]     ZIP: local header offset: 28835462; data offset: 28835548; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.vectordrawable_vectordrawable.version
+[monodroid-assembly]     ZIP: local header offset: 28835822; data offset: 28835916; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.swiperefreshlayout_swiperefreshlayout.version
+[monodroid-assembly]     ZIP: local header offset: 28835922; data offset: 28836024; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/androidx.cardview_cardview.version
+[monodroid-assembly]     ZIP: local header offset: 28836030; data offset: 28836112; file size: 6
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/maven/com.google.guava/listenablefuture/pom.xml
+[monodroid-assembly]     ZIP: local header offset: 28836118; data offset: 28836213; file size: 2226
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/maven/com.google.guava/listenablefuture/pom.properties
+[monodroid-assembly]     ZIP: local header offset: 28837104; data offset: 28837206; file size: 96
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/proguard/androidx-annotations.pro
+[monodroid-assembly]     ZIP: local header offset: 28868245; data offset: 28868296; file size: 1213
+[monodroid-assembly] /data/app/com.aliakseikalosha.datagrabber-Mz1iG45Pv_2Rf4q2XupQIw==/base.apk entry: META-INF/MANIFEST.MF
+[monodroid-assembly]     ZIP: local header offset: 28869357; data offset: 28869407; file size: 86857
+[monodroid-gc] GREF GC Threshold: 46080
+[sha.datagrabbe] Attempt to remove non-JNI local reference, dumping thread
+[Perf] Fail to get file list com.aliakseikalosha.datagrabber
+[Perf] getFolderSize() : Exception_1 = java.lang.NullPointerException: Attempt to get length of null array
+[sha.datagrabbe] Accessing hidden method Landroid/view/View;->computeFitSystemWindows(Landroid/graphics/Rect;Landroid/graphics/Rect;)Z (greylist, reflection, allowed)
+Loaded assembly: /data/data/com.aliakseikalosha.datagrabber/files/.__override__/System.Xml.dll [External]
+[BluetoothAdapter] isLeEnabled(): ON
+[BluetoothLeScanner] onScannerRegistered() - status=0 scannerId=9 mScannerId=0
+Thread started:  #2
+Thread started: <Thread Pool> #3
+Thread started: <Thread Pool> #4
+Thread started: <Thread Pool> #5
+Thread started: <Thread Pool> #6
+AddDevice (:00000000-0000-0000-0000-5250cdb8638b)
+AddDevice (:00000000-0000-0000-0000-40225cfbe5b4)
+AddDevice (:00000000-0000-0000-0000-39254609fa7f)
+AddDevice (xiaoxiang BMS:00000000-0000-0000-0000-a4c138a059eb)
+AddDevice (:00000000-0000-0000-0000-5e93a008da08)
+AddDevice (:00000000-0000-0000-0000-51796d93c39c)
+AddDevice (:00000000-0000-0000-0000-40bc6e5aeca3)
+AddDevice (:00000000-0000-0000-0000-6940b6094d8f)
+[AdrenoGLES] QUALCOMM build                   : 05b24e2, I485330b54f
+[AdrenoGLES] Build Date                       : 09/16/20
+[AdrenoGLES] OpenGL ES Shader Compiler Version: EV031.27.05.02
+[AdrenoGLES] Local Branch                     : 
+[AdrenoGLES] Remote Branch                    : refs/tags/AU_LINUX_ANDROID_LA.UM.8.3.R1.10.00.00.520.061
+[AdrenoGLES] Remote Branch                    : NONE
+[AdrenoGLES] Reconstruct Branch               : NOTHING
+[AdrenoGLES] Build Config                     : S P 8.0.11 AArch64
+[AdrenoGLES] PFP: 0x016ee187, ME: 0x00000000
+[AdrenoUtils] <ReadGpuID_from_sysfs:194>: Failed to open /sys/class/kgsl/kgsl-3d0/gpu_model
+[AdrenoUtils] <ReadGpuID:218>: Failed to read chip ID from gpu_model. Fallback to use the GSL path
+[Gralloc3] mapper 3.x is not supported
+[OpenGLRenderer] Davey! duration=838ms; Flags=1, IntendedVsync=832244981269971, Vsync=832245281269959, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=832245291057666, AnimationStart=832245291140479, PerformTraversalsStart=832245291343343, DrawStart=832245745600635, SyncQueued=832245778697927, SyncStart=832245778957979, IssueDrawCommandsStart=832245779081937, SwapBuffers=832245817918656, FrameCompleted=832245819792927, DequeueBufferDuration=84000, QueueBufferDuration=1123000, 
+[Choreographer] Skipped 33 frames!  The application may be doing too much work on its main thread.
+AddDevice (xiaoxiang BMS:00000000-0000-0000-0000-a4c13898f60b)
+AddDevice (:00000000-0000-0000-0000-77891021b055)
+AddDevice (Amazfit T-Rex:00000000-0000-0000-0000-c6e1b9114bd1)
+AddDevice (:00000000-0000-0000-0000-63e87dda546a)
+[OpenGLRenderer] endAllActiveAnimators on 0x7708f6d100 (AlertController$RecycleListView) with handle 0x776e45c1e0
+Resolved pending breakpoint at 'DataProviderViewModel.cs:130,1' to void CleanPRJ.DataProvider.DataProviderViewModel.<DataGathering>d__43.MoveNext () [0x002b1].
+DD A5 3 0 FF FD 77
+[sha.datagrabbe] Explicit concurrent copying GC freed 18866(790KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 2146KB/4292KB, paused 51us total 12.883ms
+[BluetoothAdapter] isLeEnabled(): ON
+Adapter found!!
+Try to connect to xiaoxiang BMS:00000000-0000-0000-0000-a4c138a059eb
+[BluetoothGatt] connect() - device: A4:C1:38:A0:59:EB, auto: false
+[BluetoothGatt] registerApp()
+[BluetoothGatt] registerApp() - UUID=45ef92eb-d09b-43eb-89f4-86ca6180666b
+[BluetoothGatt] onClientRegistered() - status=0 clientIf=9
+[BluetoothGatt] onClientConnectionState() - status=0 clientIf=9 device=A4:C1:38:A0:59:EB
+Thread started:  #7
+[BluetoothGatt] discoverServices() - device: A4:C1:38:A0:59:EB
+[BluetoothGatt] onConnectionUpdated() - Device=A4:C1:38:A0:59:EB interval=6 latency=0 timeout=500 status=0
+[BluetoothGatt] onSearchComplete() = Device=A4:C1:38:A0:59:EB Status=0
+Generic Access:00001800-0000-1000-8000-00805f9b34fb
+	Device Name:00002a00-0000-1000-8000-00805f9b34fb
+	Appearance:00002a01-0000-1000-8000-00805f9b34fb
+	Peripheral Preferred Connection Parameters:00002a04-0000-1000-8000-00805f9b34fb
+Unknown Service:0000ff00-0000-1000-8000-00805f9b34fb
+	Unknown characteristic:0000ff01-0000-1000-8000-00805f9b34fb
+		Client Characteristic Configuration:00002902-0000-1000-8000-00805f9b34fb
+	Unknown characteristic:0000ff02-0000-1000-8000-00805f9b34fb
+Unknown Service:00001912-0000-1000-8000-00805f9b34fb
+	Unknown characteristic:00002b12-0000-1000-8000-00805f9b34fb
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] onConnectionUpdated() - Device=A4:C1:38:A0:59:EB interval=36 latency=0 timeout=500 status=0
+Thread started:  #8
+Send messageDD A5 3 0 FF FD 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 3
+Message add 0
+Message add 1F
+Message add 27
+Message add C2
+Message add 7
+Message add 18
+Message add 7
+Message add 2
+Message add 13
+Message add 88
+Message add 0
+Message add D
+Message add 25
+Message add 4C
+Message add 0
+Message add 0
+Message add 0
+Message add 4
+Message add 0
+Message add 0
+Message add 20
+Message add 24
+Message add 3
+Message add 1C
+Message add 4
+Message add B
+Message add 75
+Message add B
+Message add 74
+Message add B
+Message add 64
+Message add B
+Message add 73
+Message add FB
+Message add 60
+Message add 77
+Recived DD 3 0 1F 27 C2 7 18 7 2 13 88 0 D 25 4C 0 0 0 4 0 0 20 24 3 1C 4 B 75 B 74 B 64 B 73 FB 60 77
+DD A5 3 0 FF FD 77
+Send messageDD A5 3 0 FF FD 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 3
+Message add 0
+Message add 1F
+Message add 27
+Message add C3
+Message add 7
+Message add 18
+Message add 7
+Message add 7
+Message add 13
+Message add 88
+Message add 0
+Message add D
+Message add 25
+Message add 4C
+Message add 0
+Message add 0
+Message add 0
+Message add 2
+Message add 0
+Message add 0
+Message add 20
+Message add 24
+Message add 3
+Message add 1C
+Message add 4
+Message add B
+Message add 75
+Message add B
+Message add 74
+Message add B
+Message add 64
+Message add B
+Message add 73
+Message add FB
+Message add 5C
+Message add 77
+Recived DD 3 0 1F 27 C3 7 18 7 7 13 88 0 D 25 4C 0 0 0 2 0 0 20 24 3 1C 4 B 75 B 74 B 64 B 73 FB 5C 77
+DD A5 4 0 FF FC 77
+Send messageDD A5 4 0 FF FC 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 4
+Message add 0
+Message add 38
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 33
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 34
+Message add E
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add 31
+Message add E
+Message add 30
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 32
+Message add E
+Message add 37
+Message add E
+Message add 33
+Message add E
+Message add 34
+Message add E
+Message add 35
+Message add E
+Message add 39
+Message add E
+Message add 39
+Message add E
+Message add 36
+Message add E
+Message add 36
+Message add E
+Message add 37
+Message add E
+Message add 34
+Message add E
+Message add 36
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 35
+Message add E
+Message add 2F
+Message add F8
+Message add 97
+Message add 77
+Recived DD 4 0 38 E 31 E 34 E 33 E 31 E 34 E 33 E 32 E 34 E 31 E 30 E 33 E 32 E 32 E 37 E 33 E 34 E 35 E 39 E 39 E 36 E 36 E 37 E 34 E 36 E 31 E 34 E 35 E 2F F8 97 77
+DD A5 3 0 FF FD 77
+Send messageDD A5 3 0 FF FD 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 3
+Message add 0
+Message add 1F
+Message add 27
+Message add C4
+Message add 7
+Message add 14
+Message add 7
+Message add 8
+Message add 13
+Message add 88
+Message add 0
+Message add D
+Message add 25
+Message add 4C
+Message add 0
+Message add 0
+Message add 0
+Message add 2
+Message add 0
+Message add 0
+Message add 20
+Message add 24
+Message add 3
+Message add 1C
+Message add 4
+Message add B
+Message add 75
+Message add B
+Message add 74
+Message add B
+Message add 64
+Thread started: <Thread Pool> #9
+Message add B
+Thread started: <Thread Pool> #10
+Thread started: <Thread Pool> #11
+Message add 73
+Thread started: <Thread Pool> #12
+Message add FB
+Message add 5E
+Message add 77
+Recived DD 3 0 1F 27 C4 7 14 7 8 13 88 0 D 25 4C 0 0 0 2 0 0 20 24 3 1C 4 B 75 B 74 B 64 B 73 FB 5E 77
+DD A5 4 0 FF FC 77
+Send messageDD A5 4 0 FF FC 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 4
+Message add 0
+Message add 38
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 34
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 35
+Message add E
+Message add 31
+Message add E
+Message add 31
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 32
+Message add E
+Message add 37
+Message add E
+Message add 32
+Message add E
+Message add 34
+Message add E
+Message add 36
+Message add E
+Message add 3A
+Message add E
+Message add 38
+Message add E
+Message add 36
+Message add E
+Message add 36
+Message add E
+Message add 37
+Message add E
+Message add 34
+Message add E
+Message add 35
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 35
+Message add E
+Message add 30
+Message add F8
+Message add 94
+Message add 77
+Recived DD 4 0 38 E 31 E 34 E 33 E 32 E 34 E 33 E 32 E 35 E 31 E 31 E 33 E 32 E 32 E 37 E 32 E 34 E 36 E 3A E 38 E 36 E 36 E 37 E 34 E 35 E 31 E 34 E 35 E 30 F8 94 77
+DD A5 3 0 FF FD 77
+Send messageDD A5 3 0 FF FD 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 3
+Message add 0
+Message add 1F
+Message add 27
+Message add C4
+Message add 7
+Message add 14
+Message add 7
+Message add 9
+Message add 13
+Message add 88
+Message add 0
+Message add D
+Message add 25
+Message add 4C
+Message add 0
+Message add 0
+Message add 0
+Message add 2
+Message add 0
+Message add 0
+Message add 20
+Message add 24
+Message add 3
+Message add 1C
+Message add 4
+Message add B
+Message add 75
+Message add B
+Message add 74
+Message add B
+Message add 64
+Message add B
+Message add 73
+Message add FB
+Message add 5D
+Message add 77
+Recived DD 3 0 1F 27 C4 7 14 7 9 13 88 0 D 25 4C 0 0 0 2 0 0 20 24 3 1C 4 B 75 B 74 B 64 B 73 FB 5D 77
+DD A5 4 0 FF FC 77
+Send messageDD A5 4 0 FF FC 77
+Start reading
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add DD
+Message add 4
+Message add 0
+Message add 38
+Message add E
+Message add 31
+Message add E
+Message add 33
+Message add E
+Message add 33
+Message add E
+Message add 31
+Message add E
+Message add 33
+Message add E
+Message add 33
+Message add E
+Message add 33
+Message add E
+Message add 35
+Message add E
+Message add 31
+Message add E
+Message add 31
+Message add E
+Message add 33
+Message add E
+Message add 32
+Message add E
+Message add 32
+Message add E
+Message add 37
+Message add E
+Message add 32
+Message add E
+Message add 34
+Message add E
+Message add 37
+Message add E
+Message add 39
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+Message add E
+Message add 39
+Message add E
+Message add 37
+Message add E
+Message add 36
+Message add E
+Message add 37
+Message add E
+Message add 34
+Message add E
+Message add 36
+Message add E
+Message add 31
+Message add E
+Message add 34
+Message add E
+Message add 36
+Message add E
+Message add 2F
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[sha.datagrabbe] Explicit concurrent copying GC freed 42198(1648KB) AllocSpace objects, 0(0B) LOS objects, 49% free, 2052KB/4104KB, paused 98us total 13.305ms
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+DD A5 3 0 FF FD 77
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+[BluetoothGatt] setCharacteristicNotification() - uuid: 0000ff01-0000-1000-8000-00805f9b34fb enable: true
+
