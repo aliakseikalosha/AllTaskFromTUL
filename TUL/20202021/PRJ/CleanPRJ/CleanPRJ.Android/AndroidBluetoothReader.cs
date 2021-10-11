@@ -80,7 +80,7 @@ namespace CleanPRJ.Droid
                         var services = await device.GetServicesAsync();
                         ICharacteristic send = null;
                         ICharacteristic recive = null;
-
+                        
                         for (int i = 0; i < services.Count; i++)
                         {
                             Debug.WriteLine($"{services[i].Name}:{services[i].Id}");
@@ -110,9 +110,10 @@ namespace CleanPRJ.Droid
                             Debug.WriteLine($"Dont found send({send}) or recive({recive}) device");
                             break;
                         }
+                        toSend = new Queue<BluetoothMessage>();
 
                         var answer = new List<int>();
-                        recive.ValueUpdated += (o, args) =>
+                        void Read(object o, CharacteristicUpdatedEventArgs args)
                         {
                             var data = args.Characteristic.Value;
                             for (int i = 0; i < data.Length; i++)
@@ -124,7 +125,8 @@ namespace CleanPRJ.Droid
                                     break;
                                 }
                             }
-                        };
+                        }
+                        recive.ValueUpdated += Read;
 
                         await recive.StartUpdatesAsync();
                         while (canContinue)
@@ -136,15 +138,18 @@ namespace CleanPRJ.Droid
                                 await send.WriteAsync(mes.BMSData);
                                 Debug.WriteLine($"Send message{mes.Message}");
                                 Debug.WriteLine("Start reading");
-                                while(!CompliteMessage(answer))
+                                while(!CompliteMessage(answer) && canContinue)
                                 {
                                     await Task.Delay(20);
                                 }
-                                AddMessage(answer);
+                                if (canContinue)
+                                {
+                                    AddMessage(answer);
+                                }
                             }
                             await Task.Delay(500);
                         }
-
+                        recive.ValueUpdated -= Read;
                     }
 
 

@@ -12,7 +12,6 @@ namespace CleanPRJ.DataProvider
     {
         private IBluetoothReader bluetooth;
         private Picker pickerBluetoothDevices;
-        private Entry entrySleepTime;
         private StackLayout infoStack;
         private Label CellInfo;
         private Label BaseInfo;
@@ -38,10 +37,15 @@ namespace CleanPRJ.DataProvider
             pickerBluetoothDevices.SetBinding(Picker.ItemsSourceProperty, "ListOfDevices");
             pickerBluetoothDevices.SelectedIndexChanged += OnSelectedBluetoothDevice;
 
-            entrySleepTime = new Entry() { Keyboard = Keyboard.Numeric, Placeholder = "Sleep time" };
-            entrySleepTime.Text = model.SleepTime;
-            entrySleepTime.TextChanged += ChangeSleepTime;
+            var refresh = new Button() { Text = "Refresh" };
+            refresh.Clicked += RefreshDeviceList;
+            var changeInfoView = new Button() { Text = "Switch" };
 
+            StackLayout picker = new StackLayout
+            {
+                Orientation = StackOrientation.Horizontal,
+                Children = { pickerBluetoothDevices, refresh, changeInfoView }
+            };
             connect = new Button() { Text = "Connect" };
             connect.Clicked += ConnectToSelected;
             connect.IsEnabled = !model.IsConnectEnabled;
@@ -55,9 +59,6 @@ namespace CleanPRJ.DataProvider
             stop = new Button() { Text = "Stop" };
             stop.Clicked += StopDataGathering;
             stop.IsEnabled = false;
-
-            var refresh = new Button() { Text = "Refresh" };
-            refresh.Clicked += RefreshDeviceList;
             CellInfo = new Label();
             BaseInfo = new Label();
             infoStack = new StackLayout
@@ -69,16 +70,15 @@ namespace CleanPRJ.DataProvider
             {
                 Content = infoStack
             };
-            
+
             UpdateMessage();
 
             int topPadding = Device.RuntimePlatform == Device.iOS ? 20 : 0;
-            StackLayout connectionButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect, refresh } };
-            StackLayout sessionButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { start, stop } };
+            StackLayout connectionButtons = new StackLayout() { Orientation = StackOrientation.Horizontal, Children = { disconnect, connect, start, stop } };
             StackLayout sl = new StackLayout
             {
                 VerticalOptions = LayoutOptions.StartAndExpand,
-                Children = { pickerBluetoothDevices, entrySleepTime, connectionButtons, sessionButtons, scrollView },
+                Children = { picker, connectionButtons, scrollView },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };
             Content = new StackLayout { Children = { TopLine("Data Grabber", false), sl } };
@@ -108,11 +108,6 @@ namespace CleanPRJ.DataProvider
                 BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
                 Console.WriteLine($"Update DataProviderPage:{DateTime.Now}");
             });
-        }
-
-        private void ChangeSleepTime(object sender, TextChangedEventArgs e)
-        {
-            model.SleepTime = entrySleepTime.Text;
         }
 
         private void DiconnectFromDevice(object sender, EventArgs e)

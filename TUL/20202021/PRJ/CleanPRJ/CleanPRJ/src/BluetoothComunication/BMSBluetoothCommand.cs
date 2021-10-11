@@ -121,7 +121,7 @@ public abstract class StateData : IBMSStateData
 
     public override string ToString()
     {
-        return $"{SourceData},{Data}";
+        return $"{SourceData},DATA,{Data}";
     }
 
     public void FillSourceData(byte[] data)
@@ -129,14 +129,14 @@ public abstract class StateData : IBMSStateData
         SourceData = "";
         for (int i = 0; i < data.Length; i++)
         {
-            SourceData += data[i] + (i == data.Length - 1 ? "" : ",");
+            SourceData += $"{data[i]:X}" + (i == data.Length - 1 ? "" : ",");
         }
     }
 
     protected void AddData(string message, string data)
     {
-        Data += (string.IsNullOrEmpty(Data) ? "" : ",") + data;
-        HumanData += $"{message}:{data}\n";
+        Data += (string.IsNullOrEmpty(Data) ? "" : ",") + data.Replace(",",".");
+        HumanData += $"{message}:\t{data}\n";
     }
 }
 
@@ -155,7 +155,7 @@ public class CellsStateData : StateData
         {
             Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
             Data += Voltage[i] + (i == count - 1 ? "" : ",");
-            AddData($"{nameof(Voltage)}{i - 4}", Voltage[i].ToString());
+            AddData($"Voltage {i - 4}", Voltage[i].ToString());
         }
     }
 }
@@ -185,17 +185,16 @@ public class BaseInfoStateData : StateData
         NumberOfCell = (int)data[21];
         NumberOfTemperature = (int)data[22];
         Temperatures = new int[NumberOfTemperature];
-        Data = "";
-        AddData(nameof(FullVoltage), FullVoltage.ToString());
-        AddData(nameof(Current), Current.ToString());
-        AddData(nameof(ResidualCapacity), ResidualCapacity.ToString());
-        AddData(nameof(NominalCapacity), NominalCapacity.ToString());
-        AddData(nameof(SoC), SoC.ToString());
-        AddData(nameof(NumberOfTemperature), NumberOfTemperature.ToString());
+        AddData("FullVoltage", FullVoltage.ToString());
+        AddData("Current", Current.ToString());
+        AddData("ResidualCapacity", ResidualCapacity.ToString());
+        AddData("NominalCapacity", NominalCapacity.ToString());
+        AddData("SoC", SoC.ToString());
+        AddData("NumberOfTemperature", NumberOfTemperature.ToString());
         for (int i = 0; i < NumberOfTemperature; i++)
         {
             Temperatures[i] = (Convert(data[23 + i * 2], data[23 + i * 2 + 1]) - 2731) / 10;
-            AddData($"{nameof(Temperatures)}{i}", Temperatures[i].ToString());
+            AddData($"Temperatures {i}", Temperatures[i].ToString());
         }
     }
 }

@@ -20,16 +20,6 @@ namespace CleanPRJ.DataProvider
 
         public string SelectedBthDevice = string.Empty;
         bool isConnected = false;
-        int sleepTime = 250;
-
-        public string SleepTime
-        {
-            get { return sleepTime.ToString(); }
-            set
-            {
-                int.TryParse(value, out sleepTime);
-            }
-        }
 
         private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedBthDevice);
         public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
@@ -72,7 +62,7 @@ namespace CleanPRJ.DataProvider
         public void Connect()
         {
             // Try to connect to a bth device
-            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
+            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, 250, true);
             isConnected = true;
         }
 
@@ -115,22 +105,32 @@ namespace CleanPRJ.DataProvider
                 await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, 2);
                 if (BMSBluetoothCommand.currentBaseInfo == null)
                 {
+                    await ResetConnection();
                     continue;
                 }
                 CurrentBaseInfo = BMSBluetoothCommand.currentBaseInfo;
-                await Task.Delay(2000);
+                await Task.Delay(100);
                 BMSBluetoothCommand.SendGetCellDataCommand();
                 await Task.Delay(500);
                 await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, 2);
                 if (BMSBluetoothCommand.currentCellsData == null)
                 {
+                    await ResetConnection();
                     continue;
                 }
                 CurrentCellInfo = BMSBluetoothCommand.currentCellsData;
                 fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo},{BMSBluetoothCommand.currentCellsData}");
                 OnDataUpdated?.Invoke();
-                await Task.Delay(15000);
+                await Task.Delay(500);
             }
+        }
+
+        private async Task ResetConnection()
+        {
+            Disconnect();
+            await Task.Delay(500);
+            Connect();
+            await Task.Delay(2000);
         }
 
         private async Task WaitWhile(Func<bool> condition, float maxWaitTime)
