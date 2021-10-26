@@ -1,6 +1,7 @@
 import glob
 import json
 from init import collection
+import datetime
 
 
 def print_collection(data):
@@ -20,7 +21,15 @@ def insert_data():
         print(filepath)
         with open(filepath) as file:
             data = json.load(file)
-            insert_article(data)
+            try:
+                data["date"] = datetime.datetime.strptime(data["date"][0:-3], "%Y-%m-%dT%H:%M").isoformat()
+                data["photo_count"] = int(data["photo_count"])
+                data["comment_count"] = int(data["comment_count"])
+                if None not in data.values():
+                    insert_article(data)
+            except Exception as e:
+                print(filepath, "\nWRONG DATE :", data["date"], "\n", e)
 
 
-insert_data()
+if __name__ == "__main__":
+    insert_data()

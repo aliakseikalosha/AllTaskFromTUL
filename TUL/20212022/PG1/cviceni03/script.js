@@ -73,21 +73,146 @@ function convertImageData(personImageData, backgroundImageData, logoImageData, r
     var backgroundData = backgroundImageData.data;
     var logoData = logoImageData.data;
     var resultData = resultImageData.data;
-
+    var color = hexToRgb(document.getElementById("backgroundColor").value);
+    var hTol = document.getElementById("H").valueAsNumber;
+    var sTol = document.getElementById("S").valueAsNumber;
+    var lTol = document.getElementById("L").valueAsNumber;
     // Go through the image using x,y coordinates
-    var red, green, blue, alpha;
+    var red, green, blue, alpha, personP, logoP;
+
+    getPesonPixel = function(i){
+        var r = personData[i + 0];
+        var g = personData[i + 1];
+        var b = personData[i + 2];
+        var a = 0;
+        [h,s,l] = rgbToHsl(r,g,b);
+        [ch,cs,cl] = rgbToHsl(color[0],color[1],color[2])
+        
+        if(Math.abs(h-ch) > hTol || Math.abs(s-cs) > sTol || Math.abs(l-cl) > lTol){
+            a = 1;
+        }
+
+        return [r,g,b,a];
+    }
+
+    getLogoPixel = function(i){
+        var r = logoData[i + 0];
+        var g = logoData[i + 1];
+        var b = logoData[i + 2];
+        var a = logoData[i + 4];
+
+        return [r,g,b,a];
+    }
+
+    blendResult = function(c0, c1, a){
+        a = a / 255.0
+        if(a > 0.45){
+            return c1
+        }
+        return c0 * ( 1 - a) + c1 * a;
+    }
+
     for (var pixelIndex = 0; pixelIndex < personData.length; pixelIndex += 4) {
-        red = (personData[pixelIndex + 0] + backgroundData[pixelIndex + 0] + logoData[pixelIndex + 0]) / 3;
-        green = (personData[pixelIndex + 1] + backgroundData[pixelIndex + 1] + logoData[pixelIndex + 1]) / 3;
-        blue = (personData[pixelIndex + 2] + backgroundData[pixelIndex + 2] + logoData[pixelIndex + 2]) / 3;
-        alpha = (personData[pixelIndex + 3] + backgroundData[pixelIndex + 3] + logoData[pixelIndex + 3]) / 3;
+        red = backgroundData[pixelIndex + 0];
+        green = backgroundData[pixelIndex + 1];
+        blue = backgroundData[pixelIndex + 2];
+        alpha = backgroundData[pixelIndex + 3];
 
         // Do magic at this place
         //console.log(red, green, blue, alpha);
-
-        resultData[pixelIndex + 0] = red;
-        resultData[pixelIndex + 1] = green;
-        resultData[pixelIndex + 2] = blue;
-        resultData[pixelIndex + 3] = alpha;
+        personP = getPesonPixel(pixelIndex);
+        if(personP[3]>0){
+            [red, green,blue ,_] = personP;
+        }
+        logoP = getLogoPixel(pixelIndex);
+        resultData[pixelIndex + 0] = blendResult(red, logoP[0], logoP[3])
+        resultData[pixelIndex + 1] = blendResult(green, logoP[1], logoP[3]);
+        resultData[pixelIndex + 2] = blendResult(blue, logoP[2], logoP[3]);
+        resultData[pixelIndex + 3] = 255;
     }
 }
+
+function hexToRgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    if(result){
+        var r= parseInt(result[1], 16);
+        var g= parseInt(result[2], 16);
+        var b= parseInt(result[3], 16);
+        return  [r,g,b];
+    } 
+    return null;
+}
+
+
+//https://gist.github.com/mjackson/5311256
+/**
+ * Converts an RGB color value to HSL. Conversion formula
+ * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+ * Assumes r, g, and b are contained in the set [0, 255] and
+ * returns h, s, and l in the set [0, 1].
+ *
+ * @param   Number  r       The red color value
+ * @param   Number  g       The green color value
+ * @param   Number  b       The blue color value
+ * @return  Array           The HSL representation
+ */
+ function rgbToHsl(r, g, b) {
+    r /= 255, g /= 255, b /= 255;
+  
+    var max = Math.max(r, g, b), min = Math.min(r, g, b);
+    var h, s, l = (max + min) / 2;
+  
+    if (max == min) {
+      h = s = 0; // achromatic
+    } else {
+      var d = max - min;
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  
+      switch (max) {
+        case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+        case g: h = (b - r) / d + 2; break;
+        case b: h = (r - g) / d + 4; break;
+      }
+  
+      h /= 6;
+    }
+  
+    return [ h, s, l ];
+  }
+  
+  /**
+   * Converts an HSL color value to RGB. Conversion formula
+   * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
+   * Assumes h, s, and l are contained in the set [0, 1] and
+   * returns r, g, and b in the set [0, 255].
+   *
+   * @param   Number  h       The hue
+   * @param   Number  s       The saturation
+   * @param   Number  l       The lightness
+   * @return  Array           The RGB representation
+   */
+  function hslToRgb(h, s, l) {
+    var r, g, b;
+  
+    if (s == 0) {
+      r = g = b = l; // achromatic
+    } else {
+      function hue2rgb(p, q, t) {
+        if (t < 0) t += 1;
+        if (t > 1) t -= 1;
+        if (t < 1/6) return p + (q - p) * 6 * t;
+        if (t < 1/2) return q;
+        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6;
+        return p;
+      }
+  
+      var q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+      var p = 2 * l - q;
+  
+      r = hue2rgb(p, q, h + 1/3);
+      g = hue2rgb(p, q, h);
+      b = hue2rgb(p, q, h - 1/3);
+    }
+  
+    return [ r * 255, g * 255, b * 255 ];
+  }

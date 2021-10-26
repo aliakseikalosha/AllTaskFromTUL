@@ -2,19 +2,72 @@
 <html>
 <head>
 	<meta charset="UTF-8"/>
-	<title>RGB to Bitmap</title>
+	<title>Cviceni 3 Studio</title>
+	<style>
+		.right{
+			float: right;
+		}
+		.left{
+			float: left;
+		}
+		.bottom{
+			clear: both;
+		}
+	</style>
 </head>
 
 <body>
-	<canvas id="person" width="256" height="256"></canvas>
-    <canvas id="background" width="256" height="256"></canvas>
-    <canvas id="logo" width="256" height="256"></canvas>
-    <canvas id="result" width="256" height="256"></canvas>
+	<div class="right">
+		<div class="left">
+			<canvas id="result" width="256" height="256"></canvas>
+		</div>
+		<div class="left bottom">
+			<button type="button" id="convert" disabled>Convert</button>
+			<div>
+				<input type="color" id="backgroundColor" name="backgroundColor" value="#27FF1A">
+				<label for="backgroundColor">Background Color</label>
+			</div>
+			<div>
+				<input type="range" id="H" name="H" min="0" max="1" step="0.01" value="0.1">
+				<label for="H">H tolerance</label>
+			</div>
+			<div>
+				<input type="range" id="L" name="L" min="0" max="1" step="0.01" value="0.29">
+				<label for="L">L tolerance</label>
+			</div>
+			<div>
+				<input type="range" id="S" name="S" min="0" max="1" step="0.01" value="0.65">
+				<label for="S">S tolerance</label>
+			</div>
+		</div>
+
+	</div>
+	<div class="left">
+		<div>
+			<canvas id="person" width="256" height="256"></canvas>
+			<div>
+				<label for="files" class="btn">Person</label>
+				<input type="file" id="file" onchange="handleFileSelect(this, 'person')" name="files[]"/>
+			</div>
+		</div>
+		<br/>
+		<div>
+			<canvas id="background" width="256" height="256"></canvas>
+			<div>
+				<label for="files" class="btn">Background</label>
+				<input type="file" id="file" onchange="handleFileSelect(this, 'background')" name="files[]"/>
+			</div>
+		</div>
+		<br/>
+		<div>
+			<canvas id="logo" width="256" height="256"></canvas>
+			<div>
+				<label for="files" class="btn">Logo</label>
+				<input type="file" id="file" onchange="handleFileSelect(this, 'logo')" name="files[]"/>
+			</div>
+		</div>
+	</div>
 	<br/>
-	<input type="file" id="file" onchange="handleFileSelect(this, 'person')" name="files[]"/>
-    <input type="file" id="file" onchange="handleFileSelect(this, 'background')" name="files[]"/>
-    <input type="file" id="file" onchange="handleFileSelect(this, 'logo')" name="files[]"/>
-	<button type="button" id="convert" disabled>Convert</button>
 </body>
 
 <script type="text/javascript" src="./script.js"></script>
