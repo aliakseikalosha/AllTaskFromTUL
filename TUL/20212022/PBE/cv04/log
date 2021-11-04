@@ -1,0 +1,30 @@
+1
+sudo useradd -c "Aleš Buda" alse.buda
+sudo useradd -c "Břetislav Cirkl" brestislav.cirkl
+sudo useradd -c "Cecílie Dubová" cecilie.dudova
+sudo useradd -c "Daniel Eliš" daniel.elis
+sudo useradd -c "Emil Feřt" emil.fert
+sudo useradd -c "František Gábor" frantisek.gabor
+
+
+sudo usermod -a -G users alse.buda
+sudo usermod -a -G users brestislav.cirkl
+sudo usermod -a -G users cecilie.dudova
+sudo usermod -a -G users daniel.elis
+sudo usermod -a -G users frantisek.gabor
+
+2
+
+User_Alias updaters = ales.buda, cecilie.dubova
+User_Alias killers = bretislav.cirkl, emil.fert
+User_Alias powerusers = daniel.elis, frantisek.gabor
+
+
+%updaters    ALL = NOPASSWD: /usr/bin/apt-get update
+%killers    ALL = NOPASSWD: /user/bin/kill
+
+sudo -lU alse.buda
+sudo -lU brestislav.cirkl
+sudo -lU cecilie.dudova
+sudo -lU daniel.elis
+sudo -lU frantisek.gabor

@@ -59,7 +59,7 @@ function handleFileSelect(item) {
 function convertImageData(srcImageData, histImageData) {
 	var srcData = srcImageData.data;
 	var histData = histImageData.data;
-
+	var hist = new Array(256).fill(0);
 	// Go through the image using x,y coordinates
 	var red, green, blue, gray;
 	for (var pixelIndex = 0; pixelIndex < srcData.length; pixelIndex += 4) {
@@ -68,16 +68,26 @@ function convertImageData(srcImageData, histImageData) {
 		blue  = srcData[pixelIndex + 2];
 		alpha = srcData[pixelIndex + 3];
 
-		if (pixelIndex < 100) {
-			console.log(red, green, blue, alpha);
-		}
-
 		// Do magic at this place :-)
+		var color = parseInt(red * 0.32 +  green * 0.64 + blue * 0.02);
+		hist[color]++;
+	}
 
-		histData[pixelIndex + 0] = 255 - red;
-		histData[pixelIndex + 1] = 255 - green;
-		histData[pixelIndex + 2] = 255 - blue;
-		histData[pixelIndex + 3] = alpha;
-	}	
+	getPixelIndex = (x,y) => ( (histImageData.width * (histImageData.width - y)) + x) * 4
+	var max = Math.max(...hist);
+	for (let x = 0; x < histImageData.width; x++) {
+		for (let y = 0; y < histImageData.height; y++) {
+			pixelIndex = getPixelIndex(x,y);
+			color = 255;
+			hvalue = hist[parseInt(x/2)]
+			if(y < histImageData.height*(hvalue/max)){
+				color = 0;
+			}
+			histData[pixelIndex + 0] = color;
+			histData[pixelIndex + 1] = color;
+			histData[pixelIndex + 2] = color;
+			histData[pixelIndex + 3] = 255;
+		}
+	}
 };
 

@@ -96,27 +96,28 @@ function convertImageData(personImageData, backgroundImageData, logoImageData, r
     }
 
     getLogoPixel = function(i){
+        logoImageData.width
         var r = logoData[i + 0];
         var g = logoData[i + 1];
         var b = logoData[i + 2];
         var a = logoData[i + 4];
+        
+        grey = 0.299 * r + 0.587 * g + 0.114 * b;
 
-        return [r,g,b,a];
+        return [grey, a];
     }
 
     blendResult = function(c0, c1, a){
-        a = a / 255.0
-        if(a > 0.45){
-            return c1
-        }
+        a = a / 255.0;
         return c0 * ( 1 - a) + c1 * a;
     }
-
+	getPixelIndex = (x,y,imgData) => ( (imgData.width * y) + x) * 4
     for (var pixelIndex = 0; pixelIndex < personData.length; pixelIndex += 4) {
         red = backgroundData[pixelIndex + 0];
         green = backgroundData[pixelIndex + 1];
         blue = backgroundData[pixelIndex + 2];
         alpha = backgroundData[pixelIndex + 3];
+        
 
         // Do magic at this place
         //console.log(red, green, blue, alpha);
@@ -124,11 +125,28 @@ function convertImageData(personImageData, backgroundImageData, logoImageData, r
         if(personP[3]>0){
             [red, green,blue ,_] = personP;
         }
-        logoP = getLogoPixel(pixelIndex);
-        resultData[pixelIndex + 0] = blendResult(red, logoP[0], logoP[3])
-        resultData[pixelIndex + 1] = blendResult(green, logoP[1], logoP[3]);
-        resultData[pixelIndex + 2] = blendResult(blue, logoP[2], logoP[3]);
+        resultData[pixelIndex + 0] = red;
+        resultData[pixelIndex + 1] = green;
+        resultData[pixelIndex + 2] = blue;
         resultData[pixelIndex + 3] = 255;
+    }
+
+    var deltaX = backgroundImageData.width - logoImageData.width; 
+    for (let x = 0; x < logoImageData.width; x++) {
+        for (let y = 0; y < logoImageData.height; y++) {
+            pixelIndex = getPixelIndex(deltaX + x,y,backgroundImageData);
+            red = resultData[pixelIndex + 0];
+            green = resultData[pixelIndex + 1];
+            blue = resultData[pixelIndex + 2];
+            alpha = resultData[pixelIndex + 3];
+            
+            logoP = getLogoPixel(getPixelIndex(x,y,logoImageData));
+            resultData[pixelIndex + 0] = blendResult(red, logoP[0], logoP[1])
+            resultData[pixelIndex + 1] = blendResult(green, logoP[0], logoP[1]);
+            resultData[pixelIndex + 2] = blendResult(blue, logoP[0], logoP[1]);
+            resultData[pixelIndex + 3] = 255;
+        }
+        
     }
 }
 

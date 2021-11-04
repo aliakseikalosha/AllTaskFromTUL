@@ -3,3 +3,9 @@
 [submodule "TUL/20202021/PJPA/Task"]
 	path = TUL/20202021/PJPA/Task
 	url = https://gitlab.tul.cz/jiri.vrany/pjpa-2021-prednasky-cviceni.git
+[submodule "TUL/20212022/WEA/Solution"]
+	path = TUL/20212022/WEA/Solution
+	url = https://gitlab.tul.cz/wea2021/aliaksei_kalosha.git
+[submodule "TUL/20212022/WEA/Task"]
+	path = TUL/20212022/WEA/Task
+	url = https://gitlab.tul.cz/jiri.vrany/wea2021-prednasky.git
