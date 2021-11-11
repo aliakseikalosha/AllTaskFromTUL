@@ -2,7 +2,6 @@ import struct
 
 
 def get_start_dictionary():
-    # d = {'a': 1, 'b': 2, 'c': 3}
     d = {}
     for i in range(1, 6):
         d[str(i)] = i
@@ -76,7 +75,7 @@ def read_all_data():
 
 
 def main():
-    data = read_all_data()  # "abcabcabcbcba"
+    data = read_all_data()
     (compress_data, compress_dic) = compress(data)
     (decompress_data, decompress_dic) = decompress(compress_data)
     print(data, compress_data, decompress_data, compress_dic, decompress_dic, sep='\n')

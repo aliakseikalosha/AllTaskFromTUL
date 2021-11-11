@@ -159,13 +159,9 @@ function convertMatrixWithErrorDistribution(imgData) {
 		rawData[i + 2] = grey;
 		rawData[i + 3] = a;
 	} 
-	getPixel =  function(x,y) {
+	getPixelGrey =  function(x,y) {
 		i = getPixelIndex(x,y);
-		r = rawData[i + 0];
-		g = rawData[i + 1];
-		b = rawData[i + 2];
-		a = rawData[i + 3];
-		return 0.299 * r + 0.587 * g + 0.114 * b;
+		return rawData[i + 0]
 	}
 	n = m = 4
 	Matrix = [
@@ -189,8 +185,7 @@ function convertMatrixWithErrorDistribution(imgData) {
 	}
 	for(var y = 0; y < imgData.height; y++) {
 		for(var x = 0; x < imgData.width; x++) {
-			pixelIndex = getPixelIndex(x,y);
-			grey_in = rawData[pixelIndex + 0];
+			grey_in = getPixelGrey(x,y);
 			k = 15;
 			grey_out = 0;
 			M = getM(x,y);
@@ -203,11 +198,10 @@ function convertMatrixWithErrorDistribution(imgData) {
 			grey = grey_out;
 			setPixel(x,y,grey_out,alpha);
 			error = grey_out - grey_in;
-			setPixel(x+1,y, getPixel(x+1,y) + (7/16)*error, 255);
-			setPixel(x-1,y+1, getPixel(x-1,y+1) + (3/16)*error, 255);
-			setPixel(x,y+1, getPixel(x,y+1) + (5/16)*error, 255);
-			setPixel(x+1,y+1, getPixel(x+1,y+1) + (1/16)*error, 255);
-			
+			setPixel(x+1,y, getPixelGrey(x+1,y) + (7/16)*error, 255);
+			setPixel(x-1,y+1, getPixelGrey(x-1,y+1) + (3/16)*error, 255);
+			setPixel(x,y+1, getPixelGrey(x,y+1) + (5/16)*error, 255);
+			setPixel(x+1,y+1, getPixelGrey(x+1,y+1) + (1/16)*error, 255);
 		}
 	}
 	console.log("Done!")	

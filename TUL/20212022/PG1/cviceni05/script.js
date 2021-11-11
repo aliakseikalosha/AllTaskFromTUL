@@ -69,35 +69,35 @@ window.onload = function() {
     gl.bindBuffer(gl.ARRAY_BUFFER, uvBuffer);
     uvs = [
         // Bottom face
-        0.0, 0.0,
-        0.5, 0.0,
-        0.5, 0.5,
-        0.0, 0.5,
+        0.5,  0.25,
+        0.5,  0.5,
+        0.75, 0.5,
+        0.75, 0.25,
         // Left face
-        0.0, 0.0,
-        1.0, 0.0,
-        1.0, 1.0,
-        0.0, 1.0,
+        0.25, 0.25,
+        0.25, 0.5,
+        0.5, 0.5,
+        0.5, 0.25,
         // Front
-        0.0, 0.0,
-        1.0, 0.0,
-        1.0, 1.0,
-        0.0, 1.0,
+        0.0,  0.25,
+        0.0,  0.5,
+        0.25, 0.5,
+        0.25, 0.25,
         // Right face
-        0.0, 0.0,
-        1.0, 0.0,
-        1.0, 1.0,
-        0.0, 1.0,
+        0.75, 0.25,
+        0.75, 0.5,
+        1.0,  0.5,
+        1.0,  0.25,
         // Back face
-        0.0, 0.0,
-        1.0, 0.0,
-        1.0, 1.0,
-        0.0, 1.0,
+        0.5,  0.5,
+        0.5,  0.75,
+        0.75, 0.75,
+        0.75, 0.5,
         // Top face
-        0.0, 0.0,
-        1.0, 0.0,
-        1.0, 1.0,
-        0.0, 1.0
+        0.5,  0.0,
+        0.5,  0.25,
+        0.75, 0.25,
+        0.75, 0.0,
     ];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(uvs), gl.STATIC_DRAW);
     gl.vertexAttribPointer(uvLoc, 2, gl.FLOAT, false, 0, 0);
@@ -123,7 +123,7 @@ window.onload = function() {
 
     // Create and load image used as texture
     var image = new Image();
-    image.src = "./wood_texture_simple.png";
+    image.src = "./wood_texture_cube_logos.png";
     image.onload = function() {
         var texture = gl.createTexture();
         gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -140,7 +140,7 @@ window.onload = function() {
 
     // Create matrix for model
     var modelMatrix = mat4.create();
-    mat4.scale(modelMatrix, modelMatrix, vec3.fromValues(0.8, 0.8, 0.8));
+    mat4.scale(modelMatrix, modelMatrix, vec3.fromValues(1, 1, 1));
     var modelLocation = gl.getUniformLocation(program, "modelMatrix");
     gl.uniformMatrix4fv(modelLocation, false, modelMatrix);
 
