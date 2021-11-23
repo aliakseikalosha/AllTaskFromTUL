@@ -1,0 +1,37 @@
+1
+sudo apt-get install tunderbird
+
+aliaksei@aliaksei-VirtualBox:~$ sudo apt-get install gnupg
+[sudo] password for aliaksei: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+gnupg is already the newest version (2.2.19-3ubuntu2.1).
+gnupg set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 71 not upgraded.
+aliaksei@aliaksei-VirtualBox:~$ apt install gpa
+E: Could not open lock file /var/lib/dpkg/lock-frontend - open (13: Permission denied)
+E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), are you root?
+
+aliaksei@aliaksei-VirtualBox:~$ sudo  apt install gpa
+[sudo] password for aliaksei: 
+Reading package lists... Done
+Building dependency tree       
+Reading state information... Done
+The following NEW packages will be installed:
+  gpa
+0 upgraded, 1 newly installed, 0 to remove and 71 not upgraded.
+Need to get 304 kB of archives.
+After this operation, 1 445 kB of additional disk space will be used.
+Get:1 http://cz.archive.ubuntu.com/ubuntu focal/universe amd64 gpa amd64 0.10.0-3 [304 kB]
+Fetched 304 kB in 1s (408 kB/s)
+Selecting previously unselected package gpa.
+(Reading database ... 167786 files and directories currently installed.)
+Preparing to unpack .../gpa_0.10.0-3_amd64.deb ...
+Unpacking gpa (0.10.0-3) ...
+Setting up gpa (0.10.0-3) ...
+Processing triggers for mime-support (3.64ubuntu1) ...
+Processing triggers for gnome-menus (3.36.0-1ubuntu1) ...
+Processing triggers for man-db (2.9.1-1) ...
+Processing triggers for desktop-file-utils (0.24-1ubuntu3) ...
+aliaksei@aliaksei-VirtualBox:~$ 

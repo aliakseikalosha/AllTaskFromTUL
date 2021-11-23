@@ -1,16 +1,12 @@
 ﻿using CleanPRJ.MainScreen;
 using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using Xamarin.Forms;
 
 namespace CleanPRJ.DataProvider
 {
     public class DataProviderPage : ApplicationPage<DataProviderViewModel>
     {
-        private IBluetoothReader bluetooth;
         private Picker pickerBluetoothDevices;
         private StackLayout infoStack;
         private Label CellInfo;
@@ -19,10 +15,10 @@ namespace CleanPRJ.DataProvider
         private Button disconnect;
         private Button start;
         private Button stop;
+        private bool showFullData = true;
 
         public DataProviderPage(DataProviderViewModel model) : base(model)
         {
-            bluetooth = DependencyService.Get<IBluetoothReader>();
             InitUI();
             model.OnStartGatheringData += () => { start.IsEnabled = false; stop.IsEnabled = true; };
             model.OnStopGatheringData += () => { start.IsEnabled = true; stop.IsEnabled = false; };
@@ -39,7 +35,9 @@ namespace CleanPRJ.DataProvider
 
             var refresh = new Button() { Text = "Refresh" };
             refresh.Clicked += RefreshDeviceList;
+
             var changeInfoView = new Button() { Text = "Switch" };
+            changeInfoView.Clicked += ToggleInfoView;
 
             StackLayout picker = new StackLayout
             {
@@ -81,7 +79,23 @@ namespace CleanPRJ.DataProvider
                 Children = { picker, connectionButtons, scrollView },
                 Padding = new Thickness(0, topPadding, 0, 0)
             };
-            Content = new StackLayout { Children = { TopLine("Data Grabber", false), sl } };
+            Content = new StackLayout { Children = { TopLine("Data Grabber", true, true), sl } };
+        }
+
+        protected override void BackCliked()
+        {
+            OnChangePageCliked?.Invoke(typeof(DataViewerPage));
+        }
+
+        protected override void SettingsClicked()
+        {
+            OnChangePageCliked?.Invoke(typeof(GrabberSettingsPage));
+        }
+
+        private void ToggleInfoView(object sender, EventArgs e)
+        {
+            showFullData = !showFullData;
+            UpdateMessage();
         }
 
         private void StopDataGathering(object sender, EventArgs e)
@@ -96,17 +110,28 @@ namespace CleanPRJ.DataProvider
 
         private void StartDataGathering(object sender, EventArgs e)
         {
-            model.CreateFile();
-            model.StartGatheringData(500);
+            model.StartGatheringData();
         }
 
         public void UpdateMessage()
         {
             Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
-                CellInfo.Text = $"Cell Info \n{model.CurrentCellInfo?.HumanData}";
-                BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
-                Console.WriteLine($"Update DataProviderPage:{DateTime.Now}");
+                if (showFullData)
+                {
+                    CellInfo.Text = $"Cell Info \n{model.CurrentCellInfo?.HumanData}";
+                    CellInfo.FontSize = 16;
+                    BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
+                    BaseInfo.FontSize = 16;
+                    Console.WriteLine($"Update DataProviderPage:{DateTime.Now}");
+                }
+                else
+                {
+                    CellInfo.Text = $"Voltage \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a} {b}")}";
+                    CellInfo.FontSize = 48;
+                    BaseInfo.Text = $"Current \n{model.CurrentBaseInfo?.Current}";
+                    BaseInfo.FontSize = 48;
+                }
             });
         }
 
@@ -135,6 +160,10 @@ namespace CleanPRJ.DataProvider
         void CreateFile(string fileName);
 
         void WriteNewLineToFile(string fileName, string text);
+
+        string ReadFile(string fileName);
+
+        string[] GetAllDataFiles();
     }
 }
 

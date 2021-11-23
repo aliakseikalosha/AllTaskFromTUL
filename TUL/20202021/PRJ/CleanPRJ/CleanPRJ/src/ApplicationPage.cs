@@ -29,6 +29,7 @@ namespace CleanPRJ.MainScreen
         {
             WindowData.OnThemeChanged += InitUI;
         }
+
         protected override bool OnBackButtonPressed()
         {
             OnChangePageCliked?.Invoke(typeof(MainScreenPage));
@@ -67,6 +68,7 @@ namespace CleanPRJ.MainScreen
             frame.GestureRecognizers.Add(guestRecognizer);
             return frame;
         }
+
         protected ChartView GetViewFor(Chart chart, double height = -1.0, double width = -1.0)
         {
             return new ChartView
@@ -77,6 +79,7 @@ namespace CleanPRJ.MainScreen
                 Chart = chart,
             };
         }
+
         protected T GetChartFor<T>(List<ChartEntry> points, TimeSpan animationTime) where T : PointChart, new()
         {
             return new T
@@ -89,10 +92,12 @@ namespace CleanPRJ.MainScreen
                 BackgroundColor = SkiaSharp.SKColor.Parse(WindowData.Current.Chart.Background.ToHex()),
             };
         }
+
         protected T GetChartFor<T>(List<ChartEntry> points) where T : PointChart, new()
         {
             return GetChartFor<T>(points, new TimeSpan(0, 0, 2));
         }
+
         protected StackLayout TopLine(string labelText, bool addBack = true, bool addSettings = false)
         {
             var iconWidth = WidthRequest = WindowData.ScreenSize.X * 0.1;
@@ -105,8 +110,8 @@ namespace CleanPRJ.MainScreen
                 FontSize = 24,
                 WidthRequest = WindowData.ScreenSize.X,
             };
-            var backButton = ClickableImage(Images.BackArrow, () => OnChangePageCliked?.Invoke(typeof(MainScreenPage)), 46, iconWidth);
-            var settingButton = ClickableImage(Images.Settings, () => OnChangePageCliked?.Invoke(typeof(SettingsPage)), 46, iconWidth);
+            var backButton = ClickableImage(Images.BackArrow, BackCliked, 46, iconWidth);
+            var settingButton = ClickableImage(Images.Settings, SettingsClicked, 46, iconWidth);
             var fakeButton = ClickableImage(Images.Empty, () => { });
             var sl = new StackLayout
             {
@@ -119,6 +124,16 @@ namespace CleanPRJ.MainScreen
             sl.Children.Add(label);
             sl.Children.Add(addSettings ? settingButton : fakeButton);
             return sl;
+        }
+
+        protected virtual void BackCliked()
+        {
+            OnChangePageCliked?.Invoke(typeof(MainScreenPage));
+        }
+
+        protected virtual void SettingsClicked()
+        {
+            OnChangePageCliked?.Invoke(typeof(SettingsPage));
         }
 
         protected Image ClickableImage(string pathToImage, Action action, double height = -1.0, double width = -1.0)

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -13,7 +14,7 @@ namespace CleanPRJ.DataProvider
         public Action OnStartGatheringData;
         public Action OnStopGatheringData;
         public Action OnDataUpdated;
-        private readonly string fileName;
+        private string fileName;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
@@ -31,25 +32,15 @@ namespace CleanPRJ.DataProvider
 
         public DataProviderViewModel()
         {
-            fileName = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}_data.csv";
             Init();
             MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
             {
-                // When the app "sleep", I close the connection with bluetooth
-                //if (isConnected)
-                //{
-                //    Disconnect();
-                //}
+                Debug.WriteLine("App go to sleep");
             });
 
             MessagingCenter.Subscribe<App>(this, "Resume", (obj) =>
             {
-
-                // When the app "resume" I try to restart the connection with bluetooth
-                //if (isConnected)
-                //{
-                //    DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
-                //}
+                Debug.WriteLine("App resume from sleep");
             });
 
             Refresh();
@@ -73,7 +64,7 @@ namespace CleanPRJ.DataProvider
             isConnected = false;
         }
 
-        internal void CreateFile()
+        private void CreateFile()
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
             fileAccess.CreateFile(fileName);
@@ -88,11 +79,13 @@ namespace CleanPRJ.DataProvider
 
         private CancellationTokenSource source = new CancellationTokenSource();
         private CancellationToken token;
-        internal void StartGatheringData(int waitMS)
+        internal void StartGatheringData()
         {
+            fileName = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}_data.csv";
+            CreateFile();
             OnStartGatheringData?.Invoke();
             token = source.Token;
-            task = DataGathering(waitMS);
+            task = DataGathering((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
         }
 
         private async Task DataGathering(int waitMS)
@@ -101,28 +94,31 @@ namespace CleanPRJ.DataProvider
             while (!token.IsCancellationRequested)
             {
                 BMSBluetoothCommand.SendGetBaseInfo();
-                await Task.Delay(500);
-                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, 2);
+                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, GrabberSettingsViewModel.TimeToReadBase);
                 if (BMSBluetoothCommand.currentBaseInfo == null)
                 {
-                    await ResetConnection();
+                    ClearFront();
                     continue;
                 }
                 CurrentBaseInfo = BMSBluetoothCommand.currentBaseInfo;
-                await Task.Delay(100);
+                await Task.Delay(10);
                 BMSBluetoothCommand.SendGetCellDataCommand();
-                await Task.Delay(500);
-                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, 2);
+                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, GrabberSettingsViewModel.TimeToReadCell);
                 if (BMSBluetoothCommand.currentCellsData == null)
                 {
-                    await ResetConnection();
+                    ClearFront();
                     continue;
                 }
                 CurrentCellInfo = BMSBluetoothCommand.currentCellsData;
                 fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo},{BMSBluetoothCommand.currentCellsData}");
                 OnDataUpdated?.Invoke();
-                await Task.Delay(500);
+                await Task.Delay(waitMS);
             }
+        }
+
+        private void ClearFront()
+        {
+            DependencyService.Get<IBluetoothReader>().ClearFront();
         }
 
         private async Task ResetConnection()

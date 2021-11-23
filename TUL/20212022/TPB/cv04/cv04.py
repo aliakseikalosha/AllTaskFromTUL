@@ -12,7 +12,7 @@ import seaborn as sns
 
 
 def log(*d):
-    if True:
+    if False:
         print(*d)
 
 
@@ -210,7 +210,6 @@ def taskCovidTimeMap():
     ax1.set_xticklabels(labels=x_dates, rotation=45, ha='right')
     ax2.set_xticklabels(labels=x_dates, rotation=45, ha='right')
     plt.show()
-    pass
 
 
 def taskAddArticlesPerDayOfWeek():
@@ -239,13 +238,13 @@ def taskAddArticlesPerDayOfWeek():
 
 
 def main():
-    # taskAddArticles()
-    # taskArticlesPerYear()
-    # taskCountInCategory()
-    # taskWordCount()
-    # taskWordLength()
+    taskAddArticles()
+    taskArticlesPerYear()
+    taskCountInCategory()
+    taskWordCount()
+    taskWordLength()
     taskCovidTimeMap()
-    # taskAddArticlesPerDayOfWeek()
+    taskAddArticlesPerDayOfWeek()
 
 
 if __name__ == "__main__":

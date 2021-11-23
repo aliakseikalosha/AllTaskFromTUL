@@ -21,7 +21,7 @@ window.onload = function () {
 	gl.useProgram(program);
 
 	//Create modele
-	var sphere = getSphere(10, 10, 1);
+	var sphere = getSphere(10, 10, 1.5);
 
 	// Create buffer for positions of vertices
 	var posLoc = gl.getAttribLocation(program, "pos");
@@ -106,7 +106,7 @@ window.onload = function () {
 		|| function (cb) { setTimeout(cb, 1000 / 60); };
 
 	var render = function () {
-		mat4.rotateX(modelMatrix, modelMatrix, 0.005);
+		//mat4.rotateX(modelMatrix, modelMatrix, 0.005);
 		mat4.rotateY(modelMatrix, modelMatrix, 0.01);
 		gl.uniformMatrix4fv(modelLocation, false, modelMatrix);
 
@@ -127,28 +127,33 @@ const getSphere = function (horizontalLines, verticalLines, radius) {
 	uvs = [];
 	normals = [];
 	index = 0;
-	for (m = 0; m < horizontalLines; m++) {
-		for (n = 0; n < verticalLines; n++) {
-			x = Math.sin(Math.PI * m * 1.0 / horizontalLines) * Math.cos(2 * Math.PI * n * 1.0 / verticalLines);
-			y = Math.sin(Math.PI * m * 1.0 / horizontalLines) * Math.sin(2 * Math.PI * n * 1.0 / verticalLines);
-			z = Math.cos(Math.PI * m * 1.0 / horizontalLines);
+	//generate Vertices
+	for (n = 0; n < verticalLines; n++) {
+		var y = n / (verticalLines - 1) * 2;
+		for (m = 0; m < horizontalLines; m++) {
+			a = 2 * Math.PI * m / horizontalLines;
+			var mult = 1//Math.sin(Math.PI * n / (verticalLines-1));
+			var x = Math.cos(a) * mult;
+			var z = Math.sin(a) * mult;
 			vertices[index++] = x * radius;
 			vertices[index++] = y * radius;
 			vertices[index++] = z * radius;
 			normals.push(x / Math.sqrt(x * x + y * y + z * z));
 			normals.push(y / Math.sqrt(x * x + y * y + z * z));
 			normals.push(z / Math.sqrt(x * x + y * y + z * z));
+			uvs.push(m / horizontalLines, 1 - n / verticalLines);
 		}
 	}
-	for (x = 0; x <= horizontalLines; x++) {
-		for (y = 1; y < verticalLines; y++) {
-			getIndex = (x, y) => { return (x % horizontalLines) + (y % verticalLines) * horizontalLines; };
-
-			indices.push(getIndex(x, y), getIndex(x, y - 1), 0)//getIndex(x + 1, y - 1))
-			indices.push(getIndex(x, y), getIndex(x + 1, y - 1), 1)//getIndex(x + 1, y))
-			uvs.push(x / horizontalLines, y / verticalLines);
+	//generate Triangle
+	modX = (i) => i % horizontalLines;
+	modY = (i) => i % verticalLines;
+	getFromGrid = (y, x) => modX(x) + modY(y) * horizontalLines;
+	for (y = 0; y < verticalLines; y++) {
+		for (x = 0; x < horizontalLines; x++) {
+			indices.push(getFromGrid(y + 1,x), getFromGrid(y,x), getFromGrid(y + 1,x + 1))
+			indices.push(getFromGrid(y,x), getFromGrid(y,x + 1), getFromGrid(y + 1,x + 1))
 		}
 	}
-
+	 
 	return { vertices, indices, uvs, normals };
 }

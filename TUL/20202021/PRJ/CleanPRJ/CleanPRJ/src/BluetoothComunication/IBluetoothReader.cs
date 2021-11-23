@@ -14,6 +14,7 @@ namespace CleanPRJ
         void Send(BluetoothMessage message);
         void Start(string name, int sleepTime, bool readAsCharArray);
         void Cancel();
+        void ClearFront();
         Task<ObservableCollection<string>> PairedDevices();
     }
 }

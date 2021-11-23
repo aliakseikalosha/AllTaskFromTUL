@@ -1,15 +1,6 @@
-﻿using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using CleanPRJ.Droid;
-using System;
-using System.Collections.Generic;
+﻿using CleanPRJ.Droid;
 using System.IO;
 using System.Linq;
-using System.Text;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AccessFileImplement))]
 namespace CleanPRJ.Droid
@@ -17,6 +8,26 @@ namespace CleanPRJ.Droid
     public class AccessFileImplement : DataProvider.IAccessFileService
     {
         private static string path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DataGrabber");
+
+        public string[] GetAllDataFiles()
+        {
+            if (Directory.Exists(path))
+            {
+                return Directory.GetFiles(path, "*.csv").Where(path=> new FileInfo(path).Length > 10).ToArray();
+            }
+            return null;
+        }
+
+        public string ReadFile(string fileName)
+        {
+            var fullPath = Path.Combine(path, fileName);
+            if (File.Exists(fullPath))
+            {
+                return File.ReadAllText(fullPath);
+            }
+            return null;
+        }
+
         public void WriteNewLineToFile(string fileName, string text)
         {
             var fullPath = Path.Combine(path, fileName);

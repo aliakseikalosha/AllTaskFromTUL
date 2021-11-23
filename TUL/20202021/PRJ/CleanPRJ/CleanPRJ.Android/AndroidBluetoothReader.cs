@@ -1,7 +1,4 @@
-﻿using Android.Bluetooth;
-using Java.IO;
-using Java.Util;
-using System;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
@@ -136,18 +133,18 @@ namespace CleanPRJ.Droid
                                 var mes = toSend.Dequeue();
                                 answer.Clear();
                                 await send.WriteAsync(mes.BMSData);
-                                Debug.WriteLine($"Send message{mes.Message}");
-                                Debug.WriteLine("Start reading");
-                                while(!CompliteMessage(answer) && canContinue)
+                                Debug.WriteLine($"Send message{mes.Message}\nStart reading");
+                                while(!CompliteMessage(answer) && canContinue && !moveOn)
                                 {
-                                    await Task.Delay(20);
+                                    await Task.Delay(10);
                                 }
                                 if (canContinue)
                                 {
                                     AddMessage(answer);
                                 }
                             }
-                            await Task.Delay(500);
+                            await Task.Delay(50);
+                            moveOn = false;
                         }
                         recive.ValueUpdated -= Read;
                     }
@@ -193,6 +190,13 @@ namespace CleanPRJ.Droid
             Debug.WriteLine($"Recived {message.Message}");
             All.Add(message);
             OnMessageUpdated?.Invoke(message);
+        }
+
+        public void ClearFront()
+        {
+            Debug.WriteLine("ClearFront()");
+            toSend.Clear();
+            moveOn = true;
         }
 
         public void Cancel()
@@ -242,6 +246,7 @@ namespace CleanPRJ.Droid
         }
 
         private ObservableCollection<string> devices = new ObservableCollection<string>();
+        private bool moveOn = false;
 
         private async Task<ObservableCollection<string>> ScanForDevices()
         {
