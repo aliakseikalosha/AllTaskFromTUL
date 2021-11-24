@@ -16,11 +16,11 @@ namespace CleanPRJ
         private static readonly char dataSeparator = '|';
         private static readonly char valueSeparator = ':';
 
-        public static float TimeToReadBase { get; private set; } = 0.2f;
+        public static float TimeToReadBase { get; private set; } = 0.5f;
         public static float TimeToReadBase01 => (TimeToReadBase - minTimeRead) / (maxTimeRead - minTimeRead);
-        public static float TimeToReadCell { get; private set; } = 0.2f;
+        public static float TimeToReadCell { get; private set; } = 0.5f;
         public static float TimeToReadCell01 => (TimeToReadCell - minTimeRead) / (maxTimeRead - minTimeRead);
-        public static float WaitInBetween { get; private set; } = 0.25f;
+        public static float WaitInBetween { get; private set; } = 0.01f;
         public static float WaitInBetween01 => (WaitInBetween - minWaitInBetween) / (maxWaitInBetween - minWaitInBetween);
 
         private IAccessFileService fileAccess;
@@ -78,7 +78,7 @@ namespace CleanPRJ
             add(nameof(TimeToReadBase), TimeToReadBase);
             add(nameof(TimeToReadCell), TimeToReadCell);
             add(nameof(WaitInBetween), WaitInBetween);
-            fileAccess.WriteNewLineToFile(settingsFileName, data);
+            fileAccess.WriteToFile(settingsFileName, data);
         }
 
         public void UpdateTimeToReadBaseResponse01(float val)

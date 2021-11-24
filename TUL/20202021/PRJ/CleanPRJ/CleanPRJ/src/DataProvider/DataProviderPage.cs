@@ -21,7 +21,7 @@ namespace CleanPRJ.DataProvider
         {
             InitUI();
             model.OnStartGatheringData += () => { start.IsEnabled = false; stop.IsEnabled = true; };
-            model.OnStopGatheringData += () => { start.IsEnabled = true; stop.IsEnabled = false; };
+            model.OnStopGatheringData += () => { start.IsEnabled = true && model.IsConnected; stop.IsEnabled = false; };
             model.OnDataUpdated += UpdateMessage;
         }
 
@@ -50,9 +50,11 @@ namespace CleanPRJ.DataProvider
 
             disconnect = new Button() { Text = "Disconnect" };
             disconnect.Clicked += DiconnectFromDevice;
+            disconnect.IsEnabled = model.IsConnectEnabled;
 
             start = new Button() { Text = "Start" };
             start.Clicked += StartDataGathering;
+            start.IsEnabled = model.IsConnectEnabled;
 
             stop = new Button() { Text = "Stop" };
             stop.Clicked += StopDataGathering;
@@ -123,11 +125,10 @@ namespace CleanPRJ.DataProvider
                     CellInfo.FontSize = 16;
                     BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
                     BaseInfo.FontSize = 16;
-                    Console.WriteLine($"Update DataProviderPage:{DateTime.Now}");
                 }
                 else
                 {
-                    CellInfo.Text = $"Voltage \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a} {b}")}";
+                    CellInfo.Text = $"V \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a}\n{b}")}";
                     CellInfo.FontSize = 48;
                     BaseInfo.Text = $"Current \n{model.CurrentBaseInfo?.Current}";
                     BaseInfo.FontSize = 48;
@@ -138,8 +139,13 @@ namespace CleanPRJ.DataProvider
         private void DiconnectFromDevice(object sender, EventArgs e)
         {
             model.Disconnect();
+            if (model.IsConnectEnabled)
+            {
+               model.StopGatheringData();
+            }
             connect.IsEnabled = true;
             disconnect.IsEnabled = false;
+            start.IsEnabled = false;
         }
 
         private void ConnectToSelected(object sender, EventArgs e)
@@ -147,6 +153,7 @@ namespace CleanPRJ.DataProvider
             model.Connect();
             connect.IsEnabled = false;
             disconnect.IsEnabled = true;
+            start.IsEnabled = true;
         }
 
         private void OnSelectedBluetoothDevice(object sender, EventArgs e)
@@ -160,6 +167,8 @@ namespace CleanPRJ.DataProvider
         void CreateFile(string fileName);
 
         void WriteNewLineToFile(string fileName, string text);
+
+        void WriteToFile(string fileName, string text);
 
         string ReadFile(string fileName);
 

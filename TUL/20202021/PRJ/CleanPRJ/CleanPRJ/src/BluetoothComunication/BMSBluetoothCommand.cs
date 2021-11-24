@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 namespace CleanPRJ.src.BluetoothComunication
@@ -110,6 +111,7 @@ public abstract class StateData : IBMSStateData
     public string Data { get; protected set; } = "";
     public string SourceData { get; protected set; } = "";
     public string HumanData { get; protected set; } = "";
+    public string CSVHeader { get; protected set; } = "BinData,Keyword,";
 
 
     public abstract void FillData(byte[] data);
@@ -117,6 +119,11 @@ public abstract class StateData : IBMSStateData
     protected ushort Convert(byte high, byte low)
     {
         return (ushort)((high << 8) | (low));
+    }
+
+    protected short ConvertSign(byte high, byte low)
+    {
+        return (short)((high << 8) | (low));
     }
 
     public override string ToString()
@@ -129,72 +136,14 @@ public abstract class StateData : IBMSStateData
         SourceData = "";
         for (int i = 0; i < data.Length; i++)
         {
-            SourceData += $"{data[i]:X}" + (i == data.Length - 1 ? "" : ",");
+            SourceData += $"{data[i]:X2}" + (i == data.Length - 1 ? "" : "|");
         }
     }
 
     protected void AddData(string message, string data)
     {
-        Data += (string.IsNullOrEmpty(Data) ? "" : ",") + data.Replace(",",".");
+        Data += $"{data.Replace(",",".")},";
         HumanData += $"{message}:\t{data}\n";
-    }
-}
-
-public class CellsStateData : StateData
-{
-    public float[] Voltage = null;
-    public override void FillData(byte[] data)
-    {
-        int count = BaseInfoStateData.NumberOfCell;
-        if (count < 0)
-        {
-            return;
-        }
-        Voltage = new float[count];
-        for (int i = 4; i < count; i++)
-        {
-            Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
-            Data += Voltage[i] + (i == count - 1 ? "" : ",");
-            AddData($"Voltage {i - 4}", Voltage[i].ToString());
-        }
-    }
-}
-
-public class BaseInfoStateData : StateData
-{
-    public static int NumberOfCell = -1;
-
-    public float FullVoltage { get; protected set; }
-    public float Current { get; protected set; }
-    public uint ResidualCapacity { get; protected set; }
-    public uint NominalCapacity { get; protected set; }
-    public int Cycles { get; protected set; }
-    public int SoC { get; protected set; }
-    public int NumberOfTemperature { get; protected set; }
-    public int[] Temperatures { get; protected set; }
-
-
-    public override void FillData(byte[] data)
-    {
-        FullVoltage = Convert(data[0], data[1]) / 100f;
-        Current = Convert(data[2], data[3]) / 100f;
-        ResidualCapacity = Convert(data[4], data[5]);
-        NominalCapacity = Convert(data[6], data[7]);
-        Cycles = Convert(data[8], data[9]);
-        SoC = (int)data[19];
-        NumberOfCell = (int)data[21];
-        NumberOfTemperature = (int)data[22];
-        Temperatures = new int[NumberOfTemperature];
-        AddData("FullVoltage", FullVoltage.ToString());
-        AddData("Current", Current.ToString());
-        AddData("ResidualCapacity", ResidualCapacity.ToString());
-        AddData("NominalCapacity", NominalCapacity.ToString());
-        AddData("SoC", SoC.ToString());
-        AddData("NumberOfTemperature", NumberOfTemperature.ToString());
-        for (int i = 0; i < NumberOfTemperature; i++)
-        {
-            Temperatures[i] = (Convert(data[23 + i * 2], data[23 + i * 2 + 1]) - 2731) / 10;
-            AddData($"Temperatures {i}", Temperatures[i].ToString());
-        }
+        CSVHeader += $"{message},";
     }
 }

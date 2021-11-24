@@ -26,6 +26,7 @@ namespace CleanPRJ.DataProvider
         public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
         public bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
         public bool IsPickerEnabled => !isConnected;
+        public bool IsConnected => isConnected;
 
         public CellsStateData CurrentCellInfo { get; internal set; }
         public BaseInfoStateData CurrentBaseInfo { get; internal set; }
@@ -91,6 +92,7 @@ namespace CleanPRJ.DataProvider
         private async Task DataGathering(int waitMS)
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
+            bool needAddHeadder = true;
             while (!token.IsCancellationRequested)
             {
                 BMSBluetoothCommand.SendGetBaseInfo();
@@ -110,7 +112,13 @@ namespace CleanPRJ.DataProvider
                     continue;
                 }
                 CurrentCellInfo = BMSBluetoothCommand.currentCellsData;
-                fileAccess.WriteNewLineToFile(fileName, $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo},{BMSBluetoothCommand.currentCellsData}");
+                if (needAddHeadder)
+                {
+                    needAddHeadder = false;
+                    fileAccess.WriteNewLineToFile(fileName, $"DateTime,{BMSBluetoothCommand.currentBaseInfo.CSVHeader}{BMSBluetoothCommand.currentCellsData.CSVHeader}");
+                }
+                var newLine = $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo}{BMSBluetoothCommand.currentCellsData}";
+                fileAccess.WriteNewLineToFile(fileName, newLine);
                 OnDataUpdated?.Invoke();
                 await Task.Delay(waitMS);
             }

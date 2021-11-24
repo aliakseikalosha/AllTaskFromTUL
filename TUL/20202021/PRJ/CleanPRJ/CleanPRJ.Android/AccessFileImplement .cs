@@ -38,6 +38,16 @@ namespace CleanPRJ.Droid
             File.AppendAllText(fullPath, text + "\n");
         }
 
+        public void WriteToFile(string fileName, string text)
+        {
+            var fullPath = Path.Combine(path, fileName);
+            if (!File.Exists(fullPath))
+            {
+                ((DataProvider.IAccessFileService)this).CreateFile(fileName);
+            }
+            File.WriteAllText(fullPath, text + "\n");
+        }
+
         void DataProvider.IAccessFileService.CreateFile(string fileName)
         {
             if (!Directory.Exists(path))
