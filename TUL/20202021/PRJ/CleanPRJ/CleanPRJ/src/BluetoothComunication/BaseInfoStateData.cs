@@ -23,18 +23,18 @@
         NumberOfCell = (int)data[21] - 4;
         NumberOfTemperature = (int)data[22];
         Temperatures = new int[NumberOfTemperature];
-        AddData("FullVoltage", FullVoltage.ToString("F3"));
-        AddData("Current", Current.ToString("F3"));
-        AddData("ResidualCapacity", ResidualCapacity.ToString());
-        AddData("NominalCapacity", NominalCapacity.ToString());
+        AddData("FullVoltage", FullVoltage.ToString("F3"), " V");
+        AddData("Current", Current.ToString("F3")," A");
+        AddData("ResidualCapacity", ResidualCapacity.ToString()," x 10mAh");
+        AddData("NominalCapacity", NominalCapacity.ToString(), " x 10mAh");
         AddData("Cycles", Cycles.ToString());
-        AddData("SoC", SoC.ToString());
+        AddData("SoC", SoC.ToString(), "%");
         AddData("NumberOfCell", NumberOfCell.ToString());
         AddData("NumberOfTemperature", NumberOfTemperature.ToString());
         for (int i = 0; i < NumberOfTemperature; i++)
         {
             Temperatures[i] = (Convert(data[23 + i * 2], data[23 + i * 2 + 1]) - 2731) / 10;
-            AddData($"Temperatures {i}", Temperatures[i].ToString());
+            AddData($"Temperatures {i}", Temperatures[i].ToString(), " C");
         }
     }
 

@@ -55,6 +55,10 @@ namespace CleanPRJ
 
         protected override void BackCliked()
         {
+            Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
+            {
+                scrollStack.Children.Clear();
+            });
             OnChangePageCliked?.Invoke(typeof(DataProviderPage));
         }
     }

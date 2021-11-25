@@ -13,7 +13,7 @@ namespace CleanPRJ.Droid
         {
             if (Directory.Exists(path))
             {
-                return Directory.GetFiles(path, "*.csv").Where(path=> new FileInfo(path).Length > 10).ToArray();
+                return Directory.GetFiles(path, "*.csv").Where(path=> new FileInfo(path).Length > 10).OrderBy(c=>c).ToArray();
             }
             return null;
         }

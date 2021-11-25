@@ -14,7 +14,7 @@ public class CellsStateData : StateData
         for (int i = 4; i < count; i++)
         {
             Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
-            AddData($"Voltage {i - 4}", Voltage[i].ToString("F3", System.Globalization.CultureInfo.InvariantCulture));
+            AddData($"Voltage {i - 4}", Voltage[i].ToString("F3", System.Globalization.CultureInfo.InvariantCulture), " V");
         }
     }
 }

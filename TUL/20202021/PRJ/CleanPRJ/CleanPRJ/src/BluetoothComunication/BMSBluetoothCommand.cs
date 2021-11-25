@@ -140,10 +140,10 @@ public abstract class StateData : IBMSStateData
         }
     }
 
-    protected void AddData(string message, string data)
+    protected void AddData(string message, string data, string dataType = null)
     {
-        Data += $"{data.Replace(",",".")},";
-        HumanData += $"{message}:\t{data}\n";
+        Data += $"{data.Replace(",", ".")},";
+        HumanData += $"{message}:\t{data} {dataType ?? ""}\n";
         CSVHeader += $"{message},";
     }
 }

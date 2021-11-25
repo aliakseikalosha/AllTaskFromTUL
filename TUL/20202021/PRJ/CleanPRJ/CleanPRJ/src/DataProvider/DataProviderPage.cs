@@ -16,7 +16,7 @@ namespace CleanPRJ.DataProvider
         private Button start;
         private Button stop;
         private bool showFullData = true;
-
+        private Color baseColor = default;
         public DataProviderPage(DataProviderViewModel model) : base(model)
         {
             InitUI();
@@ -103,6 +103,12 @@ namespace CleanPRJ.DataProvider
         private void StopDataGathering(object sender, EventArgs e)
         {
             model.StopGatheringData();
+            Device.BeginInvokeOnMainThread(() => 
+            {
+                infoStack.BackgroundColor = baseColor;
+                CellInfo.Text = "";
+                BaseInfo.Text = "";
+            });
         }
 
         private void RefreshDeviceList(object sender, EventArgs e)
@@ -113,11 +119,19 @@ namespace CleanPRJ.DataProvider
         private void StartDataGathering(object sender, EventArgs e)
         {
             model.StartGatheringData();
+            Device.BeginInvokeOnMainThread(() => 
+            {
+                if(baseColor == default)
+                {
+                    baseColor = infoStack.BackgroundColor;
+                }
+                infoStack.BackgroundColor = Color.DarkGreen;
+            });
         }
 
         public void UpdateMessage()
         {
-            Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
+            Device.BeginInvokeOnMainThread(() =>
             {
                 if (showFullData)
                 {
@@ -141,7 +155,7 @@ namespace CleanPRJ.DataProvider
             model.Disconnect();
             if (model.IsConnectEnabled)
             {
-               model.StopGatheringData();
+                model.StopGatheringData();
             }
             connect.IsEnabled = true;
             disconnect.IsEnabled = false;
