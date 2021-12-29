@@ -13,8 +13,11 @@ schema = StructType([
 customers = spark.read.schema(schema).csv("/files/customer-orders.csv")
 
 customers.printSchema()
-agg_data = customers.groupBy("customerID").agg({"cost":"sum"})
-result = agg_data.withColumn("total_spent", func.round(agg_data["sum(cost)"], 2)).select("customerID", "total_spent").sort("total_spent",ascending=False)
+agg_data = customers.groupBy("customerID").agg({"cost": "sum"})
+result = agg_data\
+    .withColumn("total_spent", func.round(agg_data["sum(cost)"], 2))\
+    .select("customerID","total_spent")\
+    .sort("total_spent", ascending=False)
 result.show()
 
 spark.stop()

@@ -221,7 +221,7 @@ const getSphere2 = function (radius = 1, widthSegments = 32, heightSegments = 16
 			normal.copy(vertex).normalize();
 			normals.push(normal.x, normal.y, normal.z);
 			// uv
-			uvs.push(u + uOffset, 1 - v);
+			uvs.push(1 - u + uOffset, 1 - v);
 			verticesRow.push(index++);
 		}
 		grid.push(verticesRow);
@@ -246,4 +246,53 @@ const getSphere2 = function (radius = 1, widthSegments = 32, heightSegments = 16
 	}
 
 	return { vertices, indices, uvs, normals };
+}
+
+getSphere3 = function()
+{
+  var SPHERE_DIV = 6;
+  var i, ai, si, ci;
+  var j, aj, sj, cj;
+  var p1, p2;
+  var vertices = [],indices = [], uvs = [], normals = [];
+  const pos = Vector3();
+  const norm = Vector3();
+  for (j = 0; j <= SPHERE_DIV; j++) 
+  {
+	aj = j * Math.PI / SPHERE_DIV;
+	sj = Math.sin(aj);
+	cj = Math.cos(aj);
+	for (i = 0; i <= SPHERE_DIV; i++) 
+	{
+	  ai = i * 2 * Math.PI / SPHERE_DIV;
+	  si = Math.sin(ai);
+	  ci = Math.cos(ai);
+	  pos.x = si * sj;
+	  pos.y = cj;
+	  pos.z = ci * sj;
+	  norm.copy(pos).normalize();
+	  normals.push(norm.x, norm.y, norm.z);
+	  uvs.push(i / SPHERE_DIV, 1 - j / SPHERE_DIV);
+	  vertices.push(pos.x);  // X
+	  vertices.push(pos.y);  // Y
+	  vertices.push(pos.z);  // Z
+	}
+  }
+
+  for (j = 0; j < SPHERE_DIV; j++)
+  {
+	for (i = 0; i < SPHERE_DIV; i++)
+	{
+	  p1 = j * (SPHERE_DIV+1) + i;
+	  p2 = p1 + (SPHERE_DIV+1);
+	  indices.push(p1);
+	  indices.push(p2);
+	  indices.push(p1 + 1);
+	  indices.push(p1 + 1);
+	  indices.push(p2);
+	  indices.push(p2 + 1);
+	}
+  }
+
+  return {vertices,indices, uvs, normals};
 }

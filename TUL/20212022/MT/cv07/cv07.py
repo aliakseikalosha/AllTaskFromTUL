@@ -23,7 +23,6 @@ def aritm_code(data):
     for char in data:
         (zl, zh) = dic[char]
         (low, high) = (low + zl * (high - low), low + zh * (high - low))
-        print(f"{char} <{low},{high})")
     result = low + (high - low) / 2
     return result, dic
 
@@ -32,7 +31,7 @@ def get_key_for_interval(dic, number):
     for pair in dic.items():
         if pair[1][0] <= number < pair[1][1]:
             return pair[0]
-    return 0, 1
+    return '\0'
 
 
 def aritm_decode(code, dic):
@@ -53,7 +52,7 @@ def aritm_decode(code, dic):
 
 
 def main():
-    data = read_all_data("Cv07_Aritm_data.bin")+"\0"
+    data = read_all_data("Cv07_Aritm_data.bin") + "\0"
     (code, dic) = aritm_code(data)
     print("Data : ", data)
     print("Arithmetic : ", code, "\n", dic)
