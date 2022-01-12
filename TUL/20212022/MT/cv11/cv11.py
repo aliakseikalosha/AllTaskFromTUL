@@ -51,7 +51,7 @@ def count_erode(img, kernel):
                     posx.append(x)
             break
 
-    return count, np.sum(posx)//len(posx), np.sum(posy)//len(posy)
+    return count, np.sum(posx) // len(posx), np.sum(posy) // len(posy)
 
 
 def task_erode():
@@ -62,12 +62,30 @@ def task_erode():
     kernel = np.ones((3, 3), np.uint8)
     top_count = count_erode(img[:height_cutoff, :], kernel)
     bottom_count = count_erode(img[height_cutoff:, :], kernel)
-
+    bottom_count = list(bottom_count)
+    bottom_count[1] += height_cutoff
+    bottom_count = tuple(bottom_count)
     print(top_count, bottom_count)
+
+    if top_count[0] < bottom_count[0]:
+        top_count, bottom_count = bottom_count, top_count
+
+    restored_img = np.zeros(img.shape)
+    restored_img[top_count[1], top_count[2]] = 1
+    restored_img = cv2.dilate(restored_img, kernel, iterations=top_count[0] - bottom_count[0])
+    restored_img[bottom_count[1], bottom_count[2]] = 1
+    restored_img = cv2.dilate(restored_img, kernel, iterations=bottom_count[0])
+
+    fig, ax = plt.subplots(1, 2)
+    ax[0].imshow(restored_img, cmap="gray")
+    ax[0].set_title('restored')
+    ax[1].imshow(img, cmap="gray")
+    ax[1].set_title('original')
+    plt.show()
 
 
 def main():
-    # task_count_circle()
+    task_count_circle()
     task_erode()
 
 

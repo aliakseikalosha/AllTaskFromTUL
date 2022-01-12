@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using CleanPRJ.DataProvider;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace CleanPRJ
@@ -38,7 +39,19 @@ namespace CleanPRJ
 
         private void LoadData()
         {
-            var text = fileAccess.ReadFile(settingsFileName);
+            string text = null;
+            try
+            {
+                text = fileAccess.ReadFile(settingsFileName);
+            }
+            catch (PermissionException pEx)
+            {
+
+            }
+            catch(Exception e)
+            {
+
+            }
             if (text == null)
             {
                 Save();

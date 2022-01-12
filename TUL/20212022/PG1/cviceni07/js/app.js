@@ -33,7 +33,6 @@ class Player {
 
     update(deltaTime) {
         this.obj.position.x += this.direction * deltaTime * this.speed;
-        //  this.direction = 0;
     }
 
     setPosition(x, y, z) {
@@ -49,7 +48,7 @@ window.onload = function () {
     const BALL_INITIAL_SPEED = 5;
     const BALL_MAX_SPEED = 15;
     const BALL_RADIUS = 0.25;
-    const PLAYER_SIZE = new THREE.Vector3(3, 1, 1);
+    const PLAYER_SIZE = new THREE.Vector3(2.5, 1, 0.3);
     const AI = [null, null]
     let stats;
 
@@ -59,8 +58,15 @@ window.onload = function () {
         playerRight = new Player(15, PLAYER_SIZE),
         clock = new THREE.Clock(),
         bounceSound;
+
     const scoreLeft = document.getElementById("scoreLeft");
     const scoreRight = document.getElementById("scoreRight");
+
+    const onePlayer = document.getElementById("onePlayer");
+    const twoPlayer = document.getElementById("twoPlayer");
+    const watchGame = document.getElementById("justWatching");
+    const menu = document.getElementById("menu");
+
     const keyMapDown = {
         /*Camera rotation controle
         'w': () => camera.rotation.y += 0.1,
@@ -76,14 +82,6 @@ window.onload = function () {
         'ArrowDown': () => playerRight.startMoveDown(),
     }
     const keyMapUp = {
-        /*Camera rotation controls
-        'w': () => camera.rotation.y += 0.1,
-        's': () => camera.rotation.y -= 0.1,
-        'a': () => camera.rotation.x += 0.1,
-        'd': () => camera.rotation.x -= 0.1,
-        'p': () => camera.rotation.z += 0.1,
-        'l': () => camera.rotation.z -= 0.1,
-         */
         'w': () => playerLeft.stopMoveUp(),
         's': () => playerLeft.stopMoveDown(),
         'ArrowUp': () => playerRight.stopMoveUp(),
@@ -91,24 +89,37 @@ window.onload = function () {
     }
 
     init();
-    animate();
+    onePlayer.addEventListener('click', () => {
+        startGame(false, true);
+    });
+    twoPlayer.addEventListener('click', () => {
+        startGame(false, false);
+    });
+    watchGame.addEventListener('click', () => {
+        startGame(true, true);
+    });
+
+    function startGame(isLeftBot, isRightBot) {
+        if (isLeftBot) {
+            AI[0] = updateAI;
+        }
+        if (isRightBot) {
+            AI[1] = updateAI;
+        }
+        createBall(BALL_RADIUS);
+        spawnDebugThings();
+        connectPlayer(playerRight, new THREE.Vector3(0, 0.5, 10), './models/glb/WoodLog.glb');
+        connectPlayer(playerLeft, new THREE.Vector3(0, 0.5, -10), './models/glb/WoodLogMoss.glb');
+        animate();
+        hideMenu();
+    }
 
     function init() {
-        AI[0] = updateAI;
-        AI[1] = updateAI;
-
         setGameCamera();
         scene = new THREE.Scene();
         scene.background = new THREE.Color(0x31E738);
         loadScene();
-        scene.add((ball = createBall(BALL_RADIUS)).obj);
-        spawnDebugThings();
-        playerRight.connectObject(createPlayer(0xFF00000));
-        playerRight.setPosition(0, 0.5, 10);
-        playerLeft.connectObject(createPlayer(0x0000FF));
-        playerLeft.setPosition(0, 0.5, -10);
-        scene.add(playerRight.obj);
-        scene.add(playerLeft.obj);
+        hideScore();
         // renderer
         renderer = new THREE.WebGLRenderer();
         renderer.setPixelRatio(window.devicePixelRatio);
@@ -146,9 +157,9 @@ window.onload = function () {
 
     function setGameCamera() {
         camera = new THREE.PerspectiveCamera(38, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = -1;
         camera.position.x = -22;
         camera.position.y = 22;
+        camera.position.z = -1;
         camera.rotation.x = -1.6;
         camera.rotation.y = -0.72;
         camera.rotation.z = -1.6;
@@ -184,6 +195,36 @@ window.onload = function () {
         );
     }
 
+    function loadGLTF(path, onLoad) {
+        const loader = new THREE.GLTFLoader();
+        loader.load(
+            // resource URL
+            path,
+            // called when the resource is loaded
+            function (gltf) {
+                onLoad(gltf)
+                /*
+                    level = gltf.scene;
+                    level.position.x += 2;
+                    //fix Ground import material
+                    level.children[0].material = new THREE.MeshBasicMaterial({
+                        color: 0x31E738
+                    });
+                    scene.add(level);
+                    render();
+                 */
+            },
+            // called while loading is progressing
+            function (xhr) {
+                console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+            },
+            // called when loading has errors
+            function (error) {
+                console.log('An error happened');
+            }
+        );
+    }
+
     function setupKeyLogger() {
         document.onkeydown = function (e) {
             if (camera === undefined) {
@@ -206,11 +247,13 @@ window.onload = function () {
 // GAME LOOP
     function animate() {
         requestAnimationFrame(animate);
-        var deltaTime = clock.getDelta();
-        updatePlayer(playerLeft, deltaTime, AI[0]);
-        updatePlayer(playerRight, deltaTime, AI[1]);
-        updateBall(deltaTime);
-        displayScore();
+        if (playerRight.obj != null && playerLeft.obj != null && ball !=null) {
+            let deltaTime = clock.getDelta();
+            updatePlayer(playerLeft, deltaTime, AI[0]);
+            updatePlayer(playerRight, deltaTime, AI[1]);
+            updateBall(deltaTime);
+            displayScore();
+        }
         // Render scene
         render();
     }
@@ -253,13 +296,16 @@ window.onload = function () {
         const sphere = new THREE.Mesh(geometry, material);
         direction = direction ?? new THREE.Vector3(1, 0, 1);
         sphere.position.y = radius / 2;
-        return {
-            obj: sphere,
-            size: (new THREE.Vector3(1, 1, 1)).multiplyScalar(radius),
-            speed: BALL_INITIAL_SPEED,
-            direction: direction,
-            material: material,
-        };
+        loadGLTF("./models/glb/pumpkin.glb", (gltf)=>{
+            ball = {
+                obj: gltf.scene,
+                size: (new THREE.Vector3(1, 1, 1)).multiplyScalar(radius),
+                speed: BALL_INITIAL_SPEED,
+                direction: direction,
+                material: material,
+            };
+            scene.add(ball.obj);
+        });
     }
 
     function checkBallCollision(b) {
@@ -277,11 +323,11 @@ window.onload = function () {
             ||
             (bPos.distanceTo(pPos) < r)
         ) {
-            if(Math.abs(pPos.x - bPos.x) < (size.x / 2 + r)){
-                b.obj.position.x += -Math.sign(pPos.x - bPos.x)*b.size.x;
+            if (Math.abs(pPos.x - bPos.x) < (size.x / 2 + r)) {
+                b.obj.position.x += -Math.sign(pPos.x - bPos.x) * b.size.x;
             }
-            if(Math.abs(pPos.z - bPos.z) < (size.z / 2 + r)){
-                b.obj.position.z += -Math.sign(pPos.z - bPos.z)*b.size.z;
+            if (Math.abs(pPos.z - bPos.z) < (size.z / 2 + r)) {
+                b.obj.position.z += -Math.sign(pPos.z - bPos.z) * b.size.z;
             }
             bounce(b, true, true);
             return true;
@@ -326,11 +372,21 @@ window.onload = function () {
     }
 
 // PLAYER
-    function createPlayer(color) {
-        const geometry = new THREE.BoxGeometry(PLAYER_SIZE.x, PLAYER_SIZE.y, PLAYER_SIZE.z);
-        const material = new THREE.MeshBasicMaterial({color: color});
-        const box = new THREE.Mesh(geometry, material);
-        return box;
+    function connectPlayer(player, pos, modelPath) {
+        loadGLTF(modelPath, (gltf) => {
+            let obj = gltf.scene;
+            scene.add(obj);
+            obj.rotation.y = Math.PI / 2
+            obj.scale.multiplyScalar(1);
+
+            const geometry = new THREE.BoxGeometry(PLAYER_SIZE.x, PLAYER_SIZE.y, PLAYER_SIZE.z);
+            const material = new THREE.MeshBasicMaterial({color: 0xdd1100});
+            const box = new THREE.Mesh(geometry, material);
+            box.rotation.y = Math.PI / 2
+            obj.add(box);
+            player.connectObject(obj);
+            player.setPosition(pos.x, pos.y, pos.z);
+        });
     }
 
 
@@ -354,11 +410,11 @@ window.onload = function () {
 // AI
     function updateAI(b, p) {
         p.direction = 0;
-        if(Math.sign(b.direction.z) != Math.sign(p.obj.position.z - b.obj.position.z)){
+        if (Math.sign(b.direction.z) !== Math.sign(p.obj.position.z - b.obj.position.z)) {
             return;
         }
-        if (Math.abs(b.obj.position.x - p.obj.position.x) > (p.size.x / 2) * random(0.1,0.9)) {
-            p.direction = Math.sign(b.obj.position.x - p.obj.position.x) * random(0,0.8);
+        if (Math.abs(b.obj.position.x - p.obj.position.x) > (p.size.x / 2) * random(0.1, 0.9)) {
+            p.direction = Math.sign(b.obj.position.x - p.obj.position.x) * random(0, 0.8);
         }
     }
 
@@ -375,16 +431,27 @@ window.onload = function () {
 
     function displayScore() {
         const scoreCurrent = checkScore();
-        if (scoreCurrent == 0) {
+        if (scoreCurrent === 0) {
             return;
         }
         resetBall();
-        if (scoreCurrent == -1) {
+        if (scoreCurrent === -1) {
             playerLeft.score += 1;
         }
-        if (scoreCurrent == 1) {
+        if (scoreCurrent === 1) {
             playerRight.score += 1;
         }
+        scoreLeft.textContent = playerLeft.score;
+        scoreRight.textContent = playerRight.score;
+    }
+
+    function hideScore() {
+        scoreLeft.textContent = "";
+        scoreRight.textContent = "";
+    }
+
+    function hideMenu() {
+        menu.style.display = 'none';
         scoreLeft.textContent = playerLeft.score;
         scoreRight.textContent = playerRight.score;
     }

