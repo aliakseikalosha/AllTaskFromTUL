@@ -14,15 +14,17 @@ namespace CleanPRJ.DataProvider
         public Action OnStartGatheringData;
         public Action OnStopGatheringData;
         public Action OnDataUpdated;
-        private string fileName;
+        private string fileNameBMS;
+        private string fileNameSabvoton;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
 
-        public string SelectedBthDevice = string.Empty;
+        public string SelectedBMS = string.Empty;
+        public string SelectedSabvoton = string.Empty;
         bool isConnected = false;
 
-        private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedBthDevice);
+        private bool isSelectedBthDevice => !(string.IsNullOrEmpty(SelectedBMS) || string.IsNullOrEmpty(SelectedSabvoton));
         public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
         public bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
         public bool IsPickerEnabled => !isConnected;
@@ -54,7 +56,7 @@ namespace CleanPRJ.DataProvider
         public void Connect()
         {
             // Try to connect to a bth device
-            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, 250, true);
+            DependencyService.Get<IBluetoothReader>().Start(SelectedBMS, 250, true);
             isConnected = true;
         }
 
@@ -65,10 +67,10 @@ namespace CleanPRJ.DataProvider
             isConnected = false;
         }
 
-        private void CreateFile()
+        private void CreateFile(string file)
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
-            fileAccess.CreateFile(fileName);
+            fileAccess.CreateFile(file);
         }
 
         internal async void Refresh()
@@ -76,20 +78,24 @@ namespace CleanPRJ.DataProvider
             await BluetoothManager.I.RefreshAsync();
             ListOfDevices = BluetoothManager.I.ListOfDevices;
         }
-        private Task task = null;
+        private Task taskBMS = null;
+        private Task taskSabvoton = null;
 
         private CancellationTokenSource source = new CancellationTokenSource();
         private CancellationToken token;
         internal void StartGatheringData()
         {
-            fileName = $"{DateTime.Now:yyyy_MM_dd_HH_mm_ss}_data.csv";
-            CreateFile();
+            var time = DateTime.Now;
+            fileNameBMS = $"{time:yyyy_MM_dd_HH_mm_ss}_data.csv";
+            CreateFile(fileNameBMS);
+            fileNameSabvoton = $"{time:yyyy_MM_dd_HH_mm_ss}_data_sab.csv";
             OnStartGatheringData?.Invoke();
             token = source.Token;
-            task = DataGathering((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
+            taskBMS = DataGatheringBMS((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
+            taskSabvoton = DataGatheringSabvoton((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
         }
 
-        private async Task DataGathering(int waitMS)
+        private async Task DataGatheringBMS(int waitMS)
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
             bool needAddHeadder = true;
@@ -115,11 +121,31 @@ namespace CleanPRJ.DataProvider
                 if (needAddHeadder)
                 {
                     needAddHeadder = false;
-                    fileAccess.WriteNewLineToFile(fileName, $"DateTime,{BMSBluetoothCommand.currentBaseInfo.CSVHeader}{BMSBluetoothCommand.currentCellsData.CSVHeader}");
+                    fileAccess.WriteNewLineToFile(fileNameBMS, $"DateTime,{BMSBluetoothCommand.currentBaseInfo.CSVHeader}{BMSBluetoothCommand.currentCellsData.CSVHeader}");
                 }
                 var newLine = $"{DateTime.Now:O},{BMSBluetoothCommand.currentBaseInfo}{BMSBluetoothCommand.currentCellsData}";
-                fileAccess.WriteNewLineToFile(fileName, newLine);
+                fileAccess.WriteNewLineToFile(fileNameBMS, newLine);
                 OnDataUpdated?.Invoke();
+                await Task.Delay(waitMS);
+            }
+        }
+
+        private async Task DataGatheringSabvoton(int waitMS)
+        {
+            var fileAccess = DependencyService.Get<IAccessFileService>();
+            while (!token.IsCancellationRequested)
+            {
+                SabvotonBluetoothCommand.SendGetDataCommand();
+                await WaitWhile(() => SabvotonBluetoothCommand.SabvotonData == null, GrabberSettingsViewModel.TimeToReadBase);
+                if (SabvotonBluetoothCommand.SabvotonData == null)
+                {
+                    ClearFront();
+                    continue;
+                }
+                await Task.Delay(5000);
+                var newLine = $"{DateTime.Now:O},{SabvotonBluetoothCommand.SabvotonData}";
+                fileAccess.WriteNewLineToFile(fileNameSabvoton, newLine);
+                Debug.Print($"{newLine}");
                 await Task.Delay(waitMS);
             }
         }
@@ -154,7 +180,7 @@ namespace CleanPRJ.DataProvider
 
         internal async void StopGatheringData()
         {
-            if (!task.IsCanceled)
+            if (!taskBMS.IsCanceled)
             {
                 source.Cancel();
             }

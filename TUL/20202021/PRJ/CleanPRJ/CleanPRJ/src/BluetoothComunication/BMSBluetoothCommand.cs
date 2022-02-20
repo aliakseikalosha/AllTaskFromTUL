@@ -147,3 +147,24 @@ public abstract class StateData : IBMSStateData
         CSVHeader += $"{message},";
     }
 }
+
+public static class SabvotonBluetoothCommand
+{
+    public static SabvotonData SabvotonData { get; internal set; }
+    public static readonly char CommandKey = 'S';
+
+    public static void SendGetDataCommand()
+    {
+        
+    }
+
+    public static void GetResponce(CleanPRJ.BluetoothMessage message)
+    {
+
+    }
+}
+
+public class SabvotonData
+{
+
+}

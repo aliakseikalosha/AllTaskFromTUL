@@ -7,7 +7,8 @@ namespace CleanPRJ.DataProvider
 {
     public class DataProviderPage : ApplicationPage<DataProviderViewModel>
     {
-        private Picker pickerBluetoothDevices;
+        private Picker pickerBMS;
+        private Picker pickerSabvoton;
         private StackLayout infoStack;
         private Label CellInfo;
         private Label BaseInfo;
@@ -29,9 +30,13 @@ namespace CleanPRJ.DataProvider
         {
             this.BindingContext = model;
 
-            pickerBluetoothDevices = new Picker() { Title = "Select a bluetooth device" };
-            pickerBluetoothDevices.SetBinding(Picker.ItemsSourceProperty, "ListOfDevices");
-            pickerBluetoothDevices.SelectedIndexChanged += OnSelectedBluetoothDevice;
+            pickerBMS = new Picker() { Title = "Select a BMS" };
+            pickerBMS.SetBinding(Picker.ItemsSourceProperty, nameof(model.ListOfDevices));
+            pickerBMS.SelectedIndexChanged += OnSelectedBluetoothDevice;
+
+            pickerSabvoton = new Picker() { Title = "Select a Sabvoton" };
+            pickerSabvoton.SetBinding(Picker.ItemsSourceProperty, nameof(model.ListOfDevices));
+            pickerSabvoton.SelectedIndexChanged += OnSelectedSabvoton;
 
             var refresh = new Button() { Text = "Refresh" };
             refresh.Clicked += RefreshDeviceList;
@@ -42,8 +47,16 @@ namespace CleanPRJ.DataProvider
             StackLayout picker = new StackLayout
             {
                 Orientation = StackOrientation.Horizontal,
-                Children = { pickerBluetoothDevices, refresh, changeInfoView }
+                Children = {
+                    new StackLayout
+                    {
+                        Orientation = StackOrientation.Vertical,
+                        Children = {pickerBMS, pickerSabvoton }
+                    },
+                    refresh, changeInfoView
+                }
             };
+
             connect = new Button() { Text = "Connect" };
             connect.Clicked += ConnectToSelected;
             connect.IsEnabled = !model.IsConnectEnabled;
@@ -103,7 +116,7 @@ namespace CleanPRJ.DataProvider
         private void StopDataGathering(object sender, EventArgs e)
         {
             model.StopGatheringData();
-            Device.BeginInvokeOnMainThread(() => 
+            Device.BeginInvokeOnMainThread(() =>
             {
                 infoStack.BackgroundColor = baseColor;
                 CellInfo.Text = "";
@@ -119,9 +132,9 @@ namespace CleanPRJ.DataProvider
         private void StartDataGathering(object sender, EventArgs e)
         {
             model.StartGatheringData();
-            Device.BeginInvokeOnMainThread(() => 
+            Device.BeginInvokeOnMainThread(() =>
             {
-                if(baseColor == default)
+                if (baseColor == default)
                 {
                     baseColor = infoStack.BackgroundColor;
                 }
@@ -172,7 +185,13 @@ namespace CleanPRJ.DataProvider
 
         private void OnSelectedBluetoothDevice(object sender, EventArgs e)
         {
-            model.SelectedBthDevice = (string)((Picker)sender).SelectedItem;
+            model.SelectedBMS = (string)((Picker)sender).SelectedItem;
+            connect.IsEnabled = model.IsConnectEnabled;
+        }
+
+        private void OnSelectedSabvoton(object sender, EventArgs e)
+        {
+            model.SelectedSabvoton = (string)((Picker)sender).SelectedItem;
             connect.IsEnabled = model.IsConnectEnabled;
         }
     }

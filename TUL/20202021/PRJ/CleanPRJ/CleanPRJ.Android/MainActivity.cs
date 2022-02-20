@@ -18,7 +18,6 @@ namespace CleanPRJ.Droid
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-            LoadApplication(new App());
             var permissions = new string[] {
                 Manifest.Permission.ReadExternalStorage,
                 Manifest.Permission.WriteExternalStorage,
@@ -29,6 +28,7 @@ namespace CleanPRJ.Droid
                 Manifest.Permission.Bluetooth,
             };
             ActivityCompat.RequestPermissions(this, permissions, 123);
+            LoadApplication(new App());
             Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)

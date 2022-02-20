@@ -43,6 +43,7 @@ namespace CleanPRJ.src.BluetoothComunication
                 //{ 'D', BluetoothCommand.DistanceCommand },
                 { (char)BMSBluetoothCommand.cellDataCode, BMSBluetoothCommand.GetResponceCellData},
                 { (char)BMSBluetoothCommand.baseInfoCode, BMSBluetoothCommand.GetResponceBaseInfo},
+                { SabvotonBluetoothCommand.CommandKey, SabvotonBluetoothCommand.GetResponce }
             });
         }
 
