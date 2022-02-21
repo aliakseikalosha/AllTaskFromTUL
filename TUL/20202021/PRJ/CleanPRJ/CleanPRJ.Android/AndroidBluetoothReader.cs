@@ -132,7 +132,7 @@ namespace CleanPRJ.Droid
                             {
                                 var mes = toSend.Dequeue();
                                 answer.Clear();
-                                await send.WriteAsync(mes.BMSData);
+                                await send.WriteAsync(mes.ByteData);
                                 Debug.WriteLine($"Send message{mes.Message}\nStart reading");
                                 while(!CompliteMessage(answer) && canContinue && !moveOn)
                                 {

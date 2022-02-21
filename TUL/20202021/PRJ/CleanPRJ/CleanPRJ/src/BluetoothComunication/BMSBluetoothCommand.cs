@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using CleanPRJ.src.BluetoothComunication;
 
 namespace CleanPRJ.src.BluetoothComunication
 {
@@ -62,12 +63,12 @@ namespace CleanPRJ.src.BluetoothComunication
 
         public static void GetResponceCellData(BluetoothMessage message)
         {
-            currentCellsData = ParseResponce<CellsStateData>(message.BMSData);
+            currentCellsData = ParseResponce<CellsStateData>(message.ByteData);
         }
 
         public static void GetResponceBaseInfo(BluetoothMessage message)
         {
-            currentBaseInfo = ParseResponce<BaseInfoStateData>(message.BMSData);
+            currentBaseInfo = ParseResponce<BaseInfoStateData>(message.ByteData);
         }
 
         public static T ParseResponce<T>(byte[] recived) where T : IBMSStateData, new()
@@ -95,6 +96,51 @@ namespace CleanPRJ.src.BluetoothComunication
                 return range;
             }
             return null;
+        }
+    }
+
+
+    public static class SabvotonBluetoothCommand
+    {
+        public static SabvotonData SabvotonData { get; internal set; }
+        public static readonly char CommandKey = 'S';
+
+        public static void StartConversation()
+        {
+            BluetoothManager.I.Send(new List<byte> { 0x01, 0x03, 0x0A, 0xBC, 0x00, 0x1A, 0x06, 0x3D });
+        }
+
+        public static void SendGetDataCommand()
+        {
+            BluetoothManager.I.Send(new List<byte> { 0x01, 0x06, 0x0F, 0xC7, 0x34, 0x21, 0xED, 0xFB });
+        }
+
+        public static void GetResponce(BluetoothMessage message)
+        {
+            SabvotonData = new SabvotonData();
+            SabvotonData.FillData(message.ByteData);
+            SabvotonData.FillSourceData(message.ByteData);
+        }
+    }
+
+    public class SabvotonData : StateData
+    {
+        public override void FillData(byte[] data)
+        {
+            int i = 3;
+            AddData("SysStatus", (Convert(data[i++], data[i++])).ToString());
+            AddData("BatteryVoltage", (Convert(data[i++], data[i++]) / 54.6f).ToString());
+            AddData("WeakenCurrentCMD", (Convert(data[i++], data[i++])).ToString());
+            AddData("WeakenCurrentFBK", (Convert(data[i++], data[i++])).ToString());
+            AddData("TorqueCurrentCMD", (Convert(data[i++], data[i++])).ToString());
+            AddData("TorqueCurrentFBK", (Convert(data[i++], data[i++])).ToString());
+            AddData("ControllerTemp", (Convert(data[i++], data[i++])).ToString());
+            AddData("MotorTemp", (Convert(data[i++], data[i++])).ToString());
+            AddData("MotorAngle", (Convert(data[i++], data[i++])).ToString());
+            AddData("MotorSpeed", (Convert(data[i++], data[i++])).ToString());
+            AddData("HallStatus", (Convert(data[i++], data[i++])).ToString());
+            AddData("ThrottleVoltage", (Convert(data[i++], data[i++])).ToString());
+            AddData("MosfetStatus", (Convert(data[i++], data[i++])).ToString());
         }
     }
 }
@@ -146,25 +192,4 @@ public abstract class StateData : IBMSStateData
         HumanData += $"{message}:\t{data} {dataType ?? ""}\n";
         CSVHeader += $"{message},";
     }
-}
-
-public static class SabvotonBluetoothCommand
-{
-    public static SabvotonData SabvotonData { get; internal set; }
-    public static readonly char CommandKey = 'S';
-
-    public static void SendGetDataCommand()
-    {
-        
-    }
-
-    public static void GetResponce(CleanPRJ.BluetoothMessage message)
-    {
-
-    }
-}
-
-public class SabvotonData
-{
-
 }

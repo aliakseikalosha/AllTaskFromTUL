@@ -9,7 +9,7 @@ namespace CleanPRJ
         public DateTime Date { get; private set; }
         public string Message { get; private set; }
         public MessageState State { get; private set; }
-        public char Type => (char)BMSData[1];//Message.Length > 0 ? (char)BMSData[3] : '\0';
+        public char Type => (char)ByteData[1];//Message.Length > 0 ? (char)ByteData[3] : '\0';
         public string Data
         {
             get
@@ -23,7 +23,7 @@ namespace CleanPRJ
             }
         }
 
-        public byte[] BMSData { get; set; }
+        public byte[] ByteData { get; set; }
 
         public BluetoothMessage(DateTime date, string message, MessageState state)
         {
@@ -35,7 +35,7 @@ namespace CleanPRJ
         public BluetoothMessage(byte[] command, MessageState state)
         {
             Date = DateTime.Now;
-            BMSData = command;
+            ByteData = command;
             Message = command.Select(c => c.ToString("X")).Aggregate((a, b) => a +" "+ b);
             State = state;
         }

@@ -133,6 +133,8 @@ namespace CleanPRJ.DataProvider
         private async Task DataGatheringSabvoton(int waitMS)
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
+            SabvotonBluetoothCommand.StartConversation();
+            await Task.Delay(1000);
             while (!token.IsCancellationRequested)
             {
                 SabvotonBluetoothCommand.SendGetDataCommand();
@@ -142,7 +144,7 @@ namespace CleanPRJ.DataProvider
                     ClearFront();
                     continue;
                 }
-                await Task.Delay(5000);
+                await Task.Delay(1000);
                 var newLine = $"{DateTime.Now:O},{SabvotonBluetoothCommand.SabvotonData}";
                 fileAccess.WriteNewLineToFile(fileNameSabvoton, newLine);
                 Debug.Print($"{newLine}");
@@ -180,7 +182,7 @@ namespace CleanPRJ.DataProvider
 
         internal async void StopGatheringData()
         {
-            if (!taskBMS.IsCanceled)
+            if (!taskBMS.IsCanceled || !taskSabvoton.IsCanceled)
             {
                 source.Cancel();
             }
