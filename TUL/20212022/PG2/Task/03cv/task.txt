@@ -1,0 +1,2 @@
+- create VAO
+- use shaders and VAO to draw annulus

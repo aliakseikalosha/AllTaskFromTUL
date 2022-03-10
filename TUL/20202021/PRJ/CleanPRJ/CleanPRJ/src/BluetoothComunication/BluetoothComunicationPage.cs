@@ -93,7 +93,7 @@ namespace CleanPRJ
         private void SendMessage(object sender, EventArgs e)
         {
             var bluetooth = DependencyService.Get<IBluetoothReader>();
-            bluetooth.Send(new BluetoothMessage(DateTime.Now, messageText.Text + "\n", MessageState.Sended));
+            bluetooth.Send(new BluetoothMessage(DateTime.Now, messageText.Text + "\n", MessageState.Sended), false);
         }
 
         private void ChangeSleepTime(object sender, TextChangedEventArgs e)

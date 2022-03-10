@@ -1,0 +1,16 @@
+- Add to key callback: vsync on/off (use provided code snippet). Measure the FPS difference.
+
+- Switch application to GL version 4.3, COMPATIBILITY profile. 
+
+- Add code to check GL errors. 
+    - Check for extension.
+        - If present, use GL debug output.
+        - If not present, use version-independent code. 
+          (Call glGetError AT THE END of the frame, just before glfwSwapBuffers().)
+
+- Use PDF and code snippets to:
+    - load, compile, link and use shaders
+    - send basic parameters to shaders
+    
+- Draw annulus (mezikruží) using triangles
+    

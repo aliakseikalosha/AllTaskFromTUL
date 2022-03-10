@@ -30,7 +30,8 @@ namespace CleanPRJ.Droid
 
         public List<BluetoothMessage> All { get; private set; } = new List<BluetoothMessage>();
 
-        private Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();
+        private Queue<BluetoothMessage> toSendBMS = new Queue<BluetoothMessage>();
+        private Queue<BluetoothMessage> toSendSabvoton = new Queue<BluetoothMessage>();
 
         private IPermissions _permissions;
 
@@ -107,7 +108,7 @@ namespace CleanPRJ.Droid
                             Debug.WriteLine($"Dont found send({send}) or recive({recive}) device");
                             break;
                         }
-                        toSend = new Queue<BluetoothMessage>();
+                        toSendBMS = new Queue<BluetoothMessage>();
 
                         var answer = new List<int>();
                         void Read(object o, CharacteristicUpdatedEventArgs args)
@@ -128,9 +129,9 @@ namespace CleanPRJ.Droid
                         await recive.StartUpdatesAsync();
                         while (canContinue)
                         {
-                            if (toSend.Count > 0)
+                            if (toSendBMS.Count > 0)
                             {
-                                var mes = toSend.Dequeue();
+                                var mes = toSendBMS.Dequeue();
                                 answer.Clear();
                                 await send.WriteAsync(mes.ByteData);
                                 Debug.WriteLine($"Send message{mes.Message}\nStart reading");
@@ -195,7 +196,7 @@ namespace CleanPRJ.Droid
         public void ClearFront()
         {
             Debug.WriteLine("ClearFront()");
-            toSend.Clear();
+            toSendBMS.Clear();
             moveOn = true;
         }
 
@@ -276,9 +277,16 @@ namespace CleanPRJ.Droid
             devices.Add($"{device.Name}:{device.Id}");
         }
 
-        public void Send(BluetoothMessage message)
+        public void Send(BluetoothMessage message, bool isSabvoton)
         {
-            toSend.Enqueue(message);
+            if (isSabvoton)
+            {
+                toSendSabvoton.Enqueue(message);
+            }
+            else
+            {
+                toSendBMS.Enqueue(message);
+            }
         }
 
     }

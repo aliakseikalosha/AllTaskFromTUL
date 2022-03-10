@@ -11,7 +11,7 @@ namespace CleanPRJ
         List<BluetoothMessage> Sended { get; }
         List<BluetoothMessage> Recived { get; }
         List<BluetoothMessage> All { get; }
-        void Send(BluetoothMessage message);
+        void Send(BluetoothMessage message, bool isSabvoton);
         void Start(string name, int sleepTime, bool readAsCharArray);
         void Cancel();
         void ClearFront();

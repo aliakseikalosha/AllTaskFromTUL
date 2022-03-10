@@ -76,7 +76,7 @@ namespace CleanPRJ.src.BluetoothComunication
                 if (ListOfDevices.Any(c => c.Contains(TargetBluetoothDevice)))
                 {
                     SelectedDevice = ListOfDevices.First(c => c.Contains(TargetBluetoothDevice));
-                   // Connect();
+                    // Connect();
                 }
 
             }
@@ -128,20 +128,20 @@ namespace CleanPRJ.src.BluetoothComunication
         }
 
 
-        internal void Send(List<byte> fullCommand)
+        internal void Send(List<byte> fullCommand, bool isSabvoton = false)
         {
-            Send(fullCommand.ToArray());
+            Send(fullCommand.ToArray(), isSabvoton);
         }
 
-        private void Send(byte[] command)
+        private void Send(byte[] command, bool isSabvoton)
         {
-            Send(new BluetoothMessage(command, MessageState.Sended));
+            Send(new BluetoothMessage(command, MessageState.Sended), isSabvoton);
         }
 
 
-        private void Send(BluetoothMessage mesage)
+        private void Send(BluetoothMessage mesage, bool isSabvoton = false)
         {
-            bluetooth.Send(mesage);
+            bluetooth.Send(mesage, isSabvoton);
             Console.WriteLine(mesage.Message);
         }
     }

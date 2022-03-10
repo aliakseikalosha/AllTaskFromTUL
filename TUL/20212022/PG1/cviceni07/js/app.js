@@ -48,7 +48,7 @@ window.onload = function () {
     const BALL_INITIAL_SPEED = 5;
     const BALL_MAX_SPEED = 15;
     const BALL_RADIUS = 0.25;
-    const PLAYER_SIZE = new THREE.Vector3(2.5, 1, 0.3);
+    const PLAYER_SIZE = new THREE.Vector3(2.5, 10, 0.3);
     const AI = [null, null]
     let stats;
 
@@ -128,6 +128,8 @@ window.onload = function () {
         window.addEventListener('resize', onWindowResize, false);
         setupKeyLogger();
         initSounds();
+        const light = new THREE.AmbientLight(0x404040, 5); // soft white light
+        scene.add(light);
     }
 
     function initSounds() {
@@ -247,7 +249,7 @@ window.onload = function () {
 // GAME LOOP
     function animate() {
         requestAnimationFrame(animate);
-        if (playerRight.obj != null && playerLeft.obj != null && ball !=null) {
+        if (playerRight.obj != null && playerLeft.obj != null && ball != null) {
             let deltaTime = clock.getDelta();
             updatePlayer(playerLeft, deltaTime, AI[0]);
             updatePlayer(playerRight, deltaTime, AI[1]);
@@ -296,7 +298,7 @@ window.onload = function () {
         const sphere = new THREE.Mesh(geometry, material);
         direction = direction ?? new THREE.Vector3(1, 0, 1);
         sphere.position.y = radius / 2;
-        loadGLTF("./models/glb/pumpkin.glb", (gltf)=>{
+        loadGLTF("./models/glb/pumpkin.glb", (gltf) => {
             ball = {
                 obj: gltf.scene,
                 size: (new THREE.Vector3(1, 1, 1)).multiplyScalar(radius),
@@ -369,6 +371,8 @@ window.onload = function () {
     function moveBallInDirection(deltaTime) {
         ball.obj.position.z += ball.direction.z * ball.speed * deltaTime;
         ball.obj.position.x += ball.direction.x * ball.speed * deltaTime;
+        ball.obj.rotation.z += ball.direction.z * ball.speed * deltaTime / 2;
+        ball.obj.rotation.x += ball.direction.x * ball.speed * deltaTime / 2;
     }
 
 // PLAYER
@@ -378,12 +382,6 @@ window.onload = function () {
             scene.add(obj);
             obj.rotation.y = Math.PI / 2
             obj.scale.multiplyScalar(1);
-
-            const geometry = new THREE.BoxGeometry(PLAYER_SIZE.x, PLAYER_SIZE.y, PLAYER_SIZE.z);
-            const material = new THREE.MeshBasicMaterial({color: 0xdd1100});
-            const box = new THREE.Mesh(geometry, material);
-            box.rotation.y = Math.PI / 2
-            obj.add(box);
             player.connectObject(obj);
             player.setPosition(pos.x, pos.y, pos.z);
         });
