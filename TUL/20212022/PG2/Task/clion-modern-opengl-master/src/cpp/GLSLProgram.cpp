@@ -2,7 +2,6 @@
 #include <vector>
 #include <fstream>
 #include "glm/gtc/type_ptr.hpp"
-#include <OpenGL/gl3.h>
 
 using glm::vec3;
 using glm::vec4;

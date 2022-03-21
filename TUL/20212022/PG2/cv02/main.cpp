@@ -29,7 +29,7 @@ int main(void)
     glBindVertexArray(VAO);
 
     std::vector<float> vert;
-    shapeAnnulus(vert, 1.0f, .8f);
+    shapeAnnulus(vert, 1.0f, .8f, 0,0,-2);
 
     // Vertex data and buffer
     unsigned int VBO;
@@ -67,8 +67,13 @@ int main(void)
     glUseProgram(shaderProgram);
 
     // Binding the buffers
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
+    glVertexAttribPointer(glGetAttribLocation(shaderProgram, "aPos"), 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *)0);
     glEnableVertexAttribArray(0);
+
+    int width, height;
+    glfwGetFramebufferSize(window, &width, &height);
+    std::cout<<"SET to width "<<width<<" height "<<height<<std::endl;
+    glViewport(0, 0, width, height);
 
     printInfo();
     // Application loop
@@ -82,35 +87,33 @@ int main(void)
         frameCount++;
         // Resize the viewport
         {
-            int width, height;
             glfwGetWindowSize(window, &width, &height);
             if (height <= 0)
                 height = 1;
-
             float ratio = static_cast<float>(width) / height;
 
-            glm::mat4 projectionMatrix = glm::perspective(
-                    glm::radians(60.0f), // The vertical Field of View, in radians: the amount of "zoom". Think "camera lens". Usually between 90∞ (extra wide) and 30∞ (quite zoomed in)
-                    ratio,			     // Aspect Ratio. Depends on the size of your window.
-                    0.1f,                // Near clipping plane. Keep as big as possible, or you'll get precision issues.
-                    100.0f              // Far clipping plane. Keep as little as possible.
-            );
-
+            glm::mat4 projectionMatrix =
+                    glm::perspective(
+                            glm::radians(60.0f), // The vertical Field of View, in radians: the amount of "zoom". Think "camera lens". Usually between 90∞ (extra wide) and 30∞ (quite zoomed in)
+                            ratio,			     // Aspect Ratio. Depends on the size of your window.
+                            0.1f,                // Near clipping plane. Keep as big as possible, or you'll get precision issues.
+                            100.0f              // Far clipping plane. Keep as little as possible.
+                    );
             //set uniform for shaders - projection matrix
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
 
-            // set viewport
-            glViewport(0, 0, width, height);
 
             //now your canvas has [0,0] in bottom left corner, and its size is [width x height]
+            GLfloat now = (GLfloat)glfwGetTime();
 
             //set View matrix - no transformation (so far), e.g. identity matrix (unit matrix)
-            glm::mat4 viewMat = glm::mat4();
+            glm::mat4 viewMat = //glm::mat4(1.0f);
+                    glm::lookAt(glm::vec3(0.0f), glm::vec3(0.0f,0.0f,-5.0f), glm::vec3(0.0f, 1.0f, 0.0f));
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uV_m"), 1, GL_FALSE, glm::value_ptr(viewMat));
 
-
             //set Model matrix - no transformations (so far), e.g. identity matrix (unit matrix)
-            glm::mat4 modelMat = glm::mat4();
+            glm::mat4 modelMat = //glm::mat4(1.0f);
+                    glm::rotate(glm::mat4(1.0f), (float)sin(now), glm::vec3(0.0f, 0.0f, 1.0f));
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uM_m"), 1, GL_FALSE, glm::value_ptr(modelMat));
 
             // now you are (camera is) at [0,0,0] point, looking at -Z direction

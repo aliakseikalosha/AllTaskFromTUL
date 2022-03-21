@@ -7,10 +7,14 @@ def read_img(path):
     return cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
 
 
+def calc_hist(img, channel):
+    return cv2.calcHist([img], [channel], None, [256], [0, 256])
+
+
 def show_hist(img, func=None):
     color = ('r', 'g', 'b')
     for i, col in enumerate(color):
-        h = cv2.calcHist([img], [i], None, [256], [0, 256])
+        h = calc_hist(img, i)
         if func is not None:
             h = func(h)
         plt.plot(h, color=col)

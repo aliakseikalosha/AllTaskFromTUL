@@ -1,7 +1,7 @@
 #include <GLFW/glfw3.h>
 #include <GLSLProgram.h>
 
-#include <OpenGL/gl3.h>
+#include <iostream>
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 
@@ -39,7 +39,6 @@ void cursor_pos_callback(GLFWwindow* window, double, double ypos) {
     else if (glfwGetMouseButton(window, GLFW_MOUSE_BUTTON_LEFT) == GLFW_RELEASE) {
         ypos_old = -1;
     }
-
 }
 
 void cleanUp()
@@ -55,8 +54,8 @@ int main()
     if (!glfwInit())
         exit(1);
 
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
 
 #ifdef __APPLE__
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
@@ -130,7 +129,7 @@ int main()
 
         GLfloat now = (GLfloat)glfwGetTime();
 
-        triangle_model_matrix = glm::rotate(glm::mat4(), (float)sin(now), glm::vec3(0.0f, 0.0f, 1.0f));
+        triangle_model_matrix = glm::rotate(glm::mat4(1.0f), (float)sin(now), glm::vec3(0.0f, 0.0f, 1.0f));
         view_matrix = glm::lookAt(camera_position, glm::vec3(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
         shaderProgram->setUniform("model_matrix", triangle_model_matrix);

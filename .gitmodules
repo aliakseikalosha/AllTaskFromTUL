@@ -9,3 +9,6 @@
 [submodule "TUL/20212022/WEA/Task"]
 	path = TUL/20212022/WEA/Task
 	url = https://gitlab.tul.cz/jiri.vrany/wea2021-prednasky.git
+[submodule "TUL/20212022/PDO/gitlab"]
+	path = TUL/20212022/PDO/gitlab
+	url = https://gitlab.tul.cz/aliaksei.kalosha/pdo2022.git

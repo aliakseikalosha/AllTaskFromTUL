@@ -25,8 +25,6 @@ void keyCallback(GLFWwindow *window, int key, int scancode, int action, int mods
         glfwSetWindowShouldClose(window, GLFW_TRUE);
 }
 
-
-
 GLFWwindow* init(){
 
     // Set callback for errors
@@ -61,8 +59,7 @@ GLFWwindow* init(){
 
     // open window (GL canvas) with no special properties
     // https://www.glfw.org/docs/latest/quick.html#quick_create_window
-    GLFWwindow * window = glfwCreateWindow(800, 600, "OpenGL context", NULL, NULL);
-
+    GLFWwindow * window = glfwCreateWindow(400, 400, "OpenGL context", NULL, NULL);
 
     glfwSetFramebufferSizeCallback(window, frameBufferResizeCallback);
 

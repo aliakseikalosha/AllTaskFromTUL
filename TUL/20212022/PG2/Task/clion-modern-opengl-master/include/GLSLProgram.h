@@ -1,6 +1,5 @@
 #ifndef CLION_MODERN_OPENGL_GLSLPROGRAM_H
 #define CLION_MODERN_OPENGL_GLSLPROGRAM_H
-
 #include <OpenGL/gl3.h>
 #include <string>
 #include "glm/mat4x2.hpp"
