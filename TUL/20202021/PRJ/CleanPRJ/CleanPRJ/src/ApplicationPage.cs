@@ -7,6 +7,9 @@ using Xamarin.Forms;
 using CleanPRJ.src.Icons;
 using System.Reflection;
 using CleanPRJ.Settings;
+using OxyPlot;
+using OxyPlot.Xamarin.Forms;
+using OxyPlot.Series;
 
 namespace CleanPRJ.MainScreen
 {
@@ -90,6 +93,43 @@ namespace CleanPRJ.MainScreen
                 AnimationDuration = animationTime,
                 LabelColor = SkiaSharp.SKColor.Parse(WindowData.Current.Chart.Text.ToHex()),
                 BackgroundColor = SkiaSharp.SKColor.Parse(WindowData.Current.Chart.Background.ToHex()),
+            };
+        }
+
+        protected PlotModel GetPlotModel(List<LineSeries> data, string title)
+        {
+            var model =  new PlotModel
+            {
+                Title = title,
+            };
+            foreach (var serie in data)
+            {
+                model.Series.Add(serie);
+            }
+            return model;
+        }
+
+
+        protected PlotModel GetPlotModel(LineSeries data, string title)
+        {
+            var model = new PlotModel
+            {
+                Series = { data },
+                Title = title,
+            };
+            return model;
+        }
+
+        protected PlotView GetPlotView(PlotModel model)
+        {
+            return new PlotView
+            {
+                Model = model,
+                WidthRequest = WindowData.ScreenSize.X,
+                HeightRequest = WindowData.ScreenSize.X,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.White,
             };
         }
 

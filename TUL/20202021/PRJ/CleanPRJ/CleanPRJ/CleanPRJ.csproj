@@ -18,6 +18,9 @@
     <None Remove="Plugin.BluetoothLE" />
     <None Remove="Plugin.BLE" />
     <None Remove="Plugin.Permissions" />
+    <None Remove="OxyPlot.Xamarin.Forms" />
+    <None Remove="src\DataViewer\" />
+    <None Remove="src\GrabberSettings\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -37,5 +40,10 @@
     <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
     <PackageReference Include="Plugin.BLE" Version="2.1.2" />
     <PackageReference Include="Plugin.Permissions" Version="6.0.1" />
+    <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="src\DataViewer\" />
+    <Folder Include="src\GrabberSettings\" />
   </ItemGroup>
 </Project>

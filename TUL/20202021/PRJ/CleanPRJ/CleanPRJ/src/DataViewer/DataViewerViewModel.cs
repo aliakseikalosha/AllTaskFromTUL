@@ -9,6 +9,8 @@ using System.Diagnostics;
 using System.Text.RegularExpressions;
 using CleanPRJ.src.BluetoothComunication;
 using Microcharts;
+using OxyPlot.Series;
+using OxyPlot.Axes;
 
 namespace CleanPRJ
 {
@@ -50,12 +52,11 @@ namespace CleanPRJ
             }
         }
 
-        public List<List<ChartEntry>> VoltageChartData
+        public List<LineSeries> VoltageChartData
         {
             get
             {
-                List<List<ChartEntry>> entries = new List<List<ChartEntry>>();
-                var color = SkiaSharp.SKColor.Parse("#00ff22");
+                List<LineSeries> entries = new List<LineSeries>();
                 Data data;
                 int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
                 for (int i = 0; i < LoadedData.Count; i += step)
@@ -67,26 +68,20 @@ namespace CleanPRJ
                         int index = j - baseCount;
                         if (entries.Count <= index)
                         {
-                            entries.Add(new List<ChartEntry>());
+                            entries.Add(new LineSeries());
                         }
-                        entries[index].Add(new ChartEntry(data.cell.Voltage[j])
-                        {
-                            Label = "",
-                            Color = color,
-                            ValueLabel = data.cell.Voltage[j].ToString(),
-                        });
+                        entries[index].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), data.cell.Voltage[j]));
                     }
                 }
                 return entries;
             }
         }
 
-        public List<List<ChartEntry>> Temperatures
+        public List<LineSeries> Temperatures
         {
             get
             {
-                List<List<ChartEntry>> entries = new List<List<ChartEntry>>();
-                var color = SkiaSharp.SKColor.Parse("#ff9900");
+                List<LineSeries> entries = new List<LineSeries>();
                 Data data;
                 int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
                 for (int i = 0; i < LoadedData.Count; i += step)
@@ -96,61 +91,44 @@ namespace CleanPRJ
                     {
                         if (entries.Count <= j)
                         {
-                            entries.Add(new List<ChartEntry>());
+                            entries.Add(new LineSeries());
                         }
-                        entries[j].Add(new ChartEntry(data.info.Temperatures[j])
-                        {
-                            Label = "",
-                            Color = color,
-                            ValueLabel = data.info.Temperatures[j].ToString(),
-                        });
+                        entries[j].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), data.info.Temperatures[j]));
                     }
                 }
                 return entries;
             }
         }
 
-        public List<ChartEntry> Current
+        public LineSeries Current
         {
             get
             {
-                var entries = new List<ChartEntry>();
-                var color = SkiaSharp.SKColor.Parse("#0011BB");
+                var entries = new LineSeries();
                 Data data;
-                int step = 1;//LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
+                int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
                 for (int j = 0; j < LoadedData.Count; j += step)
                 {
                     data = LoadedData[j];
                     var value = data.info.Current;
-                    entries.Add(new ChartEntry(value)
-                    {
-                        Label = "",
-                        Color = color,
-                        ValueLabel = value.ToString(),
-                    });
+                    entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), value));
                 }
                 return entries;
             }
         }
 
-        public List<ChartEntry> FullVoltage
+        public LineSeries FullVoltage
         {
             get
             {
-                var entries = new List<ChartEntry>();
-                var color = SkiaSharp.SKColor.Parse("#0011BB");
+                var entries = new LineSeries();
                 Data data;
                 int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
                 for (int j = 0; j < LoadedData.Count; j += step)
                 {
                     data = LoadedData[j];
                     var value = data.info.FullVoltage;
-                    entries.Add(new ChartEntry(value)
-                    {
-                        Label = "",
-                        Color = color,
-                        ValueLabel = value.ToString(),
-                    });
+                    entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), value));
                 }
                 return entries;
             }

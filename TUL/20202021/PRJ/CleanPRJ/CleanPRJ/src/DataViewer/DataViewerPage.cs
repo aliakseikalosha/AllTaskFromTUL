@@ -127,67 +127,13 @@ namespace CleanPRJ
 
         private void ShowLoadedDataGraph()
         {
-            LineChart chart;
-            //Voltages
-            var voltageCharts = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical
-            };
-            foreach (var data in model.VoltageChartData)
-            {
-                chart = GetChartFor<LineChart>(data);
-                voltageCharts.Children.Add(GetViewFor(chart, 200, data.Count * 6));
-            }
-            StackLayout voltageLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                Children = { new Label() { Text =  "Voltages"}, voltageCharts}
-            };
-            //temperatures
-            var temperatureCharts = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical
-            };
-            foreach (var data in model.Temperatures)
-            {
-                chart = GetChartFor<LineChart>(data);
-                temperatureCharts.Children.Add(GetViewFor(chart, 200, data.Count * 6));
-            }
-            StackLayout temperatureLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                Children = { new Label() { Text = "Temperatures" }, temperatureCharts }
-            };
-            //Current
-            chart = GetChartFor<LineChart>(model.Current);
-            var currentLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                Children = 
-                {
-                    new Label() { Text = "Current" },
-                    GetViewFor(chart, 200, model.Current.Count * 6)
-                }
-            };
-            //FullVoltage
-            chart = GetChartFor<LineChart>(model.FullVoltage);
-            var fullVoltageLayout = new StackLayout
-            {
-                Orientation = StackOrientation.Vertical,
-                Children =
-                {
-                    new Label() { Text = "Full Voltage" },
-                    GetViewFor(chart, 200, model.FullVoltage.Count * 6)
-                }
-            };
-
             Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
                 scrollStack.Children.Clear();
-                scrollStack.Children.Add(voltageLayout);
-                scrollStack.Children.Add(temperatureLayout);
-                scrollStack.Children.Add(currentLayout);
-                scrollStack.Children.Add(fullVoltageLayout);
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(this.model.VoltageChartData, "Voltage")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Temperatures, "Temperatures")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Current, "Current")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.FullVoltage, "FullVoltage")));
             });
         }
 
