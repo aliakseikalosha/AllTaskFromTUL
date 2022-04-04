@@ -258,7 +258,7 @@ namespace CleanPRJ.Droid
                 AddDevice(connectedDevice);
             }
 
-            Adapter.ScanMode = Plugin.BLE.Abstractions.Contracts.ScanMode.LowLatency;
+            Adapter.ScanMode = ScanMode.LowLatency;
             Adapter.DeviceDiscovered += AddDevice;
             await Adapter.StartScanningForDevicesAsync();
             Adapter.DeviceDiscovered -= AddDevice;

@@ -37,7 +37,7 @@ namespace CleanPRJ.DataProvider
             pickerSabvoton = new Picker() { Title = "Select a Sabvoton" };
             pickerSabvoton.SetBinding(Picker.ItemsSourceProperty, nameof(model.ListOfDevices));
             pickerSabvoton.SelectedIndexChanged += OnSelectedSabvoton;
-
+            //todo use CreateButton for buttons
             var refresh = new Button() { Text = "Refresh" };
             refresh.Clicked += RefreshDeviceList;
 

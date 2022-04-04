@@ -126,6 +126,17 @@ namespace CleanPRJ.MainScreen
             return sl;
         }
 
+        protected Button CreateButton(string text, EventHandler onClick, bool isEnable=true)
+        {
+            var b = new Button
+            {
+                Text = text
+            };
+            b.IsEnabled = isEnable;
+            b.Clicked += onClick;
+            return b;
+        }
+
         protected virtual void BackCliked()
         {
             OnChangePageCliked?.Invoke(typeof(MainScreenPage));

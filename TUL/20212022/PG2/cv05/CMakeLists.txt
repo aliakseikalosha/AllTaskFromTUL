@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.21)
-project(cv04)
+project(cv05)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -9,6 +9,6 @@ find_package(OpenCV REQUIRED)
 find_package(GLFW3 REQUIRED)
 find_package(glm REQUIRED)
 
-add_executable(cv04 ${SOURCE_FILES})
+add_executable(cv05 ${SOURCE_FILES})
 include_directories(${OpenCV_INCLUDE_DIRS})
-target_link_libraries(cv04 ${OPENGL_LIBRARIES} glfw ${OpenCV_LIBS})
+target_link_libraries(cv05 ${OPENGL_LIBRARIES} glfw ${OpenCV_LIBS})
