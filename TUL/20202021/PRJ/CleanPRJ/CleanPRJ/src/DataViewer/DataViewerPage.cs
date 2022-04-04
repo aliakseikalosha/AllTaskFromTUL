@@ -3,10 +3,6 @@ using CleanPRJ.MainScreen;
 using CleanPRJ.DataProvider;
 using Xamarin.Forms;
 using System.Threading.Tasks;
-using Microcharts;
-using System.Collections.Generic;
-using Microcharts.Forms;
-using System.Linq;
 
 namespace CleanPRJ
 {
@@ -130,10 +126,12 @@ namespace CleanPRJ
             Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
                 scrollStack.Children.Clear();
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(this.model.VoltageChartData, "Voltage")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.VoltageChartData, "Voltage")));
                 scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Temperatures, "Temperatures")));
                 scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Current, "Current")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.FullVoltage, "FullVoltage")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.FullVoltage, "Full Voltage")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.ResidualCapacity, "Residual Capacity")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.NominalCapacity, "Nominal Capacity")));
             });
         }
 

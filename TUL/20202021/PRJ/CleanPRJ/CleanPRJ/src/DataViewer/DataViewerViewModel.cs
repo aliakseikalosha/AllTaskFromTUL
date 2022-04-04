@@ -8,7 +8,6 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
 using CleanPRJ.src.BluetoothComunication;
-using Microcharts;
 using OxyPlot.Series;
 using OxyPlot.Axes;
 
@@ -16,10 +15,11 @@ namespace CleanPRJ
 {
     public class DataViewerViewModel : IViewModel
     {
-        private const int dataPointsCompact = 50;
+        private const int dataPointsCompact = 150;
         private string dataLoadedFrom = null;
         public ObservableCollection<string> Files { get; private set; } = new ObservableCollection<string>();
         public List<Data> LoadedData { get; private set; } = new List<Data>();
+        private int dataStepCompact => LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
         public string DataAsText
         {
             get
@@ -38,12 +38,7 @@ namespace CleanPRJ
             get
             {
                 var text = "";
-                var step = LoadedData.Count / dataPointsCompact;
-                if (step < 1)
-                {
-                    step = 1;
-                }
-                for (int i = 0; i < LoadedData.Count; i += step)
+                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
                 {
                     Data data = LoadedData[i];
                     text += $"{data.date} CELL : {data.cell.HumanData.Replace(" ", "\t")} |\t\t BASE INFO :{data?.info.HumanData.Replace(" ", "\t")}".Replace("\n", "\t") + "\n";
@@ -58,8 +53,7 @@ namespace CleanPRJ
             {
                 List<LineSeries> entries = new List<LineSeries>();
                 Data data;
-                int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
-                for (int i = 0; i < LoadedData.Count; i += step)
+                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
                 {
                     data = LoadedData[i];
                     int baseCount = 4;
@@ -83,8 +77,7 @@ namespace CleanPRJ
             {
                 List<LineSeries> entries = new List<LineSeries>();
                 Data data;
-                int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
-                for (int i = 0; i < LoadedData.Count; i += step)
+                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
                 {
                     data = LoadedData[i];
                     for (int j = 0; j < data.info.Temperatures.Length; j++)
@@ -104,16 +97,7 @@ namespace CleanPRJ
         {
             get
             {
-                var entries = new LineSeries();
-                Data data;
-                int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
-                for (int j = 0; j < LoadedData.Count; j += step)
-                {
-                    data = LoadedData[j];
-                    var value = data.info.Current;
-                    entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), value));
-                }
-                return entries;
+                return LineSeriesOf(x => x.info.Current);
             }
         }
 
@@ -121,17 +105,37 @@ namespace CleanPRJ
         {
             get
             {
-                var entries = new LineSeries();
-                Data data;
-                int step = LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
-                for (int j = 0; j < LoadedData.Count; j += step)
-                {
-                    data = LoadedData[j];
-                    var value = data.info.FullVoltage;
-                    entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), value));
-                }
-                return entries;
+                return LineSeriesOf(x => x.info.FullVoltage);
             }
+        }
+
+        public LineSeries ResidualCapacity
+        {
+            get
+            {
+                return LineSeriesOf(x=>x.info.ResidualCapacity);
+            }
+        }
+
+
+        public LineSeries NominalCapacity
+        {
+            get
+            {
+                return LineSeriesOf(x => x.info.NominalCapacity);
+            }
+        }
+
+        private LineSeries LineSeriesOf(Func<Data,double> map)
+        {
+            var entries = new LineSeries();
+            Data data;
+            for (int j = 0; j < LoadedData.Count; j += dataStepCompact)
+            {
+                data = LoadedData[j];
+                entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), map(data)));
+            }
+            return entries;
         }
 
         public DataViewerViewModel()
