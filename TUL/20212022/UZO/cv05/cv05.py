@@ -24,7 +24,7 @@ def show_spectrum(img):
 
 def img_noise(img, process):
     shape = img.shape
-    n = np.ones((shape[0], shape[1], 1))
+    n = np.ones(img.shape)
     for x in range(1, shape[0]):
         for y in range(1, shape[1]):
             n[x, y] = process(x, y, shape)
@@ -94,9 +94,8 @@ def process_img(path):
 
 
 def main():
-    show_spectrum(img_noise_rot_mask(cv2.cvtColor(img_read("cv05_robotS.bmp"), cv2.COLOR_RGB2GRAY)))
-    #process_img("cv05_robotS.bmp")
-    #process_img("cv05_PSS.bmp")
+    process_img("cv05_robotS.bmp")
+    process_img("cv05_PSS.bmp")
 
 
 if __name__ == "__main__":

@@ -5,8 +5,11 @@ from cv1.cv1 import calc_hist
 from cv3.cv3 import show_img
 
 
-def img_read(path):
-    img = cv2.cvtColor(cv2.imread(path), cv2.COLOR_BGR2RGB)
+def img_read(path, color=None):
+    if color is None:
+        color = cv2.COLOR_BGR2RGB
+
+    img = cv2.cvtColor(cv2.imread(path), color)
     return img
 
 

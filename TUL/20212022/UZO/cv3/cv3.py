@@ -5,8 +5,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def show_img(img):
-    plt.imshow(img)
+def show_img(img, title=None, cmap=None):
+    plt.style.use("dark_background")
+    plt.imshow(img, cmap=cmap)
+    if title is not None:
+        plt.title(title)
     plt.show()
 
 
