@@ -1,4 +1,5 @@
 ﻿using CleanPRJ.src.BluetoothComunication;
+using CleanPRJ.src.Location;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -32,6 +33,7 @@ namespace CleanPRJ.DataProvider
 
         public CellsStateData CurrentCellInfo { get; internal set; }
         public BaseInfoStateData CurrentBaseInfo { get; internal set; }
+        public SabvotonData CurrentSabvotonInfo { get; internal set; }
 
         public DataProviderViewModel()
         {
@@ -56,7 +58,9 @@ namespace CleanPRJ.DataProvider
         public void Connect()
         {
             // Try to connect to a bth device
-            DependencyService.Get<IBluetoothReader>().Start(SelectedBMS, 250, true);
+            var reader = DependencyService.Get<IBluetoothReader>();
+            reader.Start(SelectedBMS, 250, false);
+            reader.Start(SelectedSabvoton, 250, false);
             isConnected = true;
         }
 
@@ -93,6 +97,7 @@ namespace CleanPRJ.DataProvider
             token = source.Token;
             taskBMS = DataGatheringBMS((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
             taskSabvoton = DataGatheringSabvoton((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
+            LocationLogger.StartLogingLocation(time);
         }
 
         private async Task DataGatheringBMS(int waitMS)
@@ -105,7 +110,7 @@ namespace CleanPRJ.DataProvider
                 await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, GrabberSettingsViewModel.TimeToReadBase);
                 if (BMSBluetoothCommand.currentBaseInfo == null)
                 {
-                    ClearFront();
+                    ClearFront(false);
                     continue;
                 }
                 CurrentBaseInfo = BMSBluetoothCommand.currentBaseInfo;
@@ -114,7 +119,7 @@ namespace CleanPRJ.DataProvider
                 await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, GrabberSettingsViewModel.TimeToReadCell);
                 if (BMSBluetoothCommand.currentCellsData == null)
                 {
-                    ClearFront();
+                    ClearFront(false);
                     continue;
                 }
                 CurrentCellInfo = BMSBluetoothCommand.currentCellsData;
@@ -134,16 +139,18 @@ namespace CleanPRJ.DataProvider
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
             SabvotonBluetoothCommand.StartConversation();
-            await Task.Delay(1000);
+            await Task.Delay(100);
+            ClearFront(true);
             while (!token.IsCancellationRequested)
             {
                 SabvotonBluetoothCommand.SendGetDataCommand();
                 await WaitWhile(() => SabvotonBluetoothCommand.SabvotonData == null, GrabberSettingsViewModel.TimeToReadBase);
                 if (SabvotonBluetoothCommand.SabvotonData == null)
                 {
-                    ClearFront();
+                    ClearFront(true);
                     continue;
                 }
+                CurrentSabvotonInfo = SabvotonBluetoothCommand.SabvotonData;
                 await Task.Delay(1000);
                 var newLine = $"{DateTime.Now:O},{SabvotonBluetoothCommand.SabvotonData}";
                 fileAccess.WriteNewLineToFile(fileNameSabvoton, newLine);
@@ -152,18 +159,7 @@ namespace CleanPRJ.DataProvider
             }
         }
 
-        private void ClearFront()
-        {
-            DependencyService.Get<IBluetoothReader>().ClearFront();
-        }
-
-        private async Task ResetConnection()
-        {
-            Disconnect();
-            await Task.Delay(500);
-            Connect();
-            await Task.Delay(2000);
-        }
+        private void ClearFront(bool isSabvoton) => DependencyService.Get<IBluetoothReader>().ClearFront(isSabvoton);
 
         private async Task WaitWhile(Func<bool> condition, float maxWaitTime)
         {
@@ -185,6 +181,7 @@ namespace CleanPRJ.DataProvider
             if (!taskBMS.IsCanceled || !taskSabvoton.IsCanceled)
             {
                 source.Cancel();
+                LocationLogger.StopLogingLocation();
             }
             await Task.Delay(1000);
             source.Dispose();

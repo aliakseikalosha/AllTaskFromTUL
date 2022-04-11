@@ -21,6 +21,7 @@
     <None Remove="OxyPlot.Xamarin.Forms" />
     <None Remove="src\DataViewer\" />
     <None Remove="src\GrabberSettings\" />
+    <None Remove="src\Location\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -33,7 +34,7 @@
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Sharpnado.Shadows" Version="1.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.1931" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2012" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
     <PackageReference Include="Microcharts" Version="0.9.5.9" />
     <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
@@ -45,5 +46,6 @@
   <ItemGroup>
     <Folder Include="src\DataViewer\" />
     <Folder Include="src\GrabberSettings\" />
+    <Folder Include="src\Location\" />
   </ItemGroup>
 </Project>

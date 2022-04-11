@@ -47,7 +47,7 @@ namespace CleanPRJ
                  // When the app "resume" I try to restart the connection with bluetooth
                  if (isConnected)
                  {
-                     DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
+                     DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, false);
                  }
              });
 
@@ -66,7 +66,7 @@ namespace CleanPRJ
         public void Connect()
         {
             // Try to connect to a bth device
-            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, true);
+            DependencyService.Get<IBluetoothReader>().Start(SelectedBthDevice, sleepTime, false);
             isConnected = true;
         }
 

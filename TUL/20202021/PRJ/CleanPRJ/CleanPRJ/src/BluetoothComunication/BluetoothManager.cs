@@ -17,6 +17,7 @@ namespace CleanPRJ.src.BluetoothComunication
         public ObservableCollection<string> ListOfDevices { get; set; } = new ObservableCollection<string>();
 
         public string SelectedDevice = string.Empty;
+        public string SelectedDeviceSabvoton = string.Empty;
         private bool isConnected = false;
         private int sleepTime = 250;
 
@@ -24,10 +25,10 @@ namespace CleanPRJ.src.BluetoothComunication
         private IBluetoothLE ble;
         private IAdapter adapter;
 
-        private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedDevice);
-        public bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
-        public bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
-        public bool IsPickerEnabled => !isConnected;
+        private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedDevice) && !string.IsNullOrEmpty(SelectedDeviceSabvoton);
+        public  bool IsConnectEnabled => isSelectedBthDevice && !isConnected;
+        public  bool IsDisconnectEnabled => isSelectedBthDevice && isConnected;
+        public  bool IsPickerEnabled => !isConnected;
 
         public BluetoothManager()
         {
@@ -112,7 +113,8 @@ namespace CleanPRJ.src.BluetoothComunication
 
         public void Connect()
         {
-            bluetooth.Start(SelectedDevice, sleepTime, true);
+            bluetooth.Start(SelectedDevice, sleepTime, false);
+            bluetooth.Start(SelectedDeviceSabvoton, sleepTime, true);
             isConnected = true;
         }
 
@@ -128,12 +130,12 @@ namespace CleanPRJ.src.BluetoothComunication
         }
 
 
-        internal void Send(List<byte> fullCommand, bool isSabvoton = false)
+        public void Send(List<byte> fullCommand, bool isSabvoton = false)
         {
             Send(fullCommand.ToArray(), isSabvoton);
         }
 
-        private void Send(byte[] command, bool isSabvoton)
+        public void Send(byte[] command, bool isSabvoton)
         {
             Send(new BluetoothMessage(command, MessageState.Sended), isSabvoton);
         }

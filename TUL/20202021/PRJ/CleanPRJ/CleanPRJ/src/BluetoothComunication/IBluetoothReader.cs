@@ -12,9 +12,9 @@ namespace CleanPRJ
         List<BluetoothMessage> Recived { get; }
         List<BluetoothMessage> All { get; }
         void Send(BluetoothMessage message, bool isSabvoton);
-        void Start(string name, int sleepTime, bool readAsCharArray);
+        void Start(string name, int sleepTime, bool isSabvoton);
         void Cancel();
-        void ClearFront();
+        void ClearFront(bool isSabvoton);
         Task<ObservableCollection<string>> PairedDevices();
     }
 }

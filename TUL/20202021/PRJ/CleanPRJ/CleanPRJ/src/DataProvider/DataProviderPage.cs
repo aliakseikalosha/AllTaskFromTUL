@@ -12,6 +12,8 @@ namespace CleanPRJ.DataProvider
         private StackLayout infoStack;
         private Label CellInfo;
         private Label BaseInfo;
+        private Label SabvotonInfo;
+
         private Button connect;
         private Button disconnect;
         private Button start;
@@ -74,10 +76,11 @@ namespace CleanPRJ.DataProvider
             stop.IsEnabled = false;
             CellInfo = new Label();
             BaseInfo = new Label();
+            SabvotonInfo = new Label();
             infoStack = new StackLayout
             {
-                Orientation = StackOrientation.Horizontal,
-                Children = { CellInfo, BaseInfo }
+                Orientation = StackOrientation.Vertical,
+                Children = { CellInfo, BaseInfo , SabvotonInfo}
             };
             var scrollView = new ScrollView
             {
@@ -121,6 +124,7 @@ namespace CleanPRJ.DataProvider
                 infoStack.BackgroundColor = baseColor;
                 CellInfo.Text = "";
                 BaseInfo.Text = "";
+                SabvotonInfo.Text = "";
             });
         }
 
@@ -152,12 +156,17 @@ namespace CleanPRJ.DataProvider
                     CellInfo.FontSize = 16;
                     BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
                     BaseInfo.FontSize = 16;
+                    SabvotonInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
+                    SabvotonInfo.FontSize = 16;
                 }
                 else
                 {
                     CellInfo.Text = $"V \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a}\n{b}")}";
                     CellInfo.FontSize = 48;
                     BaseInfo.Text = $"Current \n{model.CurrentBaseInfo?.Current}";
+                    BaseInfo.FontSize = 48;
+
+                    SabvotonInfo.Text = $"Sabvoton Stats\n{model.CurrentBaseInfo?.HumanData}";
                     BaseInfo.FontSize = 48;
                 }
             });

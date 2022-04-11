@@ -16,188 +16,50 @@ using Plugin.BLE.Abstractions.EventArgs;
 [assembly: Dependency(typeof(CleanPRJ.Droid.AndroidBluetoothReader))]
 namespace CleanPRJ.Droid
 {
-
     public class AndroidBluetoothReader : IBluetoothReader
     {
         public Action<BluetoothMessage> OnMessageUpdated { get; set; }
-        private CancellationTokenSource cancelToken { get; set; }
-
-        private bool canContinue => !cancelToken.IsCancellationRequested;
+        private CancellationTokenSource cancelToken { get; set; } = new CancellationTokenSource();
 
         public List<BluetoothMessage> Sended => All.Where(c => c.State == MessageState.Sended).ToList();
-
         public List<BluetoothMessage> Recived => All.Where(c => c.State == MessageState.Recived).ToList();
-
         public List<BluetoothMessage> All { get; private set; } = new List<BluetoothMessage>();
 
-        private Queue<BluetoothMessage> toSendBMS = new Queue<BluetoothMessage>();
-        private Queue<BluetoothMessage> toSendSabvoton = new Queue<BluetoothMessage>();
-
+        private ObservableCollection<string> devices = new ObservableCollection<string>();
         private IPermissions _permissions;
-
         private IAdapter Adapter;
+        private Reader readerSabvoton;
+        private Reader readerBMS;
 
         public AndroidBluetoothReader()
         {
             Adapter = CrossBluetoothLE.Current.Adapter;
+            //todo remove code dublication
+            readerBMS = new ReaderBMS(Adapter);
+            readerBMS.OnRecived += AddMessage;
+
+            readerSabvoton = new ReaderSabvoton(Adapter);
+            readerSabvoton.OnRecived += AddMessage;
         }
 
-        public void Start(string name, int sleepTime = 200, bool readAsCharArray = false)
+        public void Start(string name, int sleepTime = 200, bool isSabvoton = false)
         {
-            Task.Run(() => Loop(name, sleepTime));
+            Reader r = isSabvoton ? readerSabvoton : readerBMS;
+            r.Start(name, cancelToken.Token, sleepTime);
         }
 
-        private async Task Loop(string name, int sleepTime)
+        private void AddMessage(BluetoothMessage message)
         {
-            cancelToken = new CancellationTokenSource();
-            IDevice device = null;
-            while (canContinue)
-            {
-                try
-                {
-                    Thread.Sleep(sleepTime);
-
-
-                    Debug.WriteLine(Adapter == null ? "No Bluetooth adapter found." : "Adapter found!!");
-                    Debug.WriteLine("Try to connect to " + name);
-
-                    device = Adapter.DiscoveredDevices.First(c => name.Contains(c.Id.ToString()));
-
-                    if (device == null)
-                    {
-                        Debug.WriteLine("Named device not found.");
-                    }
-                    else
-                    {
-                        var serviceGuid = new Guid("0000ff00-0000-1000-8000-00805f9b34fb");
-                        var sendGuid = new Guid("0000ff02-0000-1000-8000-00805f9b34fb");
-                        var reciveGuid = new Guid("0000ff01-0000-1000-8000-00805f9b34fb");
-
-
-                        await Adapter.ConnectToDeviceAsync(device);
-                        var services = await device.GetServicesAsync();
-                        ICharacteristic send = null;
-                        ICharacteristic recive = null;
-                        
-                        for (int i = 0; i < services.Count; i++)
-                        {
-                            Debug.WriteLine($"{services[i].Name}:{services[i].Id}");
-
-                            var characteristics = await services[i].GetCharacteristicsAsync();
-
-                            foreach (var characteristic in characteristics)
-                            {
-                                Debug.WriteLine($"\t{characteristic.Name}:{characteristic.Id}");
-                                if (characteristic.Id == sendGuid && send == null)
-                                {
-                                    send = characteristic;
-                                }
-                                if (characteristic.Id == reciveGuid && recive == null)
-                                {
-                                    recive = characteristic;
-                                }
-                                var descriptors = await characteristic.GetDescriptorsAsync();
-                                foreach (var desc in descriptors)
-                                {
-                                    Debug.WriteLine($"\t\t{desc.Name}:{desc.Id}");
-                                }
-                            }
-                        }
-                        if(send == null || recive == null)
-                        {
-                            Debug.WriteLine($"Dont found send({send}) or recive({recive}) device");
-                            break;
-                        }
-                        toSendBMS = new Queue<BluetoothMessage>();
-
-                        var answer = new List<int>();
-                        void Read(object o, CharacteristicUpdatedEventArgs args)
-                        {
-                            var data = args.Characteristic.Value;
-                            for (int i = 0; i < data.Length; i++)
-                            {
-                                answer = CombineMessage(answer, data[i]);
-                                Debug.WriteLine($"Message add {data[i]:X}");
-                                if (CompliteMessage(answer))
-                                {
-                                    break;
-                                }
-                            }
-                        }
-                        recive.ValueUpdated += Read;
-
-                        await recive.StartUpdatesAsync();
-                        while (canContinue)
-                        {
-                            if (toSendBMS.Count > 0)
-                            {
-                                var mes = toSendBMS.Dequeue();
-                                answer.Clear();
-                                await send.WriteAsync(mes.ByteData);
-                                Debug.WriteLine($"Send message{mes.Message}\nStart reading");
-                                while(!CompliteMessage(answer) && canContinue && !moveOn)
-                                {
-                                    await Task.Delay(10);
-                                }
-                                if (canContinue)
-                                {
-                                    AddMessage(answer);
-                                }
-                            }
-                            await Task.Delay(50);
-                            moveOn = false;
-                        }
-                        recive.ValueUpdated -= Read;
-                    }
-
-
-                }
-                catch (Exception ex)
-                {
-                    Debug.WriteLine($"EXCEPTION: {ex.Message}\n{ex.StackTrace}");
-                }
-
-            }
-            if (device != null)
-            {
-                await Adapter.DisconnectDeviceAsync(device);
-            }
-
-            Debug.WriteLine("Exit the external loop");
-        }
-
-        private List<int> CombineMessage(List<int> message, int next)
-        {
-            if(message.Count == 0 && next != BMSBluetoothCommand.start)
-            {
-                return message;
-            }
-            message.Add(next);
-            return message;
-        }
-
-        private bool CompliteMessage(List<int> message)
-        {
-            if (message.Count < 2)
-            {
-                return false;
-            }
-            return message[0] == BMSBluetoothCommand.start && message[^1] == BMSBluetoothCommand.end;//message.Length > 3 && message[1] == BluetoothCommand.Separator && message[^1] == BluetoothCommand.Separator;
-        }
-
-        private void AddMessage(List<int> answer)
-        {
-            var message = new BluetoothMessage(answer.Select(c=>(byte)c).ToArray(), MessageState.Recived);
             Debug.WriteLine($"Recived {message.Message}");
             All.Add(message);
             OnMessageUpdated?.Invoke(message);
         }
 
-        public void ClearFront()
+        public void ClearFront(bool isSabvoton)
         {
             Debug.WriteLine("ClearFront()");
-            toSendBMS.Clear();
-            moveOn = true;
+            readerBMS.ClearFront();
+            readerSabvoton.ClearFront();
         }
 
         public void Cancel()
@@ -223,17 +85,16 @@ namespace CleanPRJ.Droid
 
         private async Task<bool> CanStartScanning(bool refresh = false)
         {
-
             if (_permissions == null)
             {
                 _permissions = CrossPermissions.Current;
             }
-            if (Xamarin.Forms.Device.RuntimePlatform == Device.Android)
+            if (Device.RuntimePlatform == Device.Android)
             {
-                var status = await _permissions.CheckPermissionStatusAsync<Plugin.Permissions.LocationPermission>();
+                var status = await _permissions.CheckPermissionStatusAsync<LocationPermission>();
                 if (status != PermissionStatus.Granted)
                 {
-                    var permissionResult = await _permissions.RequestPermissionAsync<Plugin.Permissions.LocationPermission>();
+                    var permissionResult = await _permissions.RequestPermissionAsync<LocationPermission>();
 
                     if (permissionResult != PermissionStatus.Granted)
                     {
@@ -245,9 +106,6 @@ namespace CleanPRJ.Droid
 
             return true;
         }
-
-        private ObservableCollection<string> devices = new ObservableCollection<string>();
-        private bool moveOn = false;
 
         private async Task<ObservableCollection<string>> ScanForDevices()
         {
@@ -281,13 +139,226 @@ namespace CleanPRJ.Droid
         {
             if (isSabvoton)
             {
-                toSendSabvoton.Enqueue(message);
+                readerSabvoton.AddMessageToFront(message);
             }
             else
             {
-                toSendBMS.Enqueue(message);
+                readerBMS.AddMessageToFront(message);
             }
         }
 
+    }
+
+    public abstract class Reader
+    {
+        protected IAdapter adapter;
+        protected bool moveOn;
+
+        protected CancellationToken cancelToken { get; set; }
+        protected bool canContinue => !cancelToken.IsCancellationRequested;
+
+        protected Queue<BluetoothMessage> toSend = new Queue<BluetoothMessage>();
+
+        public event Action<BluetoothMessage> OnRecived;
+
+        public void AddMessageToFront(BluetoothMessage m)
+        {
+            toSend.Enqueue(m);
+        }
+
+        public void Start(string name, CancellationToken token, int sleepTime)
+        {
+            cancelToken = token; 
+            Task.Run(() => Loop(name, sleepTime));
+        }
+
+        private async Task Loop(string name, int sleepTime)
+        {
+            var prefix = $"{name}{GetType()}";
+            IDevice device = null;
+            while (canContinue)
+            {
+                try
+                {
+                    Thread.Sleep(sleepTime);
+
+
+                    Debug.WriteLine(prefix + (adapter == null ? "No Bluetooth adapter found." : "Adapter found!!"));
+                    Debug.WriteLine($"Try to connect to {name}");
+
+                    device = adapter.DiscoveredDevices.First(c => name.Contains(c.Id.ToString()));
+
+                    if (device == null)
+                    {
+                        Debug.WriteLine($"{prefix}Named device not found.");
+                    }
+                    else
+                    {
+                        var serviceGuid = new Guid("0000ff00-0000-1000-8000-00805f9b34fb");
+                        var sendGuid = new Guid("0000ff02-0000-1000-8000-00805f9b34fb");
+                        var reciveGuid = new Guid("0000ff01-0000-1000-8000-00805f9b34fb");
+
+
+                        await adapter.ConnectToDeviceAsync(device);
+                        var services = await device.GetServicesAsync();
+                        ICharacteristic send = null;
+                        ICharacteristic recive = null;
+
+                        for (int i = 0; i < services.Count; i++)
+                        {
+                            Debug.WriteLine($"{services[i].Name}:{services[i].Id}");
+
+                            var characteristics = await services[i].GetCharacteristicsAsync();
+
+                            foreach (var characteristic in characteristics)
+                            {
+                                Debug.WriteLine($"\t{characteristic.Name}:{characteristic.Id}");
+                                if (characteristic.Id == sendGuid && send == null)
+                                {
+                                    send = characteristic;
+                                }
+                                if (characteristic.Id == reciveGuid && recive == null)
+                                {
+                                    recive = characteristic;
+                                }
+                                var descriptors = await characteristic.GetDescriptorsAsync();
+                                foreach (var desc in descriptors)
+                                {
+                                    Debug.WriteLine($"\t\t{desc.Name}:{desc.Id}");
+                                }
+                            }
+                        }
+                        if (send == null || recive == null)
+                        {
+                            Debug.WriteLine($"{prefix} Dont found send({send}) or recive({recive}) device");
+                            break;
+                        }
+                        toSend = new Queue<BluetoothMessage>();
+
+                        var answer = new List<int>();
+                        void Read(object o, CharacteristicUpdatedEventArgs args)
+                        {
+                            var data = args.Characteristic.Value;
+                            for (int i = 0; i < data.Length; i++)
+                            {
+                                answer = CombineMessage(answer, data[i]);
+                                Debug.WriteLine($"{prefix} Message add {data[i]:X}");
+                                if (CompliteMessage(answer))
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        recive.ValueUpdated += Read;
+
+                        await recive.StartUpdatesAsync();
+                        while (canContinue)
+                        {
+                            if (toSend.Count > 0)
+                            {
+                                var mes = toSend.Dequeue();
+                                answer.Clear();
+                                await send.WriteAsync(mes.ByteData);
+                                Debug.WriteLine($"{prefix} Send message{mes.Message}\nStart reading");
+                                while (!CompliteMessage(answer) && canContinue && !moveOn)
+                                {
+                                    await Task.Delay(10);
+                                }
+                                if (canContinue)
+                                {
+                                    RecivedMessage(answer);
+                                }
+                            }
+                            await Task.Delay(50);
+                            moveOn = false;
+                        }
+                        recive.ValueUpdated -= Read;
+                    }
+
+
+                }
+                catch (Exception ex)
+                {
+                    Debug.WriteLine($"{prefix}EXCEPTION: {ex.Message}\n{ex.StackTrace}");
+                }
+
+            }
+            if (device != null)
+            {
+                await adapter.DisconnectDeviceAsync(device);
+            }
+
+            Debug.WriteLine($"{prefix}Exit the external loop");
+        }
+
+        protected abstract List<int> CombineMessage(List<int> message, int next);
+
+        protected abstract bool CompliteMessage(List<int> message);
+
+        private void RecivedMessage(List<int> answer)
+        {
+            var message = new BluetoothMessage(answer.Select(c => (byte)c).ToArray(), MessageState.Recived);
+            OnRecived?.Invoke(message);
+        }
+
+        public void ClearFront()
+        {
+            Debug.WriteLine($"{GetType()}ClearFront()");
+            toSend.Clear();
+            moveOn = true;
+        }
+    }
+
+    public class ReaderBMS : Reader
+    {
+        public ReaderBMS(IAdapter adapter)
+        {
+            this.adapter = adapter;   
+        }
+
+        protected override List<int> CombineMessage(List<int> message, int next)
+        {
+            if (message.Count == 0 && next != BMSBluetoothCommand.start)
+            {
+                return message;
+            }
+            message.Add(next);
+            return message;
+        }
+
+        protected override bool CompliteMessage(List<int> message)
+        {
+            if (message.Count < 2)
+            {
+                return false;
+            }
+            return message[0] == BMSBluetoothCommand.start && message[^1] == BMSBluetoothCommand.end;
+        }
+    }
+    public class ReaderSabvoton : Reader
+    {
+        public ReaderSabvoton(IAdapter adapter)
+        {
+            this.adapter = adapter;
+        }
+
+        protected override List<int> CombineMessage(List<int> message, int next)
+        {
+            if (message.Count == 0 && next != SabvotonBluetoothCommand.start)
+            {
+                return message;
+            }
+            message.Add(next);
+            return message;
+        }
+
+        protected override bool CompliteMessage(List<int> message)
+        {
+            if (message.Count < 2)
+            {
+                return false;
+            }
+            return message[0] == SabvotonBluetoothCommand.start && message[^1] == SabvotonBluetoothCommand.end;
+        }
     }
 }
