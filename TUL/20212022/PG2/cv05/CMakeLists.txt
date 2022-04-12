@@ -3,7 +3,7 @@ project(cv05)
 
 set(CMAKE_CXX_STANDARD 17)
 
-set(SOURCE_FILES main.cpp glInfo.h glerror.h glerror.cpp glInit.h shape.h input.h Avatars/Camera.h Avatars/Avatar.h Avatars/Player.h Game.h)
+set(SOURCE_FILES main.cpp GL/glInfo.h GL/glerror.h GL/glerror.cpp GL/glInit.h GL/shape.h GL/input.h Game/Avatars/Camera.h Game/Avatars/Avatar.h Game/Avatars/Player.h Game/Game.h Game/MeshRenderer.h GL/Mesh.h Game/Avatars/SceneObject.h DataLoader/mesh.h DataLoader/mesh.cpp DataLoader/texture.h DataLoader/texture.cpp DataLoader/OBJloader.cpp DataLoader/OBJloader.h)
 find_package(OpenGL REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(GLFW3 REQUIRED)

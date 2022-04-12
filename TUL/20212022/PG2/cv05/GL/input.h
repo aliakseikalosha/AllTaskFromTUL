@@ -5,6 +5,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/vec2.hpp>
 #include <glm/vec3.hpp>
+#include <cmath>
 
 struct input {
     glm::vec2 lookDelta = glm::vec2(0.0f, 0.0f);
@@ -38,7 +39,7 @@ static void cursorPositionCallback(GLFWwindow *window, double xpos, double ypos)
         if (isEqual(old.x, xpos, e)) {
             inputState.lookDelta.x = 0;
         } else {
-            inputState.lookDelta.x = -xpos + old.x > 0 ? 1 : -1;
+            inputState.lookDelta.x = -xpos + old.x > 0 ? -1 : 1;
         }
         if (isEqual(old.y, ypos, e)) {
             inputState.lookDelta.y = 0;
@@ -48,13 +49,6 @@ static void cursorPositionCallback(GLFWwindow *window, double xpos, double ypos)
     } else {
         init = true;
     }
-    /*
-    //std::cout<< " cursorPositionCallback x:" << xpos <<"y: "<<ypos<<" old x "<< old.x <<" old y : "<< old.y<<std::endl;
-    std::cout<< " lookDelta ["<<   inputState.lookDelta.x<<":"<<inputState.lookDelta.y <<"]"
-    <<"xpos ["<<xpos<<":"<<ypos<<"]"
-    <<std::endl;
-     */
-
 
     old.x = xpos;
     old.y = ypos;
@@ -90,14 +84,6 @@ static input *updateInput(GLFWwindow *window) {
     }
     inputState.moveDelta = dir;
     return &inputState;
-}
-
-glm::vec3 moveDirection(glm::vec3 &move, glm::vec2 &angle) {
-    static glm::vec3 dir = glm::vec3();
-    dir.x = move.x * cos(angle.x);
-    dir.y = 0;
-    dir.z = move.z * sin(angle.x);
-    return dir;
 }
 
 void resetLook() {

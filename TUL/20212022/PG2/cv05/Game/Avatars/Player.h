@@ -17,9 +17,5 @@ public:
         auto f = forvard();
         auto r = glm::normalize(glm::cross(f, worldUp));
         pos += f * v * move.z +  r * v * move.x;
-        if(move.x != 0 || move.z != 0){
-            std::cout<<"f : ["<<f.x<<","<<f.y<<","<<f.z<<"]\t"<<"r : ["<<r.x<<","<<r.y<<","<<r.z<<"]\t"<<std::endl;
-            std::cout<<"move : ["<<move.x<<","<<move.y<<","<<move.z<<"]\t"<<std::endl;
-        }
     }
 };

@@ -4,9 +4,9 @@
 
 #define GL_SILENCE_DEPRECATION
 
-#include "glInfo.h"
-#include "glerror.h"
-#include "glInit.h"
+#include "GL/glInfo.h"
+#include "GL/glerror.h"
+#include "GL/glInit.h"
 #include <chrono>
 // OpenCV 
 // does not depend on GL
@@ -22,9 +22,9 @@ void inputInit(GLFWwindow *window);
 // For includes related to OpenGL, make sure their are included after glfw3.h
 #include <OpenGL/gl3.h>
 #include "glm/gtc/type_ptr.hpp"
-#include "shape.h"
-#include "input.h"
-#include "Game.h"
+#include "GL/shape.h"
+#include "GL/input.h"
+#include "Game/Game.h"
 
 int main(void) {
     GLFWwindow *window = init();
@@ -56,13 +56,13 @@ int main(void) {
 
     // Vertex shader
     unsigned int vertexShader;
-    if (!loadShader("../shader/basic.vert", vertexShader, GL_VERTEX_SHADER)) {
+    if (!loadShader("../resources/shader/basic.vert", vertexShader, GL_VERTEX_SHADER)) {
         std::cout << "Error in vertex shader" << std::endl;
     }
 
     // Fragment shader
     unsigned int fragmentShader;
-    if (!loadShader("../shader/basic.frag", fragmentShader, GL_FRAGMENT_SHADER)) {
+    if (!loadShader("../resources/shader/basic.frag", fragmentShader, GL_FRAGMENT_SHADER)) {
         std::cout << "Error in fragment shader" << std::endl;
     }
     int success;
@@ -83,8 +83,7 @@ int main(void) {
     glUseProgram(shaderProgram);
 
     // Binding the buffers
-    glVertexAttribPointer(glGetAttribLocation(shaderProgram, "aPos"), 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),
-                          (void *) 0);
+    glVertexAttribPointer(glGetAttribLocation(shaderProgram, "aPos"), 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float),(void *) 0);
     glEnableVertexAttribArray(0);
 
     int width, height;
@@ -103,8 +102,15 @@ int main(void) {
     GLfloat dt = 0;
     while (!glfwWindowShouldClose(window)) {
         frameCount++;
+        now = (GLfloat) glfwGetTime();
+        dt = now - prev;
+        prev = now;
+
         // Resize the viewport
         updateInput(window);
+
+        // OpenGL Rendering related code
+        glClear(GL_COLOR_BUFFER_BIT);
         {
             glfwGetWindowSize(window, &width, &height);
             if (height <= 0)
@@ -116,10 +122,6 @@ int main(void) {
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE,
                                glm::value_ptr(projectionMatrix));
 
-            now = (GLfloat) glfwGetTime();
-            dt = now - prev;
-            prev = now;
-
             game->Update(dt);
             glm::mat4 viewMat = game->viewMat;
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uV_m"), 1, GL_FALSE, glm::value_ptr(viewMat));
@@ -128,15 +130,14 @@ int main(void) {
                     glm::rotate(glm::mat4(1.0f), (float) sin(now), glm::vec3(0.0f, 0.0f, 1.0f));
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uM_m"), 1, GL_FALSE, glm::value_ptr(modelMat));
 
+            game->Draw(projectionMatrix, dt);
         }
-
-        // OpenGL Rendering related code
-        glClear(GL_COLOR_BUFFER_BIT);
+        /*
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, vert.size(), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
-
+        */
         glGetError();
         // Swap front and back buffers
         glfwSwapBuffers(window);
