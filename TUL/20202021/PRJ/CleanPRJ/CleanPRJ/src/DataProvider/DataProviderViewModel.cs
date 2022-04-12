@@ -139,7 +139,7 @@ namespace CleanPRJ.DataProvider
         {
             var fileAccess = DependencyService.Get<IAccessFileService>();
             SabvotonBluetoothCommand.StartConversation();
-            await Task.Delay(100);
+            await Task.Delay(1000);
             ClearFront(true);
             while (!token.IsCancellationRequested)
             {
@@ -181,8 +181,8 @@ namespace CleanPRJ.DataProvider
             if (!taskBMS.IsCanceled || !taskSabvoton.IsCanceled)
             {
                 source.Cancel();
-                LocationLogger.StopLogingLocation();
             }
+            LocationLogger.StopLogingLocation();
             await Task.Delay(1000);
             source.Dispose();
             source = new CancellationTokenSource();

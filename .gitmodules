@@ -12,3 +12,6 @@
 [submodule "TUL/20212022/PDO/gitlab"]
 	path = TUL/20212022/PDO/gitlab
 	url = https://gitlab.tul.cz/aliaksei.kalosha/pdo2022.git
+[submodule "TUL/20212022/PG2/pg2"]
+	path = TUL/20212022/PG2/pg2
+	url = https://gitlab.tul.cz/jiri.jenicek/pg2.git

@@ -146,29 +146,36 @@ namespace CleanPRJ.DataProvider
             });
         }
 
+        private DateTime lastUpdate;
         public void UpdateMessage()
         {
+            if(lastUpdate == default)
+            {
+                lastUpdate = DateTime.Now;
+            }
             Device.BeginInvokeOnMainThread(() =>
             {
+                var time = (DateTime.Now - lastUpdate).Milliseconds;
                 if (showFullData)
                 {
-                    CellInfo.Text = $"Cell Info \n{model.CurrentCellInfo?.HumanData}";
+                    CellInfo.Text = $"{time}\nCell Info \n{model.CurrentCellInfo?.HumanData}";
                     CellInfo.FontSize = 16;
                     BaseInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
                     BaseInfo.FontSize = 16;
-                    SabvotonInfo.Text = $"Base Stats\n{model.CurrentBaseInfo?.HumanData}";
+                    SabvotonInfo.Text = $"Sabvoton Stats\n{model.CurrentSabvotonInfo?.HumanData}";
                     SabvotonInfo.FontSize = 16;
                 }
                 else
                 {
-                    CellInfo.Text = $"V \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a}\n{b}")}";
+                    CellInfo.Text = $"{time}\nV \n{model.CurrentCellInfo?.Voltage.Select(c => c.ToString()).Aggregate((a, b) => $"{a}\n{b}")}";
                     CellInfo.FontSize = 48;
                     BaseInfo.Text = $"Current \n{model.CurrentBaseInfo?.Current}";
                     BaseInfo.FontSize = 48;
 
-                    SabvotonInfo.Text = $"Sabvoton Stats\n{model.CurrentBaseInfo?.HumanData}";
+                    SabvotonInfo.Text = $"Sabvoton Stats\n{model.CurrentSabvotonInfo?.HumanData}";
                     BaseInfo.FontSize = 48;
                 }
+                lastUpdate = DateTime.Now;
             });
         }
 

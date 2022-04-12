@@ -57,9 +57,14 @@ namespace CleanPRJ.Droid
 
         public void ClearFront(bool isSabvoton)
         {
-            Debug.WriteLine("ClearFront()");
-            readerBMS.ClearFront();
-            readerSabvoton.ClearFront();
+            if (isSabvoton)
+            {
+                readerSabvoton.ClearFront();
+            }
+            else
+            {
+                readerBMS.ClearFront();
+            }
         }
 
         public void Cancel()
@@ -264,7 +269,7 @@ namespace CleanPRJ.Droid
                                 {
                                     await Task.Delay(10);
                                 }
-                                if (canContinue)
+                                if (canContinue && !moveOn)
                                 {
                                     RecivedMessage(answer);
                                 }
@@ -297,8 +302,15 @@ namespace CleanPRJ.Droid
 
         private void RecivedMessage(List<int> answer)
         {
-            var message = new BluetoothMessage(answer.Select(c => (byte)c).ToArray(), MessageState.Recived);
-            OnRecived?.Invoke(message);
+            if (answer.Count > 0)
+            {
+                var message = new BluetoothMessage(answer.Select(c => (byte)c).ToArray(), MessageState.Recived);
+                OnRecived?.Invoke(message);
+            }
+            else
+            {
+                Debug.WriteLine("recived empty Message");
+            }
         }
 
         public void ClearFront()
