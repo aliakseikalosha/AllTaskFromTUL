@@ -178,9 +178,12 @@ namespace CleanPRJ.DataProvider
 
         internal async void StopGatheringData()
         {
-            if (!taskBMS.IsCanceled || !taskSabvoton.IsCanceled)
+            if(taskBMS != null)
             {
-                source.Cancel();
+                if (!taskBMS.IsCanceled || !taskSabvoton.IsCanceled)
+                {
+                    source.Cancel();
+                }
             }
             LocationLogger.StopLogingLocation();
             await Task.Delay(1000);

@@ -28,8 +28,8 @@ namespace CleanPRJ.Droid
         private ObservableCollection<string> devices = new ObservableCollection<string>();
         private IPermissions _permissions;
         private IAdapter Adapter;
-        private Reader readerSabvoton;
-        private Reader readerBMS;
+        private ReaderSabvoton readerSabvoton;
+        private ReaderBMS readerBMS;
 
         public AndroidBluetoothReader()
         {
@@ -44,8 +44,14 @@ namespace CleanPRJ.Droid
 
         public void Start(string name, int sleepTime = 200, bool isSabvoton = false)
         {
-            Reader r = isSabvoton ? readerSabvoton : readerBMS;
-            r.Start(name, cancelToken.Token, sleepTime);
+            if (isSabvoton)
+            {
+                readerSabvoton.Start(name, cancelToken.Token, sleepTime);
+            }
+            else
+            {
+                readerBMS.Start(name, cancelToken.Token, sleepTime);
+            }
         }
 
         private void AddMessage(BluetoothMessage message)
@@ -166,6 +172,10 @@ namespace CleanPRJ.Droid
 
         public event Action<BluetoothMessage> OnRecived;
 
+        protected Guid serviceGuid;
+        protected Guid sendGuid;
+        protected Guid reciveGuid;
+
         public void AddMessageToFront(BluetoothMessage m)
         {
             toSend.Enqueue(m);
@@ -173,7 +183,7 @@ namespace CleanPRJ.Droid
 
         public void Start(string name, CancellationToken token, int sleepTime)
         {
-            cancelToken = token; 
+            cancelToken = token;
             Task.Run(() => Loop(name, sleepTime));
         }
 
@@ -199,25 +209,20 @@ namespace CleanPRJ.Droid
                     }
                     else
                     {
-                        var serviceGuid = new Guid("0000ff00-0000-1000-8000-00805f9b34fb");
-                        var sendGuid = new Guid("0000ff02-0000-1000-8000-00805f9b34fb");
-                        var reciveGuid = new Guid("0000ff01-0000-1000-8000-00805f9b34fb");
-
-
                         await adapter.ConnectToDeviceAsync(device);
                         var services = await device.GetServicesAsync();
                         ICharacteristic send = null;
                         ICharacteristic recive = null;
-
+                        var s = $"{prefix}\n";
                         for (int i = 0; i < services.Count; i++)
                         {
-                            Debug.WriteLine($"{services[i].Name}:{services[i].Id}");
+                            s += ($"{services[i].Name}:{services[i].Id}\n");
 
                             var characteristics = await services[i].GetCharacteristicsAsync();
 
                             foreach (var characteristic in characteristics)
                             {
-                                Debug.WriteLine($"\t{characteristic.Name}:{characteristic.Id}");
+                                s += ($"\t{characteristic.Name}:{characteristic.Id} == {sendGuid} : {characteristic.Id == sendGuid}\n");
                                 if (characteristic.Id == sendGuid && send == null)
                                 {
                                     send = characteristic;
@@ -229,10 +234,11 @@ namespace CleanPRJ.Droid
                                 var descriptors = await characteristic.GetDescriptorsAsync();
                                 foreach (var desc in descriptors)
                                 {
-                                    Debug.WriteLine($"\t\t{desc.Name}:{desc.Id}");
+                                    s += ($"\t\t{desc.Name}:{desc.Id}\n");
                                 }
                             }
                         }
+                        Debug.WriteLine(s);
                         if (send == null || recive == null)
                         {
                             Debug.WriteLine($"{prefix} Dont found send({send}) or recive({recive}) device");
@@ -264,7 +270,7 @@ namespace CleanPRJ.Droid
                                 var mes = toSend.Dequeue();
                                 answer.Clear();
                                 await send.WriteAsync(mes.ByteData);
-                                Debug.WriteLine($"{prefix} Send message{mes.Message}\nStart reading");
+                                Debug.WriteLine($"{prefix}\n Send message{mes.Message}\nStart reading");
                                 while (!CompliteMessage(answer) && canContinue && !moveOn)
                                 {
                                     await Task.Delay(10);
@@ -325,7 +331,10 @@ namespace CleanPRJ.Droid
     {
         public ReaderBMS(IAdapter adapter)
         {
-            this.adapter = adapter;   
+            this.adapter = adapter;
+            serviceGuid = new Guid("0000ff00-0000-1000-8000-00805f9b34fb");
+            sendGuid = new Guid("0f557b02-a37d-e411-bedb-50ed7800a5a5");
+            reciveGuid = new Guid("0f557b01-a37d-e411-bedb-50ed7800a5a5");
         }
 
         protected override List<int> CombineMessage(List<int> message, int next)
@@ -347,11 +356,15 @@ namespace CleanPRJ.Droid
             return message[0] == BMSBluetoothCommand.start && message[^1] == BMSBluetoothCommand.end;
         }
     }
+
     public class ReaderSabvoton : Reader
     {
         public ReaderSabvoton(IAdapter adapter)
         {
             this.adapter = adapter;
+            serviceGuid = new Guid("0f557b00-a37d-e411-bedb-50ed7800a5a5");
+            sendGuid =    new Guid("0f557b01-a37d-e411-bedb-50ed7800a5a5");
+            reciveGuid =  new Guid("0f557b02-a37d-e411-bedb-50ed7800a5a5");
         }
 
         protected override List<int> CombineMessage(List<int> message, int next)
