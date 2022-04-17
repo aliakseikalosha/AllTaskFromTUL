@@ -1,27 +1,15 @@
-﻿using DataGrabber.src.BluetoothComunication;
-using System;
+﻿using System;
 using System.Linq;
 
-namespace DataGrabber
+namespace DataGrabber.src.BluetoothComunication
 {
     public class BluetoothMessage
     {
+        public readonly static char Separator = '|';
         public DateTime Date { get; private set; }
         public string Message { get; private set; }
         public MessageState State { get; private set; }
         public char Type => (char)ByteData[1];//Message.Length > 0 ? (char)ByteData[3] : '\0';
-        public string Data
-        {
-            get
-            {
-                var data = Message.Split(BluetoothCommand.Separator);
-                if (data.Length < 2)
-                {
-                    return null;
-                }
-                return data[1];
-            }
-        }
 
         public byte[] ByteData { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace DataGrabber.Droid
+﻿namespace DataGrabber.Android
 {
     public interface IAccessFileService
     {

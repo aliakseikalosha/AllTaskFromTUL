@@ -13,7 +13,7 @@ using OxyPlot.Axes;
 
 namespace DataGrabber
 {
-    public class DataViewerViewModel : IModel
+    public class DataViewerModel : IModel
     {
         private const int dataPointsCompact = 150;
         private string dataLoadedFrom = null;
@@ -138,7 +138,7 @@ namespace DataGrabber
             return entries;
         }
 
-        public DataViewerViewModel()
+        public DataViewerModel()
         {
             Init();
         }

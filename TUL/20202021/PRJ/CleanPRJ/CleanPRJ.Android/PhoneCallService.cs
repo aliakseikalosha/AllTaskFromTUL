@@ -4,7 +4,7 @@ using Android.OS;
 using Android.Telephony;
 using System;
 
-namespace DataGrabber.Droid
+namespace DataGrabber.Android
 {
     [Service]
     public class PhoneCallService : Service

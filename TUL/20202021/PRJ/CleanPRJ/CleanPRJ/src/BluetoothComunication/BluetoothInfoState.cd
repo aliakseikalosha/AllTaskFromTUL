@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataGrabber.src.BluetoothComunication.BaseInfoStateData">
+    <Position X="2.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAAACAAgAAAACQAAAAAAIAAQAABAAAAAAEAAA=</HashCode>
+      <FileName>src\BluetoothComunication\BaseInfoStateData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataGrabber.src.BluetoothComunication.CellsStateData">
+    <Position X="2.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>src\BluetoothComunication\CellsStateData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataGrabber.src.BluetoothComunication.SabvotonData">
+    <Position X="8.25" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>MAAAAQAAAkAACABAAAAABIAAAAAAhACAAAAAAAiAAAA=</HashCode>
+      <FileName>src\BluetoothComunication\SabvotonData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StateData">
+    <Position X="5.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAQAAAIAAAQAEAIAAAAAAAAAAIBAgAAAAAAAAAIA=</HashCode>
+      <FileName>src\BluetoothComunication\BMSBluetoothCommand.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

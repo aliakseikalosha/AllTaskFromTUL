@@ -1,20 +1,21 @@
-﻿using System.Diagnostics;
-
-public class CellsStateData : StateData
+﻿namespace DataGrabber.src.BluetoothComunication
 {
-    public float[] Voltage = null;
-    public override void FillData(byte[] data)
+    public class CellsStateData : StateData
     {
-        int count = BaseInfoStateData.NumberOfCell+4;
-        if (count < 0)
+        public float[] Voltage = null;
+        public override void FillData(byte[] data)
         {
-            return;
-        }
-        Voltage = new float[count];
-        for (int i = 4; i < count; i++)
-        {
-            Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
-            AddData($"Voltage {i - 4}", Voltage[i].ToString("F3", System.Globalization.CultureInfo.InvariantCulture), " V");
+            int count = BaseInfoStateData.NumberOfCell + 4;
+            if (count < 0)
+            {
+                return;
+            }
+            Voltage = new float[count];
+            for (int i = 4; i < count; i++)
+            {
+                Voltage[i] = Convert(data[i * 2], data[i * 2 + 1]) / 1000f;
+                AddData($"Voltage {i - 4}", Voltage[i].ToString("F3", System.Globalization.CultureInfo.InvariantCulture), " V");
+            }
         }
     }
 }

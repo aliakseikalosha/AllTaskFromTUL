@@ -1,5 +1,4 @@
 ﻿using DataGrabber.src.Tool;
-using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using System;
 using System.Collections.Generic;
@@ -22,8 +21,6 @@ namespace DataGrabber.src.BluetoothComunication
         private int sleepTime = 250;
 
         private IBluetoothReader bluetooth = null;
-        private IBluetoothLE ble;
-        private IAdapter adapter;
 
         private bool isSelectedBthDevice => !string.IsNullOrEmpty(SelectedDevice) && !string.IsNullOrEmpty(SelectedDeviceSabvoton);
         public  bool IsConnectEnabled => isSelectedBthDevice && !isConnected;

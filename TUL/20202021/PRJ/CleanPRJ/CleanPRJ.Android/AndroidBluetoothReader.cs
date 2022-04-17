@@ -11,9 +11,10 @@ using Plugin.BLE.Abstractions.Contracts;
 using Plugin.Permissions.Abstractions;
 using Plugin.Permissions;
 using Plugin.BLE.Abstractions.EventArgs;
+using DataGrabber.src.BluetoothComunication;
 
-[assembly: Dependency(typeof(DataGrabber.Droid.AndroidBluetoothReader))]
-namespace DataGrabber.Droid
+[assembly: Dependency(typeof(DataGrabber.Android.AndroidBluetoothReader))]
+namespace DataGrabber.Android
 {
     public class AndroidBluetoothReader : IBluetoothReader
     {

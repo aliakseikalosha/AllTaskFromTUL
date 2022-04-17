@@ -1,5 +1,4 @@
 ﻿using DataGrabber.Settings;
-using DataGrabber.src.BluetoothComunication;
 using DataGrabber.src.Tool;
 
 namespace DataGrabber.src.PhoneCall
@@ -10,7 +9,7 @@ namespace DataGrabber.src.PhoneCall
         {
             if (AppSettings.I.SendCalls)
             {
-                BluetoothCommand.SendCall(number);
+                //BluetoothCommand.SendCall(number);
             }
         }
 
@@ -18,7 +17,7 @@ namespace DataGrabber.src.PhoneCall
         {
             if (AppSettings.I.SendCalls)
             {
-                BluetoothCommand.EndCall();
+                //BluetoothCommand.EndCall();
             }
         }
     }

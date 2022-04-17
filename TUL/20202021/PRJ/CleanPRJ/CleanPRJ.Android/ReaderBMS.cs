@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using DataGrabber.src.BluetoothComunication;
 using Plugin.BLE.Abstractions.Contracts;
 
-[assembly: Dependency(typeof(DataGrabber.Droid.AndroidBluetoothReader))]
-namespace DataGrabber.Droid
+[assembly: Dependency(typeof(DataGrabber.Android.AndroidBluetoothReader))]
+namespace DataGrabber.Android
 {
     public class ReaderBMS : Reader
     {

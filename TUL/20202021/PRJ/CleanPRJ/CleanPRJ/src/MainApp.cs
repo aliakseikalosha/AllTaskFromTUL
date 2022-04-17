@@ -5,6 +5,7 @@ using DataGrabber.Settings;
 using DataGrabber.src.Data;
 using DataGrabber.DataProvider;
 using Xamarin.Forms;
+using DataGrabber.src.BluetoothComunication;
 
 namespace DataGrabber
 {
@@ -34,7 +35,7 @@ namespace DataGrabber
         private IScreenData[] screenDatas = new IScreenData[] {
             new ScreenData<DataProviderModel>((m) => new DataProviderPage(m), typeof(DataProviderPage)),
             new ScreenData<GrabberSettingsModel>((m)=> new GrabberSettingsPage(m), typeof(GrabberSettingsPage)),
-            new ScreenData<DataViewerViewModel>((m)=> new DataViewerPage(m), typeof(DataViewerPage)),
+            new ScreenData<DataViewerModel>((m)=> new DataViewerPage(m), typeof(DataViewerPage)),
         };
         public App()
         {

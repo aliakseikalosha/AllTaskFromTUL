@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using DataGrabber.src.BluetoothComunication;
+﻿using System.Collections.Generic;
 
 namespace DataGrabber.src.BluetoothComunication
 {

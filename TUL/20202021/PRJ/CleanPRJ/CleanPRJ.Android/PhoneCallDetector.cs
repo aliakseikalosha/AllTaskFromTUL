@@ -1,7 +1,7 @@
 ﻿using Android.Telephony;
 using DataGrabber.src.PhoneCall;
 
-namespace DataGrabber.Droid
+namespace DataGrabber.Android
 {
     public class PhoneCallDetector : PhoneStateListener
     {

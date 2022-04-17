@@ -11,8 +11,8 @@ using Android.Bluetooth;
 using Java.Util;
 using Plugin.BLE.Abstractions.EventArgs;
 
-[assembly: Dependency(typeof(DataGrabber.Droid.AndroidBluetoothReader))]
-namespace DataGrabber.Droid
+[assembly: Dependency(typeof(DataGrabber.Android.AndroidBluetoothReader))]
+namespace DataGrabber.Android
 {
     public class ReaderSabvoton : Reader
     {

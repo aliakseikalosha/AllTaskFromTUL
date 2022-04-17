@@ -7,9 +7,10 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.EventArgs;
+using DataGrabber.src.BluetoothComunication;
 
-[assembly: Dependency(typeof(DataGrabber.Droid.AndroidBluetoothReader))]
-namespace DataGrabber.Droid
+[assembly: Dependency(typeof(DataGrabber.Android.AndroidBluetoothReader))]
+namespace DataGrabber.Android
 {
     public abstract class Reader
     {

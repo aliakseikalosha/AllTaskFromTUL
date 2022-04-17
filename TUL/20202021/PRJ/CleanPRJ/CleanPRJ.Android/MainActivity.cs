@@ -7,7 +7,7 @@ using Android;
 using AndroidX.Core.App;
 using Android.Content;
 
-namespace DataGrabber.Droid
+namespace DataGrabber.Android
 {
     [Activity(Label = "DataGrabber", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
@@ -30,7 +30,7 @@ namespace DataGrabber.Droid
             };
             ActivityCompat.RequestPermissions(this, permissions, 123);
             LoadApplication(new App());
-            Window.SetStatusBarColor(Android.Graphics.Color.Argb(255, 0, 0, 0));
+            base.Window.SetStatusBarColor(global::Android.Graphics.Color.Argb(255, 0, 0, 0));
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Permission[] grantResults)
         {

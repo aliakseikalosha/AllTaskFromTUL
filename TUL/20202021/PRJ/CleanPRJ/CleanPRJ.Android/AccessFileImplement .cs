@@ -1,13 +1,13 @@
-﻿using DataGrabber.Droid;
+﻿using DataGrabber.Android;
 using System.IO;
 using System.Linq;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AccessFileImplement))]
-namespace DataGrabber.Droid
+namespace DataGrabber.Android
 {
     public class AccessFileImplement : DataProvider.IAccessFileService
     {
-        private static string path = Path.Combine(Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DataGrabber");
+        private static string path = Path.Combine(global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DataGrabber");
 
         public string[] GetAllDataFiles()
         {

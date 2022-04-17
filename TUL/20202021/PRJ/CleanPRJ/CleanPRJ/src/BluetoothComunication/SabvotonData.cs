@@ -2,6 +2,19 @@
 {
     public class SabvotonData : StateData
     {
+        public int SysStatus { get; protected set; }
+        public float BatteryVoltage { get; protected set; }
+        public int WeakenCurrentCMD { get; protected set; }
+        public int WeakenCurrentFBK { get; protected set; }
+        public int TorqueCurrentCMD { get; protected set; }
+        public int TorqueCurrentFBK { get; protected set; }
+        public int ControllerTemp { get; protected set; }
+        public int MotorTemp { get; protected set; }
+        public int MotorAngle { get; protected set; }
+        public int MotorSpeed { get; protected set; }
+        public int HallStatus { get; protected set; }
+        public int ThrottleVoltage { get; protected set; }
+        public int MosfetStatus { get; protected set; }
         public override void FillData(byte[] data)
         {
             int i = 3;
