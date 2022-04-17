@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanPRJ.src.Data
+namespace DataGrabber.src.Data
 {
     public static class DataHelper
     {

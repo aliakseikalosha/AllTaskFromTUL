@@ -1,12 +1,12 @@
 ﻿using Xamarin.Forms;
 using Microcharts;
-using CleanPRJ.src.UI;
+using DataGrabber.src.UI;
 
-namespace CleanPRJ.Statistics
+namespace DataGrabber.Statistics
 {
     public class StaticticsBattery : StatisticsPage
     {
-        public StaticticsBattery(StatisticsViewModel model) : base(model) { }
+        public StaticticsBattery(StatisticsModel model) : base(model) { }
 
         protected override StackLayout Chart()
         {

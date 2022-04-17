@@ -1,9 +1,9 @@
-﻿using CleanPRJ.src.Data;
+﻿using DataGrabber.src.Data;
 using System;
 using System.Globalization;
 using System.Linq;
 
-namespace CleanPRJ.src.BluetoothComunication
+namespace DataGrabber.src.BluetoothComunication
 {
     public static class BluetoothCommand
     {

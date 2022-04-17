@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using CleanPRJ.DataProvider;
+using DataGrabber.DataProvider;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
-    public class GrabberSettingsViewModel : IViewModel
+    public class GrabberSettingsModel : IModel
     {
         private static readonly float minTimeRead = 0.1f;
         private static readonly float maxTimeRead = 10f;
@@ -26,7 +26,7 @@ namespace CleanPRJ
 
         private IAccessFileService fileAccess;
 
-        public GrabberSettingsViewModel()
+        public GrabberSettingsModel()
         {
             Init();
         }

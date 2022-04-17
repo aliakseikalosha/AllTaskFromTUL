@@ -1,5 +1,5 @@
-﻿using CleanPRJ.src.BluetoothComunication;
-using CleanPRJ.src.Location;
+﻿using DataGrabber.src.BluetoothComunication;
+using DataGrabber.src.Location;
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -8,9 +8,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CleanPRJ.DataProvider
+namespace DataGrabber.DataProvider
 {
-    public class DataProviderViewModel : IViewModel
+    public class DataProviderModel : IModel
     {
         public Action OnStartGatheringData;
         public Action OnStopGatheringData;
@@ -35,7 +35,7 @@ namespace CleanPRJ.DataProvider
         public BaseInfoStateData CurrentBaseInfo { get; internal set; }
         public SabvotonData CurrentSabvotonInfo { get; internal set; }
 
-        public DataProviderViewModel()
+        public DataProviderModel()
         {
             Init();
             MessagingCenter.Subscribe<App>(this, "Sleep", (obj) =>
@@ -60,7 +60,7 @@ namespace CleanPRJ.DataProvider
             // Try to connect to a bth device
             var reader = DependencyService.Get<IBluetoothReader>();
             reader.Start(SelectedBMS, 250, false);
-            reader.Start(SelectedSabvoton, 250, false);
+            reader.Start(SelectedSabvoton, 250, true);
             isConnected = true;
         }
 
@@ -95,8 +95,8 @@ namespace CleanPRJ.DataProvider
             fileNameSabvoton = $"{time:yyyy_MM_dd_HH_mm_ss}_data_sab.csv";
             OnStartGatheringData?.Invoke();
             token = source.Token;
-            taskBMS = DataGatheringBMS((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
-            taskSabvoton = DataGatheringSabvoton((int)(GrabberSettingsViewModel.WaitInBetween * 1000));
+            taskBMS = DataGatheringBMS((int)(GrabberSettingsModel.WaitInBetween * 1000));
+            taskSabvoton = DataGatheringSabvoton((int)(GrabberSettingsModel.WaitInBetween * 1000));
             LocationLogger.StartLogingLocation(time);
         }
 
@@ -107,7 +107,7 @@ namespace CleanPRJ.DataProvider
             while (!token.IsCancellationRequested)
             {
                 BMSBluetoothCommand.SendGetBaseInfo();
-                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, GrabberSettingsViewModel.TimeToReadBase);
+                await WaitWhile(() => BMSBluetoothCommand.currentBaseInfo == null, GrabberSettingsModel.TimeToReadBase);
                 if (BMSBluetoothCommand.currentBaseInfo == null)
                 {
                     ClearFront(false);
@@ -116,7 +116,7 @@ namespace CleanPRJ.DataProvider
                 CurrentBaseInfo = BMSBluetoothCommand.currentBaseInfo;
                 await Task.Delay(10);
                 BMSBluetoothCommand.SendGetCellDataCommand();
-                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, GrabberSettingsViewModel.TimeToReadCell);
+                await WaitWhile(() => BMSBluetoothCommand.currentCellsData == null, GrabberSettingsModel.TimeToReadCell);
                 if (BMSBluetoothCommand.currentCellsData == null)
                 {
                     ClearFront(false);
@@ -144,7 +144,7 @@ namespace CleanPRJ.DataProvider
             while (!token.IsCancellationRequested)
             {
                 SabvotonBluetoothCommand.SendGetDataCommand();
-                await WaitWhile(() => SabvotonBluetoothCommand.SabvotonData == null, GrabberSettingsViewModel.TimeToReadBase);
+                await WaitWhile(() => SabvotonBluetoothCommand.SabvotonData == null, GrabberSettingsModel.TimeToReadBase);
                 if (SabvotonBluetoothCommand.SabvotonData == null)
                 {
                     ClearFront(true);

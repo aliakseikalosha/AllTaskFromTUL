@@ -1,13 +1,13 @@
-﻿using CleanPRJ.src.UI;
+﻿using DataGrabber.src.UI;
 using Microcharts;
 using System;
 using Xamarin.Forms;
 
-namespace CleanPRJ.MainScreen
+namespace DataGrabber.MainScreen
 {
-    public class MainScreenPage : ApplicationPage<MainScreenViewModel>
+    public class MainScreenPage : ApplicationPage<MainScreenModel>
     {
-        public MainScreenPage(MainScreenViewModel model) : base(model) { }
+        public MainScreenPage(MainScreenModel model) : base(model) { }
         public override void InitUI()
         {
             model.Init();

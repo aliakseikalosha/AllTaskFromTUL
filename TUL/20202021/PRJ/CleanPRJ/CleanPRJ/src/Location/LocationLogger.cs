@@ -2,11 +2,11 @@
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
-using CleanPRJ.DataProvider;
+using DataGrabber.DataProvider;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace CleanPRJ.src.Location
+namespace DataGrabber.src.Location
 {
     public static class LocationLogger
     {
@@ -49,7 +49,7 @@ namespace CleanPRJ.src.Location
                     if (location != null)
                     {
                         Debug.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                        fileService.WriteNewLineToFile(currentFileName,  $"{DateTime.Now:O},{location.Accuracy}, {location.Latitude},{location.Longitude}, {location.Altitude}");
+                        fileService.WriteNewLineToFile(currentFileName,  $"{DateTime.Now:O}|{location.Accuracy}| {location.Latitude}|{location.Longitude}| {location.Altitude}".Replace(",",".").Replace("|",","));
                     }
                     
                 }

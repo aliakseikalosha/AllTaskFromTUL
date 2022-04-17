@@ -1,10 +1,10 @@
-﻿using CleanPRJ.src.UI;
+﻿using DataGrabber.DataProvider;
+using DataGrabber.src.UI;
 using System;
-using System.Collections.Generic;
 
-namespace CleanPRJ.Settings
+namespace DataGrabber.Settings
 {
-    public class SettingsVievModel : IViewModel
+    public class SettingsModel : IModel
     {
         public class SettingsData
         {
@@ -32,7 +32,7 @@ namespace CleanPRJ.Settings
                 {
                     Label = "Open Debug Menu",
                     CurrentState = () => "",
-                    OnClicked = () => App.I.ChangePageTo(typeof(BluetoothComunicationPage)),
+                    OnClicked = () => App.I.ChangePageTo(typeof(DataProviderPage)),
                 } , new SettingsData
                 {
                     Label = "App verion",

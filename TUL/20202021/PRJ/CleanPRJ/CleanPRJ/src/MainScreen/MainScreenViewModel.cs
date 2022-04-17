@@ -1,18 +1,18 @@
-﻿using CleanPRJ.src.Data;
-using CleanPRJ.src.UI;
+﻿using DataGrabber.src.Data;
+using DataGrabber.src.UI;
 using Microcharts;
 using SkiaSharp;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace CleanPRJ.MainScreen
+namespace DataGrabber.MainScreen
 {
-    public class MainScreenViewModel : IViewModel
+    public class MainScreenModel : IModel
     {
         public List<ChartEntry> BatteryCharge { get; internal set; } = new List<ChartEntry>();
         public List<ChartEntry> RideDistance { get; internal set; } = new List<ChartEntry>();
 
-        public MainScreenViewModel()
+        public MainScreenModel()
         {
             Init();
         }

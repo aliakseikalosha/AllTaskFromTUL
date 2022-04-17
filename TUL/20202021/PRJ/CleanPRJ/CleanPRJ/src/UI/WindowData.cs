@@ -3,7 +3,7 @@ using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Shapes;
 
-namespace CleanPRJ.src.UI
+namespace DataGrabber.src.UI
 {
     public static class WindowData
     {

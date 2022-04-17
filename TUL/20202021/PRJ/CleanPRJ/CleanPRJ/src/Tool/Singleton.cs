@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CleanPRJ.src.Tool
+namespace DataGrabber.src.Tool
 {
     public abstract class Singleton<T> where T:new()
     {

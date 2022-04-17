@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using CleanPRJ.src.UI;
+using DataGrabber.src.UI;
 using Microcharts;
 using Microcharts.Forms;
 using Xamarin.Forms;
-using CleanPRJ.src.Icons;
+using DataGrabber.src.Icons;
 using System.Reflection;
-using CleanPRJ.Settings;
+using DataGrabber.Settings;
 using OxyPlot;
 using OxyPlot.Xamarin.Forms;
 using OxyPlot.Series;
 
-namespace CleanPRJ.MainScreen
+namespace DataGrabber.MainScreen
 {
-    public abstract class ApplicationPage<T> : ApplicationPage where T : IViewModel
+    public abstract class ApplicationPage<T> : ApplicationPage where T : IModel
     {
         protected T model;
         public ApplicationPage(T model) : base()

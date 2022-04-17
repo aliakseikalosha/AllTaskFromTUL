@@ -1,8 +1,8 @@
-﻿using CleanPRJ.src.BluetoothComunication;
+﻿using DataGrabber.src.BluetoothComunication;
 using System;
 using System.Linq;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
     public class BluetoothMessage
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace CleanPRJ.src.Data
+namespace DataGrabber.src.Data
 {
     [Serializable]
     public class BatteryData

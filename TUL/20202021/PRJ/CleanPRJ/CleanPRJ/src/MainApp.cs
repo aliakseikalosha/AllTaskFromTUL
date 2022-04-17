@@ -1,20 +1,20 @@
 ﻿using System;
 using System.Linq;
-using CleanPRJ.MainScreen;
-using CleanPRJ.Settings;
-using CleanPRJ.src.Data;
-using CleanPRJ.DataProvider;
+using DataGrabber.MainScreen;
+using DataGrabber.Settings;
+using DataGrabber.src.Data;
+using DataGrabber.DataProvider;
 using Xamarin.Forms;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
-    public interface IViewModel { void Init(); }
+    public interface IModel { void Init(); }
     public interface IScreenData
     {
         Type ScreenType { get; }
         ApplicationPage Page { get; }
     }
-    public class ScreenData<T1> : IScreenData where T1 : IViewModel, new()
+    public class ScreenData<T1> : IScreenData where T1 : IModel, new()
     {
         public Type ScreenType { get; }
 
@@ -32,8 +32,8 @@ namespace CleanPRJ
     {
         public static App I { get; private set; }
         private IScreenData[] screenDatas = new IScreenData[] {
-            new ScreenData<DataProviderViewModel>((m) => new DataProviderPage(m), typeof(DataProviderPage)),
-            new ScreenData<GrabberSettingsViewModel>((m)=> new GrabberSettingsPage(m), typeof(GrabberSettingsPage)),
+            new ScreenData<DataProviderModel>((m) => new DataProviderPage(m), typeof(DataProviderPage)),
+            new ScreenData<GrabberSettingsModel>((m)=> new GrabberSettingsPage(m), typeof(GrabberSettingsPage)),
             new ScreenData<DataViewerViewModel>((m)=> new DataViewerPage(m), typeof(DataViewerPage)),
         };
         public App()
@@ -82,9 +82,9 @@ namespace CleanPRJ
 
         private void UpdateMessages(BluetoothMessage message)
         {
-            if (MainPage is BluetoothComunicationPage)
+            if (MainPage is DataProviderPage)
             {
-                ((BluetoothComunicationPage)MainPage).UpdateMessage();
+                ((DataProviderPage)MainPage).UpdateMessage();
                 MainPage.ForceLayout();
             }
         }

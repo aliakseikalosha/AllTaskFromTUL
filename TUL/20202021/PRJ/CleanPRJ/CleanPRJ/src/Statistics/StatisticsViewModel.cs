@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using CleanPRJ.src.Data;
-using CleanPRJ.src.UI;
+using DataGrabber.src.Data;
+using DataGrabber.src.UI;
 using Microcharts;
 using SkiaSharp;
 
-namespace CleanPRJ.Statistics
+namespace DataGrabber.Statistics
 {
-    public class StatisticsViewModel : IViewModel
+    public class StatisticsModel : IModel
     {
 
         public List<ChartEntry> BatteryCharge { get; internal set; } = new List<ChartEntry>();
@@ -19,7 +19,7 @@ namespace CleanPRJ.Statistics
         public float MaxTravelDistance => RideDistance.Max(c => c.Value);
         public float AvgTravelDistance => RideDistance.Average(c => c.Value);
 
-        public StatisticsViewModel()
+        public StatisticsModel()
         {
             Init();
         }

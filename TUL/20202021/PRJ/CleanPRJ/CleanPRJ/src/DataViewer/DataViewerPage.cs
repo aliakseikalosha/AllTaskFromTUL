@@ -1,10 +1,10 @@
 ﻿using System;
-using CleanPRJ.MainScreen;
-using CleanPRJ.DataProvider;
+using DataGrabber.MainScreen;
+using DataGrabber.DataProvider;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
     public class DataViewerPage : ApplicationPage<DataViewerViewModel>
     {

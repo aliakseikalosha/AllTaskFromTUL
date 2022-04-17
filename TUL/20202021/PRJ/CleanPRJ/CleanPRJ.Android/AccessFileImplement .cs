@@ -1,9 +1,9 @@
-﻿using CleanPRJ.Droid;
+﻿using DataGrabber.Droid;
 using System.IO;
 using System.Linq;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AccessFileImplement))]
-namespace CleanPRJ.Droid
+namespace DataGrabber.Droid
 {
     public class AccessFileImplement : DataProvider.IAccessFileService
     {

@@ -1,12 +1,12 @@
-﻿using CleanPRJ.MainScreen;
-using CleanPRJ.src.UI;
+﻿using DataGrabber.MainScreen;
+using DataGrabber.src.UI;
 using Xamarin.Forms;
 
-namespace CleanPRJ.Settings
+namespace DataGrabber.Settings
 {
-    public class SettingsPage : ApplicationPage<SettingsVievModel>
+    public class SettingsPage : ApplicationPage<SettingsModel>
     {
-        public SettingsPage(SettingsVievModel model) : base(model) { }
+        public SettingsPage(SettingsModel model) : base(model) { }
         public override void InitUI()
         {
             model.Init();
@@ -32,7 +32,7 @@ namespace CleanPRJ.Settings
             };
             return scroll;
         }
-        protected Frame SettingsView(SettingsVievModel.SettingsData data)
+        protected Frame SettingsView(SettingsModel.SettingsData data)
         {
             var label = new Label()
             {

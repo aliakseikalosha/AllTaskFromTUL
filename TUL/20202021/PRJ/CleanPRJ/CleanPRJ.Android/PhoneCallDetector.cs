@@ -1,7 +1,7 @@
 ﻿using Android.Telephony;
-using CleanPRJ.src.PhoneCall;
+using DataGrabber.src.PhoneCall;
 
-namespace CleanPRJ.Droid
+namespace DataGrabber.Droid
 {
     public class PhoneCallDetector : PhoneStateListener
     {

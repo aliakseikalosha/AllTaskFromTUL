@@ -7,7 +7,7 @@ using Android;
 using AndroidX.Core.App;
 using Android.Content;
 
-namespace CleanPRJ.Droid
+namespace DataGrabber.Droid
 {
     [Activity(Label = "DataGrabber", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
     [Serializable]
     public class TimedSampledData<T>

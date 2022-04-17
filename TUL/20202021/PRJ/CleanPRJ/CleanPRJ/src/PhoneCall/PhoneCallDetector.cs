@@ -1,8 +1,8 @@
-﻿using CleanPRJ.Settings;
-using CleanPRJ.src.BluetoothComunication;
-using CleanPRJ.src.Tool;
+﻿using DataGrabber.Settings;
+using DataGrabber.src.BluetoothComunication;
+using DataGrabber.src.Tool;
 
-namespace CleanPRJ.src.PhoneCall
+namespace DataGrabber.src.PhoneCall
 {
     public class PhoneCallManager : Singleton<PhoneCallManager>
     {

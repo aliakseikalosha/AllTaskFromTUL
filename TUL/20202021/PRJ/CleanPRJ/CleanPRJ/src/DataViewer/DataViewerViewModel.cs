@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Linq;
-using CleanPRJ.src.Data;
-using CleanPRJ.DataProvider;
+using DataGrabber.src.Data;
+using DataGrabber.DataProvider;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Text.RegularExpressions;
-using CleanPRJ.src.BluetoothComunication;
+using DataGrabber.src.BluetoothComunication;
 using OxyPlot.Series;
 using OxyPlot.Axes;
 
-namespace CleanPRJ
+namespace DataGrabber
 {
-    public class DataViewerViewModel : IViewModel
+    public class DataViewerViewModel : IModel
     {
         private const int dataPointsCompact = 150;
         private string dataLoadedFrom = null;

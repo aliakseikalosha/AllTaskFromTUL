@@ -1,9 +1,9 @@
-﻿using CleanPRJ.src.UI;
+﻿using DataGrabber.src.UI;
 using Newtonsoft.Json;
 using System;
 using System.IO;
 
-namespace CleanPRJ.Settings
+namespace DataGrabber.Settings
 {
     [Serializable]
     public class AppSettings

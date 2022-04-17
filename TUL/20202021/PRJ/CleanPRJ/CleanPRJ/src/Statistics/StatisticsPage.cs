@@ -1,12 +1,12 @@
-﻿using CleanPRJ.MainScreen;
+﻿using DataGrabber.MainScreen;
 using Xamarin.Forms;
-using CleanPRJ.src.UI;
+using DataGrabber.src.UI;
 
-namespace CleanPRJ.Statistics
+namespace DataGrabber.Statistics
 {
-    public abstract class StatisticsPage : ApplicationPage<StatisticsViewModel>
+    public abstract class StatisticsPage : ApplicationPage<StatisticsModel>
     {
-        public StatisticsPage(StatisticsViewModel model) : base(model) { }
+        public StatisticsPage(StatisticsModel model) : base(model) { }
         public override void InitUI()
         {
             model.Init();

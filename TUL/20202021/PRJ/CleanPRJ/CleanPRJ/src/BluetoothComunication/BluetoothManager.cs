@@ -1,4 +1,4 @@
-﻿using CleanPRJ.src.Tool;
+﻿using DataGrabber.src.Tool;
 using Plugin.BLE;
 using Plugin.BLE.Abstractions.Contracts;
 using System;
@@ -8,7 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace CleanPRJ.src.BluetoothComunication
+namespace DataGrabber.src.BluetoothComunication
 {
     public class BluetoothManager : Singleton<BluetoothManager>
     {
@@ -40,8 +40,6 @@ namespace CleanPRJ.src.BluetoothComunication
         private void FillCommandMap()
         {
             commandMap = new ReadOnlyDictionary<char, Action<BluetoothMessage>>(new Dictionary<char, Action<BluetoothMessage>> {
-                //{ 'B', BluetoothCommand.BatteryCommand },
-                //{ 'D', BluetoothCommand.DistanceCommand },
                 { (char)BMSBluetoothCommand.cellDataCode, BMSBluetoothCommand.GetResponceCellData},
                 { (char)BMSBluetoothCommand.baseInfoCode, BMSBluetoothCommand.GetResponceBaseInfo},
                 { SabvotonBluetoothCommand.CommandKey, SabvotonBluetoothCommand.GetResponce }

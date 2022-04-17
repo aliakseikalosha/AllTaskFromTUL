@@ -1,4 +1,4 @@
-﻿namespace CleanPRJ.Droid
+﻿namespace DataGrabber.Droid
 {
     public interface IAccessFileService
     {

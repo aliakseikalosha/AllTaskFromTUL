@@ -1,11 +1,11 @@
-﻿using CleanPRJ.MainScreen;
+﻿using DataGrabber.MainScreen;
 using System;
 using System.Linq;
 using Xamarin.Forms;
 
-namespace CleanPRJ.DataProvider
+namespace DataGrabber.DataProvider
 {
-    public class DataProviderPage : ApplicationPage<DataProviderViewModel>
+    public class DataProviderPage : ApplicationPage<DataProviderModel>
     {
         private Picker pickerBMS;
         private Picker pickerSabvoton;
@@ -20,7 +20,7 @@ namespace CleanPRJ.DataProvider
         private Button stop;
         private bool showFullData = true;
         private Color baseColor = default;
-        public DataProviderPage(DataProviderViewModel model) : base(model)
+        public DataProviderPage(DataProviderModel model) : base(model)
         {
             InitUI();
             model.OnStartGatheringData += () => { start.IsEnabled = false; stop.IsEnabled = true; };
