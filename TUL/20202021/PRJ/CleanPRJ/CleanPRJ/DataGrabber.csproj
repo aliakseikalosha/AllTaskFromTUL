@@ -28,7 +28,6 @@
     <EmbeddedResource Include="src\Icons\arrow_back.png" />
     <EmbeddedResource Include="src\Icons\empty.png" />
     <EmbeddedResource Include="src\Icons\settings.png" />
-    <EmbeddedResource Include="src\Statistics\backArrow.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,7 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\DataViewer\" />
-    <Folder Include="src\GrabberSettings\" />
     <Folder Include="src\Location\" />
+    <Folder Include="src\Statistics\" />
   </ItemGroup>
 </Project>
