@@ -43,7 +43,6 @@
     <PackageReference Include="OxyPlot.Xamarin.Forms" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\DataViewer\" />
     <Folder Include="src\Location\" />
     <Folder Include="src\Statistics\" />
   </ItemGroup>

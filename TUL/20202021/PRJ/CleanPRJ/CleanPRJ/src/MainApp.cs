@@ -2,10 +2,10 @@
 using System.Linq;
 using DataGrabber.MainScreen;
 using DataGrabber.Settings;
-using DataGrabber.src.Data;
 using DataGrabber.DataProvider;
 using Xamarin.Forms;
 using DataGrabber.src.BluetoothComunication;
+using DataGrabber.src.DataViewer;
 
 namespace DataGrabber
 {
@@ -45,7 +45,6 @@ namespace DataGrabber
         private void Init()
         {
             I = this;
-            DataHelper.Load();
             AppSettings.I.Apply();
             InitUI();
             DependencyService.Get<IBluetoothReader>().OnMessageUpdated += UpdateMessages;

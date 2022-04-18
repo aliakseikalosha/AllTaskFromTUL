@@ -1,4 +1,5 @@
 ﻿using DataGrabber.MainScreen;
+using DataGrabber.src.DataViewer;
 using System;
 using System.Linq;
 using Xamarin.Forms;
@@ -210,18 +211,6 @@ namespace DataGrabber.DataProvider
             model.SelectedSabvoton = (string)((Picker)sender).SelectedItem;
             connect.IsEnabled = model.IsConnectEnabled;
         }
-    }
-    public interface IAccessFileService
-    {
-        void CreateFile(string fileName);
-
-        void WriteNewLineToFile(string fileName, string text);
-
-        void WriteToFile(string fileName, string text);
-
-        string ReadFile(string fileName);
-
-        string[] GetAllDataFiles();
     }
 }
 

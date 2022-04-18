@@ -5,7 +5,7 @@ using System.Linq;
 [assembly: Xamarin.Forms.Dependency(typeof(AccessFileImplement))]
 namespace DataGrabber.Android
 {
-    public class AccessFileImplement : DataProvider.IAccessFileService
+    public class AccessFileImplement : IAccessFileService
     {
         private static string path = Path.Combine(global::Android.OS.Environment.ExternalStorageDirectory.AbsolutePath, "DataGrabber");
 
@@ -13,7 +13,7 @@ namespace DataGrabber.Android
         {
             if (Directory.Exists(path))
             {
-                return Directory.GetFiles(path, "*.csv").Where(path=> new FileInfo(path).Length > 10).OrderBy(c=>c).ToArray();
+                return Directory.GetFiles(path, "*.csv").Where(path => new FileInfo(path).Length > 10).OrderBy(c => c).ToArray();
             }
             return null;
         }
@@ -33,7 +33,7 @@ namespace DataGrabber.Android
             var fullPath = Path.Combine(path, fileName);
             if (!File.Exists(fullPath))
             {
-                ((DataProvider.IAccessFileService)this).CreateFile(fileName);
+                ((IAccessFileService)this).CreateFile(fileName);
             }
             File.AppendAllText(fullPath, text + "\n");
         }
@@ -43,12 +43,12 @@ namespace DataGrabber.Android
             var fullPath = Path.Combine(path, fileName);
             if (!File.Exists(fullPath))
             {
-                ((DataProvider.IAccessFileService)this).CreateFile(fileName);
+                ((IAccessFileService)this).CreateFile(fileName);
             }
             File.WriteAllText(fullPath, text + "\n");
         }
 
-        void DataProvider.IAccessFileService.CreateFile(string fileName)
+        void IAccessFileService.CreateFile(string fileName)
         {
             if (!Directory.Exists(path))
             {

@@ -7,8 +7,6 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using DataGrabber.src.BluetoothComunication;
 using Plugin.BLE.Abstractions.Contracts;
-using Android.Bluetooth;
-using Java.Util;
 using Plugin.BLE.Abstractions.EventArgs;
 
 [assembly: Dependency(typeof(DataGrabber.Android.AndroidBluetoothReader))]

@@ -13,6 +13,8 @@ namespace DataGrabber
 
         private static readonly float minWaitInBetween = 0.01f;
         private static readonly float maxWaitInBetween = 5f;
+        private static readonly float minWaitInBetweenGPS = 0.1f;
+        private static readonly float maxWaitInBetweenGPS = 5f;
         private static readonly string settingsFileName = "GrabberSettings.txt";
         private static readonly char dataSeparator = '|';
         private static readonly char valueSeparator = ':';
@@ -23,6 +25,8 @@ namespace DataGrabber
         public static float TimeToReadCell01 => (TimeToReadCell - minTimeRead) / (maxTimeRead - minTimeRead);
         public static float WaitInBetween { get; private set; } = 0.01f;
         public static float WaitInBetween01 => (WaitInBetween - minWaitInBetween) / (maxWaitInBetween - minWaitInBetween);
+        public static float WaitInBetweenGPS { get; private set; } = 0.1f;
+        public static float WaitInBetweenGPS01 => (WaitInBetweenGPS - minWaitInBetweenGPS) / (maxWaitInBetweenGPS - minWaitInBetweenGPS);
 
         private IAccessFileService fileAccess;
 
@@ -48,7 +52,7 @@ namespace DataGrabber
             {
 
             }
-            catch(Exception e)
+            catch (Exception e)
             {
 
             }
@@ -78,6 +82,10 @@ namespace DataGrabber
                 {
                     WaitInBetween = value;
                 }
+                if (name == nameof(WaitInBetweenGPS))
+                {
+                    WaitInBetweenGPS = value;
+                }
             }
         }
 
@@ -91,6 +99,7 @@ namespace DataGrabber
             add(nameof(TimeToReadBase), TimeToReadBase);
             add(nameof(TimeToReadCell), TimeToReadCell);
             add(nameof(WaitInBetween), WaitInBetween);
+            add(nameof(WaitInBetweenGPS), WaitInBetweenGPS);
             fileAccess.WriteToFile(settingsFileName, data);
         }
 
@@ -109,6 +118,12 @@ namespace DataGrabber
         public void UpdateWaitInBetween01(float val)
         {
             WaitInBetween = val * (maxWaitInBetween - minWaitInBetween) + minWaitInBetween;
+            Save();
+        }
+
+        public void UpdateWaitInBetweenGPS01(float val)
+        {
+            WaitInBetweenGPS = val * (maxWaitInBetweenGPS - minWaitInBetweenGPS) + minWaitInBetweenGPS;
             Save();
         }
     }

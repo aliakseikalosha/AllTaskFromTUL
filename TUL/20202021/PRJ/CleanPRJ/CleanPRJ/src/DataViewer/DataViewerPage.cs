@@ -4,9 +4,9 @@ using DataGrabber.DataProvider;
 using Xamarin.Forms;
 using System.Threading.Tasks;
 
-namespace DataGrabber
+namespace DataGrabber.src.DataViewer
 {
-    public class DataViewerPage : ApplicationPage<DataViewerViewModel>
+    public class DataViewerPage : ApplicationPage<DataViewerModel>
     {
         private StackLayout scrollStack;
         private Picker filePicker;
@@ -14,7 +14,7 @@ namespace DataGrabber
         private Button asTextCompact;
         private Button asGraph;
 
-        public DataViewerPage(DataViewerViewModel model) : base(model)
+        public DataViewerPage(DataViewerModel model) : base(model)
         {
             this.model = model;
             this.BindingContext = model;
@@ -126,12 +126,14 @@ namespace DataGrabber
             Device.BeginInvokeOnMainThread(() => // On MainThread because it's a change in your UI
             {
                 scrollStack.Children.Clear();
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.VoltageChartData, "Voltage")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Temperatures, "Temperatures")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Current, "Current")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.FullVoltage, "Full Voltage")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.ResidualCapacity, "Residual Capacity")));
-                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.NominalCapacity, "Nominal Capacity")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.VoltageChartData, "Voltage V")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Temperatures, "Temperatures °C")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Current, "Current A")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.FullVoltage, "Full Voltage V")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.ResidualCapacity, "Residual Capacity x10 mAh")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.SoC, "State of Charge %")));
+                scrollStack.Children.Add(GetPlotView(GetPlotModel(model.Altitude, "Altitude m")));
+                //scrollStack.Children.Add(GetPlotView(GetPlotModel(model.NominalCapacity, "Nominal Capacity")));
             });
         }
 

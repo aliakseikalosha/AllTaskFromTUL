@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Threading;
 using System.Threading.Tasks;
-using DataGrabber.DataProvider;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -14,23 +14,23 @@ namespace DataGrabber.src.Location
         private static Task logging;
         private static CancellationTokenSource source = new CancellationTokenSource();
         private static CancellationToken token;
+        private static CultureInfo usCulture = CultureInfo.GetCultureInfo("en-US");
 
         public static void StartLogingLocation(DateTime start)
         {
-            if(token.CanBeCanceled)
+            if (token.CanBeCanceled)
             {
                 Debug.WriteLine("Logger allready running");
                 StopLogingLocation();
             }
             currentFileName = $"{start:yyyy_MM_dd_HH_mm_ss}_data_geo.csv";
             var fileAccess = DependencyService.Get<IAccessFileService>();
-            fileAccess.CreateFile(currentFileName);
             logging = LogLocation(fileAccess);
         }
 
         public static void StopLogingLocation()
         {
-            if(token.CanBeCanceled)
+            if (!logging.IsCanceled)
             {
                 source.Cancel();
             }
@@ -39,19 +39,22 @@ namespace DataGrabber.src.Location
         private static async Task LogLocation(IAccessFileService fileService)
         {
             token = source.Token;
+            fileService.CreateFile(currentFileName);
+            fileService.WriteNewLineToFile(currentFileName, $"Date,Accuracy,Latitude,Longitude, Altitude");
+            var request = new GeolocationRequest(GeolocationAccuracy.Best);
+            Xamarin.Essentials.Location location;
+
             while (!token.IsCancellationRequested)
             {
                 try
                 {
-                    var request = new GeolocationRequest(GeolocationAccuracy.Best);
-                    var location = await Geolocation.GetLocationAsync(request);
-
+                    location = await Geolocation.GetLocationAsync(request);
                     if (location != null)
                     {
                         Debug.WriteLine($"Latitude: {location.Latitude}, Longitude: {location.Longitude}, Altitude: {location.Altitude}");
-                        fileService.WriteNewLineToFile(currentFileName,  $"{DateTime.Now:O}|{location.Accuracy}| {location.Latitude}|{location.Longitude}| {location.Altitude}".Replace(",",".").Replace("|",","));
+                        fileService.WriteNewLineToFile(currentFileName, $"{DateTime.Now:O},{location.Accuracy?.ToString(usCulture)},{location.Latitude.ToString(usCulture)},{location.Longitude.ToString(usCulture)}, {location.Altitude?.ToString(usCulture)}");
                     }
-                    
+
                 }
                 catch (FeatureNotSupportedException fnsEx)
                 {
@@ -69,7 +72,7 @@ namespace DataGrabber.src.Location
                 {
                     // Unable to get location
                 }
-                await Task.Delay(5000, token);
+                await Task.Delay((int)(GrabberSettingsModel.WaitInBetweenGPS * 1000), token);
             }
         }
     }

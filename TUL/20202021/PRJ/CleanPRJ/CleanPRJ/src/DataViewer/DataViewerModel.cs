@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Linq;
-using DataGrabber.src.Data;
-using DataGrabber.DataProvider;
 using Xamarin.Forms;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,23 +9,32 @@ using DataGrabber.src.BluetoothComunication;
 using OxyPlot.Series;
 using OxyPlot.Axes;
 
-namespace DataGrabber
+namespace DataGrabber.src.DataViewer
 {
     public class DataViewerModel : IModel
     {
         private const int dataPointsCompact = 150;
+
+        private const int dataPointsCompactTextMultiplier = 3;
         private string dataLoadedFrom = null;
         public ObservableCollection<string> Files { get; private set; } = new ObservableCollection<string>();
-        public List<Data> LoadedData { get; private set; } = new List<Data>();
-        private int dataStepCompact => LoadedData.Count < dataPointsCompact ? 1 : LoadedData.Count / dataPointsCompact;
+        public List<BMSData> LoadedBMSData { get; private set; } = new List<BMSData>();
+        public List<GeoData> LoadedGeoData { get; private set; } = new List<GeoData>();
+        private int dataStepCompact => LoadedBMSData.Count < dataPointsCompact ? 1 : LoadedBMSData.Count / dataPointsCompact;
         public string DataAsText
         {
             get
             {
-                var text = "";
-                foreach (var data in LoadedData)
+                var text = "BMS data:\n";
+                foreach (var data in LoadedBMSData)
                 {
-                    text += $"{data.date} CELL : {data.cell.HumanData.Replace(" ", "\t")} |\t\t BASE INFO :{data?.info.HumanData.Replace(" ", "\t")}".Replace("\n", "\t") + "\n";
+                    text += $"{data.Date} CELL : {data.Cell.HumanData.Replace(" ", "\t")} |\t\t BASE INFO :{data?.Info.HumanData.Replace(" ", "\t")}".Replace("\n", "\t") + "\n";
+                }
+
+                text += "GPS data:\n";
+                foreach (var data in LoadedGeoData)
+                {
+                    text += $"{data.Date}, Accuracy: {data.Accuracy}, Altitude: {data.Altitude}, Latitude: {data.Latitude}, Longitude: {data.Longitude}\n";
                 }
                 return text;
             }
@@ -37,11 +44,17 @@ namespace DataGrabber
         {
             get
             {
-                var text = "";
-                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
+                var text = "BMS data:\n";
+                for (int i = 0; i < LoadedBMSData.Count; i += dataStepCompact * dataPointsCompactTextMultiplier)
                 {
-                    Data data = LoadedData[i];
-                    text += $"{data.date} CELL : {data.cell.HumanData.Replace(" ", "\t")} |\t\t BASE INFO :{data?.info.HumanData.Replace(" ", "\t")}".Replace("\n", "\t") + "\n";
+                    BMSData data = LoadedBMSData[i];
+                    text += $"{data.Date} CELL : {data.Cell.HumanData.Replace(" ", "\t")} |\t\t BASE INFO :{data?.Info.HumanData.Replace(" ", "\t")}".Replace("\n", "\t") + "\n";
+                }
+
+                text += "GPS data:\n";
+                foreach (var data in LoadedGeoData)
+                {
+                    text += $"{data.Date}, Accuracy: {data.Accuracy}, Altitude: {data.Altitude}, Latitude: {data.Latitude}, Longitude: {data.Longitude}\n";
                 }
                 return text;
             }
@@ -52,19 +65,19 @@ namespace DataGrabber
             get
             {
                 List<LineSeries> entries = new List<LineSeries>();
-                Data data;
-                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
+                BMSData data;
+                for (int i = 0; i < LoadedBMSData.Count; i += dataStepCompact)
                 {
-                    data = LoadedData[i];
+                    data = LoadedBMSData[i];
                     int baseCount = 4;
-                    for (int j = baseCount; j < data.cell.Voltage.Length; j++)
+                    for (int j = baseCount; j < data.Cell.Voltage.Length; j++)
                     {
                         int index = j - baseCount;
                         if (entries.Count <= index)
                         {
                             entries.Add(new LineSeries());
                         }
-                        entries[index].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), data.cell.Voltage[j]));
+                        entries[index].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.Date), data.Cell.Voltage[j]));
                     }
                 }
                 return entries;
@@ -76,17 +89,17 @@ namespace DataGrabber
             get
             {
                 List<LineSeries> entries = new List<LineSeries>();
-                Data data;
-                for (int i = 0; i < LoadedData.Count; i += dataStepCompact)
+                BMSData data;
+                for (int i = 0; i < LoadedBMSData.Count; i += dataStepCompact)
                 {
-                    data = LoadedData[i];
-                    for (int j = 0; j < data.info.Temperatures.Length; j++)
+                    data = LoadedBMSData[i];
+                    for (int j = 0; j < data.Info.Temperatures.Length; j++)
                     {
                         if (entries.Count <= j)
                         {
                             entries.Add(new LineSeries());
                         }
-                        entries[j].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), data.info.Temperatures[j]));
+                        entries[j].Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.Date), data.Info.Temperatures[j]));
                     }
                 }
                 return entries;
@@ -97,7 +110,7 @@ namespace DataGrabber
         {
             get
             {
-                return LineSeriesOf(x => x.info.Current);
+                return LineSeriesOf(LoadedBMSData, x => x.Info.Current);
             }
         }
 
@@ -105,7 +118,7 @@ namespace DataGrabber
         {
             get
             {
-                return LineSeriesOf(x => x.info.FullVoltage);
+                return LineSeriesOf(LoadedBMSData, x => x.Info.FullVoltage);
             }
         }
 
@@ -113,27 +126,43 @@ namespace DataGrabber
         {
             get
             {
-                return LineSeriesOf(x=>x.info.ResidualCapacity);
+                return LineSeriesOf(LoadedBMSData, x => x.Info.ResidualCapacity);
             }
         }
 
+
+        public LineSeries SoC
+        {
+            get
+            {
+                return LineSeriesOf(LoadedBMSData, x => x.Info.SoC);
+            }
+        }
 
         public LineSeries NominalCapacity
         {
             get
             {
-                return LineSeriesOf(x => x.info.NominalCapacity);
+                return LineSeriesOf(LoadedBMSData, x => x.Info.NominalCapacity);
             }
         }
 
-        private LineSeries LineSeriesOf(Func<Data,double> map)
+        public LineSeries Altitude
+        {
+            get
+            {
+                return LineSeriesOf(LoadedGeoData, x => x.Altitude);
+            }
+        }
+
+        private LineSeries LineSeriesOf<T>(List<T> dataSet, Func<T, double> map) where T : IData
         {
             var entries = new LineSeries();
-            Data data;
-            for (int j = 0; j < LoadedData.Count; j += dataStepCompact)
+            T data;
+            for (int j = 0; j < dataSet.Count; j += dataStepCompact)
             {
-                data = LoadedData[j];
-                entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.date), map(data)));
+                data = dataSet[j];
+                entries.Points.Add(new OxyPlot.DataPoint(DateTimeAxis.ToDouble(data.Date), map(data)));
             }
             return entries;
         }
@@ -155,7 +184,11 @@ namespace DataGrabber
 
             foreach (var path in paths)
             {
-                Files.Add(path.Split('/').Last());
+                var fileName = path.Split('/').Last();
+                if (paths.Any(c => c != path && c.Contains("_geo") && c.Contains(fileName.Split('.')[0])))
+                {
+                    Files.Add(fileName);
+                }
             }
         }
 
@@ -166,21 +199,64 @@ namespace DataGrabber
             {
                 return;
             }
-            var text = DependencyService.Get<IAccessFileService>().ReadFile(path).Split('\n');
-            LoadedData = new List<Data>();
-            foreach (var line in text)
-            {
-                var data = GetData(line);
-                if (data != null)
-                {
-                    LoadedData.Add(data);
-                }
-            }
+            LoadBMSData(path);
+            LoadGeoData(path);
             dataLoadedFrom = path;
-            Debug.WriteLine($"Loaded {LoadedData.Count} data point from {text.Length} lines");
         }
 
-        public Data GetData(string line)
+        private void LoadGeoData(string path)
+        {
+            var text = DependencyService.Get<IAccessFileService>().ReadFile(path.Split('.')[0] + "_geo.csv").Split('\n');
+            LoadedGeoData = new List<GeoData>();
+            foreach (var line in text)
+            {
+                var data = GetGeoData(line);
+                if (data != null)
+                {
+                    LoadedGeoData.Add(data);
+                }
+            }
+            Debug.WriteLine($"Loaded {LoadedGeoData.Count} GeoData point from {text.Length} lines");
+        }
+
+        private void LoadBMSData(string path)
+        {
+            var text = DependencyService.Get<IAccessFileService>().ReadFile(path).Split('\n');
+            LoadedBMSData = new List<BMSData>();
+            foreach (var line in text)
+            {
+                var data = GetBMSData(line);
+                if (data != null)
+                {
+                    LoadedBMSData.Add(data);
+                }
+            }
+            Debug.WriteLine($"Loaded {LoadedBMSData.Count} BMSData point from {text.Length} lines");
+        }
+
+        public GeoData GetGeoData(string line)
+        {
+            if (line.Length > 0)
+            {
+                try
+                {
+                    var data = line.Split(',');
+
+                    return new GeoData(DateTime.Parse(data[0]),
+                        double.Parse(data[1], System.Globalization.CultureInfo.InvariantCulture),
+                        double.Parse(data[2], System.Globalization.CultureInfo.InvariantCulture),
+                        double.Parse(data[3], System.Globalization.CultureInfo.InvariantCulture),
+                        double.Parse(data[4], System.Globalization.CultureInfo.InvariantCulture));
+                }
+                catch (Exception e)
+                {
+                    Debug.WriteLine(e);
+                }
+            }
+            return null;
+        }
+
+        public BMSData GetBMSData(string line)
         {
             if (line.Length > 0)
             {
@@ -193,7 +269,7 @@ namespace DataGrabber
                     var matchs = Regex.Matches(line, pattern);
                     BaseInfoStateData info = BMSBluetoothCommand.ParseResponce<BaseInfoStateData>(ReadBytesFromCSV(matchs[0].Value));
                     CellsStateData cell = BMSBluetoothCommand.ParseResponce<CellsStateData>(ReadBytesFromCSV(matchs[1].Value));
-                    return new Data(date, cell, info);
+                    return new BMSData(date, cell, info);
                 }
                 catch (Exception e)
                 {
@@ -213,17 +289,40 @@ namespace DataGrabber
             return bytes.ToArray();
         }
 
-        public class Data
+        public interface IData
         {
-            public readonly DateTime date;
-            public readonly CellsStateData cell;
-            public readonly BaseInfoStateData info;
+            DateTime Date { get; }
+        }
 
-            public Data(DateTime date, CellsStateData cell, BaseInfoStateData info)
+        public class BMSData : IData
+        {
+            public DateTime Date { get; protected set; }
+            public readonly CellsStateData Cell;
+            public readonly BaseInfoStateData Info;
+
+            public BMSData(DateTime date, CellsStateData cell, BaseInfoStateData info)
             {
-                this.date = date;
-                this.cell = cell;
-                this.info = info;
+                this.Date = date;
+                this.Cell = cell;
+                this.Info = info;
+            }
+
+        }
+        public class GeoData : IData
+        {
+            public DateTime Date { get; protected set; }
+            public readonly double Accuracy;
+            public readonly double Latitude;
+            public readonly double Longitude;
+            public readonly double Altitude;
+
+            public GeoData(DateTime date, double accuracy, double latitude, double longitude, double altitude)
+            {
+                this.Date = date;
+                Accuracy = accuracy;
+                Latitude = latitude;
+                Longitude = longitude;
+                Altitude = altitude;
             }
         }
     }

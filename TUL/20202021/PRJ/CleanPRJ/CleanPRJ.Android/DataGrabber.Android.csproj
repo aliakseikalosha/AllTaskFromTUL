@@ -97,6 +97,7 @@
     <Compile Include="ReaderSabvoton.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AndroidAccessFile.cd" />
     <None Include="AndroidBluetooth.cd" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
