@@ -116,7 +116,7 @@ def find_shapes(img):
     return processed, set(zones)
 
 
-def find_mass_center(img, segments, target_img=None, find_korun=False):
+def find_mass_center(img, segments, target_img=None, count_func=None):
     if target_img is None:
         target_img = img
 
@@ -124,22 +124,22 @@ def find_mass_center(img, segments, target_img=None, find_korun=False):
     color = max(segments) + 1
 
     if len(processed.shape) > 2 and processed.shape[2] > 1:
-        color = [255.0, 0.0, 0.0]
+        color = [128.0, 196.0, 64.0]
 
-    money_total = 0
+    total = 0
     for i in segments:
         pixels = np.where(img == i)
         x = np.sum(np.power(pixels[0], 0) * np.power(pixels[1], 1)) / np.sum(
             np.power(pixels[0], 0) * np.power(pixels[1], 0))
         y = np.sum(np.power(pixels[0], 1) * np.power(pixels[1], 0)) / np.sum(
             np.power(pixels[0], 0) * np.power(pixels[1], 0))
-        cost = 5 if len(pixels[0]) > 4000 else 1
-        if find_korun:
-            print(f'[{x},{y}] je {5 if len(pixels[0]) > 4000 else 1} koruna')
-        money_total += cost
+        if count_func is not None:
+            total += count_func(len(pixels[0]))# 5 if len(pixels[0]) > 4000 else 1
+            #print(f'[{x},{y}] je {5 if len(pixels[0]) > 4000 else 1} koruna')
+
         processed = cv2.circle(np.float32(processed), (int(x), int(y)), radius=0, color=color, thickness=3)
-    if find_korun:
-        print(f'celkove je to {money_total} korun')
+    if count_func is not None:
+        print(f'celkove nalezeno {total}')
     return processed/255
 
 
@@ -156,7 +156,7 @@ def main():
     segment_coin, segments = find_shapes(mask_coins)
     show_img(mask_coins, "Segmentační maska", "gray")
     show_img(segment_coin, "Nalezeny objekty")
-    show_img(find_mass_center(segment_coin, segments), "Nalezeny objekty s centrem")
+    show_img(find_mass_center(segment_coin, segments, count_func=lambda x: 5 if x>4000 else 1), "Nalezeny objekty s centrem")
 
 
 if __name__ == "__main__":

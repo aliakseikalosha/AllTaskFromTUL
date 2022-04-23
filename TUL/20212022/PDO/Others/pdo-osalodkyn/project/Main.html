@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <title>PD_Project</title>
+
+	<link rel = 'stylesheet' href = './hl/styles/qtcreator-dark.min.css'>
+	
+	<script src = './hl/highlight.js'></script>
+	<script src = './hl/languages/c.min.js'></script>
+	<script>hljs.highlightAll();</script>
+	
+    <style>
+		
+		@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@400;900&family=IBM+Plex+Sans+Arabic&display=swap');
+		
+        :root {
+            --color_back: black;
+            --color_front: white;
+			--color_highlight: #f5f;
+        }
+
+        body {
+			font-family: 'Epilogue', sans-serif;
+			font-family: 'IBM Plex Sans Arabic', sans-serif;
+            background-color: var(--color_back);
+            color: var(--color_front);
+        }
+		
+		h2 {
+			font-size: 40px;
+			border-bottom: solid 2px;
+		}
+		
+		h3 {
+			font-size: 20px;
+			border-bottom: solid 1px;
+		}
+
+		.leftMenu {
+			width: 250px;
+			box-sizing: border-box;
+			position: sticky;
+			top: 20px;
+			left: 0px;
+			float:left;
+		}
+		
+        .mainflow {
+			top: 0px;
+			margin-left: 280px;
+			max-width: 700px;
+			possition: relative;
+		}
+		
+		p > code.hljs { 
+			display: inline; 
+		}
+		
+		.leftMenuTitle {
+			display: block;
+			margin-block-start: 1.33em;
+			margin-block-end: 1.33em;
+			margin-inline-start: 0px;
+			margin-inline-end: 0px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+		
+		.leftMenuTitle:hover {
+			color: var(--color_highlight);
+		}
+		
+		.leftMenuList {
+			list-style-type:none;
+			padding: 2px;
+			margin: 0;
+		}
+		
+		.leftMenuListItem {
+			margin: 2px;
+			cursor: pointer;
+		}
+		
+		.leftMenuListItem:hover {
+			color: var(--color_highlight);
+		}
+		
+		a {
+			color: inherit;
+			text-decoration: inherit;
+		}
+
+    </style>
+</head>
+<body>
+    <h1>Audio Plugin Interface</h1>
+	
+	<div class = 'leftMenu'>
+		<div class = 'leftMenuTitle'><a href = '#introduction'>Introduction</a></div>
+		
+		<div class = 'leftMenuTitle'><a href = '#tutorial'>Tutorial</a></div>
+		<ul class = 'leftMenuList'>
+			<li class = 'leftMenuListItem'><a href = '#tutorial_1'>Implement DLL interface function</a></li>
+			<li class = 'leftMenuListItem'><a href = '#tutorial_2'>Manage initialization and data</a></li>
+			<li class = 'leftMenuListItem'><a href = '#tutorial_3'>Implemnt controls callbacks</a></li>
+			<li class = 'leftMenuListItem'><a href = '#tutorial_4'>Implement process function</a></li>
+		</ul>
+		
+		
+		<div class = 'leftMenuTitle'><a href = '#documentation'>Documentation</a></div>
+		<ul class = 'leftMenuList'>
+			<li class = 'leftMenuListItem'><a href = '#iplugin'>IPlugin</a></li>
+			<li class = 'leftMenuListItem'><a href = '#iplugininfo'>IPluginInfo</a></li>
+			<li class = 'leftMenuListItem'><a href = '#pluginuihandler'>PluginUIHandler</a></li>
+			<li class = 'leftMenuListItem'><a href = '#plugincontrol'>PluginControl</a></li>
+			<li class = 'leftMenuListItem'><a href = '#plotinfo'>PlotInfo</a></li>
+			<li class = 'leftMenuListItem'><a href = '#plugincontroltype'>PluginControlType</a></li>
+			<li class = 'leftMenuListItem'><a href = '#pluginfillpattern'>PluginFillPattern</a></li>
+			<li class = 'leftMenuListItem'><a href = '#ctrl_param'>CTRL_PARAM</a></li>
+		</ul>
+	</div
+	><div class = 'mainflow'>
+	
+		<section>
+			<h2 id = 'introduction'>Introduction</h2>
+			<p>This paper suppose to describe the audio plugin interface for the program named NINO (No Input, No Output). The interface is 'powered by' C language which is used to for creation of dll files, that represents the plugin itself. So one can write plugin with any language/tool if it align interface/memory, but recomended way is C, as its simple and therefore very compatible way accross all different compilers.</p>
+			<p>The author may be wrong, so dont take any considerations as it is, and go your way, if you think its better!</p>
+		</section>
+		
+		<section>
+			<h2 id = 'tutorial'>Tutorial</h2>
+			<p>Here we be shown iplementation of the Gain Booster plugin. It is simple one, so there will be no hard logic that will distruct us from the general plugin process creation. There is an easier way to implement this, but we will implement it in the way we belive, the general plugin has to be implemented in any case.</p>
+			
+			<p>This process can be divided into basic steps that basicly coresponds to the all functions from interface. The order can be omited.</p>
+			<ul>
+				<li>Implement DLL interface function</li>
+				<li>Manage initialization and data</li>
+				<li>Implemnt controls callbacks</li>
+				<li>Implement process function</li>
+			</ul>
+			
+			<h3 id = 'tutorial_1'>Implement DLL interface function</h3>
+			<p>The DLL Interface function is the one and only function that provide each plugin file. It's job is to allocate and return following the pointer to the plugin handler <code class = 'lang-c' style = ' display: inline !important;'>IPlugin</code>.</p>
+			<pre><code class = 'lang-c'>
+IPlugin* getPlugin()
+			</code></pre>
+			
+			<p>Inside the function we firstly allocate the IPlugin structure that will represent our plugin</p>
+			
+			<pre><code class = 'lang-c'>
+IPlugin* plugin = (IPlugin*) malloc(sizeof(IPlugin));
+if (!plugin) return NULL;
+			</code></pre>
+			
+			<p>Then we have to allocate UI handler, we use included function PluginUIHandler* buildPluginUIHandler() that comes with the interface, that will do everything for us. We set only backgound color and its type.</p>
+			
+			<pre><code class = 'lang-c'>
+PluginUIHandler* uihnd = buildPluginUIHandler();
+uihnd->controls[0]->backgroundColor = 0xFFEA6363;
+uihnd->controls[0]->fillType = PFP_DOTS;
+			</code></pre>
+			
+			<p>Now we create knob control to control our gain. We use function PluginControl* addControl(PluginUIHandler* uihnd, PluginControlType controlType), where we pass pointer to previously created ui handler and the type of the control we need, in our case its PCT_KNOB. We also set some custom atributes. We also set callback function that we take a look later[..]</p>
+			
+			<pre><code class = 'lang-c'>
+PluginControl* gainKnob = addControl(uihnd, PCT_KNOB);
+gainKnob->MAX_VALUE = 30.0;
+gainKnob->value = DF_GAIN_COEF;
+gainKnob->color = 0xFF000000;
+gainKnob->label = "Gain";
+gainKnob->eChange = &gainChange;
+			</code></pre>
+		
+			<p>The last thing we have to do here is to set plugin name (its wide char), assigne pointer to UI handler and assign function pointers, which implementations will be shown in the next steps.</p>
+			<pre><code class = 'lang-c'>
+plugin->name = L"Gain Booster";
+plugin->uihnd = uihnd;
+plugin->process = &process;
+plugin->init = &init;
+plugin->free = NULL;
+			</code></pre>
+			
+			<p>and return it</p>
+			<pre><code class = 'lang-c'>
+return plugin;
+			</code></pre>
+			
+			<h3 id = 'tutorial_2'>Manage initialization and data</h3>
+			<p>The first function that will be called by program is int <code 'lang-c'>init(IPluginInfo* info, void** space). It allows user to allocate any data he wants. Note that program can call this function not only for the first inicialization, but when any configuration change occures, so user can realocate data if needed(exm. sample rate and length of the delay buffer)</code></p>
+			
+			<p>Before we dive inside initialize function we prepare struct that will represent our data. We do not have to do this, we can go straight and allocate the data directly, but this way its much cleaner and readable.</p>
+			<pre><code class = 'lang-c'>
+typedef struct Space {
+
+	double gainCoef;
+
+} Space;
+			</code></pre>
+			
+			<p>Now we need to allocate our struct on heap and store pointer, assuming DF_GAIN_COEF is macro that represent our default gain. Note that function has to return 0 on succes</p>
+			<pre><code class = 'lang-c'>
+*space = malloc(sizeof(Space));
+if (*space == NULL) return 1;
+
+((Space*) (*space))->gainCoef = DF_GAIN_COEF;
+	
+return 0;
+			</code></pre>
+			
+			<h3 id = 'tutorial_3'>Implemnt controls callbacks</h3>
+			
+			<p>User interaction with controls is signalized by callbacks, that was binded in DLL interface function. The value of the control is changed in place, when user do so. So there is actually no need to use them and use them directly while processing. But, in most cases we don't want to use raw value, but use it to compute something, which will stay the same till the next change. Based on it, it's better to use callbacks to precompute all needed variables values.</p>
+			
+			<p>In our case we gave user input in decibels, as it's the most common way to represent the volume / gain. But, we cannot use the decibel value directly to amplyfy signal, we have to convert it to magnitude first. In our process function we can use just gainCoef variable without any computations.</p>
+			<pre><code class = 'lang-c'>
+((Space*) source->plugin->space)->gainCoef = pow(10, source->value / 20.0);
+			</code></pre>
+			
+			<h3 id = 'tutorial_4'>Process the signal</h3>
+			
+			<p>To process signal we use the process function with following definition.</p>
+			
+			<pre><code class = 'lang-c'>
+void process(void* inBuffer, void* outBuffer, int bufferLength, void* space)
+			</code></pre>
+			
+			<p>One can assume that inBffer and outBuffer will point to the different memory for whole bufferLength. Our job here is to fill the outBuffer with some reseanable data using inBuffer. We also recieve space, which points to our data we allocated inside inicialization function.</p>
+			<pre><code class = 'lang-c'>
+double* const inBuff = inBuffer;
+double* const outBuff = outBuffer;
+
+const double gainCoef = ((Space*) space)->gainCoef;
+	
+for (int i = 0; i < bufferLength; i++) {
+	outBuff[i] = gainCoef * inBuff[i];
+}
+			</code></pre>
+			
+		</section>
+
+		<section>
+			<h2 id = 'documentation'>Documentation</h2>
+			
+			<h3 id = 'iplugin'>IPlugin</h3>
+			
+			<pre><code class = 'lang-c'>
+struct IPlugin {
+
+	const wchar_t* name;
+
+	PluginUIHandler* uihnd;
+
+	int (*init) (IPluginInfo* info, void** space);
+	void (*free) (void* space);
+
+	void (*process) (void* inBuffer, void* outBuffer, int bufferLength, void* space);
+
+	int state;
+
+	void* space;
+
+};			
+			</code></pre>
+			
+			<p>Struct represents handler that suppose to represent any plugin.</p>
+			<h4>Attributes</h4>
+			<table>
+				<tbody>
+					<tr>
+					<td><pre><code class = 'lang-c'>name</code></pre></td>
+					<td>Name of the plugin that will be displayed inside the program. String has to be null terminated.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>uihnd</code></pre></td>
+					<td>Handler that represents user interface of the plugin.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*init</code></pre></td>
+					<td>Points to the function that will be called when plugin will be selected or when any important change occures. Can be NULL.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*free</code></pre></td>
+					<td>Points that </td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*process</code></pre></td>
+					<td>Points that </td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>state</code></pre></td>
+					<td>Defines the state of the plugin. Used internaly by program.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>space</code></pre></td>
+					<td>Pointer to the any needed heap allocated memory.</td>
+					</tr>
+					
+				</tbody>
+			</table>
+			
+			<h3 id = 'iplugininfo'>IPluginInfo</h3>
+			
+			<pre><code class = 'lang-c'>
+struct IPluginInfo {
+
+	int sampleRate;
+	int maxBufferLength; // in doubles
+
+};
+			</code></pre>
+			
+			<p>Represents information that is maintain by program and can affect plugin.</p>
+			<table>
+				<tbody>
+					<tr>
+					<td><pre><code class = 'lang-c'>sampleRate</code></pre></td>
+					<td>Samples per second.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>maxBufferLength</code></pre></td>
+					<td>Maximal length of the input and output buffers.</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h3 id = 'pluginuihandler'>PluginUIHandler</h3>
+			
+			<pre><code class = 'lang-c'>
+struct PluginUIHandler {
+
+	int x;
+	int y;
+
+	int width;
+	int height;
+
+	int maxTopY;
+	int maxBottomY;
+
+	int visible;
+
+	PluginControl** controls;
+	int controlCount;
+
+	IPlugin* plugin;
+
+};
+			</code></pre>
+			
+			<p>Represents the plugin UI. It's not recomended to set it manualy, one should use functions .. to allocate and .. to add control.</p>
+			<table>
+				<tbody>
+					<tr>
+					<td><pre><code class = 'lang-c'>x</code></pre></td>
+					<td>The x coord the plugins left top corner according to the left top window corner.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>y</code></pre></td>
+					<td>The y coord the plugins left top corner according to the left top window corner.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>width</code></pre></td>
+					<td>The overall width of the plugin.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>height</code></pre></td>
+					<td>The overall height of the plugin.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>visible</code></pre></td>
+					<td>Signals if plugin is visible. Any value that evaluates as true means that plugin is visibile, others that it's hidden.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>controls</code></pre></td>
+					<td>Points to the individual controls pointers.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>controlCount</code></pre></td>
+					<td>Number of controls.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>plugin</code></pre></td>
+					<td>Points to the plugin handler itself to provide easier acess.</td>
+					</tr>
+				</tbody>
+			</table>
+			
+			<h3 id = 'plugincontrol'>PluginControl</h3>
+			
+			<pre><code class = 'lang-c'>
+struct PluginControl {
+
+	IPlugin* plugin;
+
+	int type;
+
+	double MIN_VALUE;
+	double MAX_VALUE;
+
+	double minValue;
+	double maxValue;
+	double value;
+	double step;
+
+	int x;
+	int y;
+
+	int width;
+	int height;
+
+	int color;
+	int backgroundColor;
+
+	int fillType;
+
+	char* label;
+
+	// controls
+	double sensitivity;
+	int selected;
+
+	// events
+	void (*eMouseClick) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+	void (*eMouseMove) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+	void (*eMouseDblClick) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+	void (*eMouseDown) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+	void (*eMouseUp) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+
+	void (*eChange) (PluginControl* source, CTRL_PARAM paramA, CTRL_PARAM paramB);
+
+};
+			</code></pre>
+			
+			<table>
+				<tbody>
+					<tr>
+					<td><pre><code class = 'lang-c'>plugin</code></pre></td>
+					<td>Points to the plugin handler itself to provide easier acess.</td>
+					</tr>
+				
+					<tr>
+					<td><pre><code class = 'lang-c'>type</code></pre></td>
+					<td>Type of the control. Has to be one of the PluginControlType enumerated values.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>MIN_VALUE</code></pre></td>
+					<td>Mininum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>MAX_VALUE</code></pre></td>
+					<td>Maximum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>minValue</code></pre></td>
+					<td>Mininum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>maxValue</code></pre></td>
+					<td>Maximum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>value</code></pre></td>
+					<td>Mininum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>step</code></pre></td>
+					<td>Maximum value that control can ever represent.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>x</code></pre></td>
+					<td>The x coord of the controls left top corner according to the left top plugin corner.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>y</code></pre></td>
+					<td>The y coord of the controls left top corner according to the left top plugin corner.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>width</code></pre></td>
+					<td>The overall width of the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>height</code></pre></td>
+					<td>The overall height of the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>color</code></pre></td>
+					<td>Front color, mainly used for fonts. Expected is ARGB uint32_t value.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>backgroundColor</code></pre></td>
+					<td>Back color, mainly used for background. Expected is ARGB uint32_t value.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>fillType</code></pre></td>
+					<td>Defines how the background will be drawn. Has to be one of the PluginFillPattern enumerated values.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>label</code></pre></td>
+					<td>Null terminated string that represents the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>sensitivity</code></pre></td>
+					<td>Defines the sensitivity ceficient of the control, each control can interpret it in different way.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>selected</code></pre></td>
+					<td>Just another flag that has no general meaning, but individual control (for example toggle button) can use it.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eMouseClick</code></pre></td>
+					<td>Points to the function that will be called when mouse click at the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eMouseMove</code></pre></td>
+					<td>Points to the function that will be called when mouse moves over the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eMouseDblClick</code></pre></td>
+					<td>Points to the function that will be called when mouse double click at the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eMouseDown</code></pre></td>
+					<td>Points to the function that will be called when mouse double click at the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eMouseUp</code></pre></td>
+					<td>Points to the function that will be called when mouse double click at the control.</td>
+					</tr>
+					
+					<tr>
+					<td><pre><code class = 'lang-c'>*eChange</code></pre></td>
+					<td>Points to the function that will be called when mouse double click at the control.</td>
+					</tr>
+					
+				</tbody>
+			</table>
+	
+		<h3 id = 'plotinfo'>PlotInfo</h3>
+		
+				<pre><code class = 'lang-c'>
+struct PlotInfo {
+
+	int lenSamples;
+	int sampleRate;
+	int endIdx;
+	double* dataBuffer;
+	void* renderBuffer;
+
+};
+		</code></pre>
+		
+		<h3 id = 'plugincontroltype'>PluginControlType</h3>
+		
+		<pre><code class = 'lang-c'>
+typedef enum PluginControlType {
+
+	PCT_BACKGROUND,
+	PCT_KNOB,
+	PCT_STEP_KNOB,
+	PCT_SIGNAL_VIEWER,
+	PCT_FREQUENCY_VIEWER
+
+} PluginControlType;
+		</code></pre>
+		
+		<h3 id = 'pluginfillpattern'>PluginFillPattern</h3>
+		
+		<pre><code class = 'lang-c'>
+typedef enum PluginFillPattern {
+
+	PFP_SOLID_COLOR,
+	PFP_CHECKERBOARD,
+	PFP_DOTS,
+
+} PluginFillPattern;
+		</code></pre>
+		
+		<h3 id = 'ctrl_param'>CTRL_PARAM</h3>
+		
+		<pre><code class = 'lang-c'>
+typedef long long CTRL_PARAM;
+		</code></pre>
+		
+		</section>
+
+    </div>
+    
+</body>
+</html>
