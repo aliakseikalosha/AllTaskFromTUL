@@ -30,7 +30,7 @@ public:
         Mesh m;
         for (int x = 0; x < 10; ++x) {
             for (int z = 0; z < 10; ++z) {
-                sceneObject = new SceneObject(glm::vec3(x-5.0,1.0,z-5.0), glm::vec2(0,0));
+                sceneObject = new SceneObject(glm::vec3(x-5.0,z-5.0,-2), glm::vec2(0,0));
                 sceneObject->renderer = new MeshRenderer();
                 sceneObject->renderer->init(m, sceneObject->getPos());
                 objects.push_back(*sceneObject);
@@ -49,7 +49,7 @@ public:
         {
             if(obj.renderer != NULL)
             {
-                obj.renderer->render(projectionMatrix, viewMat, dt);
+                obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos());
             }
         }
     }

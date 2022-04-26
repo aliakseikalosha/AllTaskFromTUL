@@ -117,7 +117,7 @@ int main(void) {
                 height = 1;
             float ratio = static_cast<float>(width) / height;
 
-            glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.0f), ratio, 0.1f, 100.0f);
+            glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.0f), ratio, 0.1f, 10000.0f);
             //set uniform for shaders - projection matrix
             glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE,
                                glm::value_ptr(projectionMatrix));
@@ -132,12 +132,12 @@ int main(void) {
 
             game->Draw(projectionMatrix, dt);
         }
-        /*
+
         glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, vert.size(), GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);
-        */
+
         glGetError();
         // Swap front and back buffers
         glfwSwapBuffers(window);
