@@ -11,8 +11,6 @@ out VS_OUT
 
 void main()
 {
-    // Outputs the positions/coordinates of all vertices
     gl_Position = uProj_m * uV_m * uM_m * vec4(aPos, 1.0f);
-    //    gl_Position = uProj_m * uV_m *  vec4(aPos, 1.0f);
     vs_out.texcoord = aTex;
 }

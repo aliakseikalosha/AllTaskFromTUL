@@ -14,7 +14,7 @@ public:
     void ProcessInput(const glm::vec3 &move, const glm::vec2 &look, const float &dt) {
         float v = dt * speed;
         angle += look * dt;
-        auto f = forvard();
+        auto f = forward(true);
         auto r = glm::normalize(glm::cross(f, worldUp));
         pos += f * v * move.z +  r * v * move.x;
     }

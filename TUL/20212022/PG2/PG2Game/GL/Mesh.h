@@ -16,11 +16,11 @@ public:
     std::vector<Vertex> vertex;
     std::vector<unsigned int> index;
 
-    void loadFloor(glm::vec2 bottomLeft, float textureWidth) {
-        quadH(vertex, index, 1, bottomLeft, textureWidth);
+    void loadFloor(glm::vec2 bottomLeft, float textureWidth, float size) {
+        quadH(vertex, index, size, bottomLeft, textureWidth);
     }
 
-    void loadWall(glm::vec2 bottomLeft, float textureWidth){
-        toplessCube(vertex, index, 1, bottomLeft, textureWidth);
+    void loadWall(glm::vec2 bottomLeft, float textureWidth, float size){
+        toplessCube(vertex, index, size, bottomLeft, textureWidth);
     }
 };

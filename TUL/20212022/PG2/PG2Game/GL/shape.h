@@ -67,33 +67,59 @@ void quadH(std::vector<Vertex> &vert, std::vector<unsigned int> &ind, float a, g
     };
 
 
-    ind =
-            {
-                    // lower left triangle
-                    0, 2, 1,
-                    // upper right triangle
-                    2, 3, 1
-            };
+    ind = {
+            // lower left triangle
+            0, 2, 1,
+            // upper right triangle
+            2, 3, 1
+        };
 }
 
+Vertex combineVertex(float x, float y, float z, float textureX, float textureY){
+    return {glm::vec3 (x, y, z), glm::vec2 (textureX, textureY)};
+}
 
 
 void toplessCube(std::vector<Vertex> &vert, std::vector<unsigned int> &ind, int a, glm::vec2 bottomLeft, float textureA) {
     vert.clear();
     ind.clear();
     vert = {
-            {glm::vec3 (0, 0, 0), glm::vec2 (bottomLeft.x, bottomLeft.y)},
-            {glm::vec3 (a, 0, 0), glm::vec2 (bottomLeft.x + textureA, bottomLeft.y)},
-            {glm::vec3 ( 0, 0, a), glm::vec2 (bottomLeft.x, bottomLeft.y + textureA)},
-            {glm::vec3 (a, 0, a), glm::vec2 (bottomLeft.x + textureA, bottomLeft.y + textureA)},
+            combineVertex(0,a,0,bottomLeft.x, bottomLeft.y + textureA),
+            combineVertex(0,0,0,bottomLeft.x, bottomLeft.y),
+            combineVertex(a,a,0,bottomLeft.x + textureA, bottomLeft.y + textureA),
+            combineVertex(a,0,0,bottomLeft.x + textureA, bottomLeft.y),
+
+            combineVertex(a,a,a,bottomLeft.x, bottomLeft.y + textureA),
+            combineVertex(a,0,a,bottomLeft.x, bottomLeft.y),
+            combineVertex(0,a,a,bottomLeft.x + textureA, bottomLeft.y + textureA),
+            combineVertex(0,0,a,bottomLeft.x + textureA, bottomLeft.y),
     };
+    ind={
+            1,0,3,
+            0,2,3,
 
+            3,2,5,
+            2,4,5,
 
-    ind =
-            {
-                    // lower left triangle
-                    0, 2, 1,
-                    // upper right triangle
-                    2, 3, 1
-            };
+            5,4,7,
+            4,6,7,
+
+            7,6,1,
+            6,0,1
+    };
+}
+
+void customQuadV(std::vector<Vertex> &vert, std::vector<unsigned int> &ind,float height, float  width, glm::vec2 bottomLeft, float textureHeight, float  textureWidth){
+    vert.clear();
+    ind.clear();
+    vert = {
+            combineVertex(0,0,0,bottomLeft.x, bottomLeft.y),
+            combineVertex(width,0,0,bottomLeft.x + textureWidth, bottomLeft.y),
+            combineVertex(0,height,0,bottomLeft.x, bottomLeft.y + textureHeight),
+            combineVertex(width,height,0,bottomLeft.x + textureWidth, bottomLeft.y + textureHeight),
+    };
+    ind={
+            0,2,1,
+            2,3,1,
+    };
 }

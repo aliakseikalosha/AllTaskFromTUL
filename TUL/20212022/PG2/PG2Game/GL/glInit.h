@@ -2,6 +2,7 @@
 // Created by Aliaksei Kalosha on 08.03.2022.
 //
 
+#pragma once
 #include <cstdio>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -68,9 +69,10 @@ GLFWwindow *init() {
     glfwSetKeyCallback(window, keyCallback);
 
     // OpenGL initializations start from here
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClearColor(0.1f, 0.05f, 0.06f, 1.0f);
     gl_check_error();
     glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+    glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     return window;
 }
 

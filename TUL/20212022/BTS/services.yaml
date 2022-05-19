@@ -1,0 +1,53 @@
+# services.yaml
+#service: python_script.show_phone_battery
+#target:
+#   light: light.0x04cd15fffe8f1be8
+#   battery_level: sensor.sony_xz3_battery_level
+show_phone_battery:
+  name: Show phone battery on LED
+  description: Show phone battery on LED
+  fields:
+    light:
+      description: The light that will be used.
+      example: light.ALED
+    battery_level:
+      description: Phone battery
+      example: sensor.sony_xz3_battery_level
+      
+#service: python_script.show_temperature_difference
+#target:
+#   light: light.0x04cd15fffe8f1be8
+#   temp: sensor.0x00158d0007e5033d_temperature
+#   outside: sensor.openweathermap_forecast_temperature
+show_temperature_difference:
+  name: Show temperature difference
+  description: Show temperature difference inside outside
+  fields:
+    light:
+      description: The light that will be used.
+      example: light.ALED
+    temp: 
+      description: indoor temperature
+      example: sensor.0x00158d0007e5033d_temperature
+    outside: 
+      description: outdoor temperature
+      example: sensor.openweathermap_forecast_temperature
+      
+#service: python_script.set_light_on
+#target:
+#   light: light.0x04cd15fffe8f1be8
+#   color:  [255, 0, 0]
+#   brightness: 128
+set_light_on:
+  name: Set LED ON
+  description: Turn LED on with color and brightness
+  fields:
+    light:
+      description: The light that will be used.
+      example: light.ALED
+    color: 
+      description: color in RGB 0-255
+      example: [255,255,255]
+    brightness: 
+      description: LED brightness 0-255
+      example: 128

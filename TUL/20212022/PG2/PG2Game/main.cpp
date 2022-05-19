@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <stdio.h>
 
@@ -22,7 +21,6 @@ void inputInit(GLFWwindow *window);
 // For includes related to OpenGL, make sure their are included after glfw3.h
 #include <OpenGL/gl3.h>
 #include "glm/gtc/type_ptr.hpp"
-#include "GL/shape.h"
 #include "GL/input.h"
 #include "Game/Game.h"
 
@@ -59,7 +57,7 @@ int main(void) {
         updateInput(window);
 
         // OpenGL Rendering related code
-        glClear(GL_COLOR_BUFFER_BIT);
+
         glfwGetWindowSize(window, &width, &height);
         if (height <= 0)
             height = 1;
@@ -68,6 +66,11 @@ int main(void) {
         glm::mat4 projectionMatrix = glm::perspective(glm::radians(60.0f), ratio, 0.1f, 10000.0f);
 
         game->Update(dt);
+
+        //glEnable(GL_CULL_FACE);
+        glEnable(GL_DEPTH_TEST);
+        glDepthFunc(GL_LESS);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         game->Draw(projectionMatrix, dt);
 
         glGetError();

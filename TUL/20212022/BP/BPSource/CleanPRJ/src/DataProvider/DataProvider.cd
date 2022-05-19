@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataGrabber.DataProvider.DataProviderModel" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="2.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AgUEQgBAAoVAQEJAAgQAQJAQgAgAAAAABCAiCAcAAAA=</HashCode>
+      <FileName>src\DataProvider\DataProviderModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="DataGrabber.DataProvider.DataProviderPage">
+    <Position X="3" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>LARBAAACBQAAAAAggAARAAAGAAAqEAAgAgAAAAAEpAA=</HashCode>
+      <FileName>src\DataProvider\DataProviderPage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

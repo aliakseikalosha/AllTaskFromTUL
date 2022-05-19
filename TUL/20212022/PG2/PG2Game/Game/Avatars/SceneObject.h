@@ -5,16 +5,17 @@
 #include <glm/vec3.hpp>
 #include <glm/vec2.hpp>
 #include <glm/geometric.hpp>
-#include "../MeshRenderer.h"
+#include "../Renderer/MeshRenderer.h"
 
 class SceneObject{
 protected:
     glm::vec3 pos;
     glm::vec2 angle;
 public:
-    glm::vec3 getPos();
+    glm::vec3 virtual getPos();
     glm::vec2 getAngle();
-    glm::vec3 forvard();
+    glm::vec3 forward();
+    glm::vec3 forward(bool blockVerticalMovement);
     MeshRenderer *renderer;
 
     SceneObject();
@@ -40,10 +41,20 @@ glm::vec2 SceneObject::getAngle() {
     return angle;
 }
 
-glm::vec3 SceneObject::forvard() {
+glm::vec3 SceneObject::forward() {
     return glm::normalize(glm::vec3(
             cos(angle.x) * cos(angle.y),
             sin(angle.y),
             sin(angle.x) * cos(angle.y)
     ));
+}
+glm::vec3 SceneObject::forward(bool blockVerticalMovement) {
+    if(blockVerticalMovement){
+        return glm::normalize(glm::vec3(
+                cos(angle.x) * cos(angle.y),
+                0,
+                sin(angle.x) * cos(angle.y)
+        ));
+    }
+    return forward();
 }

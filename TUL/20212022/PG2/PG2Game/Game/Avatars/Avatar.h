@@ -10,7 +10,7 @@
 #include <iostream>
 #include "SceneObject.h"
 
-class Avatar: public SceneObject {
+class Avatar : public SceneObject {
 public:
     Avatar();
 
@@ -19,7 +19,8 @@ public:
     ~Avatar();
 
     virtual void printState() {
-        std::cout << "pos : [" << pos.x << "," << pos.y << "," << pos.x << "]\n" << "angle : [" << angle.x << "," << angle.y << "]\n" << std::endl;
+        std::cout << "pos : [" << pos.x << "," << pos.y << "," << pos.x << "]\n" << "angle : [" << angle.x << ","
+                  << angle.y << "]\n" << std::endl;
     }
 };
 
@@ -30,7 +31,8 @@ Avatar::Avatar(const glm::vec3 &pos, const glm::vec2 &angle) {
 
 Avatar::Avatar() {
     this->pos = glm::vec3();
-    this->angle = glm::vec2();}
+    this->angle = glm::vec2();
+}
 
 Avatar::~Avatar() {
 

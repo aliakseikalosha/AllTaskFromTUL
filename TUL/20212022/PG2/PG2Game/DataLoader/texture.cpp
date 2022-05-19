@@ -42,7 +42,7 @@ GLuint tex_gen(cv::Mat& image)
 	//
 	//// Try to use compressed textures
 	//
-	if (true)//glewIsSupported("GL_ARB_texture_compression"))
+	if (false)//glewIsSupported("GL_ARB_texture_compression"))
 	{
 		GLint num_compressed_format;
 
@@ -77,17 +77,17 @@ GLuint tex_gen(cv::Mat& image)
 		{
 			std::cout << "Wtf?" << std::endl;
 		}
-	}
-	else // compression not supported
-	{
-		// loadFloor uncompressed
-		if (transparent)
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.cols, image.rows, 0, GL_BGRA, GL_UNSIGNED_BYTE, image.data);
-		else
-			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.cols, image.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, image.data);
-	}
+	}else // compression not supported
+    {
+        // load uncompressed
+        if (transparent)
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.cols, image.rows, 0, GL_BGRA, GL_UNSIGNED_BYTE, image.data);
+        else
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, image.cols, image.rows, 0, GL_BGR, GL_UNSIGNED_BYTE, image.data);
+    }
 
-	// Texture filters - pick one
+
+    // Texture filters - pick one
 
 	// nearest neighbor - ugly & fast 
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
