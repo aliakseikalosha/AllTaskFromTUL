@@ -11,9 +11,7 @@ protected:
 public:
     Actor(const glm::vec3 &pos, const glm::vec2 &angle) : SceneObject(pos, angle) {}
 
-    void virtual update(const float &dt){
-
-    };
+    void virtual update(const float &dt){}
 };
 
 class Flask : public Actor{
@@ -31,7 +29,6 @@ public:
 
     void  update(const float &dt) override{
         now+=dt;
-
     }
 };
 

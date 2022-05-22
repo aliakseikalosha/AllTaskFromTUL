@@ -34,7 +34,7 @@ public:
     Player *player;
     Camera *camera;
     std::vector<SceneObject> objects;
-    std::vector<Actor> actors;
+    std::vector<Flask> actors;
     std::vector<Light> lights;
     glm::mat4 viewMat;
 
@@ -79,38 +79,38 @@ public:
     }
 
     void placeLight(const glm::vec3 &pos, const glm::vec4 color) {
-
         Light *l = new Light(pos, glm::vec2(0, 0), color);
         lights.push_back(*l);
     }
 
     void placeFlask(const glm::vec3 pos, int id, GLuint textureId, GLuint normalId) {
-            Actor a = Actor(pos, glm::vec2(0,0));
+            Flask a = Flask(pos, glm::vec2(0,0));
             a.renderer = new ActorRenderer();
-            Mesh* m = new Mesh();
-            customQuadV(m->vertex, m->index,0.5,0.5,flaskSprites[id].bottomLeft,flaskSprites[id].size.x, flaskSprites[id].size.y);
-            a.renderer->init(*m, "../resources/shader/textureBilboard.vert", "../resources/shader/textureBilboard.frag", textureId, normalId);
+            Mesh m;
+            customQuadV(m.vertex, m.index,0.5,0.5,flaskSprites[id].bottomLeft,flaskSprites[id].size.x, flaskSprites[id].size.y);
+            a.renderer->init(m, "../resources/shader/textureBilboard.vert", "../resources/shader/textureBilboard.frag", textureId, normalId);
             actors.push_back(a);
     }
 
     void placeWall(const glm::vec3 &pos, int id, GLuint textureId, GLuint normalId) {
-        Mesh *m;
-        SceneObject *sceneObject = new SceneObject(pos, glm::vec2(0, 0));
+        Mesh m;
+        m.loadOBJ("../resources/model/cube_triangles_normals_tex.obj", wallSprites[id].bottomLeft, wallSprites[id].size.x,  WORLD_CELL_SIZE);
+
+        SceneObject *sceneObject = new SceneObject(pos + glm::vec3(0,0,1.0) * WORLD_CELL_SIZE, glm::vec2(0, 0));
         sceneObject->renderer = new MeshRenderer();
-        m = new Mesh();
-        m->loadWall(wallSprites[id].bottomLeft, wallSprites[id].size.x, WORLD_CELL_SIZE);
-        sceneObject->renderer->init(*m, "../resources/shader/texture.vert", "../resources/shader/texture.frag",
+        sceneObject->renderer->init(m, "../resources/shader/texture.vert", "../resources/shader/texture.frag",
                                     textureId, normalId);
         objects.push_back(*sceneObject);
     }
 
     void placeFloor(const glm::vec3 &pos, int id, GLuint textureId, GLuint normalId) {
-        Mesh *m;
+        Mesh m;
         SceneObject *sceneObject = new SceneObject(pos, glm::vec2(0, 0));
         sceneObject->renderer = new MeshRenderer();
-        m = new Mesh();
-        m->loadFloor(floorSprites[id].bottomLeft, floorSprites[id].size.x, WORLD_CELL_SIZE);
-        sceneObject->renderer->init(*m, "../resources/shader/texture.vert", "../resources/shader/texture.frag",
+        //m.loadOBJ("../resources/model/cube_triangles_normals_tex.obj", floorSprites[id].bottomLeft, floorSprites[id].size.x,  WORLD_CELL_SIZE);
+
+        m.loadFloor(floorSprites[id].bottomLeft, floorSprites[id].size.x, WORLD_CELL_SIZE);
+        sceneObject->renderer->init(m, "../resources/shader/texture.vert", "../resources/shader/texture.frag",
                                     textureId, normalId);
         objects.push_back(*sceneObject);
     }
@@ -125,7 +125,7 @@ public:
         for (int x = 0; x <= worldSize; ++x) {
             for (int z = 0; z <= worldSize; ++z) {
                 pos = glm::vec3((x - worldSize / 2.0) * WORLD_CELL_SIZE, -1, (z - worldSize / 2.0) * WORLD_CELL_SIZE);
-                if (x == 0 || x == worldSize || z == worldSize || z == worldSize - 1) {
+                if (x == 0 || x == worldSize || z == worldSize || z == 0) {
                     placeWall(pos, (x + z) % 9, textureId, normalId);
                 } else {
                     placeFloor(pos, (x/2 + z/4) % 8, textureId, normalId);
@@ -133,10 +133,10 @@ public:
             }
         }
         //light
-        placeLight(glm::vec3(0.0, 0.0, 0.0), glm::vec4(0, 0, 0, 0));
-        placeLight(glm::vec3(0.0, -0.84, 0.0), glm::vec4(1, 0, 0, 1));
-        placeLight(glm::vec3(1.0, -0.84, 0.0), glm::vec4(0, 1, 0, 1));
-        placeLight(glm::vec3(2.0, -0.84, 0.0), glm::vec4(0.0, 0, 1, 1));
+        placeLight(glm::vec3(0.0, 0, 0.0), glm::vec4(1.0, 1.0, 1.0, 1));
+        placeLight(glm::vec3(0.0, 0, 0.0), glm::vec4(1.0, 0, 1.0, 1));
+        placeLight(glm::vec3(5.0, 0, 0.0), glm::vec4(0.0, 1.0, 0, 1));
+        placeLight(glm::vec3(0.0, 0, 5.0), glm::vec4(0.0, 0, 1.0, 1));
         //objects
         placeFlask(glm::vec3(3.0, -0.5, 0.0), 3, textureId, normalId);
         placeFlask(glm::vec3(0.0, -0.5, 0.0), 0, textureId, normalId);
@@ -175,9 +175,17 @@ public:
 
     std::vector<LightData> getLightsCloseTo(const glm::vec3 pos) {
         std::vector<LightData> l;
+
         for (auto &light: lights) {
-            l.push_back(light.getData());
+            if(glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE){
+                l.push_back(light.getData());
+            }
         }
+
+        std::sort(l.begin(), l.end(),[pos](LightData &a, LightData &b)-> bool{
+            return glm::length(pos - a.pos) < glm::length(pos - b.pos);
+        });
+
         return l;
     }
 };
@@ -188,7 +196,7 @@ void Game::DrawTransparent(const glm::mat4 &projectionMatrix, const float &dt) {
     glm::vec3 playerPos = player->getPos();
     sort( actors.begin(), actors.end(), [playerPos](Actor &a,  Actor &b) -> bool
      {
-         return abs(glm::length(playerPos - a.getPos())) > abs(glm::length(playerPos - b.getPos()));
+         return glm::length(playerPos - a.getPos()) > glm::length(playerPos - b.getPos());
      } );
 
 

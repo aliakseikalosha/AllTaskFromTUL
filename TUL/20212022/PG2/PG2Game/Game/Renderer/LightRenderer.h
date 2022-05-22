@@ -76,6 +76,7 @@ public:
 
     void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt, const glm::vec3 &pos, std::vector<LightData> lights) override{
         now+=dt;
+        glUseProgram(shaderProgram);
         //set uniform for shaders - projection matrix
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uV_m"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
@@ -85,7 +86,6 @@ public:
         glUniform4fv(glGetUniformLocation(shaderProgram, "color"), 1, glm::value_ptr(color));
         glUniform3fv(glGetUniformLocation(shaderProgram, "worldPos"), 1, glm::value_ptr(pos));
 
-        glUseProgram(shaderProgram);
         glBindVertexArray(VAO);
         glDrawElements(GL_TRIANGLES, vertSize, GL_UNSIGNED_INT, 0);
         glBindVertexArray(0);

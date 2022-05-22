@@ -6,9 +6,11 @@
 #include <glm/ext/matrix_float4x4.hpp>
 #include "../../GL/Mesh.h"
 #include "../Data/LightData.h"
+#define MAX_LIGHT_COUNT (10)
 
 class MeshRenderer{
 protected:
+    glm::vec4  ambientLight = glm::vec4 ();
     GLuint textureId;
     GLuint normalId;
     unsigned int shaderProgram;
@@ -39,6 +41,9 @@ public:
 
         glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(0 + offsetof(Vertex, texture)));
         glEnableVertexAttribArray(1);
+
+        glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(0 + offsetof(Vertex, normal)));
+        glEnableVertexAttribArray(2);
         //Element data and buffer
         glGenBuffers(1, &EBO);
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
@@ -75,15 +80,41 @@ public:
         glUniform1i(glGetUniformLocation(shaderProgram, "norm"), 1);
     }
 
-    virtual void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt,const glm::vec3 &pos, std::vector<LightData> lights){
-        now+=dt;
+    virtual void setLight(std::vector<LightData> &lights, const glm::vec3 &pos){
+
+        glm::vec3 lightPos[MAX_LIGHT_COUNT];
+        glm::vec4 lightColor[MAX_LIGHT_COUNT];
+        GLint count = 0;
+        for (auto &l:lights) {
+            if(count>=MAX_LIGHT_COUNT){
+                continue;
+            }
+            lightPos[count] = l.pos - pos;
+            lightColor[count] = l.color;
+            count++;
+        }
+        count = glm::min(count, MAX_LIGHT_COUNT);
+
+        glUniform1i(glGetUniformLocation(shaderProgram, "lightCount"), count);
+        glUniform3fv(glGetUniformLocation(shaderProgram, "lightPos"), count, glm::value_ptr(lightPos[0]));
+        glUniform4fv(glGetUniformLocation(shaderProgram, "lightColor"), count, glm::value_ptr(lightColor[0]));
+    }
+
+    virtual void setMatrix(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix,const glm::vec3 &pos){
         //set uniform for shaders - projection matrix
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uV_m"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
         glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), pos);
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uM_m"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
+    }
+
+    virtual void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt,const glm::vec3 &pos, std::vector<LightData> lights){
+        now+=dt;
 
         glUseProgram(shaderProgram);
+        setMatrix(projectionMatrix, viewMatrix, pos);
+        setLight(lights, pos);
+
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textureId);
         glActiveTexture(GL_TEXTURE1);
