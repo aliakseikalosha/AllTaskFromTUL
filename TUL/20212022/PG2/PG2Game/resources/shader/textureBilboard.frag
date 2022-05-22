@@ -21,9 +21,11 @@ vec4 calcLight(){
     vec4 diffuse = vec4(0.0);
 
     for(int i = 0; i < lightCount; i++){
-
+        vec3 normal = normalize(fs_in.normal);
+        /*
         vec3 normal = texture(norm, fs_in.texcoord).xyz;
         normal = normalize(normal * 2.0 - 1.0);
+        */
         vec3 lightDir = (normalize(lightPos[i] - fs_in.pos));
         float diff = max(dot(normal, lightDir), 0.0);
         diffuse += diff * lightColor[i];// * lightColor[i].a;

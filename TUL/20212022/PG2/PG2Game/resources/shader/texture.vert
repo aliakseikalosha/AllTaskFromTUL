@@ -17,6 +17,6 @@ void main()
 {
     gl_Position = uProj_m * uV_m * uM_m * vec4(aPos, 1.0f);
     vs_out.texcoord = aTex;
-    vs_out.pos = aPos;
-    vs_out.normal = aNormal;
+    vs_out.pos = mat3(uV_m * uM_m) * aPos;
+    vs_out.normal = mat3(uV_m * uM_m) * aNormal;
 }

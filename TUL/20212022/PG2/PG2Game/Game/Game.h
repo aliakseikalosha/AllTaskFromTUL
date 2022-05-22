@@ -68,7 +68,7 @@ public:
                                   SpriteData(glm::vec2(3 * TILE, 7 * TILE), ONE_TILE_SIZE),};
 
     void Init() {
-        player = new Player(glm::vec3(0, 0, 0), glm::vec2(0, 0), 5);
+        player = new Player(glm::vec3(0.0, 0.0, 0.0), glm::vec2(0, 0), 5);
         camera = new Camera(glm::vec3(0, 1, -5), glm::vec2(0, 0));
         loadLevel("../resources/map/lvl01.txt");
     }
@@ -114,11 +114,36 @@ public:
     }
 
     void loadLevel(const char *levelPath) {
-        std::ifstream t(levelPath);
-        std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
         GLuint textureId = textureInit("../resources/texture/0x72_DungeonTilesetII_v1.4.png", false);
         GLuint normalId = textureInit("../resources/texture/normalTest.png", false);
         glm::vec3 pos;
+
+/*
+        std::ifstream t(levelPath);
+        std::string str((std::istreambuf_iterator<char>(t)), std::istreambuf_iterator<char>());
+        std::stringstream ss(str.c_str());
+        std::string to;
+
+        for( int z = 0;std::getline(ss,to,'\n');z++){
+            for (int x = 0; x < to.length(); ++x) {
+                pos = glm::vec3(x * WORLD_CELL_SIZE, -1, z * WORLD_CELL_SIZE);
+                if (to[x] == '#' ) {
+                    placeWall(pos, (x + z) % 9, textureId, normalId);
+                    placeWall(pos + glm::vec3(0, 1, 0) * WORLD_CELL_SIZE, (x + z) % 9, textureId, normalId);
+                } else {
+                    placeFloor(pos, (x / 2 + z / 4) % 8, textureId, normalId);
+                    if(to[x] == 'f'){
+
+                        placeLight( pos + glm::vec3(0.45, 1.5, 0.45), glm::vec4(1.0, 1.0, 1.0, 1));
+                        placeFlask( pos + glm::vec3(0.5, 1, 0.5), 3, textureId, normalId);
+                    }
+                    if(to[x] == 'S'){
+                        player = new Player(pos + glm::vec3(0.5, 1, 0.5), glm::vec2(0, 0), 5);
+                    }
+                }
+            }
+        }
+*/
         float worldSize = 10;
         for (int x = 0; x <= worldSize; ++x) {
             for (int z = 0; z <= worldSize; ++z) {
@@ -133,7 +158,7 @@ public:
         }
         //light
         placeLight(glm::vec3(0.0, 1, 0.0), glm::vec4(1.0, 1.0, 1.0, 1));
-        placeLight(glm::vec3(2.0, 1, 2.0), glm::vec4(1.0, 0.0, 1.0, 1));
+        placeLight(glm::vec3(2.0, 1, 2.0), glm::vec4(1.0, 0.0, 0.0, 1));
         placeLight(glm::vec3(2.0, 1, 0.0), glm::vec4(0.0, 1.0, 0.0, 1));
         placeLight(glm::vec3(0.0, 1, 2.0), glm::vec4(0.0, 0.0, 1.0, 1));
         //objects
@@ -141,6 +166,7 @@ public:
         placeFlask(glm::vec3(0.0, 0.2, 0.0), 0, textureId, normalId);
         placeFlask(glm::vec3(1.0, 0.2, 0.0), 1, textureId, normalId);
         placeFlask(glm::vec3(2.0, 0.2, 0.0), 2, textureId, normalId);
+
     }
 
     void Update(const float &dt) {
@@ -176,7 +202,7 @@ public:
         std::vector<LightData> l;
 
         for (auto &light: lights) {
-            if (glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE) {
+            if (true){//glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE) {
                 l.push_back(light.getData());
             }
         }

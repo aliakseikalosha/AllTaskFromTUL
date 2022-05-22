@@ -22,7 +22,7 @@ vec4 calcLight(){
 
     for(int i = 0; i < lightCount; i++){
         vec3 normal = normalize(fs_in.normal);
-        normal =  normalize(normal * 2.0 - 1.0);
+        //normal =  normalize(normal * 2.0 - 1.0);
         vec3 lightDir = abs(normalize(lightPos[i] - fs_in.pos));
         float diff = max(dot(normal, lightDir), 0.0);
         diffuse += diff * lightColor[i];
