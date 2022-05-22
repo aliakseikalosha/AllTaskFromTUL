@@ -176,7 +176,7 @@ public:
         std::vector<LightData> l;
 
         for (auto &light: lights) {
-            if (true){//glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE) {
+            if (glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE) {
                 l.push_back(light.getData());
             }
         }

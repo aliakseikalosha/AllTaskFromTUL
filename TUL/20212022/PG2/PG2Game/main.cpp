@@ -17,7 +17,6 @@
 void inputInit(GLFWwindow *window);
 
 #include <GLFW/glfw3.h>
-
 #include "glm/gtc/type_ptr.hpp"
 #include "GL/input.h"
 #include "Game/Game.h"
