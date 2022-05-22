@@ -15,6 +15,7 @@ void main()
     particleCenter_wordspace
     + CameraRight_worldspace * aPos.x
     + CameraUp_worldspace * aPos.y;
+    vertexPosition_worldspace.y-=1;
 
 
     // Output position of the vertex

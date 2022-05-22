@@ -14,15 +14,16 @@
 #include "Avatars/Actor.h"
 #include "Data/SpriteData.h"
 #include "Renderer/ActorRenderer.h"
+#include "Config.h"
 
-#define WORLD_CELL_SIZE (2.0f)
-#define TILE (16.0/512.0)
 #define ONE_TILE_SIZE (glm::vec2(TILE, TILE))
 
 class Game {
 protected:
     glm::vec3 offset = glm::vec3(0, 0, 0);
+
     void DrawTransparent(const glm::mat4 &projectionMatrix, const float &dt);
+
 public:
     Game() { Init(); }
 
@@ -38,39 +39,33 @@ public:
     std::vector<Light> lights;
     glm::mat4 viewMat;
 
-    SpriteData flaskSprites[4] = {
-            SpriteData(glm::vec2(18 * TILE + TILE * 0, 14*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(18 * TILE + TILE * 1, 14*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(18 * TILE + TILE * 2, 14*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(18 * TILE + TILE * 3, 14*TILE), ONE_TILE_SIZE),
-    };
+    SpriteData flaskSprites[4] = {SpriteData(glm::vec2(18 * TILE + TILE * 1, 15 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(18 * TILE + TILE * 2, 15 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(18 * TILE + TILE * 3, 15 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(18 * TILE + TILE * 4, 15 * TILE), ONE_TILE_SIZE),};
 
-    SpriteData wallSprites[9] ={
-            SpriteData(glm::vec2(1*TILE, 1*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 1*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(3*TILE, 1*TILE), ONE_TILE_SIZE),
+    SpriteData wallSprites[9] = {SpriteData(glm::vec2(2 * TILE, 2 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(3 * TILE, 2 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(4 * TILE, 2 * TILE), ONE_TILE_SIZE),
 
-            SpriteData(glm::vec2(1*TILE, 2*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 2*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(3*TILE, 2*TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(2 * TILE, 3 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(3 * TILE, 3 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(4 * TILE, 3 * TILE), ONE_TILE_SIZE),
 
-            SpriteData(glm::vec2(1*TILE, 3*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 3*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(3*TILE, 3*TILE), ONE_TILE_SIZE),
-    };
+                                 SpriteData(glm::vec2(2 * TILE, 4 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(3 * TILE, 4 * TILE), ONE_TILE_SIZE),
+                                 SpriteData(glm::vec2(4 * TILE, 4 * TILE), ONE_TILE_SIZE),};
 
-    SpriteData floorSprites[8] = {
-            SpriteData(glm::vec2(1*TILE, 4*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 4*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(3*TILE, 4*TILE), ONE_TILE_SIZE),
+    SpriteData floorSprites[8] = {SpriteData(glm::vec2(2 * TILE, 5 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(3 * TILE, 5 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(4 * TILE, 5 * TILE), ONE_TILE_SIZE),
 
-            SpriteData(glm::vec2(1*TILE, 5*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 5*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(3*TILE, 5*TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(2 * TILE, 6 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(3 * TILE, 6 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(4 * TILE, 6 * TILE), ONE_TILE_SIZE),
 
-            SpriteData(glm::vec2(1*TILE, 6*TILE), ONE_TILE_SIZE),
-            SpriteData(glm::vec2(2*TILE, 6*TILE), ONE_TILE_SIZE),
-    };
+                                  SpriteData(glm::vec2(2 * TILE, 7 * TILE), ONE_TILE_SIZE),
+                                  SpriteData(glm::vec2(3 * TILE, 7 * TILE), ONE_TILE_SIZE),};
 
     void Init() {
         player = new Player(glm::vec3(0, 0, 0), glm::vec2(0, 0), 5);
@@ -84,19 +79,22 @@ public:
     }
 
     void placeFlask(const glm::vec3 pos, int id, GLuint textureId, GLuint normalId) {
-            Flask a = Flask(pos, glm::vec2(0,0));
-            a.renderer = new ActorRenderer();
-            Mesh m;
-            customQuadV(m.vertex, m.index,0.5,0.5,flaskSprites[id].bottomLeft,flaskSprites[id].size.x, flaskSprites[id].size.y);
-            a.renderer->init(m, "../resources/shader/textureBilboard.vert", "../resources/shader/textureBilboard.frag", textureId, normalId);
-            actors.push_back(a);
+        Flask a = Flask(pos, glm::vec2(0, 0));
+        a.renderer = new ActorRenderer();
+        Mesh m;
+        customQuadV(m.vertex, m.index, 0.5, 0.5, flaskSprites[id].bottomLeft, flaskSprites[id].size.x,
+                    flaskSprites[id].size.y);
+        a.renderer->init(m, "../resources/shader/textureBilboard.vert", "../resources/shader/textureBilboard.frag",
+                         textureId, normalId);
+        actors.push_back(a);
     }
 
     void placeWall(const glm::vec3 &pos, int id, GLuint textureId, GLuint normalId) {
         Mesh m;
-        m.loadOBJ("../resources/model/cube_triangles_normals_tex.obj", wallSprites[id].bottomLeft, wallSprites[id].size.x,  WORLD_CELL_SIZE);
+        m.loadOBJ("../resources/model/cube_triangles_normals_tex.obj", wallSprites[id].bottomLeft,
+                  wallSprites[id].size.x, WORLD_CELL_SIZE);
 
-        SceneObject *sceneObject = new SceneObject(pos + glm::vec3(0,0,1.0) * WORLD_CELL_SIZE, glm::vec2(0, 0));
+        SceneObject *sceneObject = new SceneObject(pos + glm::vec3(0, 0, 1.0) * WORLD_CELL_SIZE, glm::vec2(0, 0));
         sceneObject->renderer = new MeshRenderer();
         sceneObject->renderer->init(m, "../resources/shader/texture.vert", "../resources/shader/texture.frag",
                                     textureId, normalId);
@@ -127,21 +125,22 @@ public:
                 pos = glm::vec3((x - worldSize / 2.0) * WORLD_CELL_SIZE, -1, (z - worldSize / 2.0) * WORLD_CELL_SIZE);
                 if (x == 0 || x == worldSize || z == worldSize || z == 0) {
                     placeWall(pos, (x + z) % 9, textureId, normalId);
+                    placeWall(pos + glm::vec3(0, 1, 0) * WORLD_CELL_SIZE, (x + z) % 9, textureId, normalId);
                 } else {
-                    placeFloor(pos, (x/2 + z/4) % 8, textureId, normalId);
+                    placeFloor(pos, (x / 2 + z / 4) % 8, textureId, normalId);
                 }
             }
         }
         //light
-        placeLight(glm::vec3(0.0, 0, 0.0), glm::vec4(1.0, 1.0, 1.0, 1));
-        placeLight(glm::vec3(0.0, 0, 0.0), glm::vec4(1.0, 0, 1.0, 1));
-        placeLight(glm::vec3(5.0, 0, 0.0), glm::vec4(0.0, 1.0, 0, 1));
-        placeLight(glm::vec3(0.0, 0, 5.0), glm::vec4(0.0, 0, 1.0, 1));
+        placeLight(glm::vec3(0.0, 1, 0.0), glm::vec4(1.0, 1.0, 1.0, 1));
+        placeLight(glm::vec3(2.0, 1, 2.0), glm::vec4(1.0, 0.0, 1.0, 1));
+        placeLight(glm::vec3(2.0, 1, 0.0), glm::vec4(0.0, 1.0, 0.0, 1));
+        placeLight(glm::vec3(0.0, 1, 2.0), glm::vec4(0.0, 0.0, 1.0, 1));
         //objects
-        placeFlask(glm::vec3(3.0, -0.5, 0.0), 3, textureId, normalId);
-        placeFlask(glm::vec3(0.0, -0.5, 0.0), 0, textureId, normalId);
-        placeFlask(glm::vec3(1.0, -0.5, 0.0), 1, textureId, normalId);
-        placeFlask(glm::vec3(2.0, -0.5, 0.0), 2, textureId, normalId);
+        placeFlask(glm::vec3(3.0, 0.2, 0.0), 3, textureId, normalId);
+        placeFlask(glm::vec3(0.0, 0.2, 0.0), 0, textureId, normalId);
+        placeFlask(glm::vec3(1.0, 0.2, 0.0), 1, textureId, normalId);
+        placeFlask(glm::vec3(2.0, 0.2, 0.0), 2, textureId, normalId);
     }
 
     void Update(const float &dt) {
@@ -177,12 +176,12 @@ public:
         std::vector<LightData> l;
 
         for (auto &light: lights) {
-            if(glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE){
+            if (true){//glm::length(pos - light.getPos()) < 2.5 * WORLD_CELL_SIZE) {
                 l.push_back(light.getData());
             }
         }
 
-        std::sort(l.begin(), l.end(),[pos](LightData &a, LightData &b)-> bool{
+        std::sort(l.begin(), l.end(), [pos](LightData &a, LightData &b) -> bool {
             return glm::length(pos - a.pos) < glm::length(pos - b.pos);
         });
 
@@ -194,10 +193,9 @@ void Game::DrawTransparent(const glm::mat4 &projectionMatrix, const float &dt) {
     glEnable(GL_BLEND);
     glDepthMask(GL_FALSE);
     glm::vec3 playerPos = player->getPos();
-    sort( actors.begin(), actors.end(), [playerPos](Actor &a,  Actor &b) -> bool
-     {
-         return glm::length(playerPos - a.getPos()) > glm::length(playerPos - b.getPos());
-     } );
+    sort(actors.begin(), actors.end(), [playerPos](Actor &a, Actor &b) -> bool {
+        return glm::length(playerPos - a.getPos()) > glm::length(playerPos - b.getPos());
+    });
 
 
     for (auto &obj: actors) {

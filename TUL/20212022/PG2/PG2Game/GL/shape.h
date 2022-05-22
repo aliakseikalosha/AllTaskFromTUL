@@ -16,9 +16,9 @@ void quadH(std::vector<Vertex> &vert, std::vector<unsigned int> &ind, float a, g
     ind.clear();
     vert = {
             combineVertex(0,0,0,bottomLeft.x, bottomLeft.y, 0,1,0),
-            combineVertex(a,0,0,bottomLeft.x + textureA, bottomLeft.y, 0,1,0),
-            combineVertex(0,0,a,bottomLeft.x, bottomLeft.y + textureA, 0,1,0),
-            combineVertex(a,0,a,bottomLeft.x + textureA, bottomLeft.y + textureA, 0,1,0),
+            combineVertex(a,0,0,bottomLeft.x - textureA, bottomLeft.y, 0,1,0),
+            combineVertex(0,0,a,bottomLeft.x, bottomLeft.y - textureA, 0,1,0),
+            combineVertex(a,0,a,bottomLeft.x - textureA, bottomLeft.y - textureA, 0,1,0),
     };
 
 
@@ -35,9 +35,9 @@ void customQuadV(std::vector<Vertex> &vert, std::vector<unsigned int> &ind,float
     ind.clear();
     vert = {
             combineVertex(0,0,0,bottomLeft.x, bottomLeft.y, 0,0,-1),
-            combineVertex(width,0,0,bottomLeft.x + textureWidth, bottomLeft.y,0,0,-1),
-            combineVertex(0,height,0,bottomLeft.x, bottomLeft.y + textureHeight,0,0,-1),
-            combineVertex(width,height,0,bottomLeft.x + textureWidth, bottomLeft.y + textureHeight,0,0,-1),
+            combineVertex(width,0,0,bottomLeft.x - textureWidth, bottomLeft.y,0,0,-1),
+            combineVertex(0,height,0,bottomLeft.x, bottomLeft.y - textureHeight,0,0,-1),
+            combineVertex(width,height,0,bottomLeft.x - textureWidth, bottomLeft.y - textureHeight,0,0,-1),
     };
     ind={
             0,2,1,

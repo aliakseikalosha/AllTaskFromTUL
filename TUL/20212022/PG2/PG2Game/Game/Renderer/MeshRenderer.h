@@ -6,6 +6,8 @@
 #include <glm/ext/matrix_float4x4.hpp>
 #include "../../GL/Mesh.h"
 #include "../Data/LightData.h"
+#include "../Config.h"
+
 #define MAX_LIGHT_COUNT (10)
 
 class MeshRenderer{

@@ -124,9 +124,9 @@ public:
         }
 
         for (int i = 0; i < out_vertices.size(); i += 3) {
-            Vertex v1 = {out_vertices[i] * size, out_uvs[i] * textureWidth + bottomLeft, out_normals[i]};
-            Vertex v2 = {out_vertices[i + 1] * size, out_uvs[i + 1] * textureWidth + bottomLeft, out_normals[i + 1]};
-            Vertex v3 = {out_vertices[i + 2] * size, out_uvs[i + 2] * textureWidth + bottomLeft, out_normals[i + 2]};
+            Vertex v1 = {out_vertices[i] * size, -out_uvs[i] * textureWidth + bottomLeft, out_normals[i]};
+            Vertex v2 = {out_vertices[i + 1] * size, -out_uvs[i + 1] * textureWidth + bottomLeft, out_normals[i + 1]};
+            Vertex v3 = {out_vertices[i + 2] * size, -out_uvs[i + 2] * textureWidth + bottomLeft, out_normals[i + 2]};
 
             vertex.push_back(v1);
             vertex.push_back(v2);

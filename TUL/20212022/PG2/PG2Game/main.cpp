@@ -18,8 +18,6 @@ void inputInit(GLFWwindow *window);
 
 #include <GLFW/glfw3.h>
 
-// For includes related to OpenGL, make sure their are included after glfw3.h
-#include <OpenGL/gl3.h>
 #include "glm/gtc/type_ptr.hpp"
 #include "GL/input.h"
 #include "Game/Game.h"
