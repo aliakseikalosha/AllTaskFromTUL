@@ -13,7 +13,7 @@ protected:
     glm::vec2 angle;
 public:
     glm::vec3 virtual getPos();
-    glm::vec2 getAngle();
+    glm::vec2 virtual getAngle();
     glm::vec3 forward();
     glm::vec3 forward(bool blockVerticalMovement);
     MeshRenderer *renderer;

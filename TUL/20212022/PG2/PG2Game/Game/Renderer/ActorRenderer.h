@@ -11,10 +11,10 @@
 
 class ActorRenderer : public  MeshRenderer{
 public:
-    void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt, const glm::vec3 &pos, std::vector<LightData> lights) override{
+    void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt, const glm::vec3 &pos, const glm::vec2 &angle, std::vector<LightData> lights) override{
         now+=dt;
         glUseProgram(shaderProgram);
-        setMatrix(projectionMatrix, viewMatrix, pos);
+        setMatrix(projectionMatrix, viewMatrix, pos, angle);
         glUniform3fv(glGetUniformLocation(shaderProgram, "worldPos"), 1, glm::value_ptr(pos));
 
         setLight(lights, pos);

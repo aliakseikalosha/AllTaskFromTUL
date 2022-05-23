@@ -74,7 +74,7 @@ public:
         }
     }
 
-    void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt, const glm::vec3 &pos, std::vector<LightData> lights) override{
+    void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt, const glm::vec3 &pos,const glm::vec2 &angle, std::vector<LightData> lights) override{
         now+=dt;
         glUseProgram(shaderProgram);
         //set uniform for shaders - projection matrix

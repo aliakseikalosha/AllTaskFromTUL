@@ -102,19 +102,21 @@ public:
         glUniform4fv(glGetUniformLocation(shaderProgram, "lightColor"), count, glm::value_ptr(lightColor[0]));
     }
 
-    virtual void setMatrix(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix,const glm::vec3 &pos){
+    virtual void setMatrix(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix,const glm::vec3 &pos, const glm::vec2 &angle){
         //set uniform for shaders - projection matrix
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uProj_m"), 1, GL_FALSE, glm::value_ptr(projectionMatrix));
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uV_m"), 1, GL_FALSE, glm::value_ptr(viewMatrix));
         glm::mat4 modelMatrix = glm::translate(glm::mat4(1.0f), pos);
+        modelMatrix =  glm::rotate(modelMatrix, angle.x, glm::vec3(1.0, 0.0, 0));
+        modelMatrix =  glm::rotate(modelMatrix, angle.y, glm::vec3(0.0, 1.0, 0));
         glUniformMatrix4fv(glGetUniformLocation(shaderProgram, "uM_m"), 1, GL_FALSE, glm::value_ptr(modelMatrix));
     }
 
-    virtual void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt,const glm::vec3 &pos, std::vector<LightData> lights){
+    virtual void render(const glm::mat4 &projectionMatrix, const glm::mat4 &viewMatrix, const float &dt,const glm::vec3 &pos, const glm::vec2 &angle, std::vector<LightData> lights){
         now+=dt;
 
         glUseProgram(shaderProgram);
-        setMatrix(projectionMatrix, viewMatrix, pos);
+        setMatrix(projectionMatrix, viewMatrix, pos, angle);
         setLight(lights, pos);
 
         glActiveTexture(GL_TEXTURE0);

@@ -32,5 +32,23 @@ public:
     }
 };
 
+class Cube : public Actor{
+protected:
+    float now;
+public:
+
+    Cube(const glm::vec3 &pos, const glm::vec2 &angle) : Actor(pos, angle) {
+        now += static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
+    }
+
+    glm::vec2 getAngle() override{
+        return  angle;// + glm::vec2(sin(now), cos(now));
+    }
+
+    void  update(const float &dt) override{
+        now+=dt;
+    }
+};
+
 
 #endif //PG2GAME_ACTOR_H

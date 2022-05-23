@@ -35,7 +35,8 @@ public:
     Player *player;
     Camera *camera;
     std::vector<SceneObject> objects;
-    std::vector<Flask> actors;
+    std::vector<Flask> flasks;
+    std::vector<Cube> cubes;
     std::vector<Light> lights;
     glm::mat4 viewMat;
 
@@ -86,7 +87,16 @@ public:
                     flaskSprites[id].size.y);
         a.renderer->init(m, "../resources/shader/textureBilboard.vert", "../resources/shader/textureBilboard.frag",
                          textureId, normalId);
-        actors.push_back(a);
+        flasks.push_back(a);
+    }
+
+    void placeCube(const glm::vec3 pos, int id, GLuint textureId, GLuint normalId) {
+        Cube a = Cube(pos, glm::vec2(0, 0));
+        a.renderer = new MeshRenderer();
+        Mesh m;
+        m.loadOBJ("../resources/model/cube_triangles_normals_tex.obj",glm::vec2 (0.0,0.0), 0.0, 1.0);
+        a.renderer->init(m, "../resources/shader/cube.vert", "../resources/shader/cube.frag", textureId, normalId);
+        cubes.push_back(a);
     }
 
     void placeWall(const glm::vec3 &pos, int id, GLuint textureId, GLuint normalId) {
@@ -132,22 +142,27 @@ public:
             }
         }
         //light
-        placeLight(glm::vec3(0.0, 1, 0.0), glm::vec4(1.0, 1.0, 1.0, 1));
-        placeLight(glm::vec3(2.0, 1, 2.0), glm::vec4(1.0, 0.0, 1.0, 1));
-        placeLight(glm::vec3(2.0, 1, 0.0), glm::vec4(0.0, 1.0, 0.0, 1));
-        placeLight(glm::vec3(0.0, 1, 2.0), glm::vec4(0.0, 0.0, 1.0, 1));
+        placeLight(glm::vec3(0.0, 0.2, 0.0), glm::vec4(1.0, 0.5, 0.0, 1));
+        placeLight(glm::vec3(2.0, 0.2, 2.0), glm::vec4(0.0, 0.0, 1.0, 1));
+        placeLight(glm::vec3(2.0, 0.2, 0.0), glm::vec4(0.0, 1.0, 0.0, 1));
+        placeLight(glm::vec3(0.0, 0.2, 2.0), glm::vec4(1.0, 1.0, 1.0, 1));
         //objects
-        placeFlask(glm::vec3(3.0, 0.2, 0.0), 3, textureId, normalId);
         placeFlask(glm::vec3(0.0, 0.2, 0.0), 0, textureId, normalId);
-        placeFlask(glm::vec3(1.0, 0.2, 0.0), 1, textureId, normalId);
+        placeFlask(glm::vec3(2.0, 0.2, 2.0), 1, textureId, normalId);
         placeFlask(glm::vec3(2.0, 0.2, 0.0), 2, textureId, normalId);
+        placeFlask(glm::vec3(0.0, 0.2, 2.0), 3, textureId, normalId);
+        //place Cube
+        placeCube(glm::vec3(0.0, 0.2, 2.0), 0, textureId, normalId);
     }
 
     void Update(const float &dt) {
         player->ProcessInput(inputState.moveDelta, inputState.lookDelta, dt);
         camera->UpdateFollow(*player, offset);
         viewMat = glm::lookAt(camera->getPos(), camera->forward() + camera->getPos(), glm::vec3(0.0f, 1.0f, 0.0f));
-        for (auto &actor: actors) {
+        for (auto &actor: flasks) {
+            actor.update(dt);
+        }
+        for (auto &actor: cubes) {
             actor.update(dt);
         }
     }
@@ -156,14 +171,20 @@ public:
 
         for (auto &obj: objects) {
             if (obj.renderer != NULL) {
-                obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos(), getLightsCloseTo(obj.getPos()));
+                obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos(),obj.getAngle(), getLightsCloseTo(obj.getPos()));
             }
         }
 
         for (auto &obj: lights) {
             if (obj.renderer != NULL) {
-                ((LightRenderer *) obj.renderer)->render(projectionMatrix, viewMat, dt, obj.getPos(),
+                ((LightRenderer *) obj.renderer)->render(projectionMatrix, viewMat, dt, obj.getPos(),obj.getAngle(),
                                                          getLightsCloseTo(obj.getPos()));
+            }
+        }
+
+        for (auto &obj: cubes) {
+            if (obj.renderer != NULL) {
+                obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos(),obj.getAngle(), getLightsCloseTo(obj.getPos()));
             }
         }
 
@@ -193,14 +214,14 @@ void Game::DrawTransparent(const glm::mat4 &projectionMatrix, const float &dt) {
     glEnable(GL_BLEND);
     glDepthMask(GL_FALSE);
     glm::vec3 playerPos = player->getPos();
-    sort(actors.begin(), actors.end(), [playerPos](Actor &a, Actor &b) -> bool {
+    sort(flasks.begin(), flasks.end(), [playerPos](Actor &a, Actor &b) -> bool {
         return glm::length(playerPos - a.getPos()) > glm::length(playerPos - b.getPos());
     });
 
 
-    for (auto &obj: actors) {
+    for (auto &obj: flasks) {
         if (obj.renderer != NULL) {
-            obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos(), getLightsCloseTo(obj.getPos()));
+            obj.renderer->render(projectionMatrix, viewMat, dt, obj.getPos(),obj.getAngle() , getLightsCloseTo(obj.getPos()));
         }
     }
     glDisable(GL_BLEND);

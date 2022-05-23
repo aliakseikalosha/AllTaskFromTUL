@@ -36,5 +36,5 @@ void main()
 {
     vec4 color = calcLight();
     color.a = 1;
-    FragColor = color * texture(tex, fs_in.texcoord);
+    FragColor = 1 * texture(tex, fs_in.texcoord);
 }
